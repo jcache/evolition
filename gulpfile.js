@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var electron = require('gulp-electron');
 var uglify = require('gulp-uglify');
 var htmlreplace = require('gulp-html-replace');
 var source = require('vinyl-source-stream');
@@ -13,6 +14,7 @@ var less = require('gulp-less');
 var path = require('path');
 var babel = require('gulp-babel');
 
+var packageJson = require('./package.json');
 var app_paths = {
   //ELECTRON DIST PATHS
   osx_electron_build_path: 'dist/osx',
@@ -107,7 +109,36 @@ gulp.task('jade', function(){
       pretty: true
     }))
     .pipe(gulp.dest('./build/windows'));
+});
 
+gulp.task('electron', function() {
+     gulp.src("")
+    .pipe(electron({
+        src: './master',
+        packageJson: packageJson,
+        release: './release',
+        cache: './cache',
+        version: 'v0.36.3',
+        packaging: true,
+        rebuild: true,
+        // platforms: ['darwin-x64'],
+        // platformResources: {
+        //   darwin: {
+        //       CFBundleDisplayName: packageJson.name,
+        //       CFBundleIdentifier: packageJson.name,
+        //       CFBundleName: packageJson.name,
+        //       CFBundleVersion: packageJson.version,
+        //       icon: 'gulp-electron.icns'
+        //   },
+        //   win: {
+        //       "version-string": packageJson.version,
+        //       "file-version": packageJson.version,
+        //       "product-version": packageJson.version,
+        //       "icon": 'gulp-electron.ico'
+        //   }
+        // }
+    }))
+    .pipe(gulp.dest(""));
 });
 
 gulp.task('default', ['watch_assets','watch_main_window','watch_character_window']);

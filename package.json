@@ -1,6 +1,6 @@
 {
   "name": "ev",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "electron ./"
@@ -32,6 +32,7 @@
     "formsy-react-components": "~0.6.3",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
+    "gulp-electron": "0.0.10",
     "gulp-html-replace": "^1.5.5",
     "gulp-jade": "^1.1.0",
     "gulp-less": "^3.0.5",
