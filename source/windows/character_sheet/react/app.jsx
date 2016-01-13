@@ -2,7 +2,7 @@ require('events').EventEmitter.prototype._maxListeners = 20;
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group'); 
 //
 // var NavBar        = require('./views/navbar.jsx');
 // var LeftNav       = require('./views/left-nav.jsx');

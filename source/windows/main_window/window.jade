@@ -1,1 +1,33 @@
- 
+doctype
+html(lang="en")
+  head
+    title Evolition
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='../../shared_assets/styles/bootstrap.css')
+    link(rel='stylesheet', href='../../shared_assets/styles/bootstrap-material-design.css')
+    link(rel='stylesheet', href='../../shared_assets/styles/perfect-scrollbar.min.css')
+    link(rel='stylesheet', href='../../shared_assets/styles/global.css')
+    script.
+      var remote  = require('remote');
+      var ipc     = require('ipc-renderer');
+      var fs      = require('fs');
+      var async   = require('async');
+      var dir = ipc.sendSync('config-paths', true);
+      var low = require('lowdb'); 
+      var ev_gamesystem = low(dir.data + "game_system.json") 
+      var ev_characters = low(dir.data + "characters.json")
+      ev_gamesystem._.mixin(require('underscore-db'));
+      ev_characters._.mixin(require('underscore-db'));
+      var browser = require('electron').remote.BrowserWindow;
+  body   
+    #app.full-container 
+  script.  
+    window.$ = window.jQuery = require('../../shared_assets/js/jquery.js');
+  script(src='../../shared_assets/js/bootstrap.min.js') 
+  script(src='../../shared_assets/js/material.min.js')
+  script(src='../../shared_assets/js/ripples.min.js')  
+  script.
+    $.material.init()
+  script(src='../../shared_assets/js/perfect-scrollbar.jquery.js')
+  script(src='../../shared_assets/js/perfect-scrollbar.min.js')
+  script(src='./window.js') 

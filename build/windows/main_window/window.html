@@ -1,1 +1,35 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Evolition</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../shared_assets/styles/bootstrap.css">
+    <link rel="stylesheet" href="../../shared_assets/styles/bootstrap-material-design.css">
+    <link rel="stylesheet" href="../../shared_assets/styles/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="../../shared_assets/styles/global.css">
+    <script>
+      var remote  = require('remote');
+      var ipc     = require('ipc-renderer');
+      var fs      = require('fs');
+      var async   = require('async');
+      var dir = ipc.sendSync('config-paths', true);
+      var low = require('lowdb'); 
+      var ev_gamesystem = low(dir.data + "game_system.json") 
+      var ev_characters = low(dir.data + "characters.json")
+      ev_gamesystem._.mixin(require('underscore-db'));
+      ev_characters._.mixin(require('underscore-db'));
+      var browser = require('electron').remote.BrowserWindow;
+    </script>
+  </head>
+  <body>  
+    <div id="app" class="full-container"> </div>
+  </body>
+  <script>window.$ = window.jQuery = require('../../shared_assets/js/jquery.js');</script>
+  <script src="../../shared_assets/js/bootstrap.min.js"> </script>
+  <script src="../../shared_assets/js/material.min.js"></script>
+  <script src="../../shared_assets/js/ripples.min.js"> </script>
+  <script>$.material.init()</script>
+  <script src="../../shared_assets/js/perfect-scrollbar.jquery.js"></script>
+  <script src="../../shared_assets/js/perfect-scrollbar.min.js"></script>
+  <script src="./window.js"> </script>
+</html>

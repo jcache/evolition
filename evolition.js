@@ -56,7 +56,7 @@ app.on('ready', function(e){
   });
 
   main_window.setPosition(10, 100);
-  main_window.loadURL('file://' + dir.views + 'main.html');
+  main_window.loadURL('file://' + dir.views + 'main_window/window.html');
 
   main_window.on('closed', function() {
     main_window = null;
