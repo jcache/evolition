@@ -1,0 +1,50 @@
+{
+  "name": "ev",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "grunt watch && electron ./"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "main": "evolition.js",
+  "dependencies": {
+    "electron-debugger": "1.0.1",
+    "electron-window": "latest",
+    "fs-extra": "^0.26.4",
+    "lodash": "^3.10.1",
+    "perfect-scrollbar": "^0.6.3",
+    "react": "latest",
+    "react-dom": "^0.14.3"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "debug-menu": "^0.2.0",
+    "babel-core": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-html-replace": "^1.5.5",
+    "gulp-jade": "^1.1.0",
+    "gulp-less": "^3.0.5",
+    "gulp-livereload": "^3.8.1",
+    "gulp-react": "^3.1.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.1",
+    "jade": "~1.11.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "flux": "~2.1.1",
+    "formsy-react": "~0.17.0",
+    "formsy-react-components": "~0.6.3",
+    "watchify": "^3.6.1",
+    "lowdb": "^0.10.3",
+    "object-assign": "~4.0.1",
+    "react-addons-css-transition-group": "^0.14.3",
+    "react-addons-pure-render-mixin": "^0.14.3"
+  }
+}

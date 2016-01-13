@@ -1,0 +1,221 @@
+#app-nav {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  background: #081426;
+  border: none;
+  border-radius: 0;
+  height: 60px;
+  margin-bottom: 0;
+}
+#app-nav .container-fluid {
+  margin: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#app-nav .container-fluid .navbar-nav .close-app {
+  margin-top: 10px;
+}
+#app-nav .container-fluid .navbar-nav .close-app a {
+  -webkit-app-region: no-drag !important;
+  background: #ffffff center center url(../images/close_red.png) no-repeat;
+  background-size: contain;
+  width: 28px;
+  height: 28px;
+  padding: 8px;
+  border-radius: 10px;
+}
+#app-nav .container-fluid .navbar-nav .close-app a:last-child {
+  margin-right: 15px;
+}
+#app-nav .container-fluid .navbar-nav .close-app a:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(249, 73, 66, 0.5);
+}
+#app-body {
+  height: 680px;
+  background: #0f2b4f;
+}
+#app-body #mini-nav {
+  background: #0a192e;
+  height: inherit;
+  border-right: 1px solid #000;
+}
+#app-body #mini-nav ul {
+  padding: 0;
+}
+#app-body #mini-nav ul li {
+  -webkit-app-region: no-drag !important;
+  list-style: none;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+#app-body #mini-nav ul li:first-child {
+  margin-top: 15px;
+}
+#app-body #mini-nav ul li a {
+  display: block;
+  margin: 0 auto;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  -webkit-app-region: no-drag !important;
+}
+#app-body #mini-nav ul li a.characters-link {
+  background: url(../images/characters.svg) no-repeat;
+  opacity: .4;
+}
+#app-body #mini-nav ul li a.characters-link:hover {
+  transition: opacity .4s ease;
+  opacity: 1;
+}
+#app-body #mini-nav ul li a.character-add-link {
+  background: url(../images/character-add.svg) no-repeat;
+  opacity: .4;
+}
+#app-body #mini-nav ul li a.character-add-link:hover {
+  transition: opacity .4s ease;
+  opacity: 1;
+}
+#app-body #character-list {
+  height: 100%;
+  padding-left: 0;
+  padding-right: 15px;
+  position: relative;
+  overflow: hidden;
+  background: #132d4f;
+  border-right: 1px solid #0a192f;
+}
+#app-body #character-list .ps-scrollbar-y-rail {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #0a192f;
+}
+#app-body #character-list ul {
+  padding: 0;
+  margin: 0;
+}
+#app-body #character-list ul li {
+  list-style: none;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #0a192f;
+  border-right: 1px solid #0a192f;
+}
+#app-body #character-list ul li.active .character-details {
+  transition: background 0.3s ease;
+  background: #173d62;
+}
+#app-body #character-list ul li .character-details {
+  height: 85px;
+  background: #112c4d;
+}
+#app-body #character-list ul li .character-details .image-box {
+  width: 28%;
+  float: left;
+}
+#app-body #character-list ul li .character-details .image-box .image {
+  width: 50px;
+  height: 50px;
+  margin: 15px auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#app-body #character-list ul li .character-details .detail-box {
+  width: 71%;
+  float: left;
+}
+#app-body #character-list ul li .character-details .detail-box .details {
+  margin: 15px 0;
+}
+#app-body #character-list ul li .character-details .detail-box .details h5 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+#app-body #character-list ul li .character-details .detail-box .details p {
+  margin: 0px;
+  padding: 0px;
+  color: #3676ba;
+}
+#app-body #character-list ul li .character-details .detail-box .details p small {
+  font-size: 11px;
+}
+#app-body #character-list ul li .character-options {
+  width: 100% !important;
+  display: none;
+  height: 35px;
+  background-color: #07233f;
+}
+#app-body #character-list ul li .character-options ul {
+  background-color: rgba(13, 23, 42, 0.5);
+  overflow: hidden;
+  margin: 0;
+  display: table;
+  width: 100%;
+}
+#app-body #character-list ul li .character-options ul li {
+  height: 35px;
+  width: 33.33333%;
+  list-style: none;
+  font-family: "AW", arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 9px;
+  display: table-cell;
+  margin-bottom: 0px !important;
+  border-right: 1px solid #0d172a;
+  padding: 0;
+  margin-right: 0 !important;
+}
+#app-body #character-list ul li .character-options ul li.view {
+  float: left;
+  background: url('../images/view.svg') no-repeat;
+  background-size: 15px;
+  background-position: 10px center;
+}
+#app-body #character-list ul li .character-options ul li.change {
+  float: left;
+  background: url('../images/edit.svg') no-repeat;
+  background-size: 15px;
+  background-position: 10px center;
+}
+#app-body #character-list ul li .character-options ul li.remove {
+  float: left;
+  background: url('../images/trash.svg') no-repeat;
+  background-size: 15px;
+  background-position: 10px center;
+}
+#app-body #character-list ul li .character-options ul li a {
+  height: 35px;
+  display: inline-block;
+  width: 100%;
+  line-height: 35px;
+  padding-left: 32px !important;
+  padding-right: 10px !important;
+  text-align: left;
+  color: #526171;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none !important;
+}
+#app-body #character-list ul li .character-options ul li a:hover {
+  transition: background-color 0.4s ease !important;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+#app-body #viewport {
+  height: inherit;
+}
+#app-body #viewport h1 {
+  color: #FFF;
+}
+#app-body #viewport p {
+  color: #FFF;
+}
+@font-face {
+  font-family: 'AW';
+  src: url('../fonts/AWConquerorSans-Light.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/AWConquerorSans-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/AWConquerorSans-Light.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/AWConquerorSans-Light.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/AWConquerorSans-Light.svg#svgFontName') format('svg');
+  /* Legacy iOS */
+}

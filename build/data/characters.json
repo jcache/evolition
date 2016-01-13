@@ -1,0 +1,160 @@
+{
+  "settings": [
+    {
+      "id": 1,
+      "selected_view": "default"
+    }
+  ],
+  "views": [
+    {
+      "view_name": "default"
+    },
+    {
+      "view_name": "character_form"
+    },
+    {
+      "view_name": "character_view"
+    },
+    {
+      "view_name": "character_edit"
+    },
+    {
+      "view_name": "character_add"
+    }
+  ],
+  "characters": [
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "Mizu Harishima",
+      "level": "12",
+      "campaign_name": "The Elemental",
+      "game_system_name": "I.C.E",
+      "id": "0e584dc1-8ed2-4c06-8b86-8bb508169e98"
+    },
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "Jubei Kiganami",
+      "level": "23",
+      "campaign_name": "asdf",
+      "game_system_name": "Rifts RPG",
+      "id": "98b0064e-dff2-4568-93c7-8cfca71df00b"
+    },
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "Aert",
+      "level": "3",
+      "campaign_name": "asdf",
+      "game_system_name": "I.C.E",
+      "id": "4ea0db96-b724-42b7-bd09-f5a7135555b4"
+    },
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "sdfg",
+      "level": "4",
+      "campaign_name": "sdfg",
+      "game_system_name": "I.C.E",
+      "id": "09285b95-1490-49e1-aac9-808037911bf1"
+    },
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "asdf",
+      "level": "3",
+      "campaign_name": "asdf",
+      "game_system_name": "I.C.E",
+      "id": "60b15f02-99e1-4f3c-8004-0ae588eb4564"
+    },
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "Aert",
+      "level": "3",
+      "campaign_name": "asdf",
+      "game_system_name": "I.C.E",
+      "id": "4ea0db96-b724-45b7-bd09-f5a7135555b4"
+    },
+    {
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "character_name": "sdfg",
+      "level": "4",
+      "campaign_name": "sdfg",
+      "game_system_name": "I.C.E",
+      "id": "09285b95-1490-48e1-aac9-808037911bf1"
+    }
+  ]
+}

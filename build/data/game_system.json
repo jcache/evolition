@@ -1,0 +1,116 @@
+{
+  "game_systems": [
+    {
+      "id": 1,
+      "name": "Rolemaster Evolition",
+      "stat_layout": [
+        {
+          "id": 1,
+          "abbv": "ST",
+          "name": "Strength"
+        },
+        {
+          "id": 2,
+          "abbv": "CO",
+          "name": "Constitution"
+        },
+        {
+          "id": 3,
+          "abbv": "AG",
+          "name": "Agility"
+        },
+        {
+          "id": 4,
+          "abbv": "QU",
+          "name": "Quickness"
+        },
+        {
+          "id": 5,
+          "abbv": "MQ",
+          "name": "Mental Quickness"
+        },
+        {
+          "id": 6,
+          "abbv": "SP",
+          "name": "Spirit"
+        },
+        {
+          "id": 7,
+          "abbv": "SD",
+          "name": "Self Discipline"
+        },
+        {
+          "id": 8,
+          "abbv": "ME",
+          "name": "Memory"
+        },
+        {
+          "id": 9,
+          "abbv": "RE",
+          "name": "Reasoning"
+        },
+        {
+          "id": 10,
+          "abbv": "EN",
+          "name": "Endurance"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Rolemaster",
+      "stat_layout": [
+        {
+          "id": 1,
+          "abbv": "ST",
+          "name": "Strength"
+        },
+        {
+          "id": 2,
+          "abbv": "CO",
+          "name": "Constitution"
+        },
+        {
+          "id": 3,
+          "abbv": "AG",
+          "name": "Agility"
+        },
+        {
+          "id": 4,
+          "abbv": "QU",
+          "name": "Quickness"
+        },
+        {
+          "id": 5,
+          "abbv": "MQ",
+          "name": "Mental Quickness"
+        },
+        {
+          "id": 6,
+          "abbv": "SP",
+          "name": "Spirit"
+        },
+        {
+          "id": 7,
+          "abbv": "SD",
+          "name": "Self Discipline"
+        },
+        {
+          "id": 8,
+          "abbv": "ME",
+          "name": "Memory"
+        },
+        {
+          "id": 9,
+          "abbv": "RE",
+          "name": "Reasoning"
+        },
+        {
+          "id": 10,
+          "abbv": "EN",
+          "name": "Endurance"
+        }
+      ]
+    }
+  ]
+}
