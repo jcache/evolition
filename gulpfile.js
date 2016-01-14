@@ -19,27 +19,26 @@ var packageJson = require('./package.json');
 
 var app_paths = {
   //ELECTRON DIST PATHS
-  osx_electron_build_path: 'dist/osx',
-  win_electron_build_path: 'dist/win',
+  osx_electron_build: 'dist/osx',
+  win_electron_build: 'dist/win',
   //SHARED ASSETS LIVING IN SOURCE
-  shared_less_path: 'source/shared_assets/less/**/*.less',
-  shared_images_path: 'source/shared_assets/images/**',
-  shared_fonts_path: 'source/shared_assets/fonts/**',
-  shared_js_path: 'source/shared_assets/js/**/*.js',
+  shared_less: 'source/shared_assets/less/**/*.less',
+  shared_images: 'source/shared_assets/images/**',
+  shared_fonts: 'source/shared_assets/fonts/**',
+  shared_js: 'source/shared_assets/js/**/*.js',
   //SHARED ASSETS LIVING IN BUILD
-  build_shared_styles_path: 'build/shared_assets/styles',
-  build_shared_images_path: 'build/shared_assets/images',
-  build_shared_fonts_path: 'build/shared_assets/fonts',
-  build_shared_js_path: 'build/shared_assets/js',
+  build_shared_styles: 'build/shared_assets/styles',
+  build_shared_images: 'build/shared_assets/images',
+  build_shared_fonts: 'build/shared_assets/fonts',
+  build_shared_js: 'build/shared_assets/js',
   //SOURCE WINDOW FILES
-  windows_path: 'source/windows',
-  window_jade_path: 'source/windows/**/*.jade',
-  window_less_path: 'source/windows/**/*.less',
-  main_window_path_ep:         'source/windows/main_window/react/app.jsx',
-  cs_window_path_ep:           'source/windows/character_sheet/react/app.jsx',
-
-  main_window_path:            'build/windows/main_window',
-  character_sheet_window_path: 'build/windows/character_sheet',
+  windows: 'source/windows',
+  window_jade: 'source/windows/**/*.jade',
+  window_less: 'source/windows/**/*.less',
+  main_window_ep:         'source/windows/main_window/react/app.jsx',
+  cs_window_ep:           'source/windows/character_sheet/react/app.jsx',
+  main_window:            'build/windows/main_window',
+  character_sheet_window: 'build/windows/character_sheet',
   // FILES DEFS
   out_main_window: 'window.js',
   out_character_sheet_window: 'window.js',
@@ -48,65 +47,65 @@ var app_paths = {
 
 gulp.task('watch_assets', function(){
   gulp.watch('build',  ['copy_shared']);
-  gulp.watch(app_paths.shared_images_path,  ['copy_shared']);
-  gulp.watch(app_paths.shared_fonts_path,   ['copy_shared']);
-  gulp.watch(app_paths.shared_js_path,      ['copy_shared']);
-  gulp.watch(app_paths.shared_less_path,    ['less_shared']);
-  gulp.watch(app_paths.window_jade_path,    ['jade']);
+  gulp.watch(app_paths.shared_images,  ['copy_shared']);
+  gulp.watch(app_paths.shared_fonts,   ['copy_shared']);
+  gulp.watch(app_paths.shared_js,      ['copy_shared']);
+  gulp.watch(app_paths.shared_less,    ['less_shared']);
+  gulp.watch(app_paths.window_jade,    ['jade']);
 });
 
 gulp.task('watch_main_window', function(){
   var main_window_watcher = watchify(
-    browserify(app_paths.main_window_path_ep,{debug:true})
+    browserify(app_paths.main_window_ep,{debug:true})
     .transform(babelify,{presets:['react','es2015']})
   );
 
   return main_window_watcher.on('update', function(){
     main_window_watcher.bundle()
       .pipe(source(app_paths.out_main_window))
-      .pipe(gulp.dest(app_paths.main_window_path));
+      .pipe(gulp.dest(app_paths.main_window));
     console.log('MAIN_WINDOW : UPDATED');
   }).bundle()
     .on('error', function(err){
       console.log(err.stack, err.message);
-  }).pipe(source(app_paths.out_main_window)).pipe(gulp.dest(app_paths.main_window_path));
+  }).pipe(source(app_paths.out_main_window)).pipe(gulp.dest(app_paths.main_window));
 });
 
 gulp.task('watch_character_window', function(){
   var character_sheet_window_watcher = watchify(
-    browserify(app_paths.cs_window_path_ep,{debug:true})
+    browserify(app_paths.cs_window_ep,{debug:true})
     .transform(babelify,{presets:['react','es2015']})
   );
 
   return character_sheet_window_watcher.on('update', function(){
     character_sheet_window_watcher.bundle()
       .pipe(source(app_paths.out_character_sheet_window))
-      .pipe(gulp.dest(app_paths.character_sheet_window_path));
+      .pipe(gulp.dest(app_paths.character_sheet_window));
     console.log('SHEET_WINDOW : UPDATED');
   }).bundle()
     .on('error', function(err){
       console.log(err.stack, err.message);
-  }).pipe(source(app_paths.out_character_sheet_window)).pipe(gulp.dest(app_paths.character_sheet_window_path));
+  }).pipe(source(app_paths.out_character_sheet_window)).pipe(gulp.dest(app_paths.character_sheet_window));
 
 });
 
 gulp.task('copy_shared', function(){
-  gulp.src(app_paths.shared_js_path).pipe(gulp.dest(app_paths.build_shared_js_path));
-  gulp.src(app_paths.shared_images_path).pipe(gulp.dest(app_paths.build_shared_images_path));
-  gulp.src(app_paths.shared_fonts_path).pipe(gulp.dest(app_paths.build_shared_fonts_path));
+  gulp.src(app_paths.shared_js).pipe(gulp.dest(app_paths.build_shared_js));
+  gulp.src(app_paths.shared_images).pipe(gulp.dest(app_paths.build_shared_images));
+  gulp.src(app_paths.shared_fonts).pipe(gulp.dest(app_paths.build_shared_fonts));
 });
 
 gulp.task('less_shared', function(){
-  return gulp.src(app_paths.shared_less_path)
+  return gulp.src(app_paths.shared_less)
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
   }))
-  .pipe(gulp.dest(app_paths.build_shared_styles_path));
+  .pipe(gulp.dest(app_paths.build_shared_styles));
 });
 
 gulp.task('jade', function(){
   var YOUR_LOCALS = {};
-  gulp.src(app_paths.window_jade_path)
+  gulp.src(app_paths.window_jade)
     .pipe(gulpJade({
       jade: jade,
       pretty: true
