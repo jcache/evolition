@@ -42,7 +42,7 @@ var app_paths = {
   out_main_window: 'window.js',
   out_character_sheet_window: 'window.js',
   out_window_styles: 'window.css'
-}
+};
 
 gulp.task('watch_assets', function(){
   gulp.watch(app_paths.shared_images_path,  ['copy_shared']);
@@ -61,11 +61,11 @@ gulp.task('watch_main_window', function(){
   return main_window_watcher.on('update', function(){
     main_window_watcher.bundle()
       .pipe(source(app_paths.out_main_window))
-      .pipe(gulp.dest(app_paths.main_window_path))
+      .pipe(gulp.dest(app_paths.main_window_path));
     console.log('MAIN_WINDOW : UPDATED');
   }).bundle()
     .on('error', function(err){
-      console.log(err.stack, err.message)
+      console.log(err.stack, err.message);
   }).pipe(source(app_paths.out_main_window)).pipe(gulp.dest(app_paths.main_window_path));
 });
 
@@ -78,14 +78,14 @@ gulp.task('watch_character_window', function(){
   return character_sheet_window_watcher.on('update', function(){
     character_sheet_window_watcher.bundle()
       .pipe(source(app_paths.out_character_sheet_window))
-      .pipe(gulp.dest(app_paths.character_sheet_window_path))
+      .pipe(gulp.dest(app_paths.character_sheet_window_path));
     console.log('SHEET_WINDOW : UPDATED');
   }).bundle()
     .on('error', function(err){
-      console.log(err.stack, err.message)
+      console.log(err.stack, err.message);
   }).pipe(source(app_paths.out_character_sheet_window)).pipe(gulp.dest(app_paths.character_sheet_window_path));
 
-})
+});
 
 gulp.task('copy_shared', function(){
   gulp.src(app_paths.shared_js_path).pipe(gulp.dest(app_paths.build_shared_js_path));
@@ -99,7 +99,7 @@ gulp.task('less_shared', function(){
       paths: [ path.join(__dirname, 'less', 'includes') ]
   }))
   .pipe(gulp.dest(app_paths.build_shared_styles_path));
-})
+});
 
 gulp.task('jade', function(){
   var YOUR_LOCALS = {};
