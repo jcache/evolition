@@ -7,7 +7,7 @@ var NavBar = React.createClass({
   getInitialState: function(){
     return {
       item: 'i'
-    }
+    };
   },
   _onClose: function(){
     ipc.send('close_mainwin');
@@ -30,4 +30,3 @@ var NavBar = React.createClass({
 });
 
 module.exports = NavBar
- 
