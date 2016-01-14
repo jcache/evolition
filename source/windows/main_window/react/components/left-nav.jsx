@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import LeftNavItem from './elements/left-nav-item.jsx';
-var _ = require('lodash');
 var data = [];
 
 
@@ -38,4 +37,3 @@ var LeftNav = React.createClass({
 });
 
 module.exports = LeftNav
- 

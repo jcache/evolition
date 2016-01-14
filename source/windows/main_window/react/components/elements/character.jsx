@@ -1,38 +1,59 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import CharacterOptions from './character-options.jsx';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+var CharacterActions  = require('../../actions/character-actions.jsx');
+var CharacterStore  = require('../../stores/character-store.jsx');
 
 var Character = React.createClass({
-  getInitialState: function(){
-    return{
-      character: this.props.character
+  getInitialState: function(character){
+    return {
+      selected_character: CharacterStore.getSelectedCharacter()
     }
   },
-
   componentWillMount: function(){
-    // evApplicationStore.addChangeListener(this._onChange);
+    CharacterStore.addChangeListener(this._onChange);
   },
-
   componentWillUnmount: function(){
-    // evApplicationStore.removeChangeListener(this._onChange);
+    CharacterStore.removeChangeListener(this._onChange);
   },
-  _selectCharacter: function(){
-    console.log(e);
+  _selectCharacter: function(character){
+    CharacterActions.selectCharacter(character);
+  },
+  _viewCharacter: function(id){
+    // CharacterActions.viewCharacter(character);
+  },
+  _editCharacter: function(id){
+    // CharacterActions.editCharacter(character);
+  },
+  _removeCharacter: function(id) {
+    // CharacterActions.removeCharacter(character);
   },
   _onChange: function(){
-    this.state = {
-      character: this.props.character
-    };
+    this.setState({
+      selected_character: CharacterStore.getSelectedCharacter()
+    });
   },
   render: function(){
+    var active_character = "";
+    var show_option = {};
+    var character = this.props.character;
 
-    let active_character
-    let show_option = {"display":"none"}
-    let character = this.state.character
+    if(typeof this.state.selected_character === 'undefined'){
+      show_option = {display:'none'};
+      active_character = "inactive";
+    } else {
+      if (this.props.character.id == this.state.selected_character.id){
+        show_option = {display:'block'};
+        active_character = "active";
+      } else {
+        show_option = {display:'none'};
+        active_character = "";
+      }
+    }
 
     return(
-      <li className={active_character} onClick={this._selectCharacter}>
+      <li className={active_character} onClick={this._selectCharacter.bind(this,character)}>
         <div className='character-details'>
           <div className='image-box'>
             <div className='image'>
@@ -47,7 +68,19 @@ var Character = React.createClass({
             </div>
           </div>
         </div>
-        <CharacterOptions opts={show_option} />
+        <div className='character-options' style={show_option}>
+          <ul>
+            <li className='view'>
+              <a href='#' onClick={this._viewCharacter} data-view='character_view'>view</a>
+            </li>
+            <li className='change'>
+              <a href='#' onClick={this._editCharacter} data-view='character_edit'>change</a>
+            </li>
+            <li className='remove'>
+              <a href='#' onClick={this._removeCharacter}  data-view='character_edit'>remove</a>
+            </li>
+          </ul>
+        </div>
       </li>
     )
   }

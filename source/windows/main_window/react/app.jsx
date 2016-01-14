@@ -8,11 +8,15 @@ var NavBar        = require('./components/navbar.jsx');
 var LeftNav       = require('./components/left-nav.jsx');
 var CharacterList = require('./components/character-list.jsx');
 var Viewport      = require('./components/viewport.jsx');
+var CharacterActions = require('./actions/character-actions.jsx');
 
+setInterval(function() {
+  CharacterActions.fetchCharacters();
+}, 300);
 
 var AppContainer = React.createClass({
   render: function(){
-    return ( 
+    return (
       <div className='app'>
         <NavBar />
         <div className='row-fluid' id="app-body">

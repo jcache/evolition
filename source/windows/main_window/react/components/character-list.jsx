@@ -2,33 +2,42 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Character from './elements/character.jsx';
-
-// DEFINE STORE
-var list_data = []
-list_data.push({"id": 1,"character_name": "A"})
-list_data.push({"id": 2,"character_name": "B"})
-list_data.push({"id": 3,"character_name": "C"})
+import CharacterStore from '../stores/character-store.jsx';
 
 // DEFINE STORE
 var CharacterList = React.createClass({
   getInitialState: function(){
-    return {
-      list: list_data
+    return{
+      characters: CharacterStore.getAllCharacters(),
     }
   },
+  componentWillMount: function(){
+    CharacterStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function(){
+    CharacterStore.removeChangeListener(this._onChange);
+  },
+  componentDidMount: function(){
+    $('#character-list').perfectScrollbar();
+  },
+  selectCharacter: function(character){
+    evActions.selectedCharacter(character);
+  },
   _onChange: function(){
-    this.state = {
-      list: list_data
-    }
+    this.setState({
+      characters: CharacterStore.getAllCharacters(),
+    });
   },
   render: function(){
     // SETS CHARACTERS
     var list = [];
-    var characters = this.state.list
     // CREATES DOM NODES
-    for (var character in characters) {
-      list.push(<Character key={character} character={character} />);
-    }
+    if (this.state.characters) {
+      this.state.characters.forEach(function(character) {
+        list.push(<Character key={character.id} character={character} />);
+      });
+    };
+
     // RETURN LIST
     return (
       <div className='col-xs-3' id='character-list'>
@@ -38,6 +47,6 @@ var CharacterList = React.createClass({
       </div>
     )
   }
-}); 
+});
 
 module.exports = CharacterList
