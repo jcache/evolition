@@ -13,8 +13,10 @@ var gulpJade = require('gulp-jade');
 var less = require('gulp-less');
 var path = require('path');
 var babel = require('gulp-babel');
+var runEv = require("gulp-run-electron");
 
 var packageJson = require('./package.json');
+
 var app_paths = {
   //ELECTRON DIST PATHS
   osx_electron_build_path: 'dist/osx',
@@ -45,6 +47,7 @@ var app_paths = {
 };
 
 gulp.task('watch_assets', function(){
+  gulp.watch('build',  ['copy_shared']);
   gulp.watch(app_paths.shared_images_path,  ['copy_shared']);
   gulp.watch(app_paths.shared_fonts_path,   ['copy_shared']);
   gulp.watch(app_paths.shared_js_path,      ['copy_shared']);
@@ -111,34 +114,39 @@ gulp.task('jade', function(){
     .pipe(gulp.dest('./build/windows'));
 });
 
-gulp.task('electron', function() {
+gulp.task('electron_package', function() {
      gulp.src("")
     .pipe(electron({
-        src: './master',
+        src: './',
         packageJson: packageJson,
-        release: './release',
-        cache: './cache',
+        release: './dist',
+        cache: './app_dl_cache',
         version: 'v0.36.3',
         packaging: true,
         rebuild: true,
-        // platforms: ['darwin-x64'],
-        // platformResources: {
-        //   darwin: {
-        //       CFBundleDisplayName: packageJson.name,
-        //       CFBundleIdentifier: packageJson.name,
-        //       CFBundleName: packageJson.name,
-        //       CFBundleVersion: packageJson.version,
-        //       icon: 'gulp-electron.icns'
+        platforms: ['darwin-x64'],
+        platformResources: {
+          darwin: {
+              CFBundleDisplayName: packageJson.name,
+              CFBundleIdentifier: packageJson.name,
+              CFBundleName: packageJson.name,
+              CFBundleVersion: packageJson.version,
+              icon: 'gulp-electron.icns'
         //   },
         //   win: {
         //       "version-string": packageJson.version,
         //       "file-version": packageJson.version,
         //       "product-version": packageJson.version,
         //       "icon": 'gulp-electron.ico'
-        //   }
-        // }
+          }
+        }
     }))
     .pipe(gulp.dest(""));
 });
 
-gulp.task('default', ['watch_assets','watch_main_window','watch_character_window']);
+gulp.task('electron', function() {
+    gulp.src("")
+        .pipe(runEv());
+});
+
+gulp.task('default', ['watch_assets','watch_main_window','watch_character_window', 'electron']);
