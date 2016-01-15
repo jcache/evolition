@@ -73,22 +73,24 @@
     },
     {
       "stats": {
-        "ST": "65",
-        "CO": "65",
-        "AG": "65",
-        "QU": "65",
-        "MQ": "65",
-        "SP": "65",
-        "SD": "65",
-        "ME": "65",
-        "RE": "65",
-        "EN": "65"
+        "ST": "66",
+        "CO": "66",
+        "AG": "66",
+        "QU": "66",
+        "MQ": "66",
+        "SP": "66",
+        "SD": "66",
+        "ME": "66",
+        "RE": "66",
+        "EN": "66"
       },
-      "character_name": "Mister Mister",
+      "character_name": "Mister Mister2",
       "level": "3",
       "campaign_name": "asdf",
       "game_system_name": "I.C.E",
-      "id": "4ea0db96-b724-42b7-bd09-f5a7135555b4"
+      "id": "4ea0db96-b724-42b7-bd09-f5a7135555b4",
+      "race": "d",
+      "gender": "d "
     },
     {
       "stats": {

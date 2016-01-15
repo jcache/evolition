@@ -17,6 +17,7 @@ var EditCharacter = React.createClass({
     return {
       layout: 'vertical',
       validatePristine: false,
+      saved:  false,
       character:  CharacterStore.getSelectedCharacter(),
       disabled: false
     };
@@ -42,12 +43,13 @@ var EditCharacter = React.createClass({
   },
   _onChange: function(){
     this.setState({
-      character: CharacterStore.getSelectedCharacter()
+      character: CharacterStore.getSelectedCharacter(),
+      saved: true,
     })
   },
   render: function(){
     var formClassName = '';
-
+    var character = this.state.character;
     if (this.state.layout === 'horizontal') {
       formClassName = 'form-horizontal';
     }
@@ -61,39 +63,40 @@ var EditCharacter = React.createClass({
     };
     return (
       <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={300} transitionLeaveTimeout={500}>
-        <div className='row view-handler' id='character-add-view'>
+        <div className='row view-handler' id='character-edit-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
-              <h1>Form Playground</h1>
+              <h1>Edit Character</h1>
             </div>
             <Formsy.Form className={formClassName} onSubmit={this.submitForm} ref="form">
               <div className='col-xs-2 stat-list'>
-                <StatList shared_props={sharedProps} gamesystem="Rolemaster Evolition"/>
+                <StatList shared_props={sharedProps} gamesystem="Rolemaster Evolition" stats={character.stats}/>
               </div>
 
               <div className='col-xs-10 basic-list'>
                 <div className='row'>
                   <div className='col-xs-6'>
-                    <Input {...sharedProps} name="character_name" value="" label="Character Name:" type="text" required />
+                    <Input {...sharedProps} name="id" value={character.id} label="Character Name:" type="hidden" required />
+                    <Input {...sharedProps} name="character_name" value={character.character_name} label="Character Name:" type="text" required />
                   </div>
                   <div className='col-xs-3'>
-                    <Input {...sharedProps} name="race" value="" label="Race:" type="text" required />
+                    <Input {...sharedProps} name="race" value={character.race} label="Race:" type="text" required />
                   </div>
                   <div className='col-xs-3'>
-                    <Input {...sharedProps} name="gender" value="" label="Gender:" type="text" required />
+                    <Input {...sharedProps} name="gender" value={character.gender} label="Gender:" type="text" required />
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-xs-6'>
-                    <Input {...sharedProps} name="game_system_name" value="" label="Game System:" type="text"  required />
+                    <Input {...sharedProps} name="game_system_name" value={character.game_system_name} label="Game System:" type="text"  required />
                   </div>
                   <div className='col-xs-6'>
-                    <Input {...sharedProps} name="campaign_name" value="" label="Campaign:" type="text" required />
+                    <Input {...sharedProps} name="campaign_name" value={character.campaign_name} label="Campaign:" type="text" required />
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-xs-6'>
-                    <Input {...sharedProps} name="level" value="" label="Level:" type="number" required />
+                    <Input {...sharedProps} name="level" value={character.level} label="Level:" type="number" required />
                   </div>
                 </div>
                 <input className="btn btn-success btn-raised" formNoValidate={false} type="submit" defaultValue="Add Character" />

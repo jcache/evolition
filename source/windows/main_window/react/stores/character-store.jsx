@@ -45,6 +45,7 @@ var removeCharacter = function(character){
 }
 // EDITS CHARACTER
 var editCharacter = function(character){
+  console.log("from store:", character);
   ev_characters('characters').chain().find({ id: character.id }).assign(character).value();
 }
 

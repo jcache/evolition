@@ -5,9 +5,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 var ViewCharacter = React.createClass({
   render: function(){
     return (
-      <div>
-        ...view
-      </div>
+      <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={300} transitionLeaveTimeout={500}>
+        <div className='row view-handler' id='character-edit-view'>
+          <div className='col-xs-12 viewport-container'>
+            <div className="viewport-header">
+              <h1>View Character</h1>
+            </div>
+
+          </div>
+        </div>
+      </ReactCSSTransitionGroup>
     )
   }
 });

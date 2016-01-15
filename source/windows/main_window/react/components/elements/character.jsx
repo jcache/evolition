@@ -27,7 +27,6 @@ var Character = React.createClass({
   _editCharacter: function(e){
     e.preventDefault();
     CharacterActions.changeView(e.target.getAttribute("data-view"));
-    CharacterActions.editCharacter(this.props.character);
   },
   _removeCharacter: function() {
     CharacterActions.removeCharacter(this.props.character);
