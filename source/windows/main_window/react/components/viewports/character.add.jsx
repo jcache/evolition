@@ -11,11 +11,10 @@ var AddCharacter = React.createClass({
   render: function(){
     return (
       <div>
-        ...
+        ...add
       </div>
     )
   }
 });
 //
 module.exports = AddCharacter
- 

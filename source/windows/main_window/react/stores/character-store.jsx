@@ -7,10 +7,25 @@ var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 
 var selected_character = {};
+var selected_view = {};
 var characters = [];
+var views = [];
 // RETURNS ALL CHARACTERS
 var fetch_all_characters = function(){
   characters = ev_characters.object.characters
+}
+// RETURNS ALL VIEWS
+var fetch_views = function(){
+  views = ev_characters.object.views
+}
+// SETS SELECTED VIEW
+var set_selected_view = function(view){
+  selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
+}
+var change_view = function(view){
+  // selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
+  selected_view = ev_characters('views').find({ view_name: view });
+  console.log(selected_view);
 }
 // SELECTS CHARACTER
 var selectCharacter = function(character){
@@ -26,7 +41,7 @@ var removeCharacter = function(character){
 }
 // EDITS CHARACTER
 var editCharacter = function(character){
-  ev_characters('characters').chain().find({ id: character.data.id }).assign(character.data).value();
+  ev_characters('characters').chain().find({ id: character.id }).assign(character).value();
 }
 
 var CharacterStore = objectAssign({}, EventEmitter.prototype, {
@@ -36,6 +51,12 @@ var CharacterStore = objectAssign({}, EventEmitter.prototype, {
   },
   removeChangeListener: function(cb){
     this.removeListener(CHANGE_EVENT, cb);
+  },
+  fetchViews: function(){
+    return views;
+  },
+  getSelectedView: function(){
+    return selected_view;
   },
   getAllCharacters: function(){
     return characters;
@@ -51,6 +72,18 @@ CharacterDispatcher.register(function(payload){
 
     case CharacterConstants.FETCH_CHARACTERS:
       fetch_all_characters();
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.FETCH_VIEWS:
+      fetch_views();
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.CHANGE_VIEW:
+      change_view(action.data);
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.SET_SELECTED_VIEW:
+      set_selected_view(action.data);
       CharacterStore.emit(CHANGE_EVENT);
       break;
     case CharacterConstants.CREATE_CHARACTER:

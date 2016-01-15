@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+var CharacterActions  = require('../actions/character-actions.jsx');
+var CharacterStore  = require('../stores/character-store.jsx');
 
 import AddCharacter from './viewports/character.add.jsx';
 import EditCharacter from './viewports/character.edit.jsx';
@@ -12,11 +14,23 @@ let view;
 var Viewport = React.createClass({
   getInitialState: function(){
     return {
-      view: ''
+      selected: ev_characters('selected_view').first()
     }
   },
+  componentWillMount: function(){
+    CharacterStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function(){
+    CharacterStore.removeChangeListener(this._onChange);
+  },
+  _onChange: function(){
+    this.setState({
+      selected: CharacterStore.getSelectedView()
+    })
+  },
   render: function(){
-    switch (this.state.view) {
+    switch (this.state.selected.view_name) {
       case "default":
         view = <DefaultView />
         break;
@@ -27,7 +41,7 @@ var Viewport = React.createClass({
         view = <ViewCharacter />
         break;
       case "character_add":
-        view = <CharacterAdd />
+        view = <AddCharacter />
         break;
       default:
     }

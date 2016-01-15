@@ -6,11 +6,10 @@ var ViewCharacter = React.createClass({
   render: function(){
     return (
       <div>
-        ...
+        ...view
       </div>
     )
   }
 });
 //
 module.exports = ViewCharacter
- 

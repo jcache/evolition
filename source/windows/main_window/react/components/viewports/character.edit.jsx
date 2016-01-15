@@ -13,11 +13,10 @@ var EditCharacter = React.createClass({
   render: function(){
     return (
       <div>
-        ...
+        ...edit
       </div>
     )
   }
 });
 //
 module.exports = EditCharacter
- 

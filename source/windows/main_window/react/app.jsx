@@ -12,6 +12,7 @@ var CharacterActions = require('./actions/character-actions.jsx');
 
 setInterval(function() {
   CharacterActions.fetchCharacters();
+  CharacterActions.fetchViews();
 }, 300);
 
 var AppContainer = React.createClass({

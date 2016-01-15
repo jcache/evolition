@@ -1,22 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import LeftNavItem from './elements/left-nav-item.jsx';
-var data = [];
-
+var CharacterActions  = require('../actions/character-actions.jsx');
+var CharacterStore  = require('../stores/character-store.jsx');
 
 var LeftNav = React.createClass({
   getInitialState: function(){
     return {
-      list: data
+      views: CharacterStore.fetchViews(),
+      selected: CharacterStore.getSelectedView()
     }
   },
-  _onChangeView: function(){
-    console.log(e);
+  componentWillMount: function(){
+    CharacterStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function(){
+    CharacterStore.removeChangeListener(this._onChange);
+  },
+  _onChangeView: function(e){
+    var view = e.target.getAttribute("data-view");
+    CharacterActions.changeView(view);
   },
   _onChange: function(){
     this.state = {
-      list: data
+      views: CharacterStore.fetchViews(),
+      selected: CharacterStore.getSelectedView()
     }
   },
   render: function(){

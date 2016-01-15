@@ -6,10 +6,9 @@ var DefaultView = React.createClass({
   render: function(){
     return (
       <div>
-        ...
+        ...default
       </div>
     )
   }
 });
 module.exports = DefaultView
- 

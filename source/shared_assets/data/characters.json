@@ -1,24 +1,34 @@
 {
-  "settings": [
+  "selected_view": [
     {
-      "id": 1,
-      "selected_view": "default"
+      "class_name": "default-view",
+      "view_name": "default"
     }
   ],
   "views": [
     {
+      "id": 1,
+      "class_name": "default-view",
       "view_name": "default"
     },
     {
+      "id": 2,
+      "class_name": "character-form-view",
       "view_name": "character_form"
     },
     {
+      "id": 3,
+      "class_name": "character-view",
       "view_name": "character_view"
     },
     {
+      "id": 4,
+      "class_name": "character-edit-view",
       "view_name": "character_edit"
     },
     {
+      "id": 5,
+      "class_name": "character-add-view",
       "view_name": "character_add"
     }
   ],

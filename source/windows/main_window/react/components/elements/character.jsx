@@ -19,13 +19,15 @@ var Character = React.createClass({
   _selectCharacter: function(character){
     CharacterActions.selectCharacter(character);
   },
-  _viewCharacter: function(character){
-    CharacterActions.viewCharacter(character);
+  _viewCharacter: function(e){
+    CharacterActions.changeView(e.target.getAttribute("data-view"));
+    CharacterActions.viewCharacter(this.props.character);
   },
-  _editCharacter: function(character){
-    CharacterActions.editCharacter(character);
+  _editCharacter: function(e){
+    CharacterActions.changeView(e.target.getAttribute("data-view"));
+    CharacterActions.editCharacter(this.props.character);
   },
-  _removeCharacter: function(character) {
+  _removeCharacter: function(character,e) {
     CharacterActions.removeCharacter(character);
   },
   _onChange: function(){

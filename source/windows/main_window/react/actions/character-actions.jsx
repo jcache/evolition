@@ -7,6 +7,22 @@ var CharacterActions = {
       actionType: CharacterConstants.FETCH_CHARACTERS,
     });
   },
+  fetchViews: function(){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.FETCH_VIEWS,
+    });
+  },
+  setSelectedView: function(){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.SET_SELECTED_VIEW,
+    });
+  },
+  changeView: function(view){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.CHANGE_VIEW,
+      data: view
+    });
+  },
   selectCharacter: function(character){
     CharacterDispatcher.handleAction({
       actionType: CharacterConstants.SELECT_CHARACTER,
