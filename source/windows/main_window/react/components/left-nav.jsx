@@ -18,6 +18,7 @@ var LeftNav = React.createClass({
     CharacterStore.removeChangeListener(this._onChange);
   },
   _onChangeView: function(e){
+    e.preventDefault();
     var view = e.target.getAttribute("data-view");
     CharacterActions.changeView(view);
   },

@@ -10,10 +10,8 @@ var CharacterList = require('./components/character-list.jsx');
 var Viewport      = require('./components/viewport.jsx');
 var CharacterActions = require('./actions/character-actions.jsx');
 
-setInterval(function() {
-  CharacterActions.fetchCharacters();
-  CharacterActions.fetchViews();
-}, 300);
+CharacterActions.fetchCharacters();
+CharacterActions.fetchViews();
 
 var AppContainer = React.createClass({
   render: function(){

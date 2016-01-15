@@ -43,7 +43,7 @@
 
 }
 .has-feedback label ~ .form-control-feedback {
-top: 0px ;
+  top: 0px ;
 }
 .form-group.label-floating label.control-label,
 .form-group.label-placeholder label.control-label {
@@ -58,12 +58,13 @@ top: 0px ;
   & > div {
     padding-left:0;
   }
-
+  .control-label{
+    min-width: 60px !important;
+  }
   .form-control{
     width:80px;
     border-radius:0;
     background: RGBA(10,25,48,.2);
-
   }
 }
 .basic-list {

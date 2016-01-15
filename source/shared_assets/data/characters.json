@@ -84,7 +84,7 @@
         "RE": "65",
         "EN": "65"
       },
-      "character_name": "Aert",
+      "character_name": "Mister Mister",
       "level": "3",
       "campaign_name": "asdf",
       "game_system_name": "I.C.E",
@@ -92,22 +92,22 @@
     },
     {
       "stats": {
-        "ST": "65",
-        "CO": "65",
-        "AG": "65",
-        "QU": "65",
-        "MQ": "65",
-        "SP": "65",
-        "SD": "65",
-        "ME": "65",
-        "RE": "65",
-        "EN": "65"
+        "ST": "22",
+        "CO": "22",
+        "AG": "22",
+        "QU": "22",
+        "MQ": "22",
+        "SP": "22",
+        "SD": "22",
+        "ME": "22",
+        "RE": "22",
+        "EN": "22"
       },
-      "character_name": "sdfg",
-      "level": "4",
-      "campaign_name": "sdfg",
-      "game_system_name": "I.C.E",
-      "id": "09285b95-1490-49e1-aac9-808037911bf1"
+      "character_name": "Oh Yeah",
+      "game_system_name": "asd",
+      "campaign_name": "asdfg",
+      "level": "22",
+      "id": "ec536217-0e12-4b98-a975-292ebec36ca4"
     }
   ]
 }

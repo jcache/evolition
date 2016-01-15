@@ -51,6 +51,9 @@
 .stat-list > div {
   padding-left: 0;
 }
+.stat-list .control-label {
+  min-width: 60px !important;
+}
 .stat-list .form-control {
   width: 80px;
   border-radius: 0;

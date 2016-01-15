@@ -20,15 +20,17 @@ var Character = React.createClass({
     CharacterActions.selectCharacter(character);
   },
   _viewCharacter: function(e){
+    e.preventDefault();
     CharacterActions.changeView(e.target.getAttribute("data-view"));
     CharacterActions.viewCharacter(this.props.character);
   },
   _editCharacter: function(e){
+    e.preventDefault();
     CharacterActions.changeView(e.target.getAttribute("data-view"));
     CharacterActions.editCharacter(this.props.character);
   },
-  _removeCharacter: function(character,e) {
-    CharacterActions.removeCharacter(character);
+  _removeCharacter: function() {
+    CharacterActions.removeCharacter(this.props.character);
   },
   _onChange: function(){
     this.setState({
@@ -72,13 +74,13 @@ var Character = React.createClass({
         <div className='character-options' style={show_option}>
           <ul>
             <li className='view'>
-              <a href='#' onClick={this._viewCharacter.bind(this,character)} data-view='character_view'>view</a>
+              <a href='#' onClick={this._viewCharacter} data-view='character_view'>view</a>
             </li>
             <li className='change'>
-              <a href='#' onClick={this._editCharacter.bind(this,character)} data-view='character_edit'>change</a>
+              <a href='#' onClick={this._editCharacter} data-view='character_edit'>change</a>
             </li>
             <li className='remove'>
-              <a href='#' onClick={this._removeCharacter.bind(this,character)}  data-view='character_edit'>remove</a>
+              <a href='#' onClick={this._removeCharacter}  data-view='character_edit'>remove</a>
             </li>
           </ul>
         </div>

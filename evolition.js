@@ -33,7 +33,7 @@ app.on('ready', function(e){
     transparent: false
   });
 
-  // main_window.webContents.openDevTools({detach:false})
+  main_window.webContents.openDevTools({detach:false})
 
   ipcMain.on('close_mainwin', function(event) {
     main_window.close();

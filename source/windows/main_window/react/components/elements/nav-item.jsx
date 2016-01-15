@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 var NavItem = React.createClass({
@@ -18,4 +17,3 @@ var NavItem = React.createClass({
 });
 
 module.exports = NavItem
- 

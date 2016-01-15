@@ -5,7 +5,7 @@ var CharacterDispatcher  = require('../dispatcher/character-dispatcher.jsx');
 var objectAssign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
-
+var focused_character = ev_characters('characters').first();
 var selected_character = {};
 var selected_view = {};
 var characters = [];
@@ -22,6 +22,7 @@ var fetch_views = function(){
 var set_selected_view = function(view){
   selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
 }
+
 var change_view = function(view){
   // selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
   selected_view = ev_characters('views').find({ view_name: view });
@@ -31,6 +32,9 @@ var change_view = function(view){
 var selectCharacter = function(character){
   selected_character = character
 }
+var viewCharacter = function(character){
+  focused_character = ev_characters('characters').find({id: character.id})
+};
 // CREATES CHARACTER
 var createCharacter = function(character){
   ev_characters('characters').insert(character).id
@@ -57,6 +61,9 @@ var CharacterStore = objectAssign({}, EventEmitter.prototype, {
   },
   getSelectedView: function(){
     return selected_view;
+  },
+  getStats: function(){
+    return ev_gamesystem.object.game_systems[0].stat_layout;
   },
   getAllCharacters: function(){
     return characters;

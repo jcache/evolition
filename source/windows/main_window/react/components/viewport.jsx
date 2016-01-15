@@ -39,7 +39,7 @@ var Viewport = React.createClass({
         break;
       case "character_view":
         view = <ViewCharacter />
-        break;
+        break; 
       case "character_add":
         view = <AddCharacter />
         break;
