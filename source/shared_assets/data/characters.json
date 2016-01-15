@@ -94,22 +94,24 @@
     },
     {
       "stats": {
-        "ST": "22",
-        "CO": "22",
-        "AG": "22",
-        "QU": "22",
-        "MQ": "22",
-        "SP": "22",
-        "SD": "22",
-        "ME": "22",
-        "RE": "22",
-        "EN": "22"
+        "ST": "100",
+        "CO": "100",
+        "AG": "100",
+        "QU": "100",
+        "MQ": "60",
+        "SP": "95",
+        "SD": "84",
+        "ME": "52",
+        "RE": "62",
+        "EN": "50"
       },
       "character_name": "Oh Yeah",
-      "game_system_name": "asd",
-      "campaign_name": "asdfg",
+      "game_system_name": "Rolemaster",
+      "campaign_name": "n/a",
       "level": "22",
-      "id": "ec536217-0e12-4b98-a975-292ebec36ca4"
+      "id": "ec536217-0e12-4b98-a975-292ebec36ca4",
+      "race": "Human",
+      "gender": "Male"
     }
   ]
 }

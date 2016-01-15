@@ -99,7 +99,7 @@ var EditCharacter = React.createClass({
                     <Input {...sharedProps} name="level" value={character.level} label="Level:" type="number" required />
                   </div>
                 </div>
-                <input className="btn btn-success btn-raised" formNoValidate={false} type="submit" defaultValue="Add Character" />
+                <input className="btn btn-success btn-raised" formNoValidate={false} type="submit" defaultValue="Save Character" />
               </div>
             </Formsy.Form>
           </div>
