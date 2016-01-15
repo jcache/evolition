@@ -20,7 +20,7 @@ var CharacterList = React.createClass({
   componentDidMount: function(){
     $('#character-list').perfectScrollbar();
   },
-  selectCharacter: function(character){
+  selectCharacter: function(character){ 
     evActions.selectedCharacter(character);
   },
   _onChange: function(){

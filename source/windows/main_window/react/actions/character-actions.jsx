@@ -2,17 +2,42 @@ var CharacterDispatcher = require('../dispatcher/character-dispatcher.jsx');
 var CharacterConstants  = require('../constants/character-constants.jsx');
 
 var CharacterActions = {
+  fetchCharacters: function(){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.FETCH_CHARACTERS,
+    });
+  },
   selectCharacter: function(character){
     CharacterDispatcher.handleAction({
       actionType: CharacterConstants.SELECT_CHARACTER,
       data: character
     });
   },
-  fetchCharacters: function(){
+  editCharacter: function(character){
     CharacterDispatcher.handleAction({
-      actionType: CharacterConstants.FETCH_CHARACTERS,
+      actionType: CharacterConstants.EDIT_CHARACTER,
+      data: character
     });
   },
+  viewCharacter: function(character){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.VIEW_CHARACTER,
+      data: character
+    });
+  },
+  removeCharacter: function(character){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.REMOVE_CHARACTER,
+      data: character
+    });
+  },
+  createCharacter: function(character){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.CREATE_CHARACTER,
+      data: character
+    });
+  },
+
   // changeView: function(view, character){
   //   CharacterDispatcher.handleAction({
   //     actionType: CharacterConstants.CHANGE_VIEW,

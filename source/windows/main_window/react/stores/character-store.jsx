@@ -8,13 +8,25 @@ var CHANGE_EVENT = 'change';
 
 var selected_character = {};
 var characters = [];
-
+// RETURNS ALL CHARACTERS
 var fetch_all_characters = function(){
   characters = ev_characters.object.characters
 }
-
+// SELECTS CHARACTER
 var selectCharacter = function(character){
-  selected_character = character.data
+  selected_character = character
+}
+// CREATES CHARACTER
+var createCharacter = function(character){
+  ev_characters('characters').insert(character).id
+}
+// REMOVES CHARACTER
+var removeCharacter = function(character){
+  ev_characters('characters').remove(character);
+}
+// EDITS CHARACTER
+var editCharacter = function(character){
+  ev_characters('characters').chain().find({ id: character.data.id }).assign(character.data).value();
 }
 
 var CharacterStore = objectAssign({}, EventEmitter.prototype, {
@@ -41,8 +53,24 @@ CharacterDispatcher.register(function(payload){
       fetch_all_characters();
       CharacterStore.emit(CHANGE_EVENT);
       break;
+    case CharacterConstants.CREATE_CHARACTER:
+      createCharacter(action.data);
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
     case CharacterConstants.SELECT_CHARACTER:
-      selectCharacter(action);
+      selectCharacter(action.data);
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.EDIT_CHARACTER:
+      editCharacter(action.data);
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.VIEW_CHARACTER:
+      viewCharacter(action.data);
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.REMOVE_CHARACTER:
+      removeCharacter(action.data);
       CharacterStore.emit(CHANGE_EVENT);
       break;
     default:

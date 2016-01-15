@@ -1,6 +1,5 @@
 import React from 'react';
 
-import CharacterOptions from './character-options.jsx';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 var CharacterActions  = require('../../actions/character-actions.jsx');
 var CharacterStore  = require('../../stores/character-store.jsx');
@@ -20,14 +19,14 @@ var Character = React.createClass({
   _selectCharacter: function(character){
     CharacterActions.selectCharacter(character);
   },
-  _viewCharacter: function(id){
-    // CharacterActions.viewCharacter(character);
+  _viewCharacter: function(character){
+    CharacterActions.viewCharacter(character);
   },
-  _editCharacter: function(id){
-    // CharacterActions.editCharacter(character);
+  _editCharacter: function(character){
+    CharacterActions.editCharacter(character);
   },
-  _removeCharacter: function(id) {
-    // CharacterActions.removeCharacter(character);
+  _removeCharacter: function(character) {
+    CharacterActions.removeCharacter(character);
   },
   _onChange: function(){
     this.setState({
@@ -71,13 +70,13 @@ var Character = React.createClass({
         <div className='character-options' style={show_option}>
           <ul>
             <li className='view'>
-              <a href='#' onClick={this._viewCharacter} data-view='character_view'>view</a>
+              <a href='#' onClick={this._viewCharacter.bind(this,character)} data-view='character_view'>view</a>
             </li>
             <li className='change'>
-              <a href='#' onClick={this._editCharacter} data-view='character_edit'>change</a>
+              <a href='#' onClick={this._editCharacter.bind(this,character)} data-view='character_edit'>change</a>
             </li>
             <li className='remove'>
-              <a href='#' onClick={this._removeCharacter}  data-view='character_edit'>remove</a>
+              <a href='#' onClick={this._removeCharacter.bind(this,character)}  data-view='character_edit'>remove</a>
             </li>
           </ul>
         </div>
