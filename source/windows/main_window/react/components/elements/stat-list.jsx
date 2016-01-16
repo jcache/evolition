@@ -9,8 +9,8 @@ var StatList = React.createClass({
   getInitialState: function() {
     return {
       gamesystem: this.props.game_system,
-      stats: CharacterStore.getStats(),
-      shared_props: this.props.shared_props
+      shared_props: this.props.shared_props,
+      character_stats: this.props.character_stats
     };
   },
   componentWillMount: function(){
@@ -21,12 +21,14 @@ var StatList = React.createClass({
   },
   _onChange: function(){
     this.setState({
-      gamesystem: this.props.game_system
+      gamesystem: this.props.game_system,
+      shared_props: this.props.shared_props,
+      character_stats: this.props.character_stats
     })
   },
   render: function(){
+    var stats = this.props.character.stats
     var sharedProps = this.state.shared_props;
-    var stats = this.state.stats;
     var character_stats = stats.map(function(stat, i) {
       return(
 

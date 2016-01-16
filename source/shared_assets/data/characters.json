@@ -48,68 +48,25 @@
       },
       "character_name": "Mizu Harishima",
       "level": "12",
-      "campaign_name": "The Elemental",
-      "game_system_name": "I.C.E",
-      "id": "0e584dc1-8ed2-4c06-8b86-8bb508169e98"
-    },
-    {
-      "stats": {
-        "ST": "65",
-        "CO": "65",
-        "AG": "65",
-        "QU": "65",
-        "MQ": "65",
-        "SP": "65",
-        "SD": "65",
-        "ME": "65",
-        "RE": "65",
-        "EN": "65"
-      },
-      "character_name": "Jubei Kiganami",
-      "level": "23",
-      "campaign_name": "asdf",
-      "game_system_name": "Rifts RPG",
-      "id": "98b0064e-dff2-4568-93c7-8cfca71df00b"
-    },
-    {
-      "stats": {
-        "ST": "66",
-        "CO": "66",
-        "AG": "66",
-        "QU": "66",
-        "MQ": "66",
-        "SP": "66",
-        "SD": "66",
-        "ME": "66",
-        "RE": "66",
-        "EN": "66"
-      },
-      "character_name": "Mister Mister2",
-      "level": "3",
-      "campaign_name": "asdf",
-      "game_system_name": "I.C.E",
-      "id": "4ea0db96-b724-42b7-bd09-f5a7135555b4",
-      "race": "d",
-      "gender": "d "
-    },
-    {
-      "stats": {
-        "ST": "100",
-        "CO": "100",
-        "AG": "100",
-        "QU": "100",
-        "MQ": "60",
-        "SP": "95",
-        "SD": "84",
-        "ME": "52",
-        "RE": "62",
-        "EN": "50"
-      },
-      "character_name": "Oh Yeah",
+      "campaign_name": "Asian Campaign",
       "game_system_name": "Rolemaster",
-      "campaign_name": "n/a",
-      "level": "22",
-      "id": "ec536217-0e12-4b98-a975-292ebec36ca4",
+      "id": "0e584dc1-8ed2-4c06-8b86-8bb508169e98",
+      "": {
+        "object Object": {
+          "stats": {
+            "ST": "22",
+            "CO": "34",
+            "AG": "65",
+            "QU": "65",
+            "MQ": "65",
+            "SP": "65",
+            "SD": "65",
+            "ME": "65",
+            "RE": "65",
+            "EN": "65"
+          }
+        }
+      },
       "race": "Human",
       "gender": "Male"
     }

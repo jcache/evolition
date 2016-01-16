@@ -18,6 +18,7 @@ var EditCharacter = React.createClass({
       layout: 'vertical',
       validatePristine: false,
       saved:  false,
+      stats: CharacterStore.getStats(),
       character:  CharacterStore.getSelectedCharacter(),
       disabled: false
     };
@@ -33,7 +34,6 @@ var EditCharacter = React.createClass({
   },
 
   submitForm: function(data) {
-    console.log(data);
     CharacterActions.editCharacter(data);
   },
   changeOption: function(name, value) {
@@ -44,11 +44,14 @@ var EditCharacter = React.createClass({
   _onChange: function(){
     this.setState({
       character: CharacterStore.getSelectedCharacter(),
+      stats: CharacterStore.getStats(),
       saved: true,
     })
   },
   render: function(){
     var formClassName = '';
+    var character_stats = [];
+    var stats = this.state.stats;
     var character = this.state.character;
     if (this.state.layout === 'horizontal') {
       formClassName = 'form-horizontal';
@@ -61,16 +64,27 @@ var EditCharacter = React.createClass({
       labelClassName: 'control-label',
       disabled: this.state.disabled
     };
+    _.forEach(this.state.stats, function(stat){
+      var newStat = "";
+      _.forEach(character.stats, function(value, key) {
+        if(key == stat.abbv){
+         newStat = value
+        }
+      });
+      character_stats.push(
+        <Input {...sharedProps} key={stat.id} name={character + ".stats." + stat.abbv} value={newStat} label={stat.abbv} type="text" required />
+      )
+    });
     return (
       <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={300} transitionLeaveTimeout={500}>
         <div className='row view-handler' id='character-edit-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
-              <h1>Edit Character</h1>
+              <h1>Edit {character.character_name}</h1>
             </div>
             <Formsy.Form className={formClassName} onSubmit={this.submitForm} ref="form">
               <div className='col-xs-2 stat-list'>
-                <StatList shared_props={sharedProps} gamesystem="Rolemaster Evolition" stats={character.stats}/>
+                {character_stats}
               </div>
 
               <div className='col-xs-10 basic-list'>
