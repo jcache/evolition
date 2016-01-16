@@ -35,10 +35,10 @@
   "characters": [
     {
       "stats": {
-        "ST": "65",
-        "CO": "65",
-        "AG": "65",
-        "QU": "65",
+        "ST": "22",
+        "CO": "100",
+        "AG": "35",
+        "QU": "150",
         "MQ": "65",
         "SP": "65",
         "SD": "65",
@@ -54,8 +54,8 @@
       "": {
         "object Object": {
           "stats": {
-            "ST": "22",
-            "CO": "34",
+            "ST": "23",
+            "CO": "65",
             "AG": "65",
             "QU": "65",
             "MQ": "65",
@@ -68,7 +68,42 @@
         }
       },
       "race": "Human",
-      "gender": "Male"
+      "gender": "Male",
+      "character": {
+        "stats": {
+          "ST": "100",
+          "CO": "200",
+          "AG": "65",
+          "QU": "65",
+          "MQ": "65",
+          "SP": "65",
+          "SD": "65",
+          "ME": "65",
+          "RE": "65",
+          "EN": "65"
+        }
+      }
+    },
+    {
+      "stats": {
+        "ST": "100",
+        "CO": "100",
+        "AG": "100",
+        "QU": "100",
+        "MQ": "100",
+        "SP": "100",
+        "SD": "100",
+        "ME": "100",
+        "RE": "100",
+        "EN": "100"
+      },
+      "character_name": "Kevin Carr",
+      "race": "Human",
+      "gender": "Male",
+      "game_system_name": "Rolemaster",
+      "campaign_name": "n/a",
+      "level": "1",
+      "id": "46bca7ac-d8f5-4f47-823c-d51b1deb7895"
     }
   ]
 }

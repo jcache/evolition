@@ -34,6 +34,7 @@ var EditCharacter = React.createClass({
   },
 
   submitForm: function(data) {
+    console.log(data);
     CharacterActions.editCharacter(data);
   },
   changeOption: function(name, value) {
@@ -72,7 +73,7 @@ var EditCharacter = React.createClass({
         }
       });
       character_stats.push(
-        <Input {...sharedProps} key={stat.id} name={character + ".stats." + stat.abbv} value={newStat} label={stat.abbv} type="text" required />
+        <Input {...sharedProps} key={stat.id} name={"stats." + stat.abbv} value={newStat} label={stat.abbv} type="text" required />
       )
     });
     return (

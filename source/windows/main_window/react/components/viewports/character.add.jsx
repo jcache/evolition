@@ -17,6 +17,7 @@ var AddCharacter = React.createClass({
     return {
       layout: 'vertical',
       validatePristine: false,
+      stats: CharacterStore.getStats(),
       saved:  false,
       disabled: false
     };
@@ -47,11 +48,13 @@ var AddCharacter = React.createClass({
   _onChange: function(){
     this.setState({
       saved: true,
+      stats: CharacterStore.getStats(),
     })
   },
   render: function(){
     var formClassName = '';
-
+    var character_stats = [];
+    var stats = this.state.stats;
     if (this.state.layout === 'horizontal') {
       formClassName = 'form-horizontal';
     }
@@ -63,16 +66,22 @@ var AddCharacter = React.createClass({
       labelClassName: 'control-label',
       disabled: this.state.disabled
     };
+
+    _.forEach(stats, function(stat){
+      character_stats.push(
+        <Input {...sharedProps} key={stat.id} name={"stats." + stat.abbv} value="" label={stat.abbv} type="text" required />
+      )
+    });
     return (
       <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={300} transitionLeaveTimeout={500}>
         <div className='row view-handler' id='character-add-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
-              <h1>Form Playground</h1>
+              <h1>Create a Character</h1>
             </div>
             <Formsy.Form className={formClassName} onSubmit={this.submitForm} ref="form">
               <div className='col-xs-2 stat-list'>
-                <StatList shared_props={sharedProps} gamesystem="Rolemaster Evolition"/>
+                {character_stats}
               </div>
 
               <div className='col-xs-10 basic-list'>
