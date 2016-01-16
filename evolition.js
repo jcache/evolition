@@ -26,7 +26,7 @@ app.on('ready', function(e){
   main_window = new browser({
     width: 1070,
     height: 850,
-    resizable: false,
+    resizable: true, // TODO To allow viewing of devtools
     frame: false,
     show: false,
     toolbar: false,
