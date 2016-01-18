@@ -10,7 +10,7 @@ import StatList from '../elements/stat-list.jsx';
 var Input     = FRC.Input;
 var File      = FRC.File;
 var Select    = FRC.Select;
-var Textarea  = FRC.Textarea; 
+var Textarea  = FRC.Textarea;
 //
 var AddCharacter = React.createClass({
   getInitialState: function() {
@@ -139,7 +139,7 @@ var AddCharacter = React.createClass({
                     validations="minLength:10" validationErrors={{ minLength: 'Please provide at least 10 characters.' }} />
                   </div>
                 </div>
-                <input className="btn btn-success btn-raised" formNoValidate={false} type="submit" defaultValue="Add Character" />
+                <input className="btn btn-success btn-raised" formNoValidate={true} type="submit" defaultValue="Add Character" />
               </div>
             </Formsy.Form>
           </div>

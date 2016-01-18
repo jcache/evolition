@@ -35,6 +35,7 @@ var EditCharacter = React.createClass({
   },
 
   submitForm: function(captured) {
+    console.log(captured);
     var data = captured;
     data.profile_pic = '';
     var resource_path = captured.pic[0].path;
@@ -142,7 +143,7 @@ var EditCharacter = React.createClass({
                     validations="minLength:10" validationErrors={{ minLength: 'Please provide at least 10 characters.' }} />
                   </div>
                 </div>
-                <input className="btn btn-success btn-raised" formNoValidate={false} type="submit" defaultValue="Save Character" />
+                <input className="btn btn-success btn-raised" formNoValidate={true} type="submit" defaultValue="Save Character" />
               </div>
             </Formsy.Form>
           </div>

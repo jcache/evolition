@@ -8,29 +8,29 @@
   ],
   "selected_character": [
     {
-      "id": "e0aacd0f-e37f-4bc7-95c9-76f9a85d7a67",
-      "character_name": "Yoshi Haharuni",
+      "id": "5e590581-dcd5-4521-92ca-95b2563a9ae7",
+      "character_name": "Dookie Man",
       "game_system_name": "Rolemaster",
-      "level": "13",
-      "campaign_name": "God Spoken",
-      "race": "d",
-      "gender": "a",
-      "appearance": "asdfasdfasdf",
-      "personality": "asdfasdfasdf",
+      "level": "15",
+      "campaign_name": "Neverland",
+      "race": "a",
+      "gender": "as",
+      "appearance": "looks like a piece of shit",
+      "personality": "acts like a piece of shit",
       "pic": "",
       "stats": {
-        "ST": "65",
-        "CO": "65",
-        "AG": "65",
-        "QU": "65",
-        "MQ": "65",
-        "SP": "65",
-        "SD": "65",
-        "ME": "65",
-        "RE": "65",
-        "EN": "65"
+        "ST": "1",
+        "CO": "1",
+        "AG": "1",
+        "QU": "1",
+        "MQ": "1",
+        "SP": "1",
+        "SD": "1",
+        "ME": "1",
+        "RE": "1",
+        "EN": "1"
       },
-      "profile_pic": "ev://build/character/images/darth.png"
+      "profile_pic": "ev://build/character/images/temp_avatar.png"
     }
   ],
   "views": [
@@ -84,7 +84,7 @@
       "pic": "",
       "appearance": "asdfasdfasdf",
       "personality": "asdfasdfasdf",
-      "profile_pic": "ev://build/character/images/darth.png"
+      "profile_pic": "ev://build/character/images/Screen Shot 2015-10-08 at 10.11.41 AM.png"
     },
     {
       "stats": {
@@ -100,16 +100,41 @@
         "EN": "1"
       },
       "id": "5e590581-dcd5-4521-92ca-95b2563a9ae7",
-      "character_name": "Dookie Man",
-      "race": "a",
-      "gender": "as",
+      "character_name": "Good Guy",
+      "race": "Human",
+      "gender": "Male",
       "game_system_name": "Rolemaster",
       "campaign_name": "Neverland",
       "level": "15",
       "pic": "",
-      "appearance": "looks like a piece of shit",
-      "personality": "acts like a piece of shit",
-      "profile_pic": "ev://build/character/images/temp_avatar.png"
+      "appearance": "",
+      "personality": "",
+      "profile_pic": "ev://build/character/images/hero-m.png"
+    },
+    {
+      "stats": {
+        "ST": "1",
+        "CO": "1",
+        "AG": "1",
+        "QU": "1",
+        "MQ": "1",
+        "SP": "1",
+        "SD": "1",
+        "ME": "1",
+        "RE": "1",
+        "EN": "1"
+      },
+      "id": "054f4bcd-a6f9-4322-851a-e991a8c7d3d6",
+      "character_name": "1",
+      "race": "1",
+      "gender": "1",
+      "game_system_name": "1",
+      "campaign_name": "1",
+      "level": "1",
+      "pic": "",
+      "appearance": "sdfaasdfasdfasdfasdfasdf",
+      "personality": "asdfasdfasdfasdfasdfasdf",
+      "profile_pic": "ev://build/character/images/test_img.png"
     }
   ]
 }
