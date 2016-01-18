@@ -1,4 +1,5 @@
 **/.DS_Store
+**/window.js
 /node_modules
 /source/react_old
 /releases/*
