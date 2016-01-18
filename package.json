@@ -21,6 +21,7 @@
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
     "debug-menu": "^0.2.0",
+    "electron-connect": "^0.3.5",
     "electron-debugger": "1.0.1",
     "electron-prebuilt": "^0.36.3",
     "electron-window": "latest",
