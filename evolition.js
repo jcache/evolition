@@ -7,13 +7,12 @@ var async = require('async');
 var path = require('path');
 var dir = require('./routes.js');
 var main_window = null;
+var electron = require('electron');
 var browser = require('electron').BrowserWindow;
 var low = require('lowdb')
 var ev_gamesystem = low(dir.data + "game_system.json")
 var ev_characters = low(dir.data + "characters.json")
 var _ = require('lodash');
-
-
 
 require('crash-reporter').start();
 
@@ -22,6 +21,15 @@ ipcMain.on('config-paths', function(e, arg) {
 });
 
 app.on('ready', function(e){
+  var protocol = electron.protocol;
+
+  protocol.registerFileProtocol('ev', function(request, callback) {
+    var url = request.url.substr(5);
+    callback({path: path.normalize(__dirname + '/' + url)});
+  }, function (error) {
+    if (error)
+      console.error('Failed to register protocol')
+  });
 
   main_window = new browser({
     width: 1070,
@@ -32,6 +40,7 @@ app.on('ready', function(e){
     toolbar: false,
     transparent: false
   });
+
 
   main_window.webContents.openDevTools({detach:false})
 

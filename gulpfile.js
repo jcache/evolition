@@ -14,7 +14,7 @@ var less = require('gulp-less');
 var path = require('path');
 var babel = require('gulp-babel');
 var runEv = require("gulp-run-electron");
-
+var electron = require('electron-connect').server.create();
 var packageJson = require('./package.json');
 
 var app_paths = {
@@ -55,6 +55,7 @@ gulp.task('watch_assets', function(){
 });
 
 gulp.task('watch_main_window', function(){
+
   var main_window_watcher = watchify(
     browserify(app_paths.main_window_ep,{debug:true})
     .transform(babelify,{presets:['react','es2015']})
@@ -65,10 +66,11 @@ gulp.task('watch_main_window', function(){
       .pipe(source(app_paths.out_main_window))
       .pipe(gulp.dest(app_paths.main_window));
     console.log('MAIN_WINDOW : UPDATED');
-  }).bundle()
-    .on('error', function(err){
+  }).bundle().on('error', function(err){
       console.log(err.stack, err.message);
-  }).pipe(source(app_paths.out_main_window)).pipe(gulp.dest(app_paths.main_window));
+  }).pipe(source(app_paths.out_main_window))
+    .pipe(gulp.dest(app_paths.main_window));
+
 });
 
 gulp.task('watch_character_window', function(){
@@ -82,17 +84,28 @@ gulp.task('watch_character_window', function(){
       .pipe(source(app_paths.out_character_sheet_window))
       .pipe(gulp.dest(app_paths.character_sheet_window));
     console.log('SHEET_WINDOW : UPDATED');
-  }).bundle()
-    .on('error', function(err){
+
+  }).bundle().on('error', function(err){
       console.log(err.stack, err.message);
-  }).pipe(source(app_paths.out_character_sheet_window)).pipe(gulp.dest(app_paths.character_sheet_window));
+  }).pipe(source(app_paths.out_character_sheet_window))
+    .pipe(gulp.dest(app_paths.character_sheet_window));
 
 });
 
 gulp.task('copy_shared', function(){
-  gulp.src(app_paths.shared_js).pipe(gulp.dest(app_paths.build_shared_js));
-  gulp.src(app_paths.shared_images).pipe(gulp.dest(app_paths.build_shared_images));
-  gulp.src(app_paths.shared_fonts).pipe(gulp.dest(app_paths.build_shared_fonts));
+
+  gulp.src(app_paths.shared_js)
+    .pipe(gulp.dest(app_paths.build_shared_js)
+  );
+
+  gulp.src(app_paths.shared_images)
+    .pipe(gulp.dest(app_paths.build_shared_images)
+  );
+
+  gulp.src(app_paths.shared_fonts)
+    .pipe(gulp.dest(app_paths.build_shared_fonts)
+  );
+
 });
 
 gulp.task('less_shared', function(){
@@ -113,39 +126,23 @@ gulp.task('jade', function(){
     .pipe(gulp.dest('./build/windows'));
 });
 
-gulp.task('electron_package', function() {
-     gulp.src("")
-    .pipe(electron({
-        src: './',
-        packageJson: packageJson,
-        release: './dist',
-        cache: './app_dl_cache',
-        version: 'v0.36.3',
-        packaging: true,
-        rebuild: true,
-        platforms: ['darwin-x64'],
-        platformResources: {
-          darwin: {
-              CFBundleDisplayName: packageJson.name,
-              CFBundleIdentifier: packageJson.name,
-              CFBundleName: packageJson.name,
-              CFBundleVersion: packageJson.version,
-              icon: 'gulp-electron.icns'
-        //   },
-        //   win: {
-        //       "version-string": packageJson.version,
-        //       "file-version": packageJson.version,
-        //       "product-version": packageJson.version,
-        //       "icon": 'gulp-electron.ico'
-          }
-        }
-    }))
-    .pipe(gulp.dest(""));
+gulp.task('serve', function () {
+  // Start browser process
+  electron.start();
+  // Restart browser process
+  gulp.watch('evolition.js', electron.restart);
+  // // Reload renderer process
+  gulp.watch([
+    'build/shared_assets/**/*.css',
+    'build/windows/main_window/window.js',
+    'build/windows/main_window/window.html'
+  ], electron.reload);
 });
 
-gulp.task('electron', function() {
-    gulp.src("")
-        .pipe(runEv());
-});
 
-gulp.task('default', ['watch_assets','watch_main_window','watch_character_window', 'electron']);
+
+
+
+
+
+gulp.task('default', ['watch_assets','watch_main_window','watch_character_window','serve']);

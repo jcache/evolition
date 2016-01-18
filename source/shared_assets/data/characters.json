@@ -1,8 +1,36 @@
 {
   "selected_view": [
     {
-      "class_name": "default-view",
-      "view_name": "default"
+      "id": 1,
+      "class_name": "character_add",
+      "view_name": "character_edit"
+    }
+  ],
+  "selected_character": [
+    {
+      "id": "e0aacd0f-e37f-4bc7-95c9-76f9a85d7a67",
+      "character_name": "Yoshi Haharuni",
+      "game_system_name": "Rolemaster",
+      "level": "13",
+      "campaign_name": "God Spoken",
+      "race": "d",
+      "gender": "a",
+      "appearance": "asdfasdfasdf",
+      "personality": "asdfasdfasdf",
+      "pic": "",
+      "stats": {
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
+        "MQ": "65",
+        "SP": "65",
+        "SD": "65",
+        "ME": "65",
+        "RE": "65",
+        "EN": "65"
+      },
+      "profile_pic": "ev://build/character/images/darth.png"
     }
   ],
   "views": [
@@ -35,10 +63,10 @@
   "characters": [
     {
       "stats": {
-        "ST": "22",
-        "CO": "100",
-        "AG": "35",
-        "QU": "150",
+        "ST": "65",
+        "CO": "65",
+        "AG": "65",
+        "QU": "65",
         "MQ": "65",
         "SP": "65",
         "SD": "65",
@@ -46,64 +74,42 @@
         "RE": "65",
         "EN": "65"
       },
-      "character_name": "Mizu Harishima",
-      "level": "12",
-      "campaign_name": "Asian Campaign",
+      "id": "e0aacd0f-e37f-4bc7-95c9-76f9a85d7a67",
+      "character_name": "Yoshi Haharuni",
+      "race": "d",
+      "gender": "a",
       "game_system_name": "Rolemaster",
-      "id": "0e584dc1-8ed2-4c06-8b86-8bb508169e98",
-      "": {
-        "object Object": {
-          "stats": {
-            "ST": "23",
-            "CO": "65",
-            "AG": "65",
-            "QU": "65",
-            "MQ": "65",
-            "SP": "65",
-            "SD": "65",
-            "ME": "65",
-            "RE": "65",
-            "EN": "65"
-          }
-        }
-      },
-      "race": "Human",
-      "gender": "Male",
-      "character": {
-        "stats": {
-          "ST": "100",
-          "CO": "200",
-          "AG": "65",
-          "QU": "65",
-          "MQ": "65",
-          "SP": "65",
-          "SD": "65",
-          "ME": "65",
-          "RE": "65",
-          "EN": "65"
-        }
-      }
+      "campaign_name": "God Spoken",
+      "level": "13",
+      "pic": "",
+      "appearance": "asdfasdfasdf",
+      "personality": "asdfasdfasdf",
+      "profile_pic": "ev://build/character/images/darth.png"
     },
     {
       "stats": {
-        "ST": "100",
-        "CO": "100",
-        "AG": "100",
-        "QU": "100",
-        "MQ": "100",
-        "SP": "100",
-        "SD": "100",
-        "ME": "100",
-        "RE": "100",
-        "EN": "100"
+        "ST": "1",
+        "CO": "1",
+        "AG": "1",
+        "QU": "1",
+        "MQ": "1",
+        "SP": "1",
+        "SD": "1",
+        "ME": "1",
+        "RE": "1",
+        "EN": "1"
       },
-      "character_name": "Kevin Carr",
-      "race": "Human",
-      "gender": "Male",
+      "id": "5e590581-dcd5-4521-92ca-95b2563a9ae7",
+      "character_name": "Dookie Man",
+      "race": "a",
+      "gender": "as",
       "game_system_name": "Rolemaster",
-      "campaign_name": "n/a",
-      "level": "1",
-      "id": "46bca7ac-d8f5-4f47-823c-d51b1deb7895"
+      "campaign_name": "Neverland",
+      "level": "15",
+      "pic": "",
+      "appearance": "looks like a piece of shit",
+      "personality": "acts like a piece of shit",
+      "profile_pic": "ev://build/character/images/temp_avatar.png"
     }
   ]
 }

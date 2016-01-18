@@ -6,7 +6,7 @@ var objectAssign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 var focused_character = ev_characters('characters').first();
-var selected_character = {};
+var selected_character = ev_characters('selected_character').first();
 var selected_view = {};
 var characters = [];
 var views = [];
@@ -24,12 +24,13 @@ var set_selected_view = function(view){
 }
 
 var change_view = function(view){
+  ev_characters('selected_view').chain().first({ id: 1 }).assign({"view_name":view}).value();
   // selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
   selected_view = ev_characters('views').find({ view_name: view });
-  console.log(selected_view);
 }
 // SELECTS CHARACTER
 var selectCharacter = function(character){
+  ev_characters('selected_character').chain().first({ id: 1 }).assign(character).value();
   selected_character = character
 }
 var viewCharacter = function(character){
@@ -42,10 +43,12 @@ var createCharacter = function(character){
 // REMOVES CHARACTER
 var removeCharacter = function(character){
   ev_characters('characters').remove(character);
+  selected_character = ev_characters('characters').first();
+  focused_character = ev_characters('characters').first();
+
 }
 // EDITS CHARACTER
 var editCharacter = function(character){
-  console.log("from store:", character);
   ev_characters('characters').chain().find({ id: character.id }).assign(character).value();
 }
 
@@ -77,7 +80,6 @@ var CharacterStore = objectAssign({}, EventEmitter.prototype, {
 CharacterDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
-
     case CharacterConstants.FETCH_CHARACTERS:
       fetch_all_characters();
       CharacterStore.emit(CHANGE_EVENT);

@@ -36,6 +36,24 @@
     }
   }
 }
+.form-group{
+  &.file {
+    position:relative;
+    margin-top:0 !important;
+    padding-top:0;
+    label {
+      position:absolute;
+      top:-18px;
+      height:60px;
+    }
+    input[type=file] {
+      top:20px;
+      opacity: 1;
+      position: relative;
+    }
+  }
+}
+
 .form-control{
   padding:0 10px !important;
   background: RGBA(10,25,48,.2) !important;
@@ -133,9 +151,12 @@
 
 
 
-
+#app-footer {
+  height:20px;
+  background: RGBA(10,25,48,1)
+}
 #app-body {
-  height:800px;
+  height:780px;
   background: RGBA(15,43,79,1);
 
   #mini-nav{

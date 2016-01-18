@@ -9,9 +9,9 @@ var DefaultView = React.createClass({
         <div className='row view-handler' id='character-edit-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
-              <h1>Default Character</h1>
+              <h1>Default Characters</h1>
             </div>
- 
+
           </div>
         </div>
       </ReactCSSTransitionGroup>

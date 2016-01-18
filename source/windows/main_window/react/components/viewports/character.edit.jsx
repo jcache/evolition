@@ -7,6 +7,7 @@ var CharacterActions  = require('../../actions/character-actions.jsx');
 var CharacterStore  = require('../../stores/character-store.jsx');
 import StatList from '../elements/stat-list.jsx';
 
+
 var Input     = FRC.Input;
 var File      = FRC.File;
 var Select    = FRC.Select;
@@ -33,9 +34,21 @@ var EditCharacter = React.createClass({
     this.refs.form.reset();
   },
 
-  submitForm: function(data) {
-    console.log(data);
-    CharacterActions.editCharacter(data);
+  submitForm: function(captured) {
+    var data = captured;
+    data.profile_pic = '';
+    var resource_path = captured.pic[0].path;
+    var resource_name = captured.pic[0].name;
+    var new_resource = "";
+    console.log(data.pic[0]);
+
+    fse.copy(resource_path, dir.saved_images_file_path + resource_name, function (err) {
+      data.pic = '';
+      data.profile_pic = dir.saved_images + resource_name;
+      CharacterActions.createCharacter(data);
+      if (err) return console.error(err)
+    }) // copies file
+
   },
   changeOption: function(name, value) {
     var newState = {};
@@ -112,6 +125,21 @@ var EditCharacter = React.createClass({
                 <div className='row'>
                   <div className='col-xs-6'>
                     <Input {...sharedProps} name="level" value={character.level} label="Level:" type="number" required />
+                  </div>
+                  <div className='col-xs-6'>
+                    <File {...sharedProps} name="pic" label="pic:" required />
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-xs-12'>
+                  <Textarea {...sharedProps} rows={3} cols={40} name="appearance" label="Appearance: " value={character.appearance}
+                    validations="minLength:10" validationErrors={{ minLength: 'Please provide at least 10 characters.' }} />
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-xs-12'>
+                  <Textarea {...sharedProps} rows={3} cols={40} name="personality" label="Personality: " value={character.personality}
+                    validations="minLength:10" validationErrors={{ minLength: 'Please provide at least 10 characters.' }} />
                   </div>
                 </div>
                 <input className="btn btn-success btn-raised" formNoValidate={false} type="submit" defaultValue="Save Character" />

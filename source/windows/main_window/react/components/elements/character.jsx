@@ -59,7 +59,7 @@ var Character = React.createClass({
         <div className='character-details'>
           <div className='image-box'>
             <div className='image'>
-              <img src='../../shared_assets/images/darth.png' width='50' height='50'/>
+              <img src={character.profile_pic} width='50' height='50'/>
             </div>
           </div>
           <div className='detail-box'>

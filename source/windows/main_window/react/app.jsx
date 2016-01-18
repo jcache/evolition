@@ -23,6 +23,7 @@ var AppContainer = React.createClass({
           <CharacterList />
           <Viewport />
         </div>
+        <div className='row-fluid' id='app-footer'></div>
       </div>
     )
   }

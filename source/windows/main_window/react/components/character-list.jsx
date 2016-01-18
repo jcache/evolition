@@ -20,7 +20,7 @@ var CharacterList = React.createClass({
   componentDidMount: function(){
     $('#character-list').perfectScrollbar();
   },
-  selectCharacter: function(character){ 
+  selectCharacter: function(character){
     evActions.selectedCharacter(character);
   },
   _onChange: function(){
@@ -36,6 +36,8 @@ var CharacterList = React.createClass({
       this.state.characters.forEach(function(character) {
         list.push(<Character key={character.id} character={character} />);
       });
+    } else {
+      <li className='no-data'>create a character</li>
     };
 
     // RETURN LIST
