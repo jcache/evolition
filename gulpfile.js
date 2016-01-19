@@ -137,6 +137,7 @@ gulp.task('serve', function () {
     'build/windows/main_window/window.js',
     'build/windows/main_window/window.html'
   ], electron.reload);
+  electron.on('closed', () => { process.exit()})
 });
 
 

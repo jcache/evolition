@@ -30,7 +30,6 @@
         "RE": "1",
         "EN": "1"
       },
-
       "profile_pic": "ev://build/character/images/close_red.png"
     }
   ],
@@ -136,7 +135,6 @@
       "appearance": "sdfaasdfasdfasdfasdfasdf",
       "personality": "asdfasdfasdfasdfasdfasdf",
       "profile_pic": "ev://build/character/images/test_img.png"
-
     }
   ]
 }

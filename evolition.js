@@ -8,6 +8,7 @@ var path = require('path');
 var dir = require('./routes.js');
 var main_window = null;
 var electron = require('electron');
+var electronConnect = require('electron-connect');
 var browser = require('electron').BrowserWindow;
 var low = require('lowdb')
 var ev_gamesystem = low(dir.data + "game_system.json")
@@ -41,6 +42,7 @@ app.on('ready', function(e){
     transparent: false
   });
 
+  client = electronConnect.client.create(main_window);
 
   main_window.webContents.openDevTools({detach:false})
 
@@ -69,6 +71,7 @@ app.on('ready', function(e){
 
   main_window.on('closed', function() {
     main_window = null;
+    client.sendMessage('closed');
   });
 });
 
