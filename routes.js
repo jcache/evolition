@@ -9,7 +9,7 @@ var dir = module.exports = {
   styles: path.join(epath, '/build/styles/'),
   views: path.join(epath, '/build/windows/'),
   build: path.join(epath, '/build/'),
-  data: path.join(epath, path.join('ev//', appDataPath)),
+  data: path.join(epath, path.join('ev://', appDataPath)),
   saved_images: 'ev://build/character/images/',
   saved_images_file_path: path.join(epath, '/build/character/images/'),
   chkDataDir: function(){
