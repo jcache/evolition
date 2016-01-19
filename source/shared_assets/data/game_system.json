@@ -6,7 +6,7 @@
       "stat_layout": [
         {
           "id": 1,
-          "abbv": "ST",
+          "abbv": "ST", 
           "name": "Strength"
         },
         {
