@@ -20,10 +20,12 @@ var fetch_views = function(){
 }
 // SETS SELECTED VIEW
 var set_selected_view = function(view){
+
   selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
 }
 
 var change_view = function(view){
+  console.log("changed view: ", view);
   ev_characters('selected_view').chain().first({ id: 1 }).assign({"view_name":view}).value();
   // selected_view = ev_characters('selected_view').chain().find({ id: 1 }).assign(view).value();
   selected_view = ev_characters('views').find({ view_name: view });
@@ -39,6 +41,8 @@ var viewCharacter = function(character){
 // CREATES CHARACTER
 var createCharacter = function(character){
   ev_characters('characters').insert(character).id
+  selected_character = character
+  selected_view = ev_characters('views').find({ view_name: "character_edit" });
 }
 // REMOVES CHARACTER
 var removeCharacter = function(character){

@@ -19,16 +19,16 @@
       "personality": "",
       "pic": "",
       "stats": {
-        "ST": "1",
-        "CO": "1",
-        "AG": "1",
-        "QU": "1",
+        "ST": "21",
+        "CO": "21",
+        "AG": "2",
+        "QU": "12",
         "MQ": "1",
-        "SP": "1",
-        "SD": "1",
-        "ME": "1",
-        "RE": "1",
-        "EN": "1"
+        "SP": "21",
+        "SD": "21",
+        "ME": "21",
+        "RE": "21",
+        "EN": "21"
       },
       "profile_pic": ""
     }
@@ -113,28 +113,27 @@
     },
     {
       "stats": {
-        "ST": "1",
-        "CO": "1",
-        "AG": "1",
-        "QU": "1",
+        "ST": "21",
+        "CO": "21",
+        "AG": "2",
+        "QU": "12",
         "MQ": "1",
-        "SP": "1",
-        "SD": "1",
-        "ME": "1",
-        "RE": "1",
-        "EN": "1"
+        "SP": "21",
+        "SD": "21",
+        "ME": "21",
+        "RE": "21",
+        "EN": "21"
       },
-      "id": "054f4bcd-a6f9-4322-851a-e991a8c7d3d6",
-      "character_name": "1",
-      "race": "1",
-      "gender": "1",
-      "game_system_name": "1",
-      "campaign_name": "1",
-      "level": "1",
-      "pic": "",
-      "appearance": "sdfaasdfasdfasdfasdfasdf",
-      "personality": "asdfasdfasdfasdfasdfasdf",
-      "profile_pic": "ev://build/character/images/test_img.png"
+      "id": "c6775065-4c54-4068-81ed-901d4d67d192",
+      "character_name": "Flinnasdf",
+      "race": "21",
+      "gender": "21",
+      "game_system_name": "21",
+      "campaign_name": "2",
+      "level": "12",
+      "appearance": "12asdfasdf",
+      "personality": "asdfasdf",
+      "profile_pic": "ev://build/character/images/IMG_1904.JPG"
     }
   ]
 }

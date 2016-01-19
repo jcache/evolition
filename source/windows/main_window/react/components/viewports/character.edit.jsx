@@ -35,21 +35,24 @@ var EditCharacter = React.createClass({
   },
 
   submitForm: function(captured) {
-    console.log(captured);
     var data = captured;
-    data.profile_pic = '';
-    var resource_path = captured.pic[0].path;
-    var resource_name = captured.pic[0].name;
-    var new_resource = "";
-    console.log(data.pic[0]);
+    console.log(data.profile_pic != undefined);
+    if(data.pic != undefined){
+      data.profile_pic = '';
+      var resource_path = captured.pic[0].path;
+      var resource_name = captured.pic[0].name;
+      var new_resource = "";
+      console.log(data.pic[0]);
 
-    fse.copy(resource_path, dir.saved_images_file_path + resource_name, function (err) {
-      data.pic = '';
-      data.profile_pic = dir.saved_images + resource_name;
-      CharacterActions.createCharacter(data);
-      if (err) return console.error(err)
-    }) // copies file
-
+      fse.copy(resource_path, dir.saved_images_file_path + resource_name, function (err) {
+        data.pic = '';
+        data.profile_pic = dir.saved_images + resource_name;
+        CharacterActions.editCharacter(data);
+        if (err) return console.error(err)
+      }) // copies file
+    } else {
+      CharacterActions.editCharacter(data);
+    }
   },
   changeOption: function(name, value) {
     var newState = {};
@@ -128,7 +131,7 @@ var EditCharacter = React.createClass({
                     <Input {...sharedProps} name="level" value={character.level} label="Level:" type="number" required />
                   </div>
                   <div className='col-xs-6'>
-                    <File {...sharedProps} name="pic" label="pic:" required />
+                    <File {...sharedProps} name="pic" label="pic:" />
                   </div>
                 </div>
                 <div className='row'>
