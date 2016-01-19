@@ -3,7 +3,7 @@
     {
       "id": 1,
       "class_name": "character_add",
-      "view_name": "character_edit"
+      "view_name": "character_add"
     }
   ],
   "selected_character": [
@@ -30,7 +30,8 @@
         "RE": "1",
         "EN": "1"
       },
-      "profile_pic": "ev://build/character/images/temp_avatar.png"
+
+      "profile_pic": "ev://build/character/images/close_red.png"
     }
   ],
   "views": [
@@ -135,6 +136,7 @@
       "appearance": "sdfaasdfasdfasdfasdfasdf",
       "personality": "asdfasdfasdfasdfasdfasdf",
       "profile_pic": "ev://build/character/images/test_img.png"
+
     }
   ]
 }

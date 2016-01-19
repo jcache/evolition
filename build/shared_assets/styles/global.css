@@ -31,20 +31,12 @@
   transition: all 0.3s ease;
   background-color: rgba(249, 73, 66, 0.5);
 }
-.form-group.file {
-  position: relative;
-  margin-top: 0 !important;
-  padding-top: 0;
-}
-.form-group.file label {
-  position: absolute;
-  top: -18px;
-  height: 60px;
-}
-.form-group.file input[type=file] {
-  top: 20px;
-  opacity: 1;
-  position: relative;
+.form-group input[type=file] {
+  display: block;
+  position: relative !important;
+  height: 38px !important;
+  background: #0f2849 !important;
+  opacity: 1 !important;
 }
 .form-control {
   padding: 0 10px !important;
