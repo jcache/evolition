@@ -50,11 +50,10 @@ var AddCharacter = React.createClass({
   },
   changeOption: function(name, value) {
     var newState = {};
-    newState[name] = value; s
+    newState[name] = value;
     this.setState(newState);
-  },
+  }, 
   enableButton() {
-
     this.setState({ canSubmit: true });
   },
   disableButton() {

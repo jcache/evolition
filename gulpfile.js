@@ -93,36 +93,26 @@ gulp.task('watch_character_window', function(){
 });
 
 gulp.task('copy_shared', function(){
-
   gulp.src(app_paths.shared_js)
     .pipe(gulp.dest(app_paths.build_shared_js)
   );
-
   gulp.src(app_paths.shared_images)
     .pipe(gulp.dest(app_paths.build_shared_images)
   );
-
   gulp.src(app_paths.shared_fonts)
     .pipe(gulp.dest(app_paths.build_shared_fonts)
   );
-
 });
 
 gulp.task('less_shared', function(){
   return gulp.src(app_paths.shared_less)
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-  }))
-  .pipe(gulp.dest(app_paths.build_shared_styles));
+    .pipe(less({paths: [ path.join(__dirname, 'less', 'includes')]}))
+    .pipe(gulp.dest(app_paths.build_shared_styles));
 });
 
 gulp.task('jade', function(){
-  var YOUR_LOCALS = {};
   gulp.src(app_paths.window_jade)
-    .pipe(gulpJade({
-      jade: jade,
-      pretty: true
-    }))
+    .pipe(gulpJade({jade: jade, pretty: true}))
     .pipe(gulp.dest('./build/windows'));
 });
 
@@ -131,7 +121,6 @@ gulp.task('serve', function () {
   electron.start();
   // Restart browser process
   gulp.watch('evolition.js', electron.restart);
-  // // Reload renderer process
   gulp.watch([
     'build/shared_assets/**/*.css',
     'build/windows/main_window/window.js',
@@ -139,11 +128,6 @@ gulp.task('serve', function () {
   ], electron.reload);
   electron.on('closed', () => { process.exit()})
 });
-
-
-
-
-
 
 
 gulp.task('default', ['watch_assets','watch_main_window','watch_character_window','serve']);
