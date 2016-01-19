@@ -3,20 +3,20 @@
     {
       "id": 1,
       "class_name": "character_add",
-      "view_name": "character_add"
+      "view_name": "character_edit"
     }
   ],
   "selected_character": [
     {
       "id": "5e590581-dcd5-4521-92ca-95b2563a9ae7",
-      "character_name": "Dookie Man",
-      "game_system_name": "Rolemaster",
+      "character_name": "New Character",
+      "game_system_name": "",
       "level": "15",
-      "campaign_name": "Neverland",
-      "race": "a",
-      "gender": "as",
-      "appearance": "looks like a piece of shit",
-      "personality": "acts like a piece of shit",
+      "campaign_name": "",
+      "race": "Human",
+      "gender": "",
+      "appearance": "",
+      "personality": "",
       "pic": "",
       "stats": {
         "ST": "1",
@@ -30,7 +30,7 @@
         "RE": "1",
         "EN": "1"
       },
-      "profile_pic": "ev://build/character/images/close_red.png"
+      "profile_pic": ""
     }
   ],
   "views": [

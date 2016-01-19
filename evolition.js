@@ -2,7 +2,6 @@ var app = require('app');
 var menu = require('menu');
 var ipcMain = require('ipc-main');
 var fs = require('fs');
-var fse = require('fs-extra');
 var async = require('async');
 var path = require('path');
 var dir = require('./routes.js');
@@ -10,6 +9,10 @@ var main_window = null;
 var electron = require('electron');
 var electronConnect = require('electron-connect');
 var browser = require('electron').BrowserWindow;
+
+
+// Verify app Data Directory
+dir.chkDataDir();
 var low = require('lowdb')
 var ev_gamesystem = low(dir.data + "game_system.json")
 var ev_characters = low(dir.data + "characters.json")
@@ -27,9 +30,8 @@ app.on('ready', function(e){
   protocol.registerFileProtocol('ev', function(request, callback) {
     var url = request.url.substr(5);
     callback({path: path.normalize(__dirname + '/' + url)});
-  }, function (error) {
-    if (error)
-      console.error('Failed to register protocol')
+}, function(error) {
+    if (error) console.error('Failed to register protocol');
   });
 
   main_window = new browser({
