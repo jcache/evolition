@@ -316,22 +316,24 @@
 #app-body #viewport .viewport-container .viewport-body .contain-photo {
   position: relative;
   top: -40px;
-  border-radius: 130px;
+  border-radius: 3px;
   border: 4px solid #0a1e36;
   width: 130px;
-  height: 130px;
+  height: 160px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 #app-body #viewport .viewport-container .viewport-body span.c-detail {
   display: block;
+  color: #a252a6;
   font-size: 11px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   text-transform: uppercase;
-  color: #fff;
 }
 #app-body #viewport .viewport-container .viewport-body span.c-detail strong {
+  color: #fff;
+  font-weight: 400;
   font-size: 18px;
   display: block;
 }

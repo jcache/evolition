@@ -8,7 +8,6 @@
   ],
   "selected_character": [
     {
- 
       "id": "c6775065-4c54-4068-81ed-901d4d67d192",
       "character_name": "Flinn Aé",
       "game_system_name": "Rollmaster",
@@ -30,7 +29,7 @@
         "RE": "21",
         "EN": "21"
       },
-      "profile_pic": ""
+      "profile_pic": "ev://build/character/images/IMG_1904.JPG"
     }
   ],
   "views": [
@@ -154,7 +153,7 @@
       "level": "1",
       "appearance": "test testtest testtest testtest testtest test",
       "personality": "test testtest testtest testtest testtest testtest test",
-      "profile_pic": "/Users/aestrro/Projects/ev/build/character/images/temp_avatar.png",
+      "profile_pic": "ev://build/character/images/temp_avatar.png",
       "id": "e810df61-c615-4549-865f-3e31fc914dd7"
     }
   ]

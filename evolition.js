@@ -2,6 +2,7 @@ var app = require('app');
 var menu = require('menu');
 var ipcMain = require('ipc-main');
 var async = require('async');
+var fse = require('fs-extra');
 var path = require('path');
 var dir = require('./routes.js');
 var main_window = null;
@@ -17,6 +18,7 @@ var low = require('lowdb');
 
 var ev_characters = low(path.join(dir.data, "characters.json"));
 var ev_gamesystem = low(path.join(dir.data, "game_system.json"));
+
 
 
 require('crash-reporter').start();

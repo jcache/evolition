@@ -15,6 +15,7 @@ var dir = module.exports = {
   saved_images: 'ev://build/character/images/',
   saved_images_file_path: path.join(epath, '/build/character/images/'),
   verifyData: chkData
+
 };
 function chkData() {
     var success = false;
