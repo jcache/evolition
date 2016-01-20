@@ -1,7 +1,6 @@
 var app = require('app');
 var menu = require('menu');
 var ipcMain = require('ipc-main');
-var fs = require('fs');
 var async = require('async');
 var path = require('path');
 var dir = require('./routes.js');
@@ -9,14 +8,19 @@ var main_window = null;
 var electron = require('electron');
 var electronConnect = require('electron-connect');
 var browser = require('electron').BrowserWindow;
+var _ = require('lodash');
 
 
 // Verify app Data Directory
-dir.chkDataDir();
-var low = require('lowdb')
-var ev_gamesystem = low(dir.data + "game_system.json")
-var ev_characters = low(dir.data + "characters.json")
-var _ = require('lodash');
+// console.log('dir.chkDataDir(): ' ,dir.chkDataDir());
+var low = require('lowdb');
+var storage = require('lowdb/file-sync');
+storage.path = dir.data;
+
+var ev_characters = low("characters.json", {storage});
+var ev_gamesystem = low("game_system.json", {storage});
+
+console.log('=========== ev_characters: ', dir.data + "characters.json");
 
 require('crash-reporter').start();
 
