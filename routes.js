@@ -11,10 +11,10 @@ var dir = module.exports = {
   styles: path.join(epath, '/build/styles/'),
   views: path.join(epath, '/build/windows/'),
   build: path.join(epath, '/build/'),
-  data: path.join(epath, appDataPath),
+  data: appDataPath,
   saved_images: 'ev://build/character/images/',
   saved_images_file_path: path.join(epath, '/build/character/images/'),
-  verifyData: chkData()
+  verifyData: chkData
 };
 function chkData() {
     var success = false;
@@ -45,7 +45,6 @@ function chkData() {
 
         }
     }
-    return success;
 
     function fileCopyCB(err) {
         var sPath = [epath,'./source/shared_assets/data/',dataFiles[i]].join('');
@@ -58,6 +57,8 @@ function chkData() {
             success = true;
         }
     }
+
+    return success;
 
 }
 

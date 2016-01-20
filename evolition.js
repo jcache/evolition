@@ -12,15 +12,12 @@ var _ = require('lodash');
 
 
 // Verify app Data Directory
-// console.log('dir.chkDataDir(): ' ,dir.chkDataDir());
+dir.verifyData();
 var low = require('lowdb');
-var storage = require('lowdb/file-sync');
-storage.path = dir.data;
 
-var ev_characters = low("characters.json", {storage});
-var ev_gamesystem = low("game_system.json", {storage});
+var ev_characters = low(path.join(dir.data, "characters.json"));
+var ev_gamesystem = low(path.join(dir.data, "game_system.json"));
 
-console.log('=========== ev_characters: ', dir.data + "characters.json");
 
 require('crash-reporter').start();
 
