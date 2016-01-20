@@ -5,7 +5,7 @@ var fse     = require('fs-extra');
 var app     = require('electron').app;
 
 var appDataPath = app.getPath('appData') + '/EVolition/data/';
-console.log('appDataPath:', appDataPath);
+// console.log('appDataPath:', appDataPath);
 
 var dir = module.exports = {
   styles: path.join(epath, '/build/styles/'),
@@ -25,9 +25,7 @@ function chkData() {
 
     // CHECK FOR CHARACTER FILES
     for (var i = 0; i < dataFiles.length; i++) {
-        var err;
         fPath = path.join(appDataPath,dataFiles[i]);
-        console.log('fPath: ',fPath);
         try {
             fs.accessSync(fPath);
         } catch (e) {

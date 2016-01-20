@@ -45,7 +45,7 @@ app.on('ready', function(e){
     transparent: false
   });
 
-  client = electronConnect.client.create(main_window);
+  client = electronConnect.client.create(main_window,{"sendBounds": false});
 
   main_window.webContents.openDevTools({detach:false})
 
