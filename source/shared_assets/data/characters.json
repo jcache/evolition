@@ -3,21 +3,21 @@
     {
       "id": 1,
       "class_name": "character_add",
-      "view_name": "character_edit"
+      "view_name": "character_view"
     }
   ],
   "selected_character": [
     {
-      "id": "5e590581-dcd5-4521-92ca-95b2563a9ae7",
-      "character_name": "New Character",
-      "game_system_name": "EVolition",
-      "level": "15",
-      "campaign_name": "",
-      "race": "Human",
-      "gender": "",
-      "appearance": "",
-      "personality": "",
-      "pic": "",
+
+      "id": "c6775065-4c54-4068-81ed-901d4d67d192",
+      "character_name": "Flinn Aé",
+      "game_system_name": "Rollmaster",
+      "level": "12",
+      "campaign_name": "Dragon Elementals",
+      "race": "21",
+      "gender": "21",
+      "appearance": "this is my appearance.",
+      "personality": "this is my personality",
       "stats": {
         "ST": "21",
         "CO": "21",
@@ -63,31 +63,6 @@
   "characters": [
     {
       "stats": {
-        "ST": "65",
-        "CO": "65",
-        "AG": "65",
-        "QU": "65",
-        "MQ": "65",
-        "SP": "65",
-        "SD": "65",
-        "ME": "65",
-        "RE": "65",
-        "EN": "65"
-      },
-      "id": "e0aacd0f-e37f-4bc7-95c9-76f9a85d7a67",
-      "character_name": "Yoshi Haharuni",
-      "race": "d",
-      "gender": "a",
-      "game_system_name": "Rolemaster",
-      "campaign_name": "God Spoken",
-      "level": "13",
-      "pic": "",
-      "appearance": "asdfasdfasdf",
-      "personality": "asdfasdfasdf",
-      "profile_pic": "ev://build/character/images/Screen Shot 2015-10-08 at 10.11.41 AM.png"
-    },
-    {
-      "stats": {
         "ST": "1",
         "CO": "1",
         "AG": "1",
@@ -100,16 +75,15 @@
         "EN": "1"
       },
       "id": "5e590581-dcd5-4521-92ca-95b2563a9ae7",
-      "character_name": "Good Guy",
-      "race": "Human",
+      "character_name": "Galactus",
+      "race": "God",
       "gender": "Male",
-      "game_system_name": "Rolemaster",
+      "game_system_name": "Rollmaster",
       "campaign_name": "Neverland",
       "level": "15",
-      "pic": "",
       "appearance": "",
       "personality": "",
-      "profile_pic": "ev://build/character/images/hero-m.png"
+      "profile_pic": "ev://build/character/images/galactus.jpg"
     },
     {
       "stats": {
@@ -125,15 +99,63 @@
         "EN": "21"
       },
       "id": "c6775065-4c54-4068-81ed-901d4d67d192",
-      "character_name": "Flinnasdf",
+      "character_name": "Flinn Aé",
       "race": "21",
       "gender": "21",
-      "game_system_name": "21",
-      "campaign_name": "2",
+      "game_system_name": "Rollmaster",
+      "campaign_name": "Dragon Elementals",
       "level": "12",
-      "appearance": "12asdfasdf",
-      "personality": "asdfasdf",
+      "appearance": "this is my appearance.",
+      "personality": "this is my personality",
       "profile_pic": "ev://build/character/images/IMG_1904.JPG"
+    },
+    {
+      "stats": {
+        "ST": "1",
+        "CO": "1",
+        "AG": "1",
+        "QU": "1",
+        "MQ": "1",
+        "SP": "1",
+        "SD": "1",
+        "ME": "1",
+        "RE": "1",
+        "EN": "1"
+      },
+      "character_name": "Darth Vader",
+      "race": "Human",
+      "gender": "Male",
+      "game_system_name": "Dark Side",
+      "campaign_name": "Star Wars",
+      "level": "12",
+      "appearance": "asf asf asf asf asf asf ",
+      "personality": "asf asf asf asf asf asf ",
+      "profile_pic": "ev://build/character/images/darth.png",
+      "id": "3dc56922-6577-48c4-b55c-0116639260e4"
+    },
+    {
+      "stats": {
+        "ST": "1",
+        "CO": "1",
+        "AG": "1",
+        "QU": "1",
+        "MQ": "1",
+        "SP": "1",
+        "SD": "1",
+        "ME": "1",
+        "RE": "1",
+        "EN": "1"
+      },
+      "character_name": "Joseph Smoe",
+      "race": "Human",
+      "gender": "Male",
+      "game_system_name": "Evolition",
+      "campaign_name": "unknown",
+      "level": "1",
+      "appearance": "test testtest testtest testtest testtest test",
+      "personality": "test testtest testtest testtest testtest testtest test",
+      "profile_pic": "/Users/aestrro/Projects/ev/build/character/images/temp_avatar.png",
+      "id": "e810df61-c615-4549-865f-3e31fc914dd7"
     }
   ]
 }

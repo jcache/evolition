@@ -14,7 +14,8 @@ let view;
 var Viewport = React.createClass({
   getInitialState: function(){
     return {
-      selected: ev_characters('selected_view').first()
+      selected: ev_characters('selected_view').first(),
+      character:  CharacterStore.getSelectedCharacter(),
     }
   },
   componentWillMount: function(){
@@ -26,7 +27,8 @@ var Viewport = React.createClass({
   },
   _onChange: function(){
     this.setState({
-      selected: CharacterStore.getSelectedView()
+      selected: CharacterStore.getSelectedView(),
+      character:  CharacterStore.getSelectedCharacter(),
     })
   },
   render: function(){
@@ -38,8 +40,8 @@ var Viewport = React.createClass({
         view = <EditCharacter />
         break;
       case "character_view":
-        view = <ViewCharacter />
-        break; 
+        view = <ViewCharacter character={this.state.character} />
+        break;
       case "character_add":
         view = <AddCharacter />
         break;
