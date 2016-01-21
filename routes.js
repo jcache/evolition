@@ -34,7 +34,7 @@ function chkData() {
             console.log(dataFiles[i] + ' not found. Creating it...');
             fse.copySync(
                 // SEED <file name>.json FROM:
-                path.join('./source/shared_assets/data/',dataFiles[i]),
+                path.join('/source/shared_assets/data/',dataFiles[i]),
                 // TO:
                 path.join(appDataPath,dataFiles[i]),
                 // CALLBACK:
@@ -46,7 +46,7 @@ function chkData() {
     }
 
     function fileCopyCB(err) {
-        var sPath = [epath,'./source/shared_assets/data/',dataFiles[i]].join('');
+        var sPath = [epath,'/source/shared_assets/data/',dataFiles[i]].join('');
         console.log('Seed file path: ',sPath);
         if(err){
             console.log('Error creating '+dataFiles[i]+'!');

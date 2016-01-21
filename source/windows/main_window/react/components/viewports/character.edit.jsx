@@ -36,13 +36,11 @@ var EditCharacter = React.createClass({
 
   submitForm: function(captured) {
     var data = captured;
-    console.log(data.profile_pic != undefined);
     if(data.pic != undefined){
       data.profile_pic = '';
       var resource_path = captured.pic[0].path;
       var resource_name = captured.pic[0].name;
       var new_resource = "";
-      console.log(data.pic[0]);
 
       fse.copy(resource_path, dir.saved_images_file_path + resource_name, function (err) {
         data.pic = '';

@@ -22,14 +22,20 @@ var ViewCharacter = React.createClass({
     })
   },
   render: function(){
+    var stats = []
     var character = this.props.character;
+    if(character.stats){
+      _.each(character.stats, function(stat,index,i){
+        stats.push(
+          <li key={index}>
+            <span className='stat-abbv'>{index}</span>
+            <span className='stat-value'>{stat}</span>
+          </li>
+        )
+      });
+    }
     return (
-      <ReactCSSTransitionGroup
-        transitionName="example"
-        transitionAppear={true}
-        transitionAppearTimeout={500}
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={500}>
+      <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={2000} transitionEnterTimeout={2000} transitionLeaveTimeout={2000}>
         <div className='row view-handler' id='character-edit-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
@@ -37,36 +43,48 @@ var ViewCharacter = React.createClass({
             </div>
             <div className='viewport-body'>
               <div className='row'>
-                <div key='1' className='col-xs-3  col-xs-push-9'>
-                  <div style={{backgroundImage: "url(" +character.profile_pic+ ")"}} className='contain-photo'></div>
-                </div>
-                <div className='col-xs-9 col-xs-pull-3'>
-                  <div className='row'>
-                    <div className='col-xs-6'>
-                      <span className='c-detail'>Character Name
-                        <strong>{character.character_name}</strong>
-                      </span>
-                    </div>
-                    <div className='col-xs-6'>
-                      <span className='c-detail'>Player Name
-                        <strong>Kevin Carr</strong>
-                      </span>
-                    </div>
+                <div className='col-xs-2'>
+                  <div className='stat-container'>
+                    <ul>
+                      {stats}
+                    </ul>
                   </div>
+                </div>
+                <div className='col-xs-10'>
                   <div className='row'>
-                    <div className='col-xs-6'>
-                      <span className='c-detail'>Campaign
-                        <strong>{character.campaign_name}</strong>
-                      </span>
+                    <div key='1' className='col-xs-3  col-xs-push-9'>
+                      <div style={{backgroundImage: "url(" +character.profile_pic+ ")"}} className='contain-photo'></div>
                     </div>
-                    <div className='col-xs-6'>
-                      <span className='c-detail'>Gamesystem
-                        <strong>{character.game_system_name}</strong>
-                      </span>
+                    <div className='col-xs-9 col-xs-pull-3'>
+                      <div className='row'>
+                        <div className='col-xs-6'>
+                          <span className='c-detail'>Character Name
+                            <strong>{character.character_name}</strong>
+                          </span>
+                        </div>
+                        <div className='col-xs-6'>
+                          <span className='c-detail'>Player Name
+                            <strong>Kevin Carr</strong>
+                          </span>
+                        </div>
+                      </div>
+                      <div className='row'>
+                        <div className='col-xs-6'>
+                          <span className='c-detail'>Campaign
+                            <strong>{character.campaign_name}</strong>
+                          </span>
+                        </div>
+                        <div className='col-xs-6'>
+                          <span className='c-detail'>Gamesystem
+                            <strong>{character.game_system_name}</strong>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

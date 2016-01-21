@@ -10,6 +10,7 @@ var Character = React.createClass({
       selected_character: CharacterStore.getSelectedCharacter()
     }
   },
+
   componentWillMount: function(){
     CharacterStore.addChangeListener(this._onChange);
   },
@@ -70,7 +71,7 @@ var Character = React.createClass({
             </div>
           </div>
         </div>
-        <div className='character-options' style={show_option}>
+        <div className='character-options' ref='sillyref' style={show_option}>
           <ul>
             <li className='view'>
               <a href='#' onClick={this._viewCharacter} data-view='character_view'>view</a>

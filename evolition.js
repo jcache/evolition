@@ -33,7 +33,7 @@ app.on('ready', function(e){
   protocol.registerFileProtocol('ev', function(request, callback) {
     var url = request.url.substr(5);
     callback({path: path.normalize(__dirname + '/' + url)});
-}, function(error) {
+  }, function(error) {
     if (error) console.error('Failed to register protocol');
   });
 
@@ -47,7 +47,7 @@ app.on('ready', function(e){
     transparent: false
   });
 
-  client = electronConnect.client.create(main_window,{"sendBounds": false});
+  client = electronConnect.client.create(main_window,{"sendBounds": false, "debug": false});
 
   main_window.webContents.openDevTools({detach:false})
 
