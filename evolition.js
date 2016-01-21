@@ -15,10 +15,8 @@ var _ = require('lodash');
 // Verify app Data Directory
 dir.verifyData();
 var low = require('lowdb');
-
 var ev_characters = low(path.join(dir.data, "characters.json"));
 var ev_gamesystem = low(path.join(dir.data, "game_system.json"));
-
 
 
 require('crash-reporter').start();
@@ -33,7 +31,7 @@ app.on('ready', function(e){
   protocol.registerFileProtocol('ev', function(request, callback) {
     var url = request.url.substr(5);
     callback({path: path.normalize(__dirname + '/' + url)});
-  }, function(error) {
+}, function(error) {
     if (error) console.error('Failed to register protocol');
   });
 
@@ -47,7 +45,7 @@ app.on('ready', function(e){
     transparent: false
   });
 
-  client = electronConnect.client.create(main_window,{"sendBounds": false, "debug": false});
+  client = electronConnect.client.create(main_window,{"sendBounds": false});
 
   main_window.webContents.openDevTools({detach:false})
 
