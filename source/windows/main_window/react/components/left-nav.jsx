@@ -39,6 +39,12 @@ var LeftNav = React.createClass({
           <li>
             <a href='#' className="character-add-link" onClick={this._onChangeView} data-view='character_add'></a>
           </li>
+          <li>
+            <a href='#' className="character-add-link" onClick={this._onChangeView} data-view='fake_page_1'></a>
+          </li>
+          <li>
+            <a href='#' className="character-add-link" onClick={this._onChangeView} data-view='fake_page_2'></a>
+          </li>
         </ul>
       </div>
     );

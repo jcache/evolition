@@ -58,6 +58,18 @@
       "class_name": "character-add-view",
       "view_name": "character_add"
     }
+    },
+    {
+      "id": 6,
+      "class_name": "character-add-view",
+      "view_name": "fake_page_1"
+    }
+    },
+    {
+      "id": 7,
+      "class_name": "character-add-view",
+      "view_name": "fake_page_2"
+    }
   ],
   "characters": [
     {

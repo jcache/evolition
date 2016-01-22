@@ -8,6 +8,8 @@ import AddCharacter from './viewports/character.add.jsx';
 import EditCharacter from './viewports/character.edit.jsx';
 import ViewCharacter from './viewports/character.view.jsx';
 import DefaultView from './viewports/default.view.jsx';
+import FakePage1 from './viewports/fake.p1.jsx';
+import FakePage2 from './viewports/fake.p2.jsx';
 
 let view;
 
@@ -30,7 +32,7 @@ var Viewport = React.createClass({
       selected: CharacterStore.getSelectedView(),
       character:  CharacterStore.getSelectedCharacter(),
     })
-  },
+  }, 
   render: function(){
     switch (this.state.selected.view_name) {
       case "default":
@@ -44,6 +46,12 @@ var Viewport = React.createClass({
         break;
       case "character_add":
         view = <AddCharacter />
+        break;
+      case "fake_page_1":
+        view = <FakePage1 />
+        break;
+      case "fake_page_2":
+        view = <FakePage2 />
         break;
       default:
     }

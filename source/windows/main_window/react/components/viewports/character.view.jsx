@@ -16,7 +16,7 @@ var ViewCharacter = React.createClass({
   componentWillUnmount: function(){
     CharacterStore.removeChangeListener(this._onChange);
   },
-  _onChange: function(){
+  _onChange: function(){ 
     this.setState({
       changed: true,
     })
