@@ -1,5 +1,6 @@
 html,
-body {
+body,
+#app {
   height: 100%;
 }
 .full-container {
@@ -11,27 +12,31 @@ body {
 .full-container .app header {
   -webkit-app-region: drag;
   -webkit-user-select: none;
-  height: 5%;
+  position: fixed;
+  width: 100%;
+  display: block;
+  height: 45px;
+  z-index: 2000;
   background: #02223e;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .full-container .app header .app-window-controls {
-  display: table;
-  width: 60px;
-  padding: 10px 0;
-  margin: 0;
+  height: inherit;
+  display: block;
+  width: 90px;
+  margin: 10px 5px;
 }
 .full-container .app header .app-window-controls li {
   list-style: none;
-  width: 15px;
-  height: 15px;
-  margin: 0;
-  display: table-cell;
+  display: inline-block;
+  overflow: hidden;
 }
 .full-container .app header .app-window-controls li a {
   display: block;
   -webkit-border-radius: 15px;
   width: 15px;
   height: 15px;
+  margin: 0 5px;
 }
 .full-container .app header .app-window-controls li a.app-minimize {
   background: #ffcc4e !important;
@@ -40,17 +45,19 @@ body {
   background: #00aaf0 !important;
 }
 .flexbox-container {
-  height: 95%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-content: stretch;
 }
 .flexbox-container .flexbox-item {
+  margin-top: 45px;
   flex-grow: 1;
 }
 .app-nav-left {
   max-width: 65px;
   background: #02223e;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 .app-nav-left ul {
   padding-left: 0;
@@ -65,7 +72,7 @@ body {
   display: block;
   height: 38px;
   width: 38px;
-  background: #011f37;
+  background: #011323;
 }
 .app-nav-left ul li a:hover {
   transition: background .3s ease;

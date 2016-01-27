@@ -31,30 +31,29 @@ var AppContainer = React.createClass({
           <div className='flexbox-item app-nav-left'>
             <ul>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
               <li>
-                <a href=''><img src='' /></a>
+                <a href='#'><img src='' /></a>
               </li>
             </ul>
           </div>
           <div className='flexbox-item app-big-body'>
-          ...viewports
           </div>
         </div>
       </div>

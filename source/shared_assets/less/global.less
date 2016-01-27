@@ -1,10 +1,10 @@
 @app-bg: RGBA(2,37,67,1);
 @app-bg-accent: RGBA(4,52,93,1);
-@app-bg-secondary: RGBA(1,31,55,1);
+@app-bg-secondary: RGBA(1,19,35,1);
 @left-nav-hvr: RGBA(17,61,97,.9);
 
 
-html, body {
+html, body, #app {
   height:100%;
 }
 
@@ -15,24 +15,28 @@ html, body {
     header {
       -webkit-app-region: drag;
       -webkit-user-select: none;
-      height:5%;
-      background:darken(@app-bg,1%);
+      position:fixed;
+      width:100%;
+      display:block;
+      height:45px;
+      z-index:2000;
+      background: darken(@app-bg,1%);
+      border-bottom:1px solid RGBA(0,0,0,.2);
       .app-window-controls {
-        display:table;
-        width:60px;
-        padding:10px 0;
-        margin: 0;
+        height:inherit;
+        display:block;
+        width:90px;
+        margin: 10px 5px;
         li {
           list-style:none;
-          width:15px;
-          height:15px;
-          margin:0;
-          display:table-cell;
+          display:inline-block;
+          overflow:hidden;
           a {
             display:block;
             -webkit-border-radius:15px;
             width:15px;
             height:15px;
+            margin:0 5px;
             &.app-minimize{
               background: RGBA(255,204,78,1) !important;
             }
@@ -47,11 +51,12 @@ html, body {
 }
 
 .flexbox-container{
-  height: 95%;
+  height:100%;
   display:flex;
   flex-direction: row;
   align-content: stretch;
   .flexbox-item {
+    margin-top:45px;
     flex-grow: 1;
   }
 }
@@ -59,7 +64,10 @@ html, body {
 .app-nav-left {
   max-width: 65px;
   background:darken(@app-bg,1%);
+  // border-top: 1px solid @app-bg-accent;
   // border-right: 1px solid @app-bg-accent;
+  border-right:1px solid RGBA(0,0,0,.2);
+
   ul {
     padding-left:0;
     li {
