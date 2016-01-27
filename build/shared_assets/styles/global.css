@@ -2,6 +2,7 @@ html,
 body,
 #app {
   height: 100%;
+  background: #022543;
 }
 .full-container {
   height: inherit;
@@ -41,8 +42,16 @@ body,
 .full-container .app header .app-window-controls li a.app-minimize {
   background: #ffcc4e !important;
 }
+.full-container .app header .app-window-controls li a.app-minimize:hover {
+  transition: box-shadow 0.4s ease;
+  box-shadow: inset 5em 1em grey;
+}
 .full-container .app header .app-window-controls li a.app-close {
   background: #00aaf0 !important;
+}
+.full-container .app header .app-window-controls li a.app-close:hover {
+  transition: box-shadow 0.4s ease;
+  box-shadow: inset 5em 1em grey;
 }
 .flexbox-container {
   height: 100%;
@@ -73,10 +82,12 @@ body,
   height: 38px;
   width: 38px;
   background: #011323;
+  box-shadow: inset 0px 0px transparent;
 }
 .app-nav-left ul li a:hover {
-  transition: background .3s ease;
-  background: rgba(17, 61, 97, 0.9);
+  transition: all .2s ease;
+  background: #011323;
+  box-shadow: inset 0 0 0px 2px #019ad6;
 }
 .app-big-body {
   position: relative;

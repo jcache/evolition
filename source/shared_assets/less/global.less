@@ -6,6 +6,7 @@
 
 html, body, #app {
   height:100%;
+  background:@app-bg;
 }
 
 .full-container{
@@ -39,9 +40,17 @@ html, body, #app {
             margin:0 5px;
             &.app-minimize{
               background: RGBA(255,204,78,1) !important;
+              &:hover {
+                transition: box-shadow .4s ease;
+                box-shadow: inset 5em 1em grey;
+              }
             }
             &.app-close{
               background: RGBA(0,170,240,1) !important;
+              &:hover {
+                transition: box-shadow .4s ease;
+                box-shadow: inset 5em 1em grey;
+              }
             }
           }
         }
@@ -80,9 +89,13 @@ html, body, #app {
         height:38px;
         width:38px;
         background: @app-bg-secondary;
+        box-shadow: inset 0px 0px transparent;
+
         &:hover {
-          transition: background .3s ease;
-          background: @left-nav-hvr;
+          transition: all .2s ease;
+          background: @app-bg-secondary;
+          box-shadow: inset 0 0 0px 2px RGBA(1,154,214,1);
+
         }
       }
     }
