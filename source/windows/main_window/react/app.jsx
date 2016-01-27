@@ -17,13 +17,36 @@ var AppContainer = React.createClass({
   render: function(){
     return (
       <div className='app'>
-        <NavBar />
-        <div className='row-fluid' id="app-body">
-          <LeftNav />
-          <CharacterList />
-          <Viewport />
+        <div className='flexbox-container app-container'>
+          <div className='flexbox-item app-nav-left'>
+            <ul>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+              <li>
+                <a href=''><img src='' /></a>
+              </li>
+            </ul>
+          </div>
+          <div className='flexbox-item app-big-body'>
+          ...viewports
+          </div>
         </div>
-        <div className='row-fluid' id='app-footer'></div>
       </div>
     )
   }
