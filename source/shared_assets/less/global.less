@@ -2,6 +2,8 @@
 @app-bg-accent: RGBA(4,52,93,1);
 @app-bg-secondary: RGBA(1,31,55,1);
 @left-nav-hvr: RGBA(17,61,97,.9);
+
+
 html, body {
   height:100%;
 }
@@ -10,11 +12,42 @@ html, body {
   height:inherit;
   .app {
     height:100%;
+    header {
+      -webkit-app-region: drag;
+      -webkit-user-select: none;
+      height:5%;
+      background:darken(@app-bg,1%);
+      .app-window-controls {
+        display:table;
+        width:60px;
+        padding:10px 0;
+        margin: 0;
+        li {
+          list-style:none;
+          width:15px;
+          height:15px;
+          margin:0;
+          display:table-cell;
+          a {
+            display:block;
+            -webkit-border-radius:15px;
+            width:15px;
+            height:15px;
+            &.app-minimize{
+              background: RGBA(255,204,78,1) !important;
+            }
+            &.app-close{
+              background: RGBA(0,170,240,1) !important;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 .flexbox-container{
-  height: inherit;
+  height: 95%;
   display:flex;
   flex-direction: row;
   align-content: stretch;
@@ -25,8 +58,8 @@ html, body {
 
 .app-nav-left {
   max-width: 65px;
-  background:@app-bg;
-  border-right: 1px solid @app-bg-accent;
+  background:darken(@app-bg,1%);
+  // border-right: 1px solid @app-bg-accent;
   ul {
     padding-left:0;
     li {

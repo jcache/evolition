@@ -8,8 +8,39 @@ body {
 .full-container .app {
   height: 100%;
 }
+.full-container .app header {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  height: 5%;
+  background: #02223e;
+}
+.full-container .app header .app-window-controls {
+  display: table;
+  width: 60px;
+  padding: 10px 0;
+  margin: 0;
+}
+.full-container .app header .app-window-controls li {
+  list-style: none;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  display: table-cell;
+}
+.full-container .app header .app-window-controls li a {
+  display: block;
+  -webkit-border-radius: 15px;
+  width: 15px;
+  height: 15px;
+}
+.full-container .app header .app-window-controls li a.app-minimize {
+  background: #ffcc4e !important;
+}
+.full-container .app header .app-window-controls li a.app-close {
+  background: #00aaf0 !important;
+}
 .flexbox-container {
-  height: inherit;
+  height: 95%;
   display: flex;
   flex-direction: row;
   align-content: stretch;
@@ -19,8 +50,7 @@ body {
 }
 .app-nav-left {
   max-width: 65px;
-  background: #022543;
-  border-right: 1px solid #04345d;
+  background: #02223e;
 }
 .app-nav-left ul {
   padding-left: 0;

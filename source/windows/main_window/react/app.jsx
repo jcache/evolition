@@ -17,6 +17,16 @@ var AppContainer = React.createClass({
   render: function(){
     return (
       <div className='app'>
+        <header className='app-top-bar'>
+          <ul className='app-window-controls pull-right'>
+            <li>
+              <a className='app-minimize' href='#'></a>
+            </li>
+            <li>
+              <a  className='app-close'  href='#'></a>
+            </li>
+          </ul>
+        </header>
         <div className='flexbox-container app-container'>
           <div className='flexbox-item app-nav-left'>
             <ul>
