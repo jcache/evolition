@@ -81,13 +81,13 @@ body,
   display: block;
   height: 38px;
   width: 38px;
-  background: #011323;
-  box-shadow: inset 0px 0px transparent;
+  background: rgba(1, 19, 35, 0.5);
+  box-shadow: inset 0 0 0px 1px rgba(9, 70, 121, 0.2);
 }
 .app-nav-left ul li a:hover {
   transition: all .2s ease;
   background: #011323;
-  box-shadow: inset 0 0 0px 2px #019ad6;
+  box-shadow: inset 0 0 0px 3px #094679;
 }
 .app-big-body {
   position: relative;
