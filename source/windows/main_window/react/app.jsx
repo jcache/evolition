@@ -3,7 +3,7 @@ require('events').EventEmitter.prototype._maxListeners = 20;
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
+import { WindowResizeListener } from 'react-window-resize-listener';
 var NavBar        = require('./components/navbar.jsx');
 var BigBody        = require('./components/big-body.jsx');
 var LeftNav       = require('./components/left-nav.jsx');
@@ -11,7 +11,7 @@ var CharacterList = require('./components/character-list.jsx');
 var Viewport      = require('./components/viewport.jsx');
 var CharacterActions = require('./actions/character-actions.jsx');
 var CharacterStore  = require('./stores/character-store.jsx');
-
+WindowResizeListener.DEBOUNCE_TIME = 5;
 CharacterActions.fetchCharacters();
 
 CharacterActions.fetchViews();
@@ -25,17 +25,7 @@ var AppContainer = React.createClass({
   _onClose: function(){
     ipc.send('close_mainwin');
   },
-  componentDidMount: function(){
-    $( document ).ready(function(){
-      var height = $(document.body).height() - 45;
-      $(".app-container").height(height);
-    });
-    
-    $(window ).resize(function() {
-      var height = $(document.body).height() - 45;
-      $(".app-container").height(height);
-    });
-  },
+
   componentWillMount: function(){
     CharacterStore.addChangeListener(this._onChange);
   },
@@ -64,7 +54,11 @@ var AppContainer = React.createClass({
             </li>
           </ul>
         </header>
-        <div className='flexbox-container app-container'>
+        <div className='flexbox-container app-container' id='appContainer'>
+        <WindowResizeListener onResize={windowSize => {
+          var height = windowSize.windowHeight - 45;
+          document.getElementById('appContainer').setAttribute("style","height:"+ height +"px");
+        }}/>
           <div className='flexbox-item app-nav-left'>
             <ul>
               <li>

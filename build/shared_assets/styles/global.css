@@ -98,19 +98,14 @@ body,
   height: inherit;
   background: #022543;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
-  transform: translate3d(0, 0, 0);
-  transition: all .3s;
-}
-.app-big-body.isOpen {
-  margin-right: -65px;
-  transform: translate3d(-65px, 0, 0);
 }
 .viewports {
   flex: 1;
   height: inherit;
-  background: green;
+  background: #022543;
   transform: translate3d(0, 0, 0);
-  transition: all .3s;
+  transition: margin .1s, transform .1s;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 .viewports.isOpen {
   margin-right: -300px;
@@ -121,7 +116,7 @@ body,
   height: inherit;
   max-width: 300px;
   min-width: 300px;
-  background: pink;
+  background: #032d50;
 }
 @font-face {
   font-family: 'AW';

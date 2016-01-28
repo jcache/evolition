@@ -47,6 +47,7 @@
     "react-addons-css-transition-group": "^0.14.3",
     "react-addons-pure-render-mixin": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-window-resize-listener": "^1.0.0",
     "reactify": "^1.1.1",
     "reflux": "^0.3.0",
     "underscore-db": "^0.9.1",

@@ -106,22 +106,18 @@ html, body, #app {
   position:relative;
   height:inherit;
   background:@app-bg;
-  // background:red;
   border-left:1px solid RGBA(0,0,0,.1);
-  transform: translate3d(0,0,0);
-  transition: all .3s;
-  &.isOpen {
-    margin-right: -65px;
-    transform: translate3d(-65px,0,0);
-  }
+
 }
 
 .viewports {
   flex:1;
   height:inherit;
-  background:green;
+  background:@app-bg;
   transform: translate3d(0,0,0);
-  transition: all .3s;
+  transition: margin .1s, transform .1s;
+  border-left:1px solid RGBA(0,0,0,.1);
+
   &.isOpen {
     margin-right: -300px;
     transform: translate3d(-300px,0,0);
@@ -132,7 +128,7 @@ html, body, #app {
   height:inherit;
   max-width:300px;
   min-width:300px;
-  background:pink;
+  background: RGBA(3,45,80,1);
 }
 
 @font-face {
