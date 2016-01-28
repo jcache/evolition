@@ -42,7 +42,7 @@ var CharacterList = React.createClass({
 
     // RETURN LIST
     return (
-      <div className='col-xs-3' id='character-list'>
+      <div className='flexbox-container character-list' id='character-list'>
         <ul>
           {list}
         </ul>

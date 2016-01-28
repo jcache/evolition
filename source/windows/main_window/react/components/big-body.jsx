@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import CharacterActions from '../actions/character-actions.jsx';
 import CharacterStore from '../stores/character-store.jsx';
+import CharacterList  from './character-list.jsx';
 
 var BigBody = React.createClass({
   getInitialState: function(){
@@ -27,9 +28,7 @@ var BigBody = React.createClass({
   render: function(){
     return (
       <div className="flexbox-item app-big-body">
-        <div className="flexbox-container character-list">
-          ...
-        </div>
+        <CharacterList />
         <div className={this.props.isCharacterOpen ? 'flexbox-container viewports isOpen' : 'flexbox-container viewports'}>
           <a href='#' onClick={this._onCloseBigwin}>closebigwin</a>
         </div>

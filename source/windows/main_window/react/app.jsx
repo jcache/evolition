@@ -7,7 +7,6 @@ import { WindowResizeListener } from 'react-window-resize-listener';
 var NavBar        = require('./components/navbar.jsx');
 var BigBody        = require('./components/big-body.jsx');
 var LeftNav       = require('./components/left-nav.jsx');
-var CharacterList = require('./components/character-list.jsx');
 var Viewport      = require('./components/viewport.jsx');
 var CharacterActions = require('./actions/character-actions.jsx');
 var CharacterStore  = require('./stores/character-store.jsx');
