@@ -7,6 +7,12 @@ var CharacterActions = {
       actionType: CharacterConstants.FETCH_CHARACTERS,
     });
   },
+  toggleCharacters: function(flag){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.TOGGLE_CHARACTERS,
+      data: flag
+    });
+  },
   fetchViews: function(){
     CharacterDispatcher.handleAction({
       actionType: CharacterConstants.FETCH_VIEWS,

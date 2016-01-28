@@ -5,10 +5,11 @@ body,
   background: #022543;
 }
 .full-container {
-  height: inherit;
+  display: flex;
+  flex-flow: row;
 }
 .full-container .app {
-  height: 100%;
+  flex: 1;
 }
 .full-container .app header {
   -webkit-app-region: drag;
@@ -54,7 +55,7 @@ body,
   box-shadow: inset 5em 1em grey;
 }
 .flexbox-container {
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-content: stretch;
@@ -66,6 +67,7 @@ body,
 .app-nav-left {
   max-width: 65px;
   background: #02223e;
+  height: inherit;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 .app-nav-left ul {
@@ -90,8 +92,36 @@ body,
   box-shadow: inset 0 0 0px 3px #094679;
 }
 .app-big-body {
+  display: flex;
+  flex-flow: row;
   position: relative;
+  height: inherit;
   background: #022543;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+}
+.app-big-body.isOpen {
+  margin-right: -65px;
+  transform: translate3d(-65px, 0, 0);
+}
+.viewports {
+  flex: 1;
+  height: inherit;
+  background: green;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+}
+.viewports.isOpen {
+  margin-right: -300px;
+  transform: translate3d(-300px, 0, 0);
+}
+.character-list {
+  flex: 1;
+  height: inherit;
+  max-width: 300px;
+  min-width: 300px;
+  background: pink;
 }
 @font-face {
   font-family: 'AW';

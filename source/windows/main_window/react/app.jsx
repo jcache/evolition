@@ -5,16 +5,53 @@ var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var NavBar        = require('./components/navbar.jsx');
+var BigBody        = require('./components/big-body.jsx');
 var LeftNav       = require('./components/left-nav.jsx');
 var CharacterList = require('./components/character-list.jsx');
 var Viewport      = require('./components/viewport.jsx');
 var CharacterActions = require('./actions/character-actions.jsx');
+var CharacterStore  = require('./stores/character-store.jsx');
 
 CharacterActions.fetchCharacters();
-CharacterActions.fetchViews();
 
+CharacterActions.fetchViews();
+let CharacterOpen;
 var AppContainer = React.createClass({
+  getInitialState: function(){
+    return {
+      isCharacterOpen: false,
+    }
+  },
+  _onClose: function(){
+    ipc.send('close_mainwin');
+  },
+  componentDidMount: function(){
+    $( document ).ready(function(){
+      var height = $(document.body).height() - 45;
+      $(".app-container").height(height);
+    });
+    
+    $(window ).resize(function() {
+      var height = $(document.body).height() - 45;
+      $(".app-container").height(height);
+    });
+  },
+  componentWillMount: function(){
+    CharacterStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function(){
+    CharacterStore.removeChangeListener(this._onChange);
+  },
+  _onShowCharacters: function(){
+    CharacterActions.toggleCharacters(!this.state.isCharacterOpen);
+  },
+  _onChange: function(){
+    this.setState({
+      isCharacterOpen: CharacterStore.getToggleCharacters()
+    })
+  },
   render: function(){
+    CharacterOpen = this.state.isCharacterOpen;
     return (
       <div className='app'>
         <header className='app-top-bar'>
@@ -31,7 +68,7 @@ var AppContainer = React.createClass({
           <div className='flexbox-item app-nav-left'>
             <ul>
               <li>
-                <a href='#'><img src='' /></a>
+                <a href='#' onClick={this._onShowCharacters}><img src='' /></a>
               </li>
               <li>
                 <a href='#'><img src='' /></a>
@@ -53,8 +90,7 @@ var AppContainer = React.createClass({
               </li>
             </ul>
           </div>
-          <div className='flexbox-item app-big-body'>
-          </div>
+          <BigBody isCharacterOpen={CharacterOpen} />
         </div>
       </div>
     )
