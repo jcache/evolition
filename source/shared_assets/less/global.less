@@ -134,9 +134,10 @@ html, body, #app {
   display:flex;
   flex-flow: column;
   .character-search {
-    min-height:40px;
+    min-height:44px;
     border-right:1px solid  RGBA(15,57,94,1);
     border-bottom:1px solid  RGBA(15,57,94,1);
+    background: RGBA(10,30,54,1);
   }
   .list {
     position:relative;
@@ -274,11 +275,12 @@ html, body, #app {
 #viewport{
   height: inherit;
   .viewport-container {
-
     .viewport-header{
-      margin:0 -15px 20px -15px;
-      padding:10px 15px;
+      margin:0 -15px 15px -15px;
+      padding:10px 15px 9px;
       background: RGBA(10,30,54,1);
+      border-bottom:1px solid  RGBA(15,57,94,1);
+
       h1 {
         color:#fff;
         font-size: 22px;
@@ -358,16 +360,17 @@ html, body, #app {
   padding:0 10px !important;
   background: RGBA(10,25,48,.2) !important;
   color: RGBA(255,255,255,.2);
-
 }
+
 .has-feedback label ~ .form-control-feedback {
   top: 0px ;
 }
+
 .form-group.label-floating label.control-label,
 .form-group.label-placeholder label.control-label {
   left: 10px;
-
 }
+
 .stat-list {
   padding-left:0 !important;
   .form-group {
@@ -385,6 +388,7 @@ html, body, #app {
     background: RGBA(10,25,48,.2);
   }
 }
+
 .basic-list {
   padding-left:0 !important;
   .form-group {
@@ -399,6 +403,53 @@ html, body, #app {
     background: RGBA(10,25,48,.2);
   }
 }
+
+.example-appear {
+  opacity: 0;
+  transform: translateY(15%);
+  animation: openSpace 0.2s ease forwards, moveIn 0.3s 0.2s ease forwards;
+}
+
+.example-appear.example-appear-active {
+  transform: translateY(0.0%);
+  transition: all 0.2s ease-in;
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.thing-leave-active {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+
+@keyframes openSpace {
+  to {
+    max-height: 50px;
+  }
+}
+
+@keyframes moveIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes do {
+  0% {
+      height:0;
+      opacity: 0;
+    }
+  100% {
+    height:35px;
+    opacity: 1;
+  }
+}
+
 
 @font-face {
   font-family: 'AW';

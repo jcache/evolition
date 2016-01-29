@@ -57,8 +57,11 @@ var Viewport = React.createClass({
         break;
       default:
     }
+    var classes = {
+
+    };
     return (
-      <div id='viewport' className="col-xs-12 viewz {{ this.state.selected.view_name}}">
+      <div className={"col-xs-12 viewz"} id='viewport'>
         {view}
       </div>
     )

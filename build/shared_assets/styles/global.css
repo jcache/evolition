@@ -122,9 +122,10 @@ body,
   flex-flow: column;
 }
 .character-list .character-search {
-  min-height: 40px;
+  min-height: 44px;
   border-right: 1px solid #0f395e;
   border-bottom: 1px solid #0f395e;
+  background: #0a1e36;
 }
 .character-list .list {
   position: relative;
@@ -245,9 +246,10 @@ body,
   height: inherit;
 }
 #viewport .viewport-container .viewport-header {
-  margin: 0 -15px 20px -15px;
-  padding: 10px 15px;
+  margin: 0 -15px 15px -15px;
+  padding: 10px 15px 9px;
   background: #0a1e36;
+  border-bottom: 1px solid #0f395e;
 }
 #viewport .viewport-container .viewport-header h1 {
   color: #fff;
@@ -351,6 +353,44 @@ body,
 .basic-list .form-control {
   border-radius: 0;
   background: rgba(10, 25, 48, 0.2);
+}
+.example-appear {
+  opacity: 0;
+  transform: translateY(15%);
+  animation: openSpace 0.2s ease forwards, moveIn 0.3s 0.2s ease forwards;
+}
+.example-appear.example-appear-active {
+  transform: translateY(0%);
+  transition: all 0.2s ease-in;
+  opacity: 1;
+}
+.example-leave {
+  opacity: 1;
+}
+.example-leave.thing-leave-active {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+@keyframes openSpace {
+  to {
+    max-height: 50px;
+  }
+}
+@keyframes moveIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes do {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 35px;
+    opacity: 1;
+  }
 }
 @font-face {
   font-family: 'AW';
