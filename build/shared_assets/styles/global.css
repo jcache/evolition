@@ -154,7 +154,10 @@ body,
   width: 100%;
   border-bottom: 1px solid #0f395e;
   background-color: rgba(3, 45, 80, 0);
-  transition: background 0.5s ease;
+  transition: background 0.3s ease;
+}
+.character-list .list > ul li:last-child {
+  border-bottom: none;
 }
 .character-list .list > ul li.active {
   background-color: #032d50;

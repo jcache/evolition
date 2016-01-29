@@ -171,7 +171,10 @@ html, body, #app {
       width:100%;
       border-bottom:1px solid RGBA(15,57,94,1);
       background-color: RGBA(3,45,80,0);
-      transition: background 0.5s ease;
+      transition: background 0.3s ease;
+      &:last-child {
+        border-bottom:none;
+      }
       &.active {
         background-color: RGBA(3,45,80,1);
       }
