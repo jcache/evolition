@@ -18,7 +18,7 @@ var CharacterList = React.createClass({
     CharacterStore.removeChangeListener(this._onChange);
   },
   componentDidMount: function(){
-    $('#character-list').perfectScrollbar();
+    $('.list').perfectScrollbar();
   },
   selectCharacter: function(character){
     evActions.selectedCharacter(character);
@@ -42,10 +42,16 @@ var CharacterList = React.createClass({
 
     // RETURN LIST
     return (
-      <div className='flexbox-container character-list' id='character-list'>
-        <ul>
-          {list}
-        </ul>
+      <div className='character-list' id='character-list'>
+
+        <div className='character-search'>
+          search box
+        </div>
+        <div className='list'>
+          <ul>
+            {list}
+          </ul>
+        </div>
       </div>
     )
   }
