@@ -23,7 +23,9 @@ var Viewport = React.createClass({
   componentWillMount: function(){
     CharacterStore.addChangeListener(this._onChange);
   },
-
+  componentDidMount: function(){
+    $('.viewz').perfectScrollbar();
+  },
   componentWillUnmount: function(){
     CharacterStore.removeChangeListener(this._onChange);
   },
@@ -32,7 +34,7 @@ var Viewport = React.createClass({
       selected: CharacterStore.getSelectedView(),
       character:  CharacterStore.getSelectedCharacter(),
     })
-  }, 
+  },
   render: function(){
     switch (this.state.selected.view_name) {
       case "default":
@@ -56,7 +58,7 @@ var Viewport = React.createClass({
       default:
     }
     return (
-      <div className='col-xs-8' id='viewport'>
+      <div id='viewport' className="col-xs-12 viewz {{ this.state.selected.view_name}}">
         {view}
       </div>
     )

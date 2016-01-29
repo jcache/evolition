@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import CharacterActions from '../actions/character-actions.jsx';
 import CharacterStore from '../stores/character-store.jsx';
 import CharacterList  from './character-list.jsx';
+import Viewport from './viewport.jsx';
 
 var BigBody = React.createClass({
   getInitialState: function(){
@@ -30,7 +31,7 @@ var BigBody = React.createClass({
       <div className="flexbox-item app-big-body">
         <CharacterList />
         <div className={this.props.isCharacterOpen ? 'flexbox-container viewports isOpen' : 'flexbox-container viewports'}>
-          <a href='#' onClick={this._onCloseBigwin}>closebigwin</a>
+          <Viewport/>
         </div>
       </div>
     );
