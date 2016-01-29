@@ -45,9 +45,9 @@ app.on('ready', function(e){
     transparent: false
   });
 
-  client = electronConnect.client.create(main_window,{"sendBounds": false});
+  client = electronConnect.client.create(main_window,{"sendBounds": true});
 
-  main_window.webContents.openDevTools({detach:false})
+  // main_window.webContents.openDevTools({detach:false})
 
   ipcMain.on('close_mainwin', function(event) {
     main_window.close();
@@ -56,20 +56,20 @@ app.on('ready', function(e){
 
   main_window.webContents.on('did-start-loading', function() {
     main_window.webContents.goToIndex(2);
-    console.log("started loading...", main_window.webContents.isLoading());
+    // console.log("started loading...", main_window.webContents.isLoading());
   });
 
   main_window.webContents.on('did-stop-loading', function() {
-    console.log("stopped loading...", main_window.webContents.isLoading());
+    // console.log("stopped loading...", main_window.webContents.isLoading());
   });
 
   main_window.webContents.on('did-finish-load', function() {
-    console.log("windows loaded...", main_window.webContents.isLoading());
-
+    // console.log("windows loaded...", main_window.webContents.isLoading());
     main_window.show();
   });
 
-  main_window.setPosition(10, 100);
+  // main_window.setPosition(10, 100);
+
   main_window.loadURL('file://' + dir.views + 'main_window/window.html');
 
   main_window.on('closed', function() {

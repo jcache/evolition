@@ -120,13 +120,16 @@ gulp.task('serve', function () {
   // Start browser process
   electron.start();
   // Restart browser process
-  gulp.watch('evolition.js', electron.restart);
+  // gulp.watch('evolition.js', electron.restart);
   gulp.watch([
     'build/shared_assets/**/*.css',
     'build/windows/main_window/window.js',
     'build/windows/main_window/window.html'
   ], electron.reload);
-  electron.on('closed', () => { process.exit()})
+
+  electron.on('closed', () => {
+    process.exit()
+  })
 });
 
 

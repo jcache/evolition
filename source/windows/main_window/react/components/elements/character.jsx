@@ -60,29 +60,23 @@ var Character = React.createClass({
         <div className='character-details'>
           <div className='image-box'>
             <div className='image'>
-              <img src={character.profile_pic} width='50' height='50'/>
+              <img src={character.profile_pic} width='65' />
             </div>
           </div>
           <div className='detail-box'>
             <div className='details'>
-              <h5>{character.character_name}</h5>
-              <p><small>{character.game_system_name}<strong> ({character.campaign_name ? character.campaign_name : 'undefined'}) </strong></small></p>
-              <p>lvl: {character.level ? character.level : 'undefined'} </p>
+              <p className='ch-gamesystem'>{character.game_system_name}</p>
+              <h5 className='ch-charactername'>{character.character_name}</h5>
+              <p className='ch-profession'>{character.profession ? character.profession : 'undefined'} </p>
+              <p className='ch-campaign'>{character.campaign_name ? character.campaign_name : 'undefined'}</p>
+              <div className='level-box'>
+                <p>
+                  <small>Level</small>
+                  <span>10</span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='character-options' ref='sillyref' style={show_option}>
-          <ul>
-            <li className='view'>
-              <a href='#' onClick={this._viewCharacter} data-view='character_view'>view</a>
-            </li>
-            <li className='change'>
-              <a href='#' onClick={this._editCharacter} data-view='character_edit'>change</a>
-            </li>
-            <li className='remove'>
-              <a href='#' onClick={this._removeCharacter}  data-view='character_edit'>remove</a>
-            </li>
-          </ul>
         </div>
       </li>
     )
