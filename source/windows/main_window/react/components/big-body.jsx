@@ -9,7 +9,7 @@ import Viewport from './viewport.jsx';
 var BigBody = React.createClass({
   getInitialState: function(){
     return {
-      isCharacterOpen: '',
+      isListOpen: CharacterStore.getListState(),
     }
   },
   componentWillMount: function(){
@@ -18,19 +18,16 @@ var BigBody = React.createClass({
   componentWillUnmount: function(){
     CharacterStore.removeChangeListener(this._onChange);
   },
-  _onCloseBigwin: function(){
-    CharacterActions.toggleCharacters(!this.state.isCharacterOpen);
-  },
   _onChange: function(){
     this.setState({
-      isCharacterOpen: CharacterStore.getToggleCharacters()
+      isListOpen: CharacterStore.getListState()
     })
   },
   render: function(){
     return (
       <div className="flexbox-item app-big-body">
         <CharacterList />
-        <div className={this.props.isCharacterOpen ? 'flexbox-container viewports isOpen' : 'flexbox-container viewports'}>
+        <div className={this.props.isListOpen ? 'flexbox-container viewports isOpen' : 'flexbox-container viewports'}>
           <Viewport/>
         </div>
       </div>

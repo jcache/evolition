@@ -70,7 +70,21 @@ html, body, #app {
     flex-grow: 1;
   }
 }
-
+.stat-container {
+  ul {
+    display:table;
+    li{
+      display:block;
+      width:100%;
+      span.stat-abbv {
+        width:50% !important;
+      }
+      span.stat-value {
+        width:50% !important;
+      }
+    }
+  }
+}
 .app-nav-left {
   min-width: 65px;
   max-width: 65px;
@@ -135,9 +149,13 @@ html, body, #app {
   flex-flow: column;
   .character-search {
     min-height:44px;
+    margin-top:0;
     border-right:1px solid  RGBA(15,57,94,1);
     border-bottom:1px solid  RGBA(15,57,94,1);
     background: RGBA(10,30,54,1);
+    .form-control {
+      margin-bottom:0;
+    }
   }
   .list {
     position:relative;

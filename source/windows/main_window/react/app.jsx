@@ -18,7 +18,7 @@ let CharacterOpen;
 var AppContainer = React.createClass({
   getInitialState: function(){
     return {
-      isCharacterOpen: false,
+      isListOpen: CharacterStore.getListState(),
     }
   },
   _onClose: function(){
@@ -31,23 +31,20 @@ var AppContainer = React.createClass({
   componentWillUnmount: function(){
     CharacterStore.removeChangeListener(this._onChange);
   },
-  _onShowCharacters: function(e){
-    var view = e.target.getAttribute("data-view");
-    CharacterActions.toggleCharacters(!this.state.isCharacterOpen);
-    CharacterActions.changeView(view);
-  },
   _onChangeView: function(e){
     e.preventDefault();
     var view = e.target.getAttribute("data-view");
+    var list_shown = e.target.getAttribute("data-list-shown");
+    CharacterActions.toggleCharacters(list_shown);
     CharacterActions.changeView(view);
   },
   _onChange: function(){
     this.setState({
-      isCharacterOpen: CharacterStore.getToggleCharacters()
+      isListOpen: CharacterStore.getListState()
     })
   },
   render: function(){
-    CharacterOpen = this.state.isCharacterOpen;
+    CharacterOpen = this.state.isListOpen;
     return (
       <div className='app'>
         <header className='app-top-bar'>
@@ -68,13 +65,13 @@ var AppContainer = React.createClass({
           <div className='flexbox-item app-nav-left'>
             <ul>
               <li>
-                <a href='#' onClick={this._onShowCharacters} data-view='character_view'><img src='' /></a>
+                <a href='#' onClick={this._onChangeView} data-view='character_view' data-list-shown='true'><img src='' /></a>
               </li>
               <li>
-                <a href='#' onClick={this._onChangeView} data-view='default'><img src='' /></a>
+                <a href='#' onClick={this._onChangeView} data-view='default' data-list-shown='false'><img src='' /></a>
               </li>
               <li>
-                <a href='#' onClick={this._onChangeView} data-view='character_add'><img src='' /></a>
+                <a href='#' onClick={this._onChangeView} data-view='character_add' data-list-shown='true'><img src='' /></a>
               </li>
               <li>
                 <a href='#'><img src='' /></a>
@@ -90,7 +87,7 @@ var AppContainer = React.createClass({
               </li>
             </ul>
           </div>
-          <BigBody isCharacterOpen={CharacterOpen} />
+          <BigBody isListOpen={CharacterOpen} />
         </div>
       </div>
     )

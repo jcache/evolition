@@ -11,11 +11,13 @@ var selected_view = {};
 var characters = [];
 var views = [];
 var character_toggled = false;
+console.warn("(store) character_toggled:", character_toggled);
 // RETURNS ALL CHARACTERS
 var fetch_all_characters = function(){
   characters = ev_characters.object.characters
 }
 var toggle_characters = function(flag){
+  console.warn("(store ac) character_toggled:", flag);
   character_toggled = flag
 }
 // RETURNS ALL VIEWS
@@ -70,7 +72,7 @@ var CharacterStore = objectAssign({}, EventEmitter.prototype, {
   fetchViews: function(){
     return views;
   },
-  getToggleCharacters: function(){
+  getListState: function(){
     return character_toggled;
   },
   getSelectedView: function(){
@@ -94,7 +96,7 @@ CharacterDispatcher.register(function(payload){
       fetch_all_characters();
       CharacterStore.emit(CHANGE_EVENT);
       break;
-    case CharacterConstants.TOGGLE_CHARACTERS:
+    case CharacterConstants.LIST_STATE:
       toggle_characters(action.data);
       CharacterStore.emit(CHANGE_EVENT);
       break;

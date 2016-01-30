@@ -8,9 +8,10 @@ var CharacterActions = {
     });
   },
   toggleCharacters: function(flag){
+    var data = flag == "true" ? false : true;
     CharacterDispatcher.handleAction({
-      actionType: CharacterConstants.TOGGLE_CHARACTERS,
-      data: flag
+      actionType: CharacterConstants.LIST_STATE,
+      data: data
     });
   },
   fetchViews: function(){

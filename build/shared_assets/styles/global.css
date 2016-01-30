@@ -64,6 +64,19 @@ body,
   margin-top: 45px;
   flex-grow: 1;
 }
+.stat-container ul {
+  display: table;
+}
+.stat-container ul li {
+  display: block;
+  width: 100%;
+}
+.stat-container ul li span.stat-abbv {
+  width: 50% !important;
+}
+.stat-container ul li span.stat-value {
+  width: 50% !important;
+}
 .app-nav-left {
   min-width: 65px;
   max-width: 65px;
@@ -123,9 +136,13 @@ body,
 }
 .character-list .character-search {
   min-height: 44px;
+  margin-top: 0;
   border-right: 1px solid #0f395e;
   border-bottom: 1px solid #0f395e;
   background: #0a1e36;
+}
+.character-list .character-search .form-control {
+  margin-bottom: 0;
 }
 .character-list .list {
   position: relative;
