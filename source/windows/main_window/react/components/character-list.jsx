@@ -46,7 +46,6 @@ var CharacterList = React.createClass({
       this.state.characters.forEach(function(character) {
         if(character.character_name.toLowerCase().search(filtered_search.toLowerCase()) == -1) {
           return;
-        } else if(character.campaign_name.toLowerCase().search(filtered_search.toLowerCase()) == -1){
         } else {
           list.push(<Character key={character.id} character={character} />);
         }
