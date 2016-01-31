@@ -136,13 +136,23 @@ body,
 }
 .character-list .character-search {
   min-height: 44px;
+  padding-bottom: 0;
   margin-top: 0;
   border-right: 1px solid #0f395e;
   border-bottom: 1px solid #0f395e;
   background: #0a1e36;
 }
-.character-list .character-search .form-control {
+.character-list .character-search .control-label {
+  padding-left: 10px;
+  color: rgba(3, 179, 242, 0.6) !important;
+}
+.character-list .character-search .s-group {
+  padding: 0 0;
+}
+.character-list .character-search .s-group input[type=search] {
+  padding: 0 10px;
   margin-bottom: 0;
+  background-image: linear-gradient(#03b3f2, #03b3f2), linear-gradient(#022647, #022647);
 }
 .character-list .list {
   position: relative;
@@ -330,8 +340,7 @@ body,
   opacity: 1 !important;
 }
 .form-control {
-  padding: 0 10px !important;
-  background: rgba(10, 25, 48, 0.2) !important;
+  background: rgba(10, 25, 48, 0.2);
   color: rgba(255, 255, 255, 0.2);
 }
 .has-feedback label ~ .form-control-feedback {
@@ -339,7 +348,7 @@ body,
 }
 .form-group.label-floating label.control-label,
 .form-group.label-placeholder label.control-label {
-  left: 10px;
+  left: 5px;
 }
 .stat-list {
   padding-left: 0 !important;
@@ -356,7 +365,7 @@ body,
 .stat-list .form-control {
   width: 100%;
   border-radius: 0;
-  background: rgba(10, 25, 48, 0.2);
+  background: rgba(10, 25, 48, 0.2) !important;
 }
 .basic-list {
   padding-left: 0 !important;
@@ -369,7 +378,7 @@ body,
 }
 .basic-list .form-control {
   border-radius: 0;
-  background: rgba(10, 25, 48, 0.2);
+  background: rgba(10, 25, 48, 0.2) !important;
 }
 .example-appear {
   opacity: 0;

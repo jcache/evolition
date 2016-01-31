@@ -1,4 +1,3 @@
-var CharacterStore = require('../stores/character-store.jsx');
 var CharacterConstants  = require('../constants/character-constants.jsx');
 var CharacterDispatcher  = require('../dispatcher/character-dispatcher.jsx');
 
@@ -11,15 +10,19 @@ var selected_view = {};
 var characters = [];
 var views = [];
 var character_toggled = false;
-console.warn("(store) character_toggled:", character_toggled);
+var filtered_text = '';
 // RETURNS ALL CHARACTERS
 var fetch_all_characters = function(){
   characters = ev_characters.object.characters
 }
+var filter_characters = function(string){
+  console.log(string);
+  filtered_text = string;
+}
 var toggle_characters = function(flag){
-  console.warn("(store ac) character_toggled:", flag);
   character_toggled = flag
 }
+
 // RETURNS ALL VIEWS
 var fetch_views = function(){
   views = ev_characters.object.views
@@ -31,7 +34,6 @@ var set_selected_view = function(view){
 }
 
 var change_view = function(view){
-  console.log("changed view: ", view);
   ev_characters('selected_view').chain().first({ id: 1 }).assign({"view_name":view}).value();
   selected_view = ev_characters('views').find({ view_name: view });
 }
@@ -62,12 +64,14 @@ var editCharacter = function(character){
 }
 
 var CharacterStore = objectAssign({}, EventEmitter.prototype, {
-
   addChangeListener: function(cb){
     this.on(CHANGE_EVENT, cb);
   },
   removeChangeListener: function(cb){
     this.removeListener(CHANGE_EVENT, cb);
+  },
+  getFilteredText: function(){
+    return filtered_text;
   },
   fetchViews: function(){
     return views;
@@ -98,6 +102,10 @@ CharacterDispatcher.register(function(payload){
       break;
     case CharacterConstants.LIST_STATE:
       toggle_characters(action.data);
+      CharacterStore.emit(CHANGE_EVENT);
+      break;
+    case CharacterConstants.FILTER_TEXT:
+      filter_characters(action.data);
       CharacterStore.emit(CHANGE_EVENT);
       break;
     case CharacterConstants.FETCH_VIEWS:

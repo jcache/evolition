@@ -5,6 +5,7 @@ html(lang="en")
     meta(charset='utf-8')
     link(rel='stylesheet', href='../../shared_assets/styles/bootstrap.css')
     link(rel='stylesheet', href='../../shared_assets/styles/bootstrap-material-design.css')
+    link(rel='stylesheet', href='../../shared_assets/styles/ripples.css')
     link(rel='stylesheet', href='../../shared_assets/styles/perfect-scrollbar.min.css')
     link(rel='stylesheet', href='../../shared_assets/styles/global.css')
     script.
@@ -15,7 +16,7 @@ html(lang="en")
       var dir = ipc.sendSync('config-paths', true);
       var low = require('lowdb');  
       var _ = require('lodash'); 
-      var fse = require('fs-extra')
+      var fse = require('fs-extra');
       var ev_gamesystem = low(dir.data + "game_system.json") 
       var ev_characters = low(dir.data + "characters.json")
       require('electron-connect').client.create({"sendBounds": false})

@@ -18,7 +18,7 @@ let CharacterOpen;
 var AppContainer = React.createClass({
   getInitialState: function(){
     return {
-      isListOpen: CharacterStore.getListState(),
+      isListOpen: CharacterStore.getListState()
     }
   },
   _onClose: function(){

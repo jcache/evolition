@@ -7,13 +7,6 @@ var CharacterActions = {
       actionType: CharacterConstants.FETCH_CHARACTERS,
     });
   },
-  toggleCharacters: function(flag){
-    var data = flag == "true" ? false : true;
-    CharacterDispatcher.handleAction({
-      actionType: CharacterConstants.LIST_STATE,
-      data: data
-    });
-  },
   fetchViews: function(){
     CharacterDispatcher.handleAction({
       actionType: CharacterConstants.FETCH_VIEWS,
@@ -28,6 +21,12 @@ var CharacterActions = {
     CharacterDispatcher.handleAction({
       actionType: CharacterConstants.CHANGE_VIEW,
       data: view
+    });
+  },
+  setFilteredText: function(string){
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.FILTER_TEXT,
+      data: string
     });
   },
   selectCharacter: function(character){
@@ -54,31 +53,19 @@ var CharacterActions = {
       data: character
     });
   },
+  toggleCharacters: function(flag){
+    var datas = flag == "true" ? false : true;
+    CharacterDispatcher.handleAction({
+      actionType: CharacterConstants.LIST_STATE,
+      data: datas
+    });
+  },
   createCharacter: function(character){
     CharacterDispatcher.handleAction({
       actionType: CharacterConstants.CREATE_CHARACTER,
       data: character
     });
-  },
-
-  // changeView: function(view, character){
-  //   CharacterDispatcher.handleAction({
-  //     actionType: CharacterConstants.CHANGE_VIEW,
-  //     data: view
-  //   });
-  // },
-  // addCharacter: function(character){
-  //   CharacterDispatcher.handleAction({
-  //     actionType: CharacterConstants.ADD_CHARACTER,
-  //     data: character
-  //   });
-  // },
-  // removeCharacter: function(character){
-  //   CharacterDispatcher.handleAction({
-  //     actionType: CharacterConstants.REMOVE_CHARACTER,
-  //     data: character
-  //   })
-  // }
+  }
 };
 
 module.exports = CharacterActions;

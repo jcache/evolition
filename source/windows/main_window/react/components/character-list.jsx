@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Character from './elements/character.jsx';
+import Search from './elements/search.jsx';
 import CharacterStore from '../stores/character-store.jsx';
-import Formsy from 'formsy-react';
-import FRC from 'formsy-react-components';
-var Input     = FRC.Input;
+import CharacterActions from '../actions/character-actions.jsx';
+
 // DEFINE STORE
 var CharacterList = React.createClass({
   getInitialState: function(){
     return{
       characters: CharacterStore.getAllCharacters(),
+      search_filter: CharacterStore.getFilteredText() != '' ? CharacterStore.getFilteredText() : '',
     }
   },
   componentWillMount: function(){
@@ -23,29 +24,42 @@ var CharacterList = React.createClass({
     $('.list').perfectScrollbar();
   },
   selectCharacter: function(character){
-    evActions.selectedCharacter(character);
+    CharacterActions.selectedCharacter(character);
   },
   _onChange: function(){
     this.setState({
       characters: CharacterStore.getAllCharacters(),
+      search_filter: CharacterStore.getFilteredText() != '' ? CharacterStore.getFilteredText() : '',
     });
   },
   render: function(){
     var list = [];
-    if (this.state.characters) {
+    var filtered_search = this.state.search_filter;
+    if (this.state.characters.length > 0 && this.state.search_filter == '') {
+      // RETURNS ALL CHARACTERS NO FILTER
       this.state.characters.forEach(function(character) {
         list.push(<Character key={character.id} character={character} />);
       });
+      //
+    } else if(this.state.search_filter !== ''){
+      // RETURNS ALL CHARACTERS W/ FILTER SPECIFIED
+      this.state.characters.forEach(function(character) {
+        if(character.character_name.toLowerCase().search(filtered_search.toLowerCase()) == -1) {
+          return;
+        } else if(character.campaign_name.toLowerCase().search(filtered_search.toLowerCase()) == -1){
+        } else {
+          list.push(<Character key={character.id} character={character} />);
+        }
+      });
+      //
     } else {
+      // RETURNS NO CHARACTERS BECAUSE NO CHARACTERS ARE AVAILABLE
       <li className='no-data'>create a character</li>
+      //
     };
-
     return (
       <div className='character-list' id='character-list'>
-        <div className='character-search form-group'>
-
-          <input type='search' className='form-control'/>
-        </div>
+        <Search />
         <div className='list'>
           <ul>
             {list}

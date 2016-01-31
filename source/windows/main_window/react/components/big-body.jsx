@@ -7,7 +7,7 @@ import CharacterList  from './character-list.jsx';
 import Viewport from './viewport.jsx';
 
 var BigBody = React.createClass({
-  getInitialState: function(){
+  getInitialState: function(){ 
     return {
       isListOpen: CharacterStore.getListState(),
     }

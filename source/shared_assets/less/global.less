@@ -149,12 +149,22 @@ html, body, #app {
   flex-flow: column;
   .character-search {
     min-height:44px;
+    padding-bottom:0;
     margin-top:0;
     border-right:1px solid  RGBA(15,57,94,1);
     border-bottom:1px solid  RGBA(15,57,94,1);
     background: RGBA(10,30,54,1);
-    .form-control {
-      margin-bottom:0;
+    .control-label{
+      padding-left:10px;
+      color: RGBA(3,179,242,.6) !important;
+    }
+    .s-group {
+      padding:0 0;
+      input[type=search]{
+        padding:0 10px;
+        margin-bottom:0;
+        background-image: linear-gradient(RGBA(3,179,242,1), RGBA(3,179,242,1)), linear-gradient(RGBA(2,38,71,1), RGBA(2,38,71,1));
+      }
     }
   }
   .list {
@@ -375,8 +385,8 @@ html, body, #app {
 }
 
 .form-control{
-  padding:0 10px !important;
-  background: RGBA(10,25,48,.2) !important;
+  // padding:0 10px !important;
+  background: RGBA(10,25,48,.2) ;
   color: RGBA(255,255,255,.2);
 }
 
@@ -386,7 +396,7 @@ html, body, #app {
 
 .form-group.label-floating label.control-label,
 .form-group.label-placeholder label.control-label {
-  left: 10px;
+  left: 5px;
 }
 
 .stat-list {
@@ -403,7 +413,7 @@ html, body, #app {
   .form-control{
     width:100%;
     border-radius:0;
-    background: RGBA(10,25,48,.2);
+    background: RGBA(10,25,48,.2) !important;
   }
 }
 
@@ -418,7 +428,7 @@ html, body, #app {
 
   .form-control{
     border-radius:0;
-    background: RGBA(10,25,48,.2);
+    background: RGBA(10,25,48,.2) !important;
   }
 }
 

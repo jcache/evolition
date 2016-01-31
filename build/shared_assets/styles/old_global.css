@@ -43,13 +43,6 @@
   background: rgba(10, 25, 48, 0.2) !important;
   color: rgba(255, 255, 255, 0.2);
 }
-.has-feedback label ~ .form-control-feedback {
-  top: 0px ;
-}
-.form-group.label-floating label.control-label,
-.form-group.label-placeholder label.control-label {
-  left: 10px;
-}
 .stat-list {
   padding-left: 0 !important;
 }
