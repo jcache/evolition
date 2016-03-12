@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-var CharacterActions  = require('../actions/character-actions.jsx');
-var CharacterStore  = require('../stores/character-store.jsx');
-
+import CharacterActions from '../actions/character-actions.jsx';
+import CharacterStore from '../stores/character-store.jsx';
 import AddCharacter from './viewports/character.add.jsx';
 import EditCharacter from './viewports/character.edit.jsx';
 import ViewCharacter from './viewports/character.view.jsx';
@@ -13,29 +12,37 @@ import FakePage2 from './viewports/fake.p2.jsx';
 
 let view;
 
-var Viewport = React.createClass({
-  getInitialState: function(){
-    return {
+class Viewport extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
       selected: ev_characters('selected_view').first(),
       character:  CharacterStore.getSelectedCharacter(),
     }
-  },
-  componentWillMount: function(){
+
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentWillMount(){
     CharacterStore.addChangeListener(this._onChange);
-  },
-  componentDidMount: function(){
+  }
+
+  componentDidMount(){
     $('.viewz').perfectScrollbar();
-  },
-  componentWillUnmount: function(){
+  }
+
+  componentWillUnmount(){
     CharacterStore.removeChangeListener(this._onChange);
-  },
-  _onChange: function(){
+  }
+
+  _onChange(){
     this.setState({
       selected: CharacterStore.getSelectedView(),
       character:  CharacterStore.getSelectedCharacter(),
     })
-  },
-  render: function(){
+  }
+
+  render(){
     switch (this.state.selected.view_name) {
       case "default":
         view = <DefaultView />
@@ -57,15 +64,13 @@ var Viewport = React.createClass({
         break;
       default:
     }
-    var classes = {
 
-    };
     return (
       <div className={"col-xs-12 viewz"} id='viewport'>
         {view}
       </div>
     )
   }
-});
+};
 
 module.exports = Viewport

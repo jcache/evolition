@@ -1,43 +1,57 @@
 import React from 'react';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-var CharacterActions  = require('../../actions/character-actions.jsx');
-var CharacterStore  = require('../../stores/character-store.jsx');
+import CharacterActions from '../../actions/character-actions.jsx';
+import CharacterStore from '../../stores/character-store.jsx';
 
-var Character = React.createClass({
-  getInitialState: function(character){
-    return {
+
+class Character extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
       selected_character: CharacterStore.getSelectedCharacter()
     }
-  },
+    this._viewCharacter = this._viewCharacter.bind(this);
+    this._editCharacter = this._editCharacter.bind(this);
+    this._removeCharacter = this._removeCharacter.bind(this);
+    this._onChange = this._onChange.bind(this);
+  }
 
-  componentWillMount: function(){
+
+  componentWillMount() {
     CharacterStore.addChangeListener(this._onChange);
-  },
-  componentWillUnmount: function(){
+  }
+
+  componentWillUnmount() {
     CharacterStore.removeChangeListener(this._onChange);
-  },
-  _selectCharacter: function(character){
+  }
+
+  _selectCharacter(character) {
     CharacterActions.selectCharacter(character);
-  },
-  _viewCharacter: function(e){
+  }
+
+  _viewCharacter(e) {
     e.preventDefault();
     CharacterActions.changeView(e.target.getAttribute("data-view"));
     CharacterActions.viewCharacter(this.props.character);
-  },
-  _editCharacter: function(e){
+  }
+
+  _editCharacter(e) {
     e.preventDefault();
     CharacterActions.changeView(e.target.getAttribute("data-view"));
-  },
-  _removeCharacter: function() {
+  }
+
+  _removeCharacter() {
     CharacterActions.removeCharacter(this.props.character);
-  },
-  _onChange: function(){
+  }
+
+  _onChange() {
     this.setState({
       selected_character: CharacterStore.getSelectedCharacter()
     });
-  },
-  render: function(){
+  }
+
+  render() {
     var active_character = "";
     var show_option = {};
     var character = this.props.character;
@@ -81,6 +95,5 @@ var Character = React.createClass({
       </li>
     )
   }
-
-});
+}
 module.exports = Character

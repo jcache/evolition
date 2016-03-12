@@ -11,7 +11,6 @@ var DefaultView = React.createClass({
             <div className="viewport-header">
               <h1>Default Characters</h1>
             </div>
-
           </div>
         </div>
       </ReactCSSTransitionGroup>

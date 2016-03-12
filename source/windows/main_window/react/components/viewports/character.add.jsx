@@ -3,35 +3,39 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import FRC from 'formsy-react-components';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-var CharacterActions  = require('../../actions/character-actions.jsx');
-var CharacterStore  = require('../../stores/character-store.jsx');
+import CharacterActions from '../../actions/character-actions.jsx';
+import CharacterStore from '../../stores/character-store.jsx';
 import StatList from '../elements/stat-list.jsx';
 
-var Input     = FRC.Input;
-var File      = FRC.File;
-var Select    = FRC.Select;
-var Textarea  = FRC.Textarea;
-//
-var AddCharacter = React.createClass({
-  getInitialState: function() {
-    return {
+let {Input, File, Select, Textarea} = FRC;
+
+class AddCharacter  extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
       layout: 'vertical',
       validatePristine: false,
       stats: CharacterStore.getStats(),
       saved:  false,
       disabled: false
-    };
-  },
-  componentWillMount: function(){
+    }
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentWillMount() {
     CharacterStore.addChangeListener(this._onChange);
-  },
-  componentWillUnmount: function(){
+  }
+
+  componentWillUnmount() {
     CharacterStore.removeChangeListener(this._onChange);
-  },
-  resetForm: function() {
+  }
+
+  resetForm() {
     this.refs.form.reset();
-  },
-  submitForm: function(captured) {
+  }
+
+  submitForm(captured) {
     var data = captured;
     data.profile_pic = '';
     var resource_path = captured.pic[0].path;
@@ -45,27 +49,30 @@ var AddCharacter = React.createClass({
       CharacterActions.createCharacter(data);
       if (err) return console.error(err)
     }) // copies file
+  }
 
-
-  },
-  changeOption: function(name, value) {
+  changeOption(name, value) {
     var newState = {};
     newState[name] = value;
     this.setState(newState);
-  }, 
+  }
+
   enableButton() {
     this.setState({ canSubmit: true });
-  },
+  }
+
   disableButton() {
     this.setState({ canSubmit: false });
-  },
-  _onChange: function(){
+  }
+
+  _onChange(){
     this.setState({
       saved: true,
       stats: CharacterStore.getStats(),
     })
-  },
-  render: function(){
+  }
+
+  render(){
     var formClassName = '';
     var character_stats = [];
     var stats = this.state.stats;
@@ -146,6 +153,6 @@ var AddCharacter = React.createClass({
       </ReactCSSTransitionGroup>
     )
   }
-});
-//
+};
+
 module.exports = AddCharacter
