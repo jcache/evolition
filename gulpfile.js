@@ -11,190 +11,187 @@
     Tyson talk for an extended period of time!
 */
 
-const ER = require('./routes.js')
-const gulp = require('gulp')
-const source = require('vinyl-source-stream')
-const browserify = require('browserify')
-const glob = require('glob')
-const es = require('event-stream')
-const babel = require('gulp-babel')
-const sass = require('gulp-sass')
-const jade = require('jade')
-const gulpJade = require('gulp-jade')
-const eslint = require('gulp-eslint')
-const rename = require('gulp-rename')
-const useref = require('gulp-useref')
-const replace = require('gulp-replace')
-const electron = require('electron-connect').server.create()
-const electronPackager = require('gulp-atom-electron')
-const symdest = require('gulp-symdest')
-const zip = require('gulp-vinyl-zip')
+const ER = require('./routes.js');
+const gulp = require('gulp');
+const source = require('vinyl-source-stream');
+const browserify = require('browserify');
+const glob = require('glob');
+const es = require('event-stream');
+const babel = require('gulp-babel');
+const sass = require('gulp-sass');
+const jade = require('jade');
+const gulpJade = require('gulp-jade');
+const eslint = require('gulp-eslint');
+const rename = require('gulp-rename');
+const useref = require('gulp-useref');
+const replace = require('gulp-replace');
+const electron = require('electron-connect').server.create();
+const electronPackager = require('gulp-atom-electron');
+const symdest = require('gulp-symdest');
+const zip = require('gulp-vinyl-zip');
 
-const electronVersion = require('electron-prebuilt/package.json').version
+const electronVersion = require('electron-prebuilt/package.json').version;
 
 /* These are the building tasks! */
 
 gulp.task('build-client-window-a-bundles', (done) => {
   glob(ER.WIN_A_ENTRY_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
     let tasks = files.map((entry) => {
       return browserify({ entries: [entry], debug:true })
-        .transform('babelify', { presets: [ 'es2015', 'react' ] })
+        .transform('babelify', { presets: ['es2015', 'react'] })
         .bundle()
         .pipe(source(entry))
         .pipe(rename({
-          dirname: 'windows/main_window/scripts'
+          dirname: 'windows/main_window/scripts',
         }))
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
-    es.merge(tasks).on('end', done)
-  })
-})
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client-window-b-bundles', (done) => {
   glob(ER.WIN_B_ENTRY_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
     let tasks = files.map((entry) => {
       return browserify({ entries: [entry], debug:true })
-        .transform('babelify', { presets: [ 'es2015', 'react' ] })
+        .transform('babelify', { presets: ['es2015', 'react'] })
         .bundle()
         .pipe(source(entry))
         .pipe(rename({
-          dirname: 'windows/character_sheet/scripts'
+          dirname: 'windows/character_sheet/scripts',
         }))
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
+    es.merge(tasks).on('end', done);
+  });
+});
 
-gulp.task('build-client-scss', (done) => {
+gulp.task('build-shared-scss', (done) => {
   glob(ER.SCSS_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: ER.APP_PATH})
+      return gulp.src(entry, { base: ER.APP_PATH })
         .pipe(sass())
         .pipe(rename({
-          dirname: 'shared/css'
+          dirname: 'shared/css',
         }))
-        .pipe(gulp.dest(ER.DEST_SHARED_PATH))
-    })
+        .pipe(gulp.dest(ER.DEST_SHARED_PATH));
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client-window-scss', (done) => {
   glob(ER.WINDOW_SCSS_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: ER.APP_PATH})
+      return gulp.src(entry, { base: ER.APP_PATH })
         .pipe(sass())
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
-
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client-jade', (done) => {
   glob(ER.JADE_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: ER.APP_PATH})
-        .pipe(gulpJade({jade: jade, pretty: true}))
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
-    es.merge(tasks).on('end', done)
-  })
-})
+      return gulp.src(entry, { base: ER.APP_PATH })
+        .pipe(gulpJade({ jade: jade, pretty: true }))
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client-jade-production', (done) => {
   glob(ER.JADE_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: ER.APP_PATH})
-        .pipe(gulpJade({jade: jade, pretty: true}))
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
-    es.merge(tasks).on('end', done)
-  })
-})
+      return gulp.src(entry, { base: ER.APP_PATH })
+        .pipe(gulpJade({ jade: jade, pretty: true }))
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
+    es.merge(tasks).on('end', done);
+  });
+});
 
 //
 
-gulp.task('build-client-assets', (done) => {
+gulp.task('build-shared-assets', (done) => {
   glob(ER.IMGS_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: ER.APP_PATH})
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
+      return gulp.src(entry, { base: ER.APP_PATH })
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
-//
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client-window-images', (done) => {
   glob(ER.WINDOW_IMGS_PATH, (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: ER.APP_PATH})
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
+      return gulp.src(entry, { base: ER.APP_PATH })
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
-
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client', [
   'build-client-window-scss',
   'build-client-window-images',
   'build-client-window-a-bundles',
   'build-client-window-b-bundles',
-  'build-client-scss',
+  'build-shared-scss',
   'build-client-jade',
-  'build-client-assets'
-])
+  'build-shared-assets',
+]);
 
 gulp.task('build-client-production', [
   'build-client-window-scss',
   'build-client-window-images',
   'build-client-window-a-bundles',
   'build-client-window-b-bundles',
-  'build-client-scss',
+  'build-shared-scss',
   'build-client-jade-production',
-  'build-client-assets'
-])
+  'build-shared-assets',
+]);
 
 gulp.task('build-server', (done) => {
   glob('./src/*.js', (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
       return gulp.src(entry)
         .pipe(babel({ presets: ['es2015'] }))
-        .pipe(gulp.dest(ER.DEST_PATH))
-    })
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
+    es.merge(tasks).on('end', done);
+  });
+});
 
-gulp.task('build', ['build-client', 'build-server'])
+gulp.task('build', ['build-client', 'build-server']);
 
 gulp.task('build-production', ['build-client-production', 'build-server'], () => {
   gulp.src('./package.json')
     .pipe(replace('build/index.js', 'index.js'))
-    .pipe(gulp.dest(ER.DEST_PATH))
+    .pipe(gulp.dest(ER.DEST_PATH));
 })
 
 /* These are the watch tasks! */
@@ -202,14 +199,14 @@ gulp.task('build-production', ['build-client-production', 'build-server'], () =>
 gulp.task('watch-client', () => {
   gulp.watch('./app/**/*', ['build-client'], (e) => {
     console.log('Client file ' + e.path + ' was ' + e.type + ', rebuilding...')
-  })
-})
+  });
+});
 
 gulp.task('watch-server', () => {
   gulp.watch('./src/**/*', ['build-server'], (e) => {
-    console.log('Server file ' + e.path + ' was ' + e.type + ', rebuilding...')
-  })
-})
+    console.log('Server file ' + e.path + ' was ' + e.type + ', rebuilding...');
+  });
+});
 
 gulp.task('watch', ['watch-client', 'watch-server'])
 
@@ -217,60 +214,62 @@ gulp.task('watch', ['watch-client', 'watch-server'])
 
 gulp.task('lint-client', (done) => {
   glob('./app/**/*.js', (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
       return gulp.src(entry)
         .pipe(eslint())
-        .pipe(eslint.format())
-    })
+        .pipe(eslint.format());
+    });
 
-    es.merge(tasks).on('end', done)
-  })
-})
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('lint-server', (done) => {
   glob('./src/**/*.js', (err, files) => {
-    if (err) done(err)
+    if (err) done(err);
 
     let tasks = files.map((entry) => {
       return gulp.src(entry)
         .pipe(eslint())
-        .pipe(eslint.format())
-    })
+        .pipe(eslint.format());
+    });
 
     es.merge(tasks).on('end', done)
-  })
-})
+  });
+});
 
-gulp.task('lint', ['lint-client', 'lint-server'])
+gulp.task('lint', ['lint-client', 'lint-server']);
 
 /* This is the serve task! */
 
 gulp.task('serve', ['build', 'watch'], () => {
-  electron.start()
-  gulp.watch('./build/index.js', electron.restart)
+  electron.start();
+
+  gulp.watch('./build/index.js', electron.restart);
+
   gulp.watch([
     './build/shared/js/*.js',
     './build/shared/css/*.js',
     './build/windows/**/*.js',
-    './build/**/*.css'
-  ], electron.reload)
-})
+    './build/**/*.css',
+  ], electron.reload);
+});
 
 /* These are the packaging tasks! */
 
 gulp.task('package-osx', ['build-production'], () => {
   return gulp.src('./build/**')
     .pipe(electronPackager({ version: electronVersion, platform: 'darwin' }))
-    .pipe(symdest('release'))
-})
+    .pipe(symdest('release'));
+});
 
 gulp.task('package-windows', ['build-production'], () => {
   return gulp.src('./build/**')
     .pipe(electronPackager({ version: electronVersion, platform: 'win32' }))
-    .pipe(zip.dest('./release/windows.zip'))
-})
+    .pipe(zip.dest('./release/windows.zip'));
+});
 
 gulp.task('package-linux', ['build-production'], () => {
   return gulp.src('./build/**')
