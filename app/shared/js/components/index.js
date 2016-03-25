@@ -7,7 +7,7 @@ module.exports = React.createClass({
       image_src: image
     }
   },
-
+ 
   render () {
     return (
       <div>

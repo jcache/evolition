@@ -10,17 +10,27 @@ const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow = void 0;
 
 let createWindow = () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({
+    width: 1070,
+    height: 850,
+    resizable: true,
+    frame: false,
+  })
 
   // and load the index.html of the app.
-  mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+  mainWindow.loadURL(path.join('file://', __dirname, '/windows/main_window/index.html'))
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    console.log("windows loaded...", mainWindow.webContents.isLoading());
+    mainWindow.show();
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -30,6 +40,8 @@ let createWindow = () => {
     mainWindow = null
   })
 }
+
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -51,4 +63,3 @@ app.on('activate', () => {
     createWindow()
   }
 })
-

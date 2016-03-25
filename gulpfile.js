@@ -34,19 +34,35 @@ const electronVersion = require('electron-prebuilt/package.json').version
 
 /* These are the building tasks! */
 
-gulp.task('build-client-bundles', (done) => {
-  glob('./app/js/*.js', (err, files) => {
+gulp.task('build-client-window-a-bundles', (done) => {
+  glob(ER.WIN_A_ENTRY_PATH, (err, files) => {
     if (err) done(err)
-
     let tasks = files.map((entry) => {
-      return browserify({ entries: [entry] })
+      return browserify({ entries: [entry], debug:true })
         .transform('babelify', { presets: [ 'es2015', 'react' ] })
         .bundle()
         .pipe(source(entry))
         .pipe(rename({
-          dirname: 'js'
+          dirname: 'windows/main_window/scripts'
         }))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest(ER.DEST_PATH))
+    })
+    es.merge(tasks).on('end', done)
+  })
+})
+
+gulp.task('build-client-window-b-bundles', (done) => {
+  glob(ER.WIN_B_ENTRY_PATH, (err, files) => {
+    if (err) done(err)
+    let tasks = files.map((entry) => {
+      return browserify({ entries: [entry], debug:true })
+        .transform('babelify', { presets: [ 'es2015', 'react' ] })
+        .bundle()
+        .pipe(source(entry))
+        .pipe(rename({
+          dirname: 'windows/character_sheet/scripts'
+        }))
+        .pipe(gulp.dest(ER.DEST_PATH))
     })
 
     es.merge(tasks).on('end', done)
@@ -58,11 +74,25 @@ gulp.task('build-client-scss', (done) => {
     if (err) done(err)
 
     let tasks = files.map((entry) => {
-      return gulp.src(entry)
+      return gulp.src(entry, {base: ER.APP_PATH})
         .pipe(sass())
         .pipe(rename({
-          dirname: 'css'
+          dirname: 'shared/css'
         }))
+        .pipe(gulp.dest(ER.DEST_SHARED_PATH))
+    })
+
+    es.merge(tasks).on('end', done)
+  })
+})
+
+gulp.task('build-client-window-scss', (done) => {
+  glob(ER.WINDOW_SCSS_PATH, (err, files) => {
+    if (err) done(err)
+
+    let tasks = files.map((entry) => {
+      return gulp.src(entry, {base: ER.APP_PATH})
+        .pipe(sass())
         .pipe(gulp.dest(ER.DEST_PATH))
     })
 
@@ -70,53 +100,26 @@ gulp.task('build-client-scss', (done) => {
   })
 })
 
-gulp.task('build-client-html', (done) => {
-  glob('./app/*.html', (err, files) => {
-    if (err) done(err)
-
-    let tasks = files.map((entry) => {
-      return gulp.src(entry)
-        .pipe(gulp.dest('./build'))
-    })
-
-    es.merge(tasks).on('end', done)
-  })
-})
-gulp.task('build-client-html-production', (done) => {
-  glob('./app/*.html', (err, files) => {
-    if (err) done(err)
-
-    let tasks = files.map((entry) => {
-      return gulp.src(entry)
-        .pipe(useref())
-        .pipe(gulp.dest('./build'))
-    })
-
-    es.merge(tasks).on('end', done)
-  })
-})
-//
-
 
 gulp.task('build-client-jade', (done) => {
-  glob('./app/windows/**/*.jade', (err, files) => {
+  glob(ER.JADE_PATH, (err, files) => {
     if (err) done(err)
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: './app'})
+      return gulp.src(entry, {base: ER.APP_PATH})
         .pipe(gulpJade({jade: jade, pretty: true}))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest(ER.DEST_PATH))
     })
     es.merge(tasks).on('end', done)
   })
 })
 
 gulp.task('build-client-jade-production', (done) => {
-  glob('./app/windows/**/*.jade', (err, files) => {
+  glob(ER.JADE_PATH, (err, files) => {
     if (err) done(err)
     let tasks = files.map((entry) => {
-      return gulp.src(entry, {base: './app'})
+      return gulp.src(entry, {base: ER.APP_PATH})
         .pipe(gulpJade({jade: jade, pretty: true}))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest(ER.DEST_PATH))
     })
     es.merge(tasks).on('end', done)
   })
@@ -129,11 +132,21 @@ gulp.task('build-client-assets', (done) => {
     if (err) done(err)
 
     let tasks = files.map((entry) => {
-      console.log(entry)
-      return gulp.src(entry)
-        .pipe(rename({
-          dirname: 'assets'
-        }))
+      return gulp.src(entry, {base: ER.APP_PATH})
+        .pipe(gulp.dest(ER.DEST_PATH))
+    })
+
+    es.merge(tasks).on('end', done)
+  })
+})
+//
+
+gulp.task('build-client-window-images', (done) => {
+  glob(ER.WINDOW_IMGS_PATH, (err, files) => {
+    if (err) done(err)
+
+    let tasks = files.map((entry) => {
+      return gulp.src(entry, {base: ER.APP_PATH})
         .pipe(gulp.dest(ER.DEST_PATH))
     })
 
@@ -141,9 +154,26 @@ gulp.task('build-client-assets', (done) => {
   })
 })
 
-gulp.task('build-client', ['build-client-bundles', 'build-client-scss', 'build-client-html', 'build-client-jade', 'build-client-assets'])
 
-gulp.task('build-client-production', ['build-client-bundles', 'build-client-scss', 'build-client-html-production','build-client-jade-production', 'build-client-assets'])
+gulp.task('build-client', [
+  'build-client-window-scss',
+  'build-client-window-images',
+  'build-client-window-a-bundles',
+  'build-client-window-b-bundles',
+  'build-client-scss',
+  'build-client-jade',
+  'build-client-assets'
+])
+
+gulp.task('build-client-production', [
+  'build-client-window-scss',
+  'build-client-window-images',
+  'build-client-window-a-bundles',
+  'build-client-window-b-bundles',
+  'build-client-scss',
+  'build-client-jade-production',
+  'build-client-assets'
+])
 
 gulp.task('build-server', (done) => {
   glob('./src/*.js', (err, files) => {
@@ -152,7 +182,7 @@ gulp.task('build-server', (done) => {
     let tasks = files.map((entry) => {
       return gulp.src(entry)
         .pipe(babel({ presets: ['es2015'] }))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest(ER.DEST_PATH))
     })
 
     es.merge(tasks).on('end', done)
@@ -164,7 +194,7 @@ gulp.task('build', ['build-client', 'build-server'])
 gulp.task('build-production', ['build-client-production', 'build-server'], () => {
   gulp.src('./package.json')
     .pipe(replace('build/index.js', 'index.js'))
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest(ER.DEST_PATH))
 })
 
 /* These are the watch tasks! */
@@ -220,7 +250,12 @@ gulp.task('lint', ['lint-client', 'lint-server'])
 gulp.task('serve', ['build', 'watch'], () => {
   electron.start()
   gulp.watch('./build/index.js', electron.restart)
-  gulp.watch(['./build/js/*.js', './build/css/*.css'], electron.reload)
+  gulp.watch([
+    './build/shared/js/*.js',
+    './build/shared/css/*.js',
+    './build/windows/**/*.js',
+    './build/**/*.css'
+  ], electron.reload)
 })
 
 /* These are the packaging tasks! */
