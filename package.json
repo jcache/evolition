@@ -36,6 +36,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.2.0",
+    "gulp-jade": "^1.1.0",
+    "jade": "~1.11.0",
     "gulp-symdest": "^1.0.0",
     "gulp-useref": "^3.0.6",
     "gulp-vinyl-zip": "^1.1.2",

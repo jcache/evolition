@@ -11,6 +11,7 @@
     Tyson talk for an extended period of time!
 */
 
+const ER = require('./routes.js')
 const gulp = require('gulp')
 const source = require('vinyl-source-stream')
 const browserify = require('browserify')
@@ -18,6 +19,8 @@ const glob = require('glob')
 const es = require('event-stream')
 const babel = require('gulp-babel')
 const sass = require('gulp-sass')
+const jade = require('jade')
+const gulpJade = require('gulp-jade')
 const eslint = require('gulp-eslint')
 const rename = require('gulp-rename')
 const useref = require('gulp-useref')
@@ -51,7 +54,7 @@ gulp.task('build-client-bundles', (done) => {
 })
 
 gulp.task('build-client-scss', (done) => {
-  glob('./app/scss/*.scss', (err, files) => {
+  glob(ER.SCSS_PATH, (err, files) => {
     if (err) done(err)
 
     let tasks = files.map((entry) => {
@@ -60,7 +63,7 @@ gulp.task('build-client-scss', (done) => {
         .pipe(rename({
           dirname: 'css'
         }))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest(ER.DEST_PATH))
     })
 
     es.merge(tasks).on('end', done)
@@ -79,7 +82,6 @@ gulp.task('build-client-html', (done) => {
     es.merge(tasks).on('end', done)
   })
 })
-
 gulp.task('build-client-html-production', (done) => {
   glob('./app/*.html', (err, files) => {
     if (err) done(err)
@@ -93,9 +95,37 @@ gulp.task('build-client-html-production', (done) => {
     es.merge(tasks).on('end', done)
   })
 })
+//
+
+
+gulp.task('build-client-jade', (done) => {
+  glob('./app/windows/**/*.jade', (err, files) => {
+    if (err) done(err)
+    let tasks = files.map((entry) => {
+      return gulp.src(entry, {base: './app'})
+        .pipe(gulpJade({jade: jade, pretty: true}))
+        .pipe(gulp.dest('./build'))
+    })
+    es.merge(tasks).on('end', done)
+  })
+})
+
+gulp.task('build-client-jade-production', (done) => {
+  glob('./app/windows/**/*.jade', (err, files) => {
+    if (err) done(err)
+    let tasks = files.map((entry) => {
+      return gulp.src(entry, {base: './app'})
+        .pipe(gulpJade({jade: jade, pretty: true}))
+        .pipe(gulp.dest('./build'))
+    })
+    es.merge(tasks).on('end', done)
+  })
+})
+
+//
 
 gulp.task('build-client-assets', (done) => {
-  glob('./app/assets/**/*', (err, files) => {
+  glob(ER.IMGS_PATH, (err, files) => {
     if (err) done(err)
 
     let tasks = files.map((entry) => {
@@ -104,16 +134,16 @@ gulp.task('build-client-assets', (done) => {
         .pipe(rename({
           dirname: 'assets'
         }))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest(ER.DEST_PATH))
     })
 
     es.merge(tasks).on('end', done)
   })
 })
 
-gulp.task('build-client', ['build-client-bundles', 'build-client-scss', 'build-client-html', 'build-client-assets'])
+gulp.task('build-client', ['build-client-bundles', 'build-client-scss', 'build-client-html', 'build-client-jade', 'build-client-assets'])
 
-gulp.task('build-client-production', ['build-client-bundles', 'build-client-scss', 'build-client-html-production', 'build-client-assets'])
+gulp.task('build-client-production', ['build-client-bundles', 'build-client-scss', 'build-client-html-production','build-client-jade-production', 'build-client-assets'])
 
 gulp.task('build-server', (done) => {
   glob('./src/*.js', (err, files) => {

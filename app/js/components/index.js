@@ -1,7 +1,7 @@
 module.exports = React.createClass({
   getInitialState () {
     let shiny = ((Math.random() * 8192) > 8191)
-    let image = shiny ? 'assets/sprite_shiny.png' : 'assets/sprite.png'
+    let image = shiny ? 'images/sprite_shiny.png' : 'images/sprite.png'
     return {
       shiny: shiny,
       image_src: image
