@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
   Hello!
@@ -192,13 +192,13 @@ gulp.task('build-production', ['build-client-production', 'build-server'], () =>
   gulp.src('./package.json')
     .pipe(replace('build/index.js', 'index.js'))
     .pipe(gulp.dest(ER.DEST_PATH));
-})
+});
 
 /* These are the watch tasks! */
 
 gulp.task('watch-client', () => {
   gulp.watch('./app/**/*', ['build-client'], (e) => {
-    console.log('Client file ' + e.path + ' was ' + e.type + ', rebuilding...')
+    console.log('Client file ' + e.path + ' was ' + e.type + ', rebuilding...');
   });
 });
 
@@ -208,7 +208,7 @@ gulp.task('watch-server', () => {
   });
 });
 
-gulp.task('watch', ['watch-client', 'watch-server'])
+gulp.task('watch', ['watch-client', 'watch-server']);
 
 /* These are the linting tasks! */
 
@@ -236,7 +236,7 @@ gulp.task('lint-server', (done) => {
         .pipe(eslint.format());
     });
 
-    es.merge(tasks).on('end', done)
+    es.merge(tasks).on('end', done);
   });
 });
 
@@ -274,7 +274,7 @@ gulp.task('package-windows', ['build-production'], () => {
 gulp.task('package-linux', ['build-production'], () => {
   return gulp.src('./build/**')
     .pipe(electronPackager({ version: electronVersion, platform: 'linux' }))
-    .pipe(zip.dest('./release/linux.zip'))
-})
+    .pipe(zip.dest('./release/linux.zip'));
+});
 
-gulp.task('package', ['build-production', 'package-windows', 'package-osx', 'package-linux'])
+gulp.task('package', ['build-production', 'package-windows', 'package-osx', 'package-linux']);

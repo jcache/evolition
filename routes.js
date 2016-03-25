@@ -1,4 +1,5 @@
 'use strict';
+
 // EVOLITION ROUTES
 var ER = {
   APP_PATH: './app',
@@ -12,7 +13,8 @@ var ER = {
   WIN_A_ENTRY_PATH: './app/windows/main_window/scripts/*.js',
   WIN_B_ENTRY_PATH: './app/windows/character_sheet/scripts/*.js',
   DEST_SHARED_PATH: './build',
-  DEST_PATH: './build'
+  DEST_PATH: './build',
 };
+
 // EXPORT CLASS
-module.exports = ER
+module.exports = ER;
