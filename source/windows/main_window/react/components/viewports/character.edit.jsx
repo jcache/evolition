@@ -57,6 +57,11 @@ var EditCharacter = React.createClass({
     newState[name] = value;
     this.setState(newState);
   },
+  _onChangeView: function(e){
+    e.preventDefault();
+    var view = e.target.getAttribute("data-view");
+    CharacterActions.changeView(view);
+  },
   _onChange: function(){
     this.setState({
       character: CharacterStore.getSelectedCharacter(),
@@ -96,7 +101,7 @@ var EditCharacter = React.createClass({
         <div className='row view-handler' id='character-edit-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
-              <h1>Edit {character.character_name}</h1>
+              <h1>Edit {character.character_name} <a onClick={this._onChangeView} data-view='character_view' className='btn pull-right btn-primary'>View Character</a></h1>
             </div>
             <Formsy.Form className={formClassName} onSubmit={this.submitForm} ref="form">
               <div className='col-xs-2 stat-list'>

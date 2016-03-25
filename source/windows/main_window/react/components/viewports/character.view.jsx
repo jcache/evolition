@@ -16,7 +16,12 @@ var ViewCharacter = React.createClass({
   componentWillUnmount: function(){
     CharacterStore.removeChangeListener(this._onChange);
   },
-  _onChange: function(){ 
+  _onChangeView: function(e){
+    e.preventDefault();
+    var view = e.target.getAttribute("data-view");
+    CharacterActions.changeView(view);
+  },
+  _onChange: function(){
     this.setState({
       changed: true,
     })
@@ -39,7 +44,7 @@ var ViewCharacter = React.createClass({
         <div className='row view-handler' id='character-edit-view'>
           <div className='col-xs-12 viewport-container'>
             <div className="viewport-header">
-              <h1>View Character</h1>
+              <h1>View Character<a onClick={this._onChangeView} data-view='character_edit' className='btn pull-right btn-primary'>Edit Character</a></h1>
             </div>
             <div className='viewport-body'>
               <div className='row'>

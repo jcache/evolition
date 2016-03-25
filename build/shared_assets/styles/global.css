@@ -310,7 +310,8 @@ body,
 }
 #viewport .viewport-container .viewport-body .contain-photo {
   position: relative;
-  top: -40px;
+  top: 0px;
+  right: 15px;
   border-radius: 3px;
   border: 4px solid #0a1e36;
   width: 130px;
