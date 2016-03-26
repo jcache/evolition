@@ -1,8 +1,13 @@
 'use strict';
 
 const React = require('react');
-const ReactDOM = require('react-dom');
+import { render } from 'react-dom';
+import { Router, Route, Link, browserHistory } from 'react-router'
 
 let Index = require('./components/index.js');
 
-ReactDOM.render(<Index />, document.getElementById('content'));
+render((
+  <Router history={browserHistory}>
+    <Route path="*" component={Index}/>
+  </Router>
+), document.getElementById('content'))

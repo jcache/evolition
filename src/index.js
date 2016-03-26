@@ -18,7 +18,7 @@ let sheetWindow = void 0;
 let createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1070,
+    width: 800,
     height: 850,
     resizable: true,
     frame: false,
@@ -26,17 +26,17 @@ let createWindow = () => {
 
   // Create the browser window.
   sheetWindow = new BrowserWindow({
-    width: 1070,
+    width: 800,
     height: 850,
     resizable: true,
     frame: false,
   });
 
-  mainWindow.setPosition(10, 100);
-  mainWindow.setPosition(20, 100);
+  mainWindow.setPosition(30, 100);
+  sheetWindow.setPosition(840, 100);
 
   // and load the index.html of the app.
-  mainWindow.loadURL(path.join('file://', __dirname, '/windows/main_window/index.html'));
+  mainWindow.loadURL(path.join('file://', __dirname,  '/windows/main_window/index.html'));
   sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
 
   // // Open the DevTools.
