@@ -250,9 +250,9 @@ gulp.task('serve', ['build', 'watch'], () => {
   gulp.watch('./build/index.js', electron.restart);
 
   gulp.watch([
-    './build/shared/js/*.js',
-    './build/shared/css/*.js',
-    './build/windows/**/*.js',
+    './build/shared/images/*',
+    './build/shared/css/*.css',
+    './build/windows/**/scripts/app.js',
     './build/**/*.css',
   ], electron.reload);
 });
@@ -262,19 +262,22 @@ gulp.task('serve', ['build', 'watch'], () => {
 gulp.task('package-osx', ['build-production'], () => {
   return gulp.src('./build/**')
     .pipe(electronPackager({ version: electronVersion, platform: 'darwin' }))
-    .pipe(symdest('release'));
+    .pipe(symdest('release/osx'));
 });
 
 gulp.task('package-windows', ['build-production'], () => {
   return gulp.src('./build/**')
     .pipe(electronPackager({ version: electronVersion, platform: 'win32' }))
-    .pipe(zip.dest('./release/windows.zip'));
+    .pipe(symdest('release/windows'));
 });
+
+
+
 
 gulp.task('package-linux', ['build-production'], () => {
   return gulp.src('./build/**')
     .pipe(electronPackager({ version: electronVersion, platform: 'linux' }))
-    .pipe(zip.dest('./release/linux.zip'));
+    .pipe(zip.dest('./release/linux/linux.zip'));
 });
 
 gulp.task('package', ['build-production', 'package-windows', 'package-osx', 'package-linux']);

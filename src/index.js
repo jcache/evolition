@@ -18,26 +18,26 @@ let sheetWindow = void 0;
 let createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1070,
     height: 850,
     resizable: true,
     frame: false,
   });
+  //
+  // // Create the browser window.
+  // sheetWindow = new BrowserWindow({
+  //   width: 800,
+  //   height: 850,
+  //   resizable: true,
+  //   frame: false,
+  // });
 
-  // Create the browser window.
-  sheetWindow = new BrowserWindow({
-    width: 800,
-    height: 850,
-    resizable: true,
-    frame: false,
-  });
-
-  mainWindow.setPosition(30, 100);
-  sheetWindow.setPosition(840, 100);
+  mainWindow.setPosition(550, 100);
+  // sheetWindow.setPosition(840, 100);
 
   // and load the index.html of the app.
   mainWindow.loadURL(path.join('file://', __dirname,  '/windows/main_window/index.html'));
-  sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
+  // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
 
   // // Open the DevTools.
   // mainWindow.webContents.openDevTools();
@@ -46,7 +46,7 @@ let createWindow = () => {
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
-    sheetWindow.show();
+    // sheetWindow.show();
   });
 
   // Emitted when the window is closed.
@@ -55,7 +55,7 @@ let createWindow = () => {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
-    sheetWindow = null;
+    // sheetWindow = null;
   });
 };
 

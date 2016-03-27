@@ -1,13 +1,33 @@
 'use strict';
 
 const React = require('react');
+const Base = require('./base.js');
 import { render } from 'react-dom'
-import { Router, Route, Link, browserHistory } from 'react-router'
 
-let Index = require('./components/index.js');
+class App extends React.Component {
 
-render((
-  <Router history={browserHistory}>
-    <Route path="*" component={Index}/>
-  </Router>
-), document.getElementById('content'))
+  constructor(props){
+    super(props);
+    this.state = {
+      authenticated: "false",
+    }
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentWillMount(){}
+
+  componentDidMount(){}
+
+  componentWillUnmount(){}
+
+  _onChange(){}
+
+  render(){
+    return(
+      <Base authenticated={this.state.authenticated} />
+    )
+  }
+};
+
+
+render(<App />, document.getElementById('evolition'));

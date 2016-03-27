@@ -1,2 +1,25 @@
-body{
-} 
+@import "../../../shared/scss/global";
+
+.ev {
+  flex:1;
+  display:flex;
+  .app {
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    &.login-screen {
+      background: #fdfdfd;
+    }
+  }
+}
+
+.login-container {
+  padding:0;
+  background:#fff;
+  min-width:200px;
+  max-width:400px;
+  flex:1;
+  flex-shrink: 1;
+  height:450px;
+}
