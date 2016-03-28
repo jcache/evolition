@@ -1,26 +1,27 @@
 'use strict';
 
 const electron = require('electron');
+const ipcMain = require('ipc-main');
 
 // Module to control application life.
 const app = electron.app;
-
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
-
+require('crash-reporter').start();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = void 0;
 let sheetWindow = void 0;
 
+
 let createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1070,
-    height: 850,
-    resizable: true,
+    width: 440,
+    height: 500,
+    resizable: false,
     frame: false,
   });
   //
@@ -40,13 +41,30 @@ let createWindow = () => {
   // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
 
   // // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools({detach:false})
 
   mainWindow.webContents.on('did-finish-load', () => {
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
     // sheetWindow.show();
+  });
+
+  ipcMain.on('app_close', function(event) {
+    mainWindow.close();
+    app.quit();
+  });
+
+
+  ipcMain.on('app_minimize', function(event) {
+    mainWindow.minimize();
+  });
+
+  ipcMain.on('resize-to-main', function(e) {
+    mainWindow.setSize(1070, 650, true)
+  });
+  ipcMain.on('resize-to-login', function(e) {
+    mainWindow.setSize(440, 500, true)
   });
 
   // Emitted when the window is closed.
