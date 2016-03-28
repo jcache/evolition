@@ -5,7 +5,7 @@ const React = require('react');
 
 class SignedIn extends React.Component {
 
-  constructor(props){
+  constructor(props){ 
     super(props);
     this.state = {} // state
     this._onChange = this._onChange.bind(this);

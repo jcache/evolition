@@ -17,7 +17,6 @@ class Anon extends React.Component {
 
   _onAppCTRL(cmd, bool){
     ipc.send(cmd);
-    alert(bool);
   }
 
   render(){

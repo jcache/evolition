@@ -31,7 +31,7 @@ class Base extends React.Component {
 
     return(
       <div className='app'>
-        <Anon shown={this.state.authenticated == false ? 'shown' : 'hidden'}/>
+        <Anon shown={this.state.authenticated == false ? 'hidden' : 'shown'}/>
         <SignedIn shown={this.state.authenticated == true ? 'shown' : 'hidden'}/>
       </div>
     )

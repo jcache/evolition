@@ -78,10 +78,11 @@ let createWindow = () => {
   ipcMain.on('resize-to-login', function(e) {
     var options = {
       width: 440,
-      height: 550,
+      height: 550, 
       x: 550,
       y: 100,
     }
+
     mainWindow.setBounds(options, true);
     console.log(app.getAppPath())
 
