@@ -9,7 +9,14 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
-require('crash-reporter').start();
+require('crash-reporter').start(
+  {
+    productName: 'evolition',
+    companyName: 'evolition.io',
+    submitURL: 'https://evolition.io',
+    autoSubmit: true
+  }
+);
 // require('electron').hideInternalModules();
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -78,7 +85,7 @@ let createWindow = () => {
   ipcMain.on('resize-to-login', function(e) {
     var options = {
       width: 440,
-      height: 550, 
+      height: 550,
       x: 550,
       y: 100,
     }
