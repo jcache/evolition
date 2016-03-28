@@ -10,6 +10,8 @@ const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 require('crash-reporter').start();
+// require('electron').hideInternalModules();
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = void 0;
@@ -22,6 +24,8 @@ let createWindow = () => {
     width: 440,
     height: 500,
     resizable: false,
+    backgroundColor: "#062A4B",
+    hasShadow: false,
     frame: false,
   });
   //
@@ -61,10 +65,26 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', function(e) {
-    mainWindow.setSize(1070, 650, true)
+    var options = {
+      width: 1070,
+      height: 650,
+      x: 450,
+      y: 100,
+    }
+    mainWindow.setBounds(options, true);
+    console.log(app.getAppPath())
   });
+
   ipcMain.on('resize-to-login', function(e) {
-    mainWindow.setSize(440, 500, true)
+    var options = {
+      width: 440,
+      height: 550,
+      x: 550,
+      y: 100,
+    }
+    mainWindow.setBounds(options, true);
+    console.log(app.getAppPath())
+
   });
 
   // Emitted when the window is closed.

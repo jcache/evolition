@@ -15,9 +15,7 @@ class App extends React.Component {
   }
 
   componentWillMount(){}
-
   componentDidMount(){}
-
   componentWillUnmount(){}
 
   _onChange(){}

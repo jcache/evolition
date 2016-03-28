@@ -1,11 +1,16 @@
 'use strict';
 
 const React = require('react');
+
+const Anon = require('./views/anon/handler.js');
+const SignedIn = require('./views/signedin/handler.js');
+
 class Base extends React.Component {
+
   constructor(props){
     super(props);
     this.state = { 
-      authenticated: this.props.authenticated
+      authenticated: this.props.authenticated // false
     }
     this._onChange = this._onChange.bind(this);
   }
@@ -15,7 +20,6 @@ class Base extends React.Component {
   componentWillUnmount(){}
 
   _onAppCTRL(cmd){
-    // console.log(typeof cmd, cmd);
     ipc.send(cmd);
   }
 
@@ -24,17 +28,11 @@ class Base extends React.Component {
   }
 
   render(){
+
     return(
-      <div className='app login-screen'>
-        <div className='login-container'>
-          <p>test</p>
-          <ul>
-            <li><a href='#' className='app-func bn-app-close' onClick={this._onAppCTRL.bind(this, 'app_close')}>Close App</a></li>
-            <li><a href='#' className='app-func bn-app-minimize' onClick={this._onAppCTRL.bind(this, 'app_minimize')}>Minimize App</a></li>
-            <li><a href='#' className='app-func bn-app-maximize' onClick={this._onAppCTRL.bind(this, 'resize-to-login')}>Resize to Login</a></li>
-            <li><a href='#' className='app-func bn-app-maximize' onClick={this._onAppCTRL.bind(this, 'resize-to-main')}>Resize to Main</a></li>
-          </ul>
-        </div>
+      <div className='app'>
+        <Anon shown={this.state.authenticated == true ? 'hidden' : 'shown'}/>
+        <SignedIn shown={this.state.authenticated == false ? 'shown' : 'hidden'}/>
       </div>
     )
   }

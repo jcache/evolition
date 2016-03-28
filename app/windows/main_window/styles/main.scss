@@ -6,20 +6,38 @@
   .app {
     flex:1;
     display:flex;
-    align-items: center;
-    justify-content: center;
-    &.login-screen {
-      background: RGBA(6,42,75,1);
+    .anonymous-view{
+      flex:1;
+      display:flex;
+
+      .auth-screen {
+        flex:1;
+        display:flex;
+        background: RGBA(6,42,75,1);
+        align-items: center;
+        justify-content: center;
+        .login-container {
+          padding:0;
+          background:RGBA(15,77,130,.2);
+          min-width:200px;
+          max-width:400px;
+          flex:1;
+          flex-shrink: 1;
+          height:450px;
+        }
+      }
     }
+
+    .signedin-view{
+      flex:1;
+      display:flex;
+    }
+
+
   }
 }
 
-.login-container {
-  padding:0;
-  background:RGBA(15,77,130,.2);
-  min-width:200px;
-  max-width:400px;
-  flex:1;
-  flex-shrink: 1;
-  height:450px;
+
+.hidden {
+  display:none !important;
 }
