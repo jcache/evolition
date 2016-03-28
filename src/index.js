@@ -5,6 +5,7 @@ const ipcMain = require('ipc-main');
 
 // Module to control application life.
 const app = electron.app;
+
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
@@ -13,17 +14,18 @@ require('crash-reporter').start(
   {
     productName: 'evolition',
     companyName: 'evolition.io',
-    submitURL: 'https://evolition.io',
-    autoSubmit: true
+    submitURL: 'http://evolition.io',
+    autoSubmit: true,
   }
 );
+
 // require('electron').hideInternalModules();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = void 0;
-let sheetWindow = void 0;
 
+let sheetWindow = void 0;
 
 let createWindow = () => {
   // Create the browser window.
@@ -31,10 +33,11 @@ let createWindow = () => {
     width: 440,
     height: 500,
     resizable: false,
-    backgroundColor: "#062A4B",
+    backgroundColor: '#062A4B',
     hasShadow: false,
     frame: false,
   });
+
   //
   // // Create the browser window.
   // sheetWindow = new BrowserWindow({
@@ -45,62 +48,67 @@ let createWindow = () => {
   // });
 
   mainWindow.setPosition(550, 100);
-  // sheetWindow.setPosition(840, 100);
 
+  // sheetWindow.setPosition(840, 100);
   // and load the index.html of the app.
   mainWindow.loadURL(path.join('file://', __dirname,  '/windows/main_window/index.html'));
-  // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
 
+  // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
   // // Open the DevTools.
-  mainWindow.webContents.openDevTools({detach:false})
+
+  mainWindow.webContents.openDevTools({ detach:false });
 
   mainWindow.webContents.on('did-finish-load', () => {
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
+
     // sheetWindow.show();
   });
 
-  ipcMain.on('app_close', function(event) {
+  ipcMain.on('app_close', function (event) {
     mainWindow.close();
     app.quit();
   });
 
-
-  ipcMain.on('app_minimize', function(event) {
+  ipcMain.on('app_minimize', function (event) {
     mainWindow.minimize();
   });
 
-  ipcMain.on('resize-to-main', function(e) {
+  ipcMain.on('resize-to-main', function (e) {
     var options = {
       width: 1070,
       height: 650,
       x: 450,
       y: 100,
-    }
+    };
+
     mainWindow.setBounds(options, true);
-    console.log(app.getAppPath())
+    console.log(app.getAppPath());
   });
 
-  ipcMain.on('resize-to-login', function(e) {
+  ipcMain.on('resize-to-login', function (e) {
     var options = {
       width: 440,
       height: 550,
       x: 550,
       y: 100,
-    }
+    };
 
     mainWindow.setBounds(options, true);
-    console.log(app.getAppPath())
+    console.log(app.getAppPath());
 
   });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
+
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
+
     mainWindow = null;
+
     // sheetWindow = null;
   });
 };

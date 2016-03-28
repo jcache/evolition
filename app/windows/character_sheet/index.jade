@@ -2,9 +2,14 @@ doctype
 html(lang="en")
   head 
     title Character  
-    link(rel='stylesheet', href='../../shared/css/global.css')
     link(rel='stylesheet', href='./styles/main.css')
+    script.
+      var remote  = require('remote');
+      var ipc     = require('ipc-renderer');
   body   
-    #content
+    #evolition.ev
+  script.
+    window.$ = window.jQuery = require('../../shared/scripts/jquery.min.js')  
+  script(src='../../shared/scripts/bootstrap.min.js') 
   script(src='./scripts/app.js') 
  

@@ -138,6 +138,20 @@ gulp.task('build-shared-assets', (done) => {
     es.merge(tasks).on('end', done);
   });
 });
+//
+
+gulp.task('build-shared-js-assets', (done) => {
+  glob(ER.SCPT_PATH, (err, files) => {
+    if (err) done(err);
+
+    let tasks = files.map((entry) => {
+      return gulp.src(entry, { base: ER.APP_PATH })
+        .pipe(gulp.dest(ER.DEST_PATH));
+    });
+
+    es.merge(tasks).on('end', done);
+  });
+});
 
 gulp.task('build-client-window-images', (done) => {
   glob(ER.WINDOW_IMGS_PATH, (err, files) => {
@@ -160,6 +174,7 @@ gulp.task('build-client', [
   'build-shared-scss',
   'build-client-jade',
   'build-shared-assets',
+  'build-shared-js-assets',
 ]);
 
 gulp.task('build-client-production', [
@@ -170,6 +185,7 @@ gulp.task('build-client-production', [
   'build-shared-scss',
   'build-client-jade-production',
   'build-shared-assets',
+  'build-shared-js-assets',
 ]);
 
 gulp.task('build-server', (done) => {
