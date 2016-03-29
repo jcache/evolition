@@ -1,11 +1,12 @@
 'use strict';
 
 const React = require('react');
+const evActions = require('../../_actions/actions.js');
 
 
 class SignedIn extends React.Component {
 
-  constructor(props){ 
+  constructor(props){
     super(props);
     this.state = {} // state
     this._onChange = this._onChange.bind(this);
@@ -15,14 +16,19 @@ class SignedIn extends React.Component {
     this.state = {} // state
   }
 
-  _onAppCTRL(cmd){
+  _onAppCTRL(cmd, bool){
     ipc.send(cmd);
+    if(cmd == 'resize-to-login'){
+      evActions.showLogin(true);
+    } else if ( cmd == 'resize-to-main'){
+      evActions.showLogin(false);
+    }
   }
 
+
   render(){
-    const defaultClass = 'signedin-view ' + this.props.shown
     return(
-      <div className={defaultClass}>
+      <div className={'signedin-view ' + this.props.shown}>
         <div className='app-header'>
           <ul>
             <li><a href='#' className='app-func bn-app-close' onClick={this._onAppCTRL.bind(this, 'app_close')}>Close App</a></li>

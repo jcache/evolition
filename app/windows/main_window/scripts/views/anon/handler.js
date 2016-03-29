@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const evActions = require('../../_actions/actions.js');
 
 
 class Anon extends React.Component {
@@ -17,12 +18,17 @@ class Anon extends React.Component {
 
   _onAppCTRL(cmd, bool){
     ipc.send(cmd);
+    if(cmd == 'resize-to-login'){
+      evActions.showLogin(true);
+    } else if ( cmd == 'resize-to-main'){
+      evActions.showLogin(false);
+    }
   }
 
+
   render(){
-    const defaultClass = 'anonymous-view ' + this.props.shown
     return(
-      <div className={defaultClass}>
+      <div className={'anonymous-view ' + this.props.shown}>
         <div className='auth-screen'>
           <div className='login-container'>
             <p>test</p>

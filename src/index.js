@@ -97,7 +97,7 @@ let createWindow = () => {
 
     mainWindow.setBounds(options, true);
     console.log(app.getAppPath());
-
+    e.returnValue = 'pong';
   });
 
   // Emitted when the window is closed.
