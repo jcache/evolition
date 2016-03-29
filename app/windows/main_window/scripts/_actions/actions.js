@@ -1,15 +1,15 @@
-var evDispatcher = require('../_dispatcher/dispatcher.js');
-var evConstants  = require('../_constants/constants.js');
+var evDispatcher = require('../_dispatcher/dispatcher');
+var evConstants  = require('../_constants/constants');
 
 
 var evActions = {
-  showLogin: function(boo){
+  showLogin: function (state) {
     evDispatcher.handleAction({
       actionType: evConstants.SHOW_LOGIN,
-      data: boo
-    });
+      data: state
+    })
   },
-}
 
+};
 
 module.exports = evActions;

@@ -2,37 +2,55 @@
 
 const React = require('react');
 const evActions = require('../../_actions/actions.js');
-
-
+const evStore  = require('../../_stores/evStore');
 class SignedIn extends React.Component {
 
-  constructor(props){
+  constructor (props) {
     super(props);
-    this.state = {} // state
+    this.state = {
+      shown: evStore.getLoginShown(),
+    };
     this._onChange = this._onChange.bind(this);
+
   }
 
-  _onChange(){
-    this.state = {} // state
+  componentWillMount () {
+    evStore.addChangeListener(this._onChange);
   }
 
-  _onAppCTRL(cmd, bool){
-    ipc.send(cmd);
-    if(cmd == 'resize-to-login'){
-      evActions.showLogin(true);
-    } else if ( cmd == 'resize-to-main'){
+  componentWillUnmount () {
+    evStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange () {
+    this.setState({
+      shown: evStore.getLoginShown(),
+    });
+  }
+
+  _onAppCTRL (cmd, bool) {
+    if (cmd == 'resize-to-main') {
       evActions.showLogin(false);
     }
+    ipc.send(cmd);
+
   }
 
-
-  render(){
-    return(
-      <div className={'signedin-view ' + this.props.shown}>
+  render () {
+    console.log(this.state.shown);
+    var shown = this.state.shown == true ? "shown" : "hidden";
+    return (
+      <div className={'signedin-view ' + shown}>
         <div className='app-header'>
           <ul>
-            <li><a href='#' className='app-func bn-app-close' onClick={this._onAppCTRL.bind(this, 'app_close')}>Close App</a></li>
-            <li><a href='#' className='app-func bn-app-minimize' onClick={this._onAppCTRL.bind(this, 'app_minimize')}>Minimize App</a></li>
+            <li>
+              <a href='#'
+                className='app-func bn-app-close'
+                onClick={this._onAppCTRL.bind(this, 'app_close')}>Close App</a></li>
+            <li>
+              <a href='#'
+                className='app-func bn-app-minimize'
+                onClick={this._onAppCTRL.bind(this, 'resize-to-main', this.state.shown)}>Login</a></li>
           </ul>
         </div>
 
@@ -57,9 +75,8 @@ class SignedIn extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 };
 
-
-module.exports = SignedIn
+module.exports = SignedIn;

@@ -9,4 +9,11 @@ evDispatcher.handleAction = function(action){
   });
 };
 
+evDispatcher.handleServerAction = function(action) {
+  this.dispatch({
+    source: 'SERVER_ACTION',
+    action: action
+  });
+}
+
 module.exports = evDispatcher;

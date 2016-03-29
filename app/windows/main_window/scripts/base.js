@@ -5,21 +5,17 @@ const React = require('react');
 const Anon = require('./views/anon/handler.js');
 const SignedIn = require('./views/signedin/handler.js');
 const evActions = require('./_actions/actions.js');
-const evStore  = require('./_stores/store.js');
+const evStore  = require('./_stores/evStore.js');
 class Base extends React.Component {
 
-  constructor(props){
+  constructor (props) {
     super(props);
-    this.state = { 
-      authenticated: evStore.getLoginShown() // false
-    }
-    this._onChange = this._onChange.bind(this);
-  }
-
-  _onChange(){
     this.state = {
-      authenticated: evStore.getLoginShown()
-    }
+      shown: evStore.getLoginShown(),
+    };
+
+    this._onChange = this._onChange.bind(this);
+
   }
 
   componentWillMount () {
@@ -30,19 +26,22 @@ class Base extends React.Component {
     evStore.removeChangeListener(this._onChange);
   }
 
-  _onAppCTRL(cmd){
-    ipc.send(cmd);
+  _onChange () {
+    this.setState({
+      shown: evStore.getLoginShown(),
+    });
+    
+    console.log(evStore.getLoginShown());
   }
 
-
-  render(){
-
-    return(
+  render () {
+    console.log("render -> ", this.state.show_login);
+    return (
       <div className='app'>
-        <Anon shown={this.state.authenticated == false ? 'hidden' : 'shown'}/>
-        <SignedIn shown={this.state.authenticated == true ? 'hidden' : 'shown'}/>
+        <Anon shown={this.state.show_login == true ? 'shown' : 'hidden'}/>
+        <SignedIn shown={this.state.show_login == false ? 'shown' : 'hidden'}/>
       </div>
-    )
+    );
   }
 }
-module.exports = Base
+module.exports = Base;

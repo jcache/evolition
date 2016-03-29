@@ -2,9 +2,9 @@
 
 const electron = require('electron');
 const ipcMain = require('ipc-main');
-
 // Module to control application life.
 const app = electron.app;
+const Menu = require('menu');
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
@@ -109,8 +109,38 @@ let createWindow = () => {
 
     mainWindow = null;
 
-    // sheetWindow = null;
+    sheetWindow = null;
   });
+  var template = [
+    {
+      label: 'Application',
+      submenu: [
+        { label: 'About Application', selector: 'orderFrontStandardAboutPanel:' },
+        { type: 'separator' },
+        { label: 'Quit', accelerator: 'Command+Q',
+          click: function () {
+            app.quit();
+          },
+        },
+      ],
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
+        { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
+        { type: 'separator' },
+        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+        { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' },
+      ],
+    },
+  ];
+
+  Menu.setApplicationMenu(
+    Menu.buildFromTemplate(template)
+  );
 };
 
 // This method will be called when Electron has finished
