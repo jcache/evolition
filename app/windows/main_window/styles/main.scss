@@ -149,6 +149,7 @@ body {
         .app-listview{
           flex:1;
           max-width:270px;
+          min-width:250px;
           background: rgba(32,32,32,1);
           // border-right: 1px solid $interface-support-color;
           border-left: 1px solid $interface-support-color;
@@ -160,6 +161,7 @@ body {
         .app-main-view {
           flex:1;
           background: $interface-main-color;
+          margin-left:5px;
           margin-right:5px;
         }
       }
