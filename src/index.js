@@ -32,7 +32,7 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 440,
     height: 500,
-    resizable: false,
+    // resizable: false,
     backgroundColor: '#062A4B',
     hasShadow: false,
     frame: false,

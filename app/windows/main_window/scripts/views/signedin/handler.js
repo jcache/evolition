@@ -59,7 +59,7 @@ class SignedIn extends React.Component {
         </div>
 
         <div className='app-body-container'>
-          <div className='app-left-nav' >
+          <div className='app-left-nav'>
             <ul>
               <li>
                 <a href='#' className="characters-link" onClick={this._onChangeView.bind(this, 'default-view')}></a>
@@ -76,7 +76,7 @@ class SignedIn extends React.Component {
             </ul>
           </div>
 
-          <div className='app-listview'>
+          <div className='app-listview '>
             <div className='app-character-list'>
               ... scrollbar
               ...

@@ -1,8 +1,10 @@
 @import "../../../shared/scss/global";
 $translucent-red: rgba(255, 0, 0, 0.5);
 $translucent-yellow: rgba(255,235,0,0.5);
-$interface-main-color: rgba(2,37,67,1);
-$interface-main-trim-color: rgba(15,77,130,1);
+$translucent-black: rgba(0,0,0,1);
+$interface-support-color: rgba(24,24,24,1);
+$interface-main-color: rgba(36,36,36,1);
+$interface-main-trim-color: transparentize($translucent-black, 0.9);
 
 .ev {
   flex:1;
@@ -17,12 +19,12 @@ $interface-main-trim-color: rgba(15,77,130,1);
       .auth-screen {
         flex:1;
         display:flex;
-        background: RGBA(6,42,75,1);
+        background: $interface-main-color;
         align-items: center;
         justify-content: center;
         .login-container {
           padding:0;
-          background:rgba(15,77,130,.2);
+          background:$interface-main-color;
           min-width:200px;
           max-width:400px;
           flex:1;
@@ -41,9 +43,10 @@ $interface-main-trim-color: rgba(15,77,130,1);
       .app-header {
         flex:1;
         display:flex;
-        background: $interface-main-color;
+        background: $interface-support-color;
         border-bottom: 1px solid $interface-main-trim-color;
         max-height:50px;
+        min-height:50px;
         -webkit-app-region: drag;
         -webkit-user-select: none;
         z-index:2000;
@@ -53,7 +56,9 @@ $interface-main-trim-color: rgba(15,77,130,1);
           display:flex;
           flex:1;
           flex-direction: row;
-          width:300px;
+          max-width:55px;
+          border-right: 1px solid $interface-main-trim-color;
+
           li {
             flex:1;
             display:flex;
@@ -62,29 +67,23 @@ $interface-main-trim-color: rgba(15,77,130,1);
             justify-content: center;
 
             a{
-
+              width:13px;
+              height:13px;
+              align-self:center;
+              border-radius:16px;
+              transition:all .3s ease;
               &.bn-app-close{
-                width:13px;
-                height:13px;
-                align-self:center;
-                border-radius:16px;
-                transition:all .3s ease;
-                background: $translucent-red;
+                background: opacify($translucent-red, 0.3);
                 &:hover,
                 &.active {
-                  background: opacify($translucent-red, 0.3);
+                  background: $translucent-red;
                 }
               }
               &.bn-app-minimize{
-                width:13px;
-                height:13px;
-                align-self:center;
-                border-radius:16px;
-                transition:all .3s ease;
-                background: $translucent-yellow;
+                background: opacify($translucent-yellow, 0.3);
                 &:hover,
                 &.active {
-                  background: opacify($translucent-yellow, 0.3);
+                  background: $translucent-yellow;
 
                 }
               }
@@ -100,17 +99,58 @@ $interface-main-trim-color: rgba(15,77,130,1);
         .app-left-nav{
           flex:1;
           max-width:70px;
-          background:$interface-main-color;
-          border-right: 1px solid $interface-main-trim-color;
+          min-width:70px;
+          background:$interface-support-color;
+          // border-right: 1px solid $interface-main-color;
+          ul {
+            margin:15px 0 0 0 ;
+            padding:0;
+            display:flex;
+            flex:1;
+            flex-direction: column;
+
+            li {
+              -webkit-app-region: no-drag !important;
+              list-style:none;
+              flex:1;
+              display:flex;
+              max-width:70px;
+              justify-content: center;
+              padding:0 0 15px;
+
+              a{
+                width:45px;
+                height:45px;
+                align-self:center;
+                transition:all .2s ease;
+                background-size: contain !important;
+                -webkit-app-region: no-drag !important;
+                -webkit-border-radius:2px;
+                background-color: $interface-main-color;
+                box-shadow: inset 0 0 0px 1px $interface-support-color;
+                // &.characters-link{
+                //   background:url(../images/characters.svg) no-repeat;
+                //   opacity: .4;
+                // }
+                // &.character-add-link{
+                //   background:url(../images/character-add.svg) no-repeat;
+                //   opacity: .4;
+                // }
+                &:hover{
+                  box-shadow: inset 0 0 0px 3px RGBA(255,255,255,1);
+                  // opacity:1;
+                }
+              }
+            }
+          }
         }
         .app-listview{
           flex:1;
           max-width:270px;
-          background: $interface-main-color;
-          border-right: 1px solid $interface-main-trim-color;
-          .app-character-list{
+          background: rgba(32,32,32,1);
+          border-right: 1px solid $interface-support-color;
+          border-left: 1px solid $interface-support-color;
 
-          }
           .app-campaign-list{
 
           }
@@ -123,7 +163,7 @@ $interface-main-trim-color: rgba(15,77,130,1);
       .app-footer{
         flex:1;
         display:flex;
-        background: $interface-main-color;
+        background: $interface-support-color;
         border-top: 1px solid $interface-main-trim-color;
         max-height:50px;
       }
