@@ -45,11 +45,11 @@
   },
   "dependencies": {
     "flexboxgrid-sass": "^8.0.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
     "flux": "~2.1.1",
     "formsy-react": "~0.17.0",
     "object-assign": "~4.0.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
     "request": "^2.69.0"
   }
 }

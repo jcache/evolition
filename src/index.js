@@ -2,14 +2,15 @@
 
 const electron = require('electron');
 const ipcMain = require('ipc-main');
+
 // Module to control application life.
 const app = electron.app;
 const Menu = require('menu');
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-
 const path = require('path');
+
 require('crash-reporter').start(
   {
     productName: 'evolition',
@@ -20,18 +21,26 @@ require('crash-reporter').start(
 );
 
 // require('electron').hideInternalModules();
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+
 let mainWindow = void 0;
 
 let sheetWindow = void 0;
 
 let createWindow = () => {
+  var winW = 440;
+  var winH = 500;
+  var atomScreen = require('screen');
+  var size = atomScreen.getPrimaryDisplay().workAreaSize;
+  var vertL = Math.floor(size.width / 2);
+  var horzL = Math.floor(size.height / 2);
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 440,
-    height: 500,
+    width: winW,
+    height: winH,
+
     // resizable: false,
     backgroundColor: '#062A4B',
     hasShadow: false,
@@ -47,7 +56,10 @@ let createWindow = () => {
   //   frame: false,
   // });
 
-  mainWindow.setPosition(550, 100);
+  mainWindow.setPosition(
+    vertL - (winW / 2),
+    horzL - (winH / 2)
+  );
 
   // sheetWindow.setPosition(840, 100);
   // and load the index.html of the app.
@@ -75,28 +87,17 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', function (e) {
-    var options = {
-      width: 1070,
-      height: 650,
-      x: 450,
-      y: 100,
-    };
-
+    var options = { width: 1070, height: 620 };
+    options.x = vertL  - (options.width / 2);
+    options.y = horzL - (options.height / 2);
     mainWindow.setBounds(options, true);
-    console.log(app.getAppPath());
   });
 
   ipcMain.on('resize-to-login', function (e) {
-    var options = {
-      width: 440,
-      height: 550,
-      x: 550,
-      y: 100,
-    };
-
+    var options = { width: winW, height: winH };
+    options.x = vertL  - (options.width / 2);
+    options.y = horzL - (options.height / 2);
     mainWindow.setBounds(options, true);
-    console.log(app.getAppPath());
-    e.returnValue = 'pong';
   });
 
   // Emitted when the window is closed.
