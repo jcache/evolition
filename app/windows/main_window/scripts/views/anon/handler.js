@@ -41,7 +41,7 @@ class Anon extends React.Component {
   }
 
   render () {
-    var shown = this.state.shown == true ? "hidden" : "shown";
+    var shown = this.state.shown == false ? "hidden" : "shown";
 
     return (
       <div className={'anonymous-view ' + shown}>
@@ -49,18 +49,6 @@ class Anon extends React.Component {
           <div className='login-container'>
             <p>test</p>
             <ul>
-              <li><a href='#'
-                className='app-func bn-app-close'
-                onClick={this._onAppCTRL.bind(this, 'app_close')}>Close App</a>
-              </li>
-              <li><a href='#'
-                className='app-func bn-app-minimize'
-                onClick={this._onAppCTRL.bind(this, 'app_minimize')}>Minimize App</a>
-              </li>
-              <li><a href='#'
-                className='app-func bn-app-logout'
-                onClick={this._onAppCTRL.bind(this, 'resize-to-login', this.state.shown)}>Resize to Login</a>
-              </li>
               <li><a href='#'
                 className='app-func bn-app-login'
                 onClick={this._onAppCTRL.bind(this, 'resize-to-main', true)}>Resize to Main</a>

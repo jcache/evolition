@@ -9,7 +9,7 @@
     .anonymous-view{
       flex:1;
       display:flex;
-
+      transition:all .3s ease;
       .auth-screen {
         flex:1;
         display:flex;
@@ -31,6 +31,26 @@
     .signedin-view{
       flex:1;
       display:flex;
+      transition:all .3s ease;
+      flex-direction: column;
+
+      .app-header {
+        flex:1;
+        display:flex;
+        background:red;
+        max-height:50px;
+
+      }
+      .app-body-container {
+        flex:1;
+        display:flex;
+      }
+      .app-footer{
+        flex:1;
+        display:flex;
+        background:blue;
+        max-height:50px;
+      }
     }
 
 

@@ -3,7 +3,7 @@ var evConstants = require('../_constants/constants');
 var evDispatcher = require('../_dispatcher/dispatcher');
 var objectAssign  = require('object-assign');
 var CHANGE_EVENT  = 'change';
-var login = false;
+var login = true;
 
 var show_login = function(flag){
   login = flag;

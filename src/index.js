@@ -56,10 +56,9 @@ let createWindow = () => {
   // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
   // // Open the DevTools.
 
-  mainWindow.webContents.openDevTools({ detach:false });
+  // mainWindow.webContents.openDevTools({ detach:false });
 
   mainWindow.webContents.on('did-finish-load', () => {
-    console.log('windows loaded...', mainWindow.webContents.isLoading());
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
 

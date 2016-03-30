@@ -29,16 +29,16 @@ class SignedIn extends React.Component {
   }
 
   _onAppCTRL (cmd, bool) {
-    if (cmd == 'resize-to-main') {
-      evActions.showLogin(false);
+    if (cmd == 'resize-to-login') {
+      evActions.showLogin(true);
     }
     ipc.send(cmd);
 
   }
 
   render () {
-    console.log(this.state.shown);
-    var shown = this.state.shown == true ? "shown" : "hidden";
+    // console.log(this.state.shown);
+    var shown = this.state.shown == true ? "hidden" : "shown";
     return (
       <div className={'signedin-view ' + shown}>
         <div className='app-header'>
@@ -50,7 +50,7 @@ class SignedIn extends React.Component {
             <li>
               <a href='#'
                 className='app-func bn-app-minimize'
-                onClick={this._onAppCTRL.bind(this, 'resize-to-main', this.state.shown)}>Login</a></li>
+                onClick={this._onAppCTRL.bind(this, 'resize-to-login')}>Login</a></li>
           </ul>
         </div>
 
@@ -73,6 +73,9 @@ class SignedIn extends React.Component {
           <div className='app-main-view'>
             ...
           </div>
+        </div>
+        <div className='app-footer'>
+          ...
         </div>
       </div>
     );
