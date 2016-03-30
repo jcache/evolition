@@ -1,4 +1,8 @@
 @import "../../../shared/scss/global";
+$translucent-red: rgba(255, 0, 0, 0.5);
+$translucent-yellow: rgba(255,235,0,0.5);
+$interface-main-color: rgba(2,37,67,1);
+$interface-main-trim-color: rgba(15,77,130,1);
 
 .ev {
   flex:1;
@@ -18,7 +22,7 @@
         justify-content: center;
         .login-container {
           padding:0;
-          background:RGBA(15,77,130,.2);
+          background:rgba(15,77,130,.2);
           min-width:200px;
           max-width:400px;
           flex:1;
@@ -37,23 +41,93 @@
       .app-header {
         flex:1;
         display:flex;
-        background:red;
+        background: $interface-main-color;
+        border-bottom: 1px solid $interface-main-trim-color;
         max-height:50px;
+        -webkit-app-region: drag;
+        -webkit-user-select: none;
+        z-index:2000;
+        ul {
+          margin:0 0 0 15px;
+          padding:0;
+          display:flex;
+          flex:1;
+          flex-direction: row;
+          width:300px;
+          li {
+            flex:1;
+            display:flex;
+            max-width:21px;
+            list-style: none;
+            justify-content: center;
 
+            a{
+
+              &.bn-app-close{
+                width:13px;
+                height:13px;
+                align-self:center;
+                border-radius:16px;
+                transition:all .3s ease;
+                background: $translucent-red;
+                &:hover,
+                &.active {
+                  background: opacify($translucent-red, 0.3);
+                }
+              }
+              &.bn-app-minimize{
+                width:13px;
+                height:13px;
+                align-self:center;
+                border-radius:16px;
+                transition:all .3s ease;
+                background: $translucent-yellow;
+                &:hover,
+                &.active {
+                  background: opacify($translucent-yellow, 0.3);
+
+                }
+              }
+
+            }
+          }
+        }
       }
       .app-body-container {
         flex:1;
         display:flex;
+        flex-direction: row;
+        .app-left-nav{
+          flex:1;
+          max-width:70px;
+          background:$interface-main-color;
+          border-right: 1px solid $interface-main-trim-color;
+        }
+        .app-listview{
+          flex:1;
+          max-width:270px;
+          background: $interface-main-color;
+          border-right: 1px solid $interface-main-trim-color;
+          .app-character-list{
+
+          }
+          .app-campaign-list{
+
+          }
+        }
+        .app-main-view {
+          flex:1;
+          background: $interface-main-color;
+        }
       }
       .app-footer{
         flex:1;
         display:flex;
-        background:blue;
+        background: $interface-main-color;
+        border-top: 1px solid $interface-main-trim-color;
         max-height:50px;
       }
     }
-
-
   }
 }
 

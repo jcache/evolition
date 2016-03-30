@@ -9,6 +9,12 @@ var evActions = {
       data: state
     })
   },
+  changeView: function (cmd) {
+    evDispatcher.handleAction({
+      actionType: evConstants.CHANGE_VIEW,
+      data: cmd
+    })
+  },
 
 };
 

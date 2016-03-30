@@ -35,6 +35,10 @@ class SignedIn extends React.Component {
     ipc.send(cmd);
 
   }
+  _onChangeView (cmd) {
+    console.log(cmd)
+    evActions.changeView(cmd);
+  }
 
   render () {
     // console.log(this.state.shown);
@@ -46,17 +50,30 @@ class SignedIn extends React.Component {
             <li>
               <a href='#'
                 className='app-func bn-app-close'
-                onClick={this._onAppCTRL.bind(this, 'app_close')}>Close App</a></li>
+                onClick={this._onAppCTRL.bind(this, 'app_close')}></a></li>
             <li>
               <a href='#'
                 className='app-func bn-app-minimize'
-                onClick={this._onAppCTRL.bind(this, 'resize-to-login')}>Login</a></li>
+                onClick={this._onAppCTRL.bind(this, 'resize-to-login')}></a></li>
           </ul>
         </div>
 
         <div className='app-body-container'>
-          <div className='app-left-nav'>
-            ...
+          <div className='app-left-nav' >
+            <ul>
+              <li>
+                <a href='#' className="characters-link" onClick={this._onChangeView.bind(this, 'default-view')}></a>
+              </li>
+              <li>
+                <a href='#' className="character-add-link" onClick={this._onChangeView.bind(this, 'character_add')}></a>
+              </li>
+              <li>
+                <a href='#' className="character-add-link" onClick={this._onChangeView.bind(this, 'fake_page_1')}></a>
+              </li>
+              <li>
+                <a href='#' className="character-add-link" onClick={this._onChangeView.bind(this, 'fake_page_2')}></a>
+              </li>
+            </ul>
           </div>
 
           <div className='app-listview'>
