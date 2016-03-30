@@ -3,9 +3,11 @@ $translucent-red: rgba(255, 0, 0, 0.5);
 $translucent-yellow: rgba(255,235,0,0.5);
 $translucent-black: rgba(0,0,0,1);
 $interface-support-color: rgba(24,24,24,1);
-$interface-main-color: rgba(36,36,36,1);
+$interface-main-color: rgba(39,39,39,1);
 $interface-main-trim-color: transparentize($translucent-black, 0.9);
-
+body {
+  background-color: $interface-support-color;
+}
 .ev {
   flex:1;
   display:flex;
@@ -148,7 +150,7 @@ $interface-main-trim-color: transparentize($translucent-black, 0.9);
           flex:1;
           max-width:270px;
           background: rgba(32,32,32,1);
-          border-right: 1px solid $interface-support-color;
+          // border-right: 1px solid $interface-support-color;
           border-left: 1px solid $interface-support-color;
 
           .app-campaign-list{
@@ -158,6 +160,7 @@ $interface-main-trim-color: transparentize($translucent-black, 0.9);
         .app-main-view {
           flex:1;
           background: $interface-main-color;
+          margin-right:5px;
         }
       }
       .app-footer{
