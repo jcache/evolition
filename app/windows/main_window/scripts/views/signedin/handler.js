@@ -32,19 +32,18 @@ class SignedIn extends React.Component {
     if (cmd == 'resize-to-login') {
       evActions.showLogin(true);
     }
-    ipc.send(cmd);
 
+    ipc.send(cmd);
   }
+
   _onChangeView (cmd) {
-    console.log(cmd)
+    console.log(cmd);
     evActions.changeView(cmd);
   }
 
   render () {
-    // console.log(this.state.shown);
-    var shown = this.state.shown == true ? "hidden" : "shown";
     return (
-      <div className={'signedin-view ' + shown}>
+      <div>
         <div className='app-header'>
           <ul>
             <li>

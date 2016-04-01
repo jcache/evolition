@@ -1,7 +1,8 @@
 'use strict';
 
 const electron = require('electron');
-const ipcMain = require('ipc-main');
+const ipcMain = require('electron').ipcMain;
+import {ipc} from 'electron';
 
 // Module to control application life.
 const app = electron.app;
@@ -20,6 +21,10 @@ require('crash-reporter').start(
     autoSubmit: true,
   }
 );
+
+if (process.env.NODE_ENV === 'development') {
+  require('electron-debug')();
+}
 
 // require('electron').hideInternalModules();
 // Keep a global reference of the window object, if you don't, the window will
@@ -41,17 +46,15 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: winW,
     height: winH,
-    'min-width': 325,
-    'standard-window': false,
-    // resizable: false,
+    minWidth: 325,
+    standardWindow: false,
     backgroundColor: '#062A4B',
     hasShadow: false,
     frame: false,
   });
 
-  // if (process.env.NODE_ENV === 'development') {
-    mainWindow.webContents.openDevTools({detach: true});
-  // }
+  mainWindow.webContents.openDevTools({detach: true});
+
   //
   // // Create the browser window.
   // sheetWindow = new BrowserWindow({
@@ -68,7 +71,8 @@ let createWindow = () => {
 
   // sheetWindow.setPosition(840, 100);
   // and load the index.html of the app.
-  mainWindow.loadURL(path.join('file://', __dirname,  '/windows/main_window/index.html'));
+  mainWindow.loadURL(`file:// ${__dirname}/windows/main_window/index.html`);
+  // mainWindow.loadURL(path.normalize('file://' + path.join(__dirname, '/windows/main_window/','index.html')));
 
   // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
   // // Open the DevTools.
@@ -80,20 +84,19 @@ let createWindow = () => {
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.setTitle('Evolition');
-    console.log("size", size);
+    console.log('size', size);
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
-
     // sheetWindow.show();
   });
 
-  mainWindow.webContents.on('will-navigate', function (e, url) {
-
-    if (url.indexOf('main_window/index.html#') < 0) {
-      e.preventDefault();
-      console.log('doing something');
-    }
-  });
+  // mainWindow.webContents.on('will-navigate', function (e, url) {
+  //
+  //   if (url.indexOf('main_window/index.html#') < 0) {
+  //     e.preventDefault();
+  //     console.log('doing something');
+  //   }
+  // });
 
   ipcMain.on('app_close', function (event) {
     mainWindow.close();
@@ -104,14 +107,14 @@ let createWindow = () => {
     mainWindow.minimize();
   });
 
-  ipcMain.on('resize-to-main', function (e) {
+  ipcMain.on('resize-to-main', function (e, arg) {
     var options = { width: 1070, height: 620 };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
     mainWindow.setBounds(options, true);
   });
 
-  ipcMain.on('resize-to-login', function (e) {
+  ipcMain.on('resize-to-login', function (e, arg) {
     var options = { width: winW, height: winH };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
@@ -121,14 +124,10 @@ let createWindow = () => {
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
 
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-
     mainWindow = null;
-
     sheetWindow = null;
   });
+
   var template = [
     {
       label: 'Application',
@@ -139,6 +138,11 @@ let createWindow = () => {
           click: function () {
             app.quit();
           },
+        },
+        {
+          label: 'Hide ElectronReact',
+          accelerator: 'Command+H',
+          selector: 'hide:',
         },
       ],
     },
@@ -161,22 +165,16 @@ let createWindow = () => {
   );
 };
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
 app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
 app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
     createWindow();
   }

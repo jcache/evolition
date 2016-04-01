@@ -1,8 +1,12 @@
 'use strict';
 
 const React = require('react');
+
 const evActions = require('../../_actions/actions');
+
 const evStore  = require('../../_stores/evStore');
+
+import {Link} from 'react-router';
 
 class Anon extends React.Component {
 
@@ -12,6 +16,7 @@ class Anon extends React.Component {
       shown: evStore.getLoginShown(),
     };
     this._onChange = this._onChange.bind(this);
+    this._onAppCTRL = this._onAppCTRL.bind(this);
 
   }
 
@@ -29,19 +34,12 @@ class Anon extends React.Component {
     });
   }
 
-  _onAppCTRL (cmd, bool) {
-
-    if (cmd == 'resize-to-login') {
-      evActions.showLogin(true);
-    } else if (cmd == 'resize-to-main') {
-      evActions.showLogin(false);
-    }
-
-    ipc.send(cmd);
+  _onAppCTRL (cmd) {
+    ipc.send('resize-to-main');
   }
 
   render () {
-    var shown = this.state.shown == false ? "hidden" : "shown";
+    var shown = this.state.shown == false ? 'hidden' : 'shown';
 
     return (
       <div className={'anonymous-view ' + shown}>
@@ -49,9 +47,12 @@ class Anon extends React.Component {
           <div className='login-container'>
             <p>test</p>
             <ul>
-              <li><a href='#'
-                className='app-func bn-app-login'
-                onClick={this._onAppCTRL.bind(this, 'resize-to-main', true)}>Resize to Main</a>
+              <li>
+                <Link to="/signedin"
+                  onClick={this._onAppCTRL.bind(this)}
+                  activeClassName="app-func bn-app-login">
+                    Logout
+                </Link>
               </li>
             </ul>
           </div>

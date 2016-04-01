@@ -5,8 +5,8 @@ import { render } from 'react-dom';
 const Base = require('./base.js');
 const evActions = require('./_actions/actions.js');
 const evStore  = require('./_stores/evStore.js');
-
-
+import routes from './routes';
+import { Router, browserHistory } from 'react-router';
 class App extends React.Component {
 
   constructor (props) {
@@ -30,7 +30,9 @@ class App extends React.Component {
   render () {
 
     return (
-      <Base />
+      <Router history={browserHistory}>
+        {routes}
+      </Router>
     );
   }
 };
