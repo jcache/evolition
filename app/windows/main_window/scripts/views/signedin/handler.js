@@ -79,6 +79,9 @@ class SignedIn extends React.Component {
           <div className='app-listview '>
             <div className='app-character-list'>
               ... scrollbar
+              <a href="#juice">juice</a>
+              <a href="#juices">juice</a>
+              <a href="#juicesssss">juice</a>
               ...
             </div>
 

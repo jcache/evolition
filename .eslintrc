@@ -9,5 +9,8 @@
     "React": false
   },
   "extends": ["standard", "standard-jsx"],
-  "plugins": ["react"]
+  "plugins": ["react"],
+  "rules": {
+    "camelcase": [2, { properties: "never" }]
+    }
 }

@@ -10,6 +10,7 @@ const Menu = require('menu');
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
+const fs = require('fs');
 
 require('crash-reporter').start(
   {
@@ -40,13 +41,17 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: winW,
     height: winH,
-
+    'min-width': 325,
+    'standard-window': false,
     // resizable: false,
     backgroundColor: '#062A4B',
     hasShadow: false,
     frame: false,
   });
 
+  // if (process.env.NODE_ENV === 'development') {
+    mainWindow.webContents.openDevTools({detach: true});
+  // }
   //
   // // Create the browser window.
   // sheetWindow = new BrowserWindow({
@@ -68,13 +73,26 @@ let createWindow = () => {
   // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
   // // Open the DevTools.
 
-  mainWindow.webContents.openDevTools({ detach:false });
+  var size = {}, settingsjson = {};
+  try {
+    size = JSON.parse(fs.readFileSync(path.join(app.getPath('userData'), 'size')));
+  } catch (err) {}
 
   mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.setTitle('Evolition');
+    console.log("size", size);
     console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
 
     // sheetWindow.show();
+  });
+
+  mainWindow.webContents.on('will-navigate', function (e, url) {
+
+    if (url.indexOf('main_window/index.html#') < 0) {
+      e.preventDefault();
+      console.log('doing something');
+    }
   });
 
   ipcMain.on('app_close', function (event) {
