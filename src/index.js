@@ -13,6 +13,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const fs = require('fs');
 
+
 require('crash-reporter').start(
   {
     productName: 'evolition',
@@ -21,17 +22,16 @@ require('crash-reporter').start(
     autoSubmit: true,
   }
 );
-
+process.env.NODE_ENV = 'development';
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
-}
 
+}
 // require('electron').hideInternalModules();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 
 let mainWindow = void 0;
-
 let sheetWindow = void 0;
 
 let createWindow = () => {

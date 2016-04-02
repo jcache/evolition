@@ -1,14 +1,26 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import NotFound from      './components/notfound';
 import Anon from          './views/anon/handler';
 import SignedIn from      './views/signedin/handler';
 import Base from          './base';
+import { RelayRouter } from 'react-router-relay';
+
+function requireAuth (nextState, replace) {
+  if (true == true) {
+    replace('/auth');
+    ipc.send('resize-to-login');
+  } else {
+
+  }
+}
 
 export default (
-  <Route component={Base} path='/'>
-    <Route path="/signedin" component={SignedIn} />
-    <Route path="/auth" component={Anon} />
-    <Route component={Anon} path='*' />
-  </Route>
+  <Router history={browserHistory}>
+    <Route component={Base} path='/'>
+      <Route path="/auth" component={Anon} />
+      <Route path="/signedin" component={SignedIn}/>
+      <Route component={NotFound} onEnter={requireAuth} path='*' />
+    </Route>
+  </Router>
 );

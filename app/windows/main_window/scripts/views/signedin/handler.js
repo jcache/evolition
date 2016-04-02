@@ -53,13 +53,13 @@ class SignedIn extends React.Component {
             <li>
               <Link to="/"
                 onClick={this._onAppCTRL.bind(this, 'app_close')}
-                activeClassName='app-func bn-app-close'>
+                className='app-func bn-app-close'>
               </Link>
             </li>
             <li>
               <Link to="/auth"
                 onClick={this._onAppCTRL.bind(this, 'resize-to-login')}
-                activeClassName='app-func bn-app-minimize'>
+                className='app-func bn-app-minimize'>
               </Link>
             </li>
           </ul>
@@ -68,18 +68,10 @@ class SignedIn extends React.Component {
         <div className='app-body-container'>
           <div className='app-left-nav'>
             <ul>
-              <li>
-                <a href='#' className="characters-link" onClick={this._onChangeView.bind(this, 'default-view')}></a>
-              </li>
-              <li>
-                <a href='#' className="character-add-link" onClick={this._onChangeView.bind(this, 'character_add')}></a>
-              </li>
-              <li>
-                <a href='#' className="character-add-link" onClick={this._onChangeView.bind(this, 'fake_page_1')}></a>
-              </li>
-              <li>
-                <a href='#' className="character-add-link" onClick={this._onChangeView.bind(this, 'fake_page_2')}></a>
-              </li>
+              <li><Link to="/signedin/1" onClick={this._onChangeView.bind(this, 'default-view')} activeClassName='characters-link'></Link></li>
+              <li><Link to="/signedin/2" onClick={this._onChangeView.bind(this, 'character-add')} activeClassName='character-add-link'></Link></li>
+              <li><Link to="/signedin/3" onClick={this._onChangeView.bind(this, 'fake_page_1')} activeClassName='character-add-link'></Link></li>
+              <li><Link to="/signedin/4" onClick={this._onChangeView.bind(this, 'fake_page_2')} activeClassName='character-add-link'></Link></li>
             </ul>
           </div>
 
@@ -97,9 +89,13 @@ class SignedIn extends React.Component {
               ...
             </div>
           </div>
+
+
           <div className='app-main-view'>
             ...
           </div>
+
+
         </div>
         <div className='app-footer'>
           ...

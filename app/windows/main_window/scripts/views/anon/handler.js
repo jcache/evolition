@@ -1,12 +1,9 @@
 'use strict';
 
 const React = require('react');
-
 const evActions = require('../../_actions/actions');
-
 const evStore  = require('../../_stores/evStore');
-
-import {Link} from 'react-router';
+import {Link,Navigation} from 'react-router';
 
 class Anon extends React.Component {
 
@@ -15,9 +12,9 @@ class Anon extends React.Component {
     this.state = {
       shown: evStore.getLoginShown(),
     };
+
     this._onChange = this._onChange.bind(this);
     this._onAppCTRL = this._onAppCTRL.bind(this);
-
   }
 
   componentWillMount () {
@@ -44,16 +41,21 @@ class Anon extends React.Component {
       <div className={'anonymous-view'}>
         <div className='auth-screen'>
           <div className='login-container'>
-            <p>test</p>
-            <ul>
-              <li>
-                <Link to="/signedin"
-                  onClick={this._onAppCTRL.bind(this)}
-                  activeClassName="app-func bn-app-login">
-                    Logout
-                </Link>
-              </li>
-            </ul>
+            <h2>Please Sign In</h2>
+            <form>
+              <div className="form-group">
+                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io'/>
+              </div>
+              <div className="form-group">
+                <input type='password' name='password' className='form-control input-lg' />
+              </div>
+            </form>
+            <Link to="/signedin"
+              onClick={this._onAppCTRL.bind(this)}
+              className="btn btn-primary btn-lg app-func bn-app-login">
+                Please Login
+            </Link>
+
           </div>
         </div>
       </div>

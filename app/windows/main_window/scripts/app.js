@@ -7,6 +7,8 @@ const evActions = require('./_actions/actions.js');
 const evStore  = require('./_stores/evStore.js');
 import routes from './routes';
 import { Router, browserHistory } from 'react-router';
+
+
 class App extends React.Component {
 
   constructor (props) {

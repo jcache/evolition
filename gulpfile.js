@@ -171,7 +171,7 @@ gulp.task('build-client', [
   'build-client-window-images',
   'build-client-window-a-bundles',
   'build-client-window-b-bundles',
-  'build-shared-scss',
+  // 'build-shared-scss',
   'build-client-jade',
   'build-shared-assets',
   'build-shared-js-assets',
