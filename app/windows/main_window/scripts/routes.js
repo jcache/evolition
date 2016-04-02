@@ -8,6 +8,7 @@ import Base from          './base';
 export default (
   <Route component={Base} path='/'>
     <Route path="/signedin" component={SignedIn} />
-    <Route component={Anon} path='*' /> 
+    <Route path="/auth" component={Anon} />
+    <Route component={Anon} path='*' />
   </Route>
 );

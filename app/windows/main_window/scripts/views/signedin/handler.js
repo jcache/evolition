@@ -3,6 +3,9 @@
 const React = require('react');
 const evActions = require('../../_actions/actions.js');
 const evStore  = require('../../_stores/evStore');
+import {Link} from 'react-router';
+
+
 class SignedIn extends React.Component {
 
   constructor (props) {
@@ -11,6 +14,7 @@ class SignedIn extends React.Component {
       shown: evStore.getLoginShown(),
     };
     this._onChange = this._onChange.bind(this);
+    this._onAppCTRL = this._onAppCTRL.bind(this);
 
   }
 
@@ -43,17 +47,21 @@ class SignedIn extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='signedin-view'>
         <div className='app-header'>
           <ul>
             <li>
-              <a href='#'
-                className='app-func bn-app-close'
-                onClick={this._onAppCTRL.bind(this, 'app_close')}></a></li>
+              <Link to="/"
+                onClick={this._onAppCTRL.bind(this, 'app_close')}
+                activeClassName='app-func bn-app-close'>
+              </Link>
+            </li>
             <li>
-              <a href='#'
-                className='app-func bn-app-minimize'
-                onClick={this._onAppCTRL.bind(this, 'resize-to-login')}></a></li>
+              <Link to="/auth"
+                onClick={this._onAppCTRL.bind(this, 'resize-to-login')}
+                activeClassName='app-func bn-app-minimize'>
+              </Link>
+            </li>
           </ul>
         </div>
 

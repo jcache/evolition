@@ -39,10 +39,9 @@ class Anon extends React.Component {
   }
 
   render () {
-    var shown = this.state.shown == false ? 'hidden' : 'shown';
 
     return (
-      <div className={'anonymous-view ' + shown}>
+      <div className={'anonymous-view'}>
         <div className='auth-screen'>
           <div className='login-container'>
             <p>test</p>
