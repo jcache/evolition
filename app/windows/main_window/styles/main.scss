@@ -2,9 +2,12 @@
 $translucent-red: rgba(255, 0, 0, 0.5);
 $translucent-yellow: rgba(255,235,0,0.5);
 $translucent-black: rgba(0,0,0,1);
-$interface-support-color: rgba(24,24,24,1);
-$interface-main-color: rgba(39,39,39,1);
+$interface-support-color: rgba(36,38,50,1);
+$interface-main-color: rgba(45,48,62,1);
 $interface-main-trim-color: transparentize($translucent-black, 0.9);
+body, th, td {
+  color:#FFF;
+}
 body {
   background-color: $interface-support-color;
 }
