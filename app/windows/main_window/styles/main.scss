@@ -8,6 +8,11 @@ $interface-main-trim-color: transparentize($translucent-black, 0.9);
 body, th, td {
   color:#FFF;
 }
+.form-control {
+  border-radius:0;
+  border:2px solid rgba(178,153,217,1);
+  background: transparentize($translucent-black, 0.9);
+}
 body {
   background-color: $interface-support-color;
 }
@@ -21,20 +26,36 @@ body {
       flex:1;
       display:flex;
       transition:all .3s ease;
+      .side-screen {
+        background: rgba(36,39,51,1);
+        flex:1;
+        display:flex;
+      }
       .auth-screen {
         flex:1;
         display:flex;
         background: $interface-main-color;
-        align-items: center;
-        justify-content: center;
+
         .login-container {
           padding:0;
           background:$interface-main-color;
-          min-width:200px;
-          max-width:400px;
+          min-width:40%;
+          max-width:40%;
           flex:1;
           flex-shrink: 1;
           height:450px;
+          form {
+            margin: 20px !important;
+          }
+          .bn-app-login {
+            vertical-align: middle;
+            line-height: 30px;
+            text-align: center;
+            border:none;
+            background: rgba(178,153,217,1);
+            display: block;
+            height:auto;
+          }
         }
       }
     }

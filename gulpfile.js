@@ -267,6 +267,7 @@ gulp.task('serve', ['build', 'watch'], () => {
 
   gulp.watch([
     './build/shared/images/*',
+    './build/shared/scripts/*.js',
     './build/shared/css/*.css',
     './build/windows/**/scripts/app.js',
     './build/**/*.css',

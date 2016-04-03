@@ -35,7 +35,7 @@ let mainWindow = void 0;
 let sheetWindow = void 0;
 
 let createWindow = () => {
-  var winW = 440;
+  var winW = 960;
   var winH = 500;
   var atomScreen = require('screen');
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
@@ -46,10 +46,11 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: winW,
     height: winH,
-    minWidth: 325,
-    standardWindow: false,
+    minWidth: 960,
+    maxWidth: 960,
+    // standardWindow: false,
     backgroundColor: '#062A4B',
-    hasShadow: false,
+    // hasShadow: false,
     frame: false,
   });
 
