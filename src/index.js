@@ -23,10 +23,7 @@ require('crash-reporter').start(
   }
 );
 
-process.env.NODE_ENV = 'development';
-if (process.env.NODE_ENV === 'development') {
-  require('electron-debug')();
-}
+
 // require('electron').hideInternalModules();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
