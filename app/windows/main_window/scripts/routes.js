@@ -4,14 +4,13 @@ import NotFound from      './components/notfound';
 import Anon from          './views/anon/handler';
 import SignedIn from      './views/signedin/handler';
 import Base from          './base';
-import { RelayRouter } from 'react-router-relay';
 
-function requireAuth (nextState, replace) {
+function requireAuth(nextState, replace) {
   if (true == true) {
     replace('/auth');
     ipc.send('resize-to-login');
   } else {
-
+    //
   }
 }
 

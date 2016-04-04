@@ -129,7 +129,6 @@ let createWindow = () => {
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
-
     mainWindow = null;
     sheetWindow = null;
   });
@@ -151,8 +150,7 @@ let createWindow = () => {
           selector: 'hide:',
         },
       ],
-    },
-    {
+    }, {
       label: 'Edit',
       submenu: [
         { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },

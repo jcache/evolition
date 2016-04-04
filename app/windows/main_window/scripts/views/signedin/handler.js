@@ -4,8 +4,9 @@ const React = require('react');
 const evActions = require('../../_actions/actions.js');
 const evStore  = require('../../_stores/evStore');
 const CharacterListItem  = require('./character/character-list-item');
+const AppHeader  = require('../../components/app-header');
+const AppFooter  = require('../../components/app-footer');
 import {Link} from 'react-router';
-
 
 class SignedIn extends React.Component {
 
@@ -54,28 +55,12 @@ class SignedIn extends React.Component {
     var characters = this.state.characters;
     var selected_character_id = this.state.selected_character_id;
     var character_list = []
-    characters.forEach(function(c) {
+    characters.forEach(function (c) {
       character_list.push(<CharacterListItem key={c.id} character={c} selected_character={selected_character_id}/>);
     });
     return (
       <div className='signedin-view'>
-        <div className='app-header'>
-          <ul>
-            <li>
-              <Link to="/"
-                onClick={this._onAppCTRL.bind(this, 'app_close')}
-                className='app-func bn-app-close'>
-              </Link>
-            </li>
-            <li>
-              <Link to="/auth"
-                onClick={this._onAppCTRL.bind(this, 'resize-to-login')}
-                className='app-func bn-app-minimize'>
-              </Link>
-            </li>
-          </ul>
-        </div>
-
+        <AppHeader />
         <div className='app-body-container'>
           <div className='app-left-nav'>
             <ul>
@@ -95,9 +80,7 @@ class SignedIn extends React.Component {
             ...
           </div>
         </div>
-        <div className='app-footer'>
-          ...
-        </div>
+        <AppFooter />
       </div>
     );
   }
