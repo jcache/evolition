@@ -3,6 +3,7 @@
 const React = require('react');
 const evActions = require('../../_actions/actions.js');
 const evStore  = require('../../_stores/evStore');
+const CharacterListItem  = require('./character/character-list-item');
 import {Link} from 'react-router';
 
 
@@ -12,6 +13,9 @@ class SignedIn extends React.Component {
     super(props);
     this.state = {
       shown: evStore.getLoginShown(),
+      characters: evStore.getCharacters(),
+      selected_character_id: evStore.getSelectedCharacter(),
+
     };
     this._onChange = this._onChange.bind(this);
     this._onAppCTRL = this._onAppCTRL.bind(this);
@@ -29,6 +33,8 @@ class SignedIn extends React.Component {
   _onChange () {
     this.setState({
       shown: evStore.getLoginShown(),
+      characters: evStore.getCharacters(),
+      selected_character_id: evStore.getSelectedCharacter(),
     });
   }
 
@@ -41,11 +47,16 @@ class SignedIn extends React.Component {
   }
 
   _onChangeView (cmd) {
-    console.log(cmd);
     evActions.changeView(cmd);
   }
 
   render () {
+    var characters = this.state.characters;
+    var selected_character_id = this.state.selected_character_id;
+    var character_list = []
+    characters.forEach(function(c) {
+      character_list.push(<CharacterListItem key={c.id} character={c} selected_character={selected_character_id}/>);
+    });
     return (
       <div className='signedin-view'>
         <div className='app-header'>
@@ -77,25 +88,12 @@ class SignedIn extends React.Component {
 
           <div className='app-listview '>
             <div className='app-character-list'>
-              ... scrollbar
-              <a href="#juice">juice</a>
-              <a href="#juices">juice</a>
-              <a href="#juicesssss">juice</a>
-              ...
-            </div>
-
-            <div className='app-campaign-list'>
-              ... scrollbar
-              ...
+              <ul>{character_list}</ul>
             </div>
           </div>
-
-
           <div className='app-main-view'>
             ...
           </div>
-
-
         </div>
         <div className='app-footer'>
           ...

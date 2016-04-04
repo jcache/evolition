@@ -22,10 +22,10 @@ require('crash-reporter').start(
     autoSubmit: true,
   }
 );
+
 process.env.NODE_ENV = 'development';
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
-
 }
 // require('electron').hideInternalModules();
 // Keep a global reference of the window object, if you don't, the window will
@@ -56,6 +56,14 @@ let createWindow = () => {
 
   mainWindow.webContents.openDevTools({detach: true});
 
+  var protocol = electron.protocol;
+
+  protocol.registerFileProtocol('ev', function(request, callback) {
+    var url = request.url.substr(5);
+    callback({path: path.normalize(__dirname + '/' + url)});
+  }, function(error) {
+    if (error) console.error('Failed to register protocol');
+  });
   //
   // // Create the browser window.
   // sheetWindow = new BrowserWindow({
@@ -109,7 +117,7 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', function (e, arg) {
-    var options = { width: 1070, height: 620 };
+    var options = { width: 1140, height: 680 };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
     mainWindow.setBounds(options, true);

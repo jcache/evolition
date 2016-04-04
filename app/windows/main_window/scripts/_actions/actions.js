@@ -15,6 +15,12 @@ var evActions = {
       data: cmd
     })
   },
+  setSelectedCharacter: function (cmd) {
+    evDispatcher.handleAction({
+      actionType: evConstants.SET_SELECTED_CHARACTER,
+      data: cmd
+    })
+  },
 
 };
 
