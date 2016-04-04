@@ -18,6 +18,7 @@ const browserify = require('browserify');
 const glob = require('glob');
 const es = require('event-stream');
 const babel = require('gulp-babel');
+var changed = require('gulp-changed');
 const sass = require('gulp-sass');
 const jade = require('jade');
 const gulpJade = require('gulp-jade');
@@ -45,6 +46,7 @@ gulp.task('build-client-window-a-bundles', (done) => {
         .pipe(rename({
           dirname: 'windows/main_window/scripts',
         }))
+        .pipe(changed('./app/windows/main_window/scripts/'))
         .pipe(gulp.dest(ER.DEST_PATH));
     });
     es.merge(tasks).on('end', done);
@@ -62,6 +64,7 @@ gulp.task('build-client-window-b-bundles', (done) => {
         .pipe(rename({
           dirname: 'windows/character_sheet/scripts',
         }))
+        .pipe(changed('./app/windows/character_sheet/scripts/'))
         .pipe(gulp.dest(ER.DEST_PATH));
     });
 
@@ -76,6 +79,7 @@ gulp.task('build-shared-scss', (done) => {
     let tasks = files.map((entry) => {
       return gulp.src(entry, { base: ER.APP_PATH })
         .pipe(sass())
+        .pipe(changed('./app/shared/scss/'))
         .pipe(rename({
           dirname: 'shared/css',
         }))
@@ -93,6 +97,7 @@ gulp.task('build-client-window-scss', (done) => {
     let tasks = files.map((entry) => {
       return gulp.src(entry, { base: ER.APP_PATH })
         .pipe(sass())
+        .pipe(changed('./app/windows/'))
         .pipe(gulp.dest(ER.DEST_PATH));
     });
 

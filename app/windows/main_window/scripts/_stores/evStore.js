@@ -4,67 +4,77 @@ var evDispatcher = require('../_dispatcher/dispatcher');
 var characters = require('./seed/characters.js');
 var objectAssign  = require('object-assign');
 var CHANGE_EVENT  = 'change';
-console.log(characters);
-var selected_character_id = 1;
+
+console.log("character seed data: " , characters);
+
+var selCharID = 1;
 
 var login = true;
 
-var active_view = '';
+var activeView = '';
 
-var show_login = function(flag){
+var showLogin = function (flag) {
   login = flag;
-}
+};
 
-var change_view = function(view){
-  active_view = view;
-}
+var changeView = function (view) {
+  activeView = view;
+};
 
-var set_selected_character = function(id){
-  selected_character_id = id;
-}
+var setSelectedCharacter = function (id) {
+  selCharID = id;
+};
 
-
+// FLUX STORE (todo: remove this crap)
 var evStore = objectAssign({}, EventEmitter.prototype, {
-  addChangeListener: function(cb){
+  addChangeListener: function (cb) {
     this.on(CHANGE_EVENT, cb);
   },
 
-  removeChangeListener: function(cb){
+  removeChangeListener: function (cb) {
     this.removeListener(CHANGE_EVENT, cb);
   },
 
-  getLoginShown: function() {
+  // (
+
+  getLoginShown: function () {
     return login;
   },
-  getSelectedCharacter: function() {
-    return selected_character_id;
+
+  getSelectedCharacter: function () {
+    return selCharID;
   },
-  getCharacters: function() {
+
+  getCharacters: function () {
     return characters;
   },
 
-  getActiveView: function() {
-    return active_view;
+  getActiveView: function () {
+    return activeView;
   },
+
+  // )
+
 });
 
-evDispatcher.register(function(payload){
+// FLUX ACTION EMITTERS SWITCH STATEMENT (todo: remove this crap)
+evDispatcher.register(function (payload) {
   var action = payload.action;
 
   switch (action.actionType) {
 
     case evConstants.SHOW_LOGIN:
-      show_login(action.data);
+      showLogin(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 
     case evConstants.CHANGE_VIEW:
-      change_view(action.data);
+      changeView(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 
     case evConstants.SET_SELECTED_CHARACTER:
-      set_selected_character(action.data);
+      setSelectedCharacter(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 
@@ -72,6 +82,5 @@ evDispatcher.register(function(payload){
       return true;
   }
 });
-
 
 module.exports = evStore;
