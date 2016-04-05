@@ -23,6 +23,13 @@ class SignedIn extends React.Component {
 
   }
 
+  componentDidMount () {
+    // var height = $('.app-listview').height();
+    // console.log(height);
+    // $('.app-character-list').height(height);
+    $('.app-listview').perfectScrollbar();
+  }
+
   componentWillMount () {
     evStore.addChangeListener(this._onChange);
   }
