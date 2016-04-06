@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-const Base = require('./base.js');
-const evActions = require('./_actions/actions.js');
-const evStore  = require('./_stores/evStore.js');
+import Base from './base.js';
+import evActions from './_actions/actions.js';
+import evStore from './_stores/evStore.js';
 import routes from './routes';
 import { Router, browserHistory } from 'react-router';
 

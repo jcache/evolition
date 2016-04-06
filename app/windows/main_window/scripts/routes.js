@@ -1,10 +1,24 @@
 import React from 'react';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import NotFound from      './components/notfound';
 import Anon from          './views/anon/handler';
 import SignedIn from      './views/signedin/handler';
 import Base from          './base';
+import {
+  Router,
+  Route,
+  browserHistory
+} from 'react-router';
 
+export default (
+  <Router history={browserHistory}>
+    <Route path='/' component={Base}>
+      <Route path="auth" component={Anon} />
+      <Route path="signedin" component={SignedIn}/>
+    </Route>
+  </Router>
+);
+
+// REQUIRE AUTH METHOD
 function requireAuth(nextState, replace) {
   if (true == true) {
     replace('/auth');
@@ -13,13 +27,3 @@ function requireAuth(nextState, replace) {
     //
   }
 }
-
-export default (
-  <Router history={browserHistory}>
-    <Route component={Base} path='/'>
-      <Route path="/auth" component={Anon} />
-      <Route path="/signedin" component={SignedIn}/>
-      <Route component={NotFound} onEnter={requireAuth} path='*' />
-    </Route>
-  </Router>
-);
