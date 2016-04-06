@@ -48,6 +48,7 @@
   "dependencies": {
     "alt": "^0.18.4",
     "electron-debug": "^0.5.2",
+    "electron-window": "^0.6.2",
     "express-graphql": "^0.4.13",
     "express-jwt": "^3.3.0",
     "flexboxgrid-sass": "^8.0.0",
@@ -58,6 +59,7 @@
     "react-dom": "^0.14.7",
     "react-relay": "^0.7.3",
     "react-router": "^2.0.1",
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "screen": "^0.2.10"
   }
 }

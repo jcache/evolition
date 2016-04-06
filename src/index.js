@@ -13,7 +13,6 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const fs = require('fs');
 
-
 require('crash-reporter').start(
   {
     productName: 'evolition',
@@ -23,7 +22,6 @@ require('crash-reporter').start(
   }
 );
 
-
 // require('electron').hideInternalModules();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -32,9 +30,10 @@ let mainWindow = void 0;
 let sheetWindow = void 0;
 
 let createWindow = () => {
+  var mainWindowPath = path.resolve(__dirname, '/windows/main_window/', 'index.html')
   var winW = 960;
   var winH = 500;
-  var atomScreen = require('screen');
+  var atomScreen = electron.screen;
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
   var vertL = Math.floor(size.width / 2);
   var horzL = Math.floor(size.height / 2);
@@ -77,7 +76,7 @@ let createWindow = () => {
 
   // sheetWindow.setPosition(840, 100);
   // and load the index.html of the app.
-  mainWindow.loadURL(`file:// ${__dirname}/windows/main_window/index.html`);
+  mainWindow.loadURL('file://' + path.join(__dirname, '/windows/main_window/','index.html'));
   // mainWindow.loadURL(path.normalize('file://' + path.join(__dirname, '/windows/main_window/','index.html')));
 
   // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));

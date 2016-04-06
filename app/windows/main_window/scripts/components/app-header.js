@@ -9,6 +9,7 @@ class AppHeader extends React.Component {
 
   constructor (props) {
     super(props);
+
     this.state = {
       active: "true",
     };
@@ -18,11 +19,8 @@ class AppHeader extends React.Component {
   }
 
   _onAppCTRL (cmd, bool) {
-
-    if (cmd == 'resize-to-login') {
-      evActions.showLogin(true);
-    }
-
+      console.log("cmd: ", cmd,"boolean: ", bool);
+    // cmd == 'resize-to-login' ? evActions.showLogin(bool) : evActions.showLogin(bool)
     ipc.send(cmd);
   }
 
