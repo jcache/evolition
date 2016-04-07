@@ -30,7 +30,7 @@ const electron = require('electron-connect').server.create();
 const electronPackager = require('gulp-atom-electron');
 const symdest = require('gulp-symdest');
 const zip = require('gulp-vinyl-zip');
-
+var winInstaller = require('electron-windows-installer');
 const electronVersion = require('electron-prebuilt/package.json').version;
 
 /* These are the building tasks! */
@@ -293,8 +293,13 @@ gulp.task('package-windows', ['build-production'], () => {
     .pipe(symdest('release/windows'));
 });
 
-
-
+gulp.task('create-windows-installer', function(done) {
+  winInstaller({
+    appDirectory: './release/windows',
+    outputDirectory: './release/win32',
+    arch: 'ia32'
+  }).then(done).catch(done);
+});
 
 gulp.task('package-linux', ['build-production'], () => {
   return gulp.src('./build/**')
