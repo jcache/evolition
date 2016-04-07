@@ -8,6 +8,7 @@ var CHANGE_EVENT  = 'change';
 console.log("character seed data: " , characters);
 
 var selCharID = 1;
+var characterView = '';
 
 var login = true;
 
@@ -23,6 +24,10 @@ var changeView = function (view) {
 
 var setSelectedCharacter = function (id) {
   selCharID = id;
+};
+
+var setCharacterView = function (view) {
+  characterView = view;
 };
 
 // FLUX STORE (todo: remove this crap)
@@ -53,6 +58,10 @@ var evStore = objectAssign({}, EventEmitter.prototype, {
     return activeView;
   },
 
+  getCharacterView: function () {
+    return characterView;
+  },
+
   // )
 
 });
@@ -75,6 +84,11 @@ evDispatcher.register(function (payload) {
 
     case evConstants.SET_SELECTED_CHARACTER:
       setSelectedCharacter(action.data);
+      evStore.emit(CHANGE_EVENT);
+      break;
+
+    case evConstants.SET_CHARACTER_VIEW:
+      setCharacterView(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 

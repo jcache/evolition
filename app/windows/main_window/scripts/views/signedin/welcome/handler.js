@@ -10,8 +10,11 @@ class Welcome extends React.Component {
 
   render () {
     return (
-      <div>
-        <h2>Welcome</h2>
+      <div className='app-multi-col'>
+        <div className='app-main-view welcome'>
+          <h1>Welcome</h1>
+          <p>I didn't expect to see you here</p>
+        </div>
       </div>
     );
   }

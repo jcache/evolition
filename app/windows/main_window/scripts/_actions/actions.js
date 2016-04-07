@@ -21,6 +21,12 @@ var evActions = {
       data: cmd
     })
   },
+  setCharacterView: function (view_name) {
+    evDispatcher.handleAction({
+      actionType: evConstants.SET_CHARACTER_VIEW,
+      data: view_name
+    })
+  },
 
 };
 

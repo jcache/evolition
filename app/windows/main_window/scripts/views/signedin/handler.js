@@ -3,91 +3,24 @@
 const React = require('react');
 const evActions = require('../../_actions/actions.js');
 const evStore  = require('../../_stores/evStore');
-const CharacterListItem  = require('./character/character-list-item');
 const AppHeader  = require('../../components/app-header');
 const AppFooter  = require('../../components/app-footer');
-import {Link, Route} from 'react-router';
+const AppLeftNav  = require('./_components/app-left-nav');
 
 class SignedIn extends React.Component {
 
   constructor (props) {
     super(props);
-    this.state = {
-      shown: evStore.getLoginShown(),
-      characters: evStore.getCharacters(),
-      selected_character_id: evStore.getSelectedCharacter(),
-    };
-
-    this._onChange = this._onChange.bind(this);
-    this._onAppCTRL = this._onAppCTRL.bind(this);
-
-  }
-
-  componentDidMount () {
-    // var height = $('.app-listview').height();
-    // console.log(height);
-    // $('.app-character-list').height(height);
-    $('.app-listview').perfectScrollbar();
-  }
-
-  componentWillMount () {
-    evStore.addChangeListener(this._onChange);
-  }
-
-  componentWillUnmount () {
-    evStore.removeChangeListener(this._onChange);
-  }
-
-  _onChange () {
-    this.setState({
-      shown: evStore.getLoginShown(),
-      characters: evStore.getCharacters(),
-      selected_character_id: evStore.getSelectedCharacter(),
-    });
-  }
-
-  _onAppCTRL (cmd, bool) {
-    cmd == 'resize-to-login' ? evActions.showLogin(true) : evActions.showLogin(false);
-    ipc.send(cmd);
-  }
-
-  _onChangeView (e, cmd) {
-    console.log(e, cmd);
-    // e.preventDefault();
-    // evActions.changeView(cmd);
   }
 
   render () {
-    var characters = this.state.characters;
-    var selected_character_id = this.state.selected_character_id;
-    var character_list = [];
-    console.log(this.props);
-
-    characters.forEach(function (c) {
-      character_list.push(<CharacterListItem key={c.id} character={c} selected_character={selected_character_id}/>);
-    });
-
+    let {pathname} = this.props.location
     return (
       <div className='signedin-view'>
         <AppHeader />
         <div className='app-body-container'>
-          <div className='app-left-nav'>
-            <ul>
-              <li><Link to="/signedin/" onClick={this._onChangeView.bind(this, 'default-view')} activeClassName='characters-link'></Link></li>
-              <li><Link to="/signedin/character-view" onClick={this._onChangeView.bind(this, 'character-add')} activeClassName='character-add-link'></Link></li>
-              <li><Link to="/signedin/character-add" onClick={this._onChangeView.bind(this, 'fake_page_1')} activeClassName='character-add-link'></Link></li>
-              <li><Link to="/signedin" onClick={this._onChangeView.bind(this, 'fake_page_2')} activeClassName='character-add-link'></Link></li>
-            </ul>
-          </div>
-
-          <div className='app-listview '>
-            <div className='app-character-list'>
-              <ul>{character_list}</ul>
-            </div>
-          </div>
-          <div className='app-main-view'>
-            {this.props.children}
-          </div>
+          <AppLeftNav pathname={pathname} />
+          {this.props.children}
         </div>
         <AppFooter />
       </div>
