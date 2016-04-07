@@ -10,7 +10,7 @@ class Characters extends React.Component {
     super(props);
     this.state = {
       characters: evStore.getCharacters(),
-      selected_character_id: evStore.getSelectedCharacter(),
+      character: evStore.getSelectedCharacter(),
     };
 
     this._onChange = this._onChange.bind(this);
@@ -36,28 +36,32 @@ class Characters extends React.Component {
   _onChange () {
     this.setState({
       characters: evStore.getCharacters(),
-      selected_character_id: evStore.getSelectedCharacter(),
+      character: evStore.getSelectedCharacter(),
     });
   }
 
   render () {
     var characters = this.state.characters;
-    var selected_character_id = this.state.selected_character_id;
-    var character_list = [];
+    var character = this.state.character;
+    var characterList = [];
 
-    let {pathname} = this.props.location;
-    console.log(">>>>>>",pathname);
-    const listViewReveal = pathname == '/signedin/characters' ? 'app-listview hidden' : 'app-listview shown';
+    let { pathname } = this.props.location;
+
+    const listViewReveal = pathname == '/signedin/characters'
+      ? 'app-listview hidden'
+      : 'app-listview shown';
 
     characters.forEach(function (c) {
-      character_list.push(<CharacterListItem key={c.id} character={c} selected_character={selected_character_id}/>);
+      characterList.push(
+        <CharacterListItem key={c.id} character={c} selected_character={ character}/>
+      );
     });
 
     return (
       <div className='app-multi-col'>
         <div className={listViewReveal}>
           <div className='app-character-list'>
-            <ul>{character_list}</ul>
+            <ul>{characterList}</ul>
           </div>
         </div>
 

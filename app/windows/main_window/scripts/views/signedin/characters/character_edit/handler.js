@@ -2,19 +2,23 @@
 
 import React from 'react';
 const { PropTypes } = React;
+const evStore = require('../../../../_stores/evStore.js');
 
-class CharacterAdd extends React.Component {
+class CharacterEdit extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      character: evStore.getSelectedCharacter(),
+    };
   }
 
   render () {
     return (
       <div>
-        <h2>Add a new character</h2>
+        <h2>Edit your Character {this.state.character.id}</h2>
       </div>
     );
   }
 }
 
-module.exports = CharacterAdd;
+module.exports = CharacterEdit;

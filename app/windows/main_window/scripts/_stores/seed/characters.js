@@ -3,7 +3,7 @@
 var characters = [
     {
       "id": "1",
-      "character_name": "Flinn ",
+      "character_name": "Kevin Flinn ",
       "game_system_name": "Rollmaster",
       "level": "12",
       "campaign_name": "Dragon Elementals",
@@ -26,7 +26,7 @@ var characters = [
       }
     },{
       "id": "2",
-      "character_name": "Flinn ",
+      "character_name": "Joshua Owens ",
       "game_system_name": "Rollmaster",
       "level": "12",
       "campaign_name": "Dragon Elementals",

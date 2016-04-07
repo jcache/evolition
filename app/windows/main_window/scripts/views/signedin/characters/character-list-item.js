@@ -10,16 +10,17 @@ class CharacterListItem extends React.Component {
     this._onSelectCharacter = this._onSelectCharacter.bind(this);
   }
 
-  _onSelectCharacter (id) {
-    evActions.setSelectedCharacter(id);
+  _onSelectCharacter (item) {
+    console.log(">>>>>>>>", item);
+    evActions.setSelectedCharacter(item);
   }
 
   render () {
     var c = this.props.character;
-    var id = this.props.selected_character;
+    var selectedCharacter = this.props.selected_character;
     var image_src = 'ev://shared/images/darths.png';
     return (
-      <li className={c.id == id ? "active" : "inactive"} onClick={this._onSelectCharacter.bind(this,c.id)}>
+      <li className={c.id == selectedCharacter.id ? "active" : "inactive"} onClick={this._onSelectCharacter.bind(this, c )}>
         <div className='character-details'>
           <div className='image-box'>
             <div className='image'>

@@ -10,7 +10,7 @@ class AllCharacters extends React.Component {
     super(props);
     this.state = {
       characters: evStore.getCharacters(),
-      selected_character_id: evStore.getSelectedCharacter(),
+      selected_character: evStore.getSelectedCharacter(),
     };
 
     this._onChange = this._onChange.bind(this);
@@ -36,13 +36,12 @@ class AllCharacters extends React.Component {
   _onChange () {
     this.setState({
       characters: evStore.getCharacters(),
-      selected_character_id: evStore.getSelectedCharacter(),
+      selected_character: evStore.getSelectedCharacter(),
     });
   }
 
   render () {
     var characters = this.state.characters;
-
     return (
       <div className='app-multi-col'>
         <div className='app-main-view all-characters'>

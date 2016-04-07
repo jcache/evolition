@@ -5,9 +5,8 @@ var characters = require('./seed/characters.js');
 var objectAssign  = require('object-assign');
 var CHANGE_EVENT  = 'change';
 
-console.log("character seed data: " , characters);
 
-var selCharID = 1;
+var character = {};
 var characterView = '';
 
 var login = true;
@@ -22,8 +21,9 @@ var changeView = function (view) {
   activeView = view;
 };
 
-var setSelectedCharacter = function (id) {
-  selCharID = id;
+var setSelectedCharacter = function (c) {
+  console.log(">>>>>1", c);
+  character = c;
 };
 
 var setCharacterView = function (view) {
@@ -47,7 +47,7 @@ var evStore = objectAssign({}, EventEmitter.prototype, {
   },
 
   getSelectedCharacter: function () {
-    return selCharID;
+    return character;
   },
 
   getCharacters: function () {

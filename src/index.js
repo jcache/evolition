@@ -30,7 +30,7 @@ let mainWindow = void 0;
 let sheetWindow = void 0;
 
 let createWindow = () => {
-  var mainWindowPath = path.resolve(__dirname, '/windows/main_window/', 'index.html')
+  var mainWindowPath = path.resolve(__dirname, '/windows/main_window/', 'index.html');
   var winW = 960;
   var winH = 500;
   var atomScreen = electron.screen;
@@ -42,15 +42,15 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: winW,
     height: winH,
-    minWidth: 960,
-    maxWidth: 960,
+    // minWidth: 960,
+    // maxWidth: 960,
     // standardWindow: false,
     backgroundColor: '#062A4B',
     // hasShadow: false,
     frame: false,
   });
 
-  mainWindow.webContents.openDevTools({detach: true});
+  mainWindow.webContents.openDevTools({ detach: true });
 
   var protocol = electron.protocol;
 
@@ -89,8 +89,8 @@ let createWindow = () => {
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.setTitle('Evolition');
-    console.log('size', size);
-    console.log('windows loaded...', mainWindow.webContents.isLoading());
+    // console.log('size', size);
+    // console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
     // sheetWindow.show();
   });

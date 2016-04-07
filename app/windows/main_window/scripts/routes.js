@@ -16,18 +16,20 @@ export default (
     <Route path='/' component={Base}>
       <Route path="auth" component={Anon} />
       <Route path="signedin" component={SignedIn}>
-        <IndexRoute component={Welcome}/>
+        <IndexRoute component={Welcome} />
         <Route path="characters" component={Characters}>
           <IndexRoute component={AllCharacters}/>
-          <Route path="view/:id" component={CharacterView}/>
-          <Route path="add/:id" component={CharacterAdd}/>
-          <Route path="edit/:id" component={CharacterEdit}/>
+          <Route path="view/:id" component={CharacterView} />
+          <Route path="add/:id" component={CharacterAdd} />
+          <Route path="edit/:id" component={CharacterEdit} />
         </Route>
       </Route>
       <Route component={Anon} onEnter={requireAuth} path='*'/>
     </Route>
   </Router>
 );
+
+
 
 // REQUIRE AUTH METHOD
 function requireAuth(nextState, replace) {
