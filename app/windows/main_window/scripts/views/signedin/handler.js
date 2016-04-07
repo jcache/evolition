@@ -61,6 +61,7 @@ class SignedIn extends React.Component {
     var characters = this.state.characters;
     var selected_character_id = this.state.selected_character_id;
     var character_list = [];
+    console.log(this.props);
 
     characters.forEach(function (c) {
       character_list.push(<CharacterListItem key={c.id} character={c} selected_character={selected_character_id}/>);
@@ -72,7 +73,7 @@ class SignedIn extends React.Component {
         <div className='app-body-container'>
           <div className='app-left-nav'>
             <ul>
-              <li><Link to="/signedin" onClick={this._onChangeView.bind(this, 'default-view')} activeClassName='characters-link'></Link></li>
+              <li><Link to="/signedin/" onClick={this._onChangeView.bind(this, 'default-view')} activeClassName='characters-link'></Link></li>
               <li><Link to="/signedin/character-view" onClick={this._onChangeView.bind(this, 'character-add')} activeClassName='character-add-link'></Link></li>
               <li><Link to="/signedin/character-add" onClick={this._onChangeView.bind(this, 'fake_page_1')} activeClassName='character-add-link'></Link></li>
               <li><Link to="/signedin" onClick={this._onChangeView.bind(this, 'fake_page_2')} activeClassName='character-add-link'></Link></li>
