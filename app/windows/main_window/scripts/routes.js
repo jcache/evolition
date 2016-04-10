@@ -29,11 +29,8 @@ export default (
   </Router>
 );
 
-
-
 // REQUIRE AUTH METHOD
 function requireAuth(nextState, replace) {
-  console.log(nextState, replace);
   replace('/auth');
   ipc.send('resize-to-login');
 }

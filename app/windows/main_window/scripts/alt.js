@@ -1,4 +1,4 @@
 var Alt = require('alt');
-var alt = new Alt();
+export default new Alt();
 
 module.exports = alt;

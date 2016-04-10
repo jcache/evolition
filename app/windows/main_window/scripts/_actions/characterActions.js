@@ -1,9 +1,17 @@
 var alt = require('../alt');
 
 class CharacterActions {
-  updateLocations(character) {
+  updateCharacter(character) {
     return character;
+  }
+
+  addCharacter(character) {
+    return character;
+  }
+
+  deleteCharacter(character) {
+    return true;
   }
 }
 
-module.exports = alt.createActions(CharacterActions);
+const characterActions = alt.createActions(CharacterActions);
