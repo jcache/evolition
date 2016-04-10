@@ -3,6 +3,7 @@ $translucent-yellow: rgba(255,235,0,0.5);
 $translucent-black: rgba(0,0,0,1);
 $interface-support-color: rgba(36,38,50,1);
 $interface-support-alt-color: rgba(45,50,71,1);
+$interface-support-alt-blue-color: rgba(47,111,175,1);
 $interface-main-color: rgba(45,48,62,1);
 $interface-main-trim-color: transparentize($translucent-black, 0.9);
 body, th, td {
@@ -12,7 +13,7 @@ body, th, td {
   border-radius:0;
   border:2px solid rgba(178,153,217,1);
   background: transparentize($translucent-black, 0.9);
-} 
+}
 body {
   background-color: $interface-support-color;
 
@@ -84,6 +85,7 @@ body {
           display:flex;
           flex:1;
           flex-direction: row;
+          align-items:flex-end;
           max-width:55px;
           border-right: 1px solid $interface-main-trim-color;
 
@@ -357,7 +359,7 @@ body {
               .headController{
                 flex:1;
                 display:flex;
-                max-width:20%;
+                flex-grow: 0;
 
                 ul {
                   flex:1;
@@ -367,14 +369,16 @@ body {
                   margin:0;
                   li {
                     flex-grow:0;
-                    background-color:red;
                     flex:1;
-                    min-width:30px;
-                    max-width:60px;
+                    display:flex;
                     a {
                       flex:1;
-                      display:block;
-                      min-height: 50px;
+                      background-color:$interface-support-alt-blue-color;
+                      text-align: center;
+                      margin: 10px 5px;
+                      vertical-align: middle;
+                      min-width:80px;
+                      max-width:100px;
                       color:#fff;
                     }
                   }
