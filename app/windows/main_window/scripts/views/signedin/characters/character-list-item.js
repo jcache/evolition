@@ -6,12 +6,10 @@ const evActions = require('../../../_actions/actions.js');
 class CharacterListItem extends React.Component {
   constructor (props) {
     super(props);
-
     this._onSelectCharacter = this._onSelectCharacter.bind(this);
   }
 
   _onSelectCharacter (item) {
-    console.log(">>>>>>>>", item);
     evActions.setSelectedCharacter(item);
   }
 

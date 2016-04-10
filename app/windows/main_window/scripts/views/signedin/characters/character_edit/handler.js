@@ -10,6 +10,21 @@ class CharacterEdit extends React.Component {
     this.state = {
       character: evStore.getSelectedCharacter(),
     };
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentWillMount () {
+    evStore.addChangeListener(this._onChange);
+  }
+
+  componentWillUnmount () {
+    evStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange () {
+    this.setState({
+      character: evStore.getSelectedCharacter(),
+    });
   }
 
   render () {

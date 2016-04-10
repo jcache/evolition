@@ -14,7 +14,7 @@ class SignedIn extends React.Component {
   }
 
   render () {
-    let {pathname} = this.props.location
+    let {pathname} = this.props.location;
     return (
       <div className='signedin-view'>
         <AppHeader />

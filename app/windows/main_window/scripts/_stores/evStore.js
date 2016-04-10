@@ -22,7 +22,6 @@ var changeView = function (view) {
 };
 
 var setSelectedCharacter = function (c) {
-  console.log(">>>>>1", c);
   character = c;
 };
 

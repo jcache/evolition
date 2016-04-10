@@ -23,6 +23,7 @@ require('crash-reporter').start(
 );
 
 require('electron').hideInternalModules();
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 
@@ -42,10 +43,12 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: winW,
     height: winH,
+
     // minWidth: 960,
     // maxWidth: 960,
     // standardWindow: false,
     backgroundColor: '#062A4B',
+
     // hasShadow: false,
     frame: false,
   });
@@ -54,13 +57,13 @@ let createWindow = () => {
 
   var protocol = electron.protocol;
 
-  protocol.registerFileProtocol('ev', function(request, callback) {
+  protocol.registerFileProtocol('ev', (request, callback) => {
     var url = request.url.substr(5);
-    callback({path: path.normalize(__dirname + '/' + url)});
-  }, function(error) {
+    callback({ path: path.normalize(__dirname + '/' + url) });
+  }, (error) => {
     if (error) console.error('Failed to register protocol');
   });
-  //
+
   // // Create the browser window.
   // sheetWindow = new BrowserWindow({
   //   width: 800,
@@ -103,23 +106,23 @@ let createWindow = () => {
   //   }
   // });
 
-  ipcMain.on('app_close', function (event) {
+  ipcMain.on('app_close', (event) => {
     mainWindow.close();
     app.quit();
   });
 
-  ipcMain.on('app_minimize', function (event) {
+  ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
   });
 
-  ipcMain.on('resize-to-main', function (e, arg) {
+  ipcMain.on('resize-to-main', (e, arg) => {
     var options = { width: 1140, height: 680 };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
     mainWindow.setBounds(options, true);
   });
 
-  ipcMain.on('resize-to-login', function (e, arg) {
+  ipcMain.on('resize-to-login', (e, arg) => {
     var options = { width: winW, height: winH };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
@@ -139,7 +142,7 @@ let createWindow = () => {
         { label: 'About Application', selector: 'orderFrontStandardAboutPanel:' },
         { type: 'separator' },
         { label: 'Quit', accelerator: 'Command+Q',
-          click: function () {
+          click: () => {
             app.quit();
           },
         },
