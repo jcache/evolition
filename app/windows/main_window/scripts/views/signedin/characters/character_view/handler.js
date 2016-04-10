@@ -14,8 +14,16 @@ class CharacterView extends React.Component {
 
   render () {
     return (
-      <div>
-        <h2>view your character: {this.state.character.character_name}</h2>
+      <div className='bodyHeader'>
+        <div className='headTitle'>
+          <h2>view your character: {this.state.character.character_name}</h2>
+        </div>
+        <div className='headController'>
+          <ul>
+            <li><a href='#'>Edit</a></li>
+            <li><a href='#'>View</a></li>
+          </ul>
+        </div>
       </div>
     );
   }

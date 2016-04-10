@@ -100,6 +100,7 @@ body {
               align-self:center;
               border-radius:16px;
               transition:all .3s ease;
+              -webkit-app-region: no-drag;
               &.bn-app-close{
                 background: opacify($translucent-red, 0.3);
                 &:hover,
@@ -335,6 +336,52 @@ body {
             background: $interface-main-color;
             margin-left:5px;
             margin-right:5px;
+            &.welcome {
+              background: $interface-support-color;
+            }
+            .bodyHeader {
+              flex: 1;
+              display:flex;
+              flex-direction:row;
+              max-height: 50px;
+              min-height: 50px;
+              background: $interface-support-color;
+              .headTitle{
+                flex:1;
+                h2 {
+                  margin:0;
+                  line-height:auto;
+                  font-size:16px;
+                }
+              }
+              .headController{
+                flex:1;
+                display:flex;
+                max-width:20%;
+
+                ul {
+                  flex:1;
+                  display:flex;
+                  flex-direction:row;
+                  list-style:none;
+                  margin:0;
+                  li {
+                    flex-grow:0;
+                    background-color:red;
+                    flex:1;
+                    min-width:30px;
+                    max-width:60px;
+                    a {
+                      flex:1;
+                      display:block;
+                      min-height: 50px;
+                      color:#fff;
+                    }
+                  }
+                }
+              }
+
+            }
           }
         }
       }

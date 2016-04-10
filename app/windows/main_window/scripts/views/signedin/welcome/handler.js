@@ -12,7 +12,7 @@ class Welcome extends React.Component {
     return (
       <div className='app-multi-col'>
         <div className='app-main-view welcome'>
-          <h1>Welcome</h1>
+          
           <p>I didn't expect to see you here</p>
         </div>
       </div>

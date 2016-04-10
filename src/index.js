@@ -22,7 +22,7 @@ require('crash-reporter').start(
   }
 );
 
-// require('electron').hideInternalModules();
+require('electron').hideInternalModules();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 
@@ -160,7 +160,20 @@ let createWindow = () => {
         { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
         { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' },
       ],
-    },
+    }, {
+      label: 'Developer',
+      submenu: [
+        {
+          label: 'Reload',
+          accelerator: 'Command+R',
+          click: function() { BrowserWindow.getFocusedWindow().reloadIgnoringCache(); }
+        },{
+          label: 'Toggle DevTools',
+          accelerator: 'Alt+Command+I',
+          click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); }
+        },
+      ],
+    }
   ];
 
   Menu.setApplicationMenu(

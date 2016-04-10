@@ -14,8 +14,16 @@ class CharacterEdit extends React.Component {
 
   render () {
     return (
-      <div>
-        <h2>Edit your Character {this.state.character.id}</h2>
+      <div className='bodyHeader'>
+        <div className='headTitle'>
+          <h2>Edit your Character {this.state.character.id}</h2>
+        </div>
+        <div className='headController'>
+          <ul>
+            <li><a href='#'>Edit</a></li>
+            <li><a href='#'>View</a></li>
+          </ul>
+        </div>
       </div>
     );
   }

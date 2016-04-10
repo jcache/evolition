@@ -6,7 +6,7 @@ var objectAssign  = require('object-assign');
 var CHANGE_EVENT  = 'change';
 
 
-var character = {};
+var character = characters[0];
 var characterView = '';
 
 var login = true;

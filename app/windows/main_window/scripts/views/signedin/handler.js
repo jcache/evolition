@@ -22,7 +22,6 @@ class SignedIn extends React.Component {
           <AppLeftNav pathname={pathname} />
           {this.props.children}
         </div>
-        <AppFooter />
       </div>
     );
   }
