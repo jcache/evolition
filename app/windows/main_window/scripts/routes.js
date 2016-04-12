@@ -3,7 +3,7 @@ import NotFound from './components/notfound';
 import Anon from './views/anon/handler';
 import SignedIn from './views/signedin/handler';
 import Base from './base';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, RouterContext} from 'react-router';
 const Characters   = require('./views/signedin/characters/handler');
 const AllCharacters   = require('./views/signedin/characters/list-all');
 const CharacterView   = require('./views/signedin/characters/character_view/handler');

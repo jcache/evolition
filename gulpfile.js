@@ -293,7 +293,7 @@ gulp.task('package-windows', ['build-production'], () => {
     .pipe(symdest('release/windows'));
 });
 
-gulp.task('create-windows-installer', function(done) {
+gulp.task('create-windows-installer', (done) => {
   winInstaller({
     appDirectory: './release/windows',
     outputDirectory: './release/win32',

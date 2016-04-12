@@ -3,6 +3,7 @@
 import React from 'react';
 const { PropTypes } = React;
 const evStore = require('../../../../_stores/evStore.js');
+import {Link, Route} from 'react-router';
 
 class CharacterView extends React.Component {
   constructor (props) {
@@ -36,8 +37,8 @@ class CharacterView extends React.Component {
         </div>
         <div className='headController'>
           <ul>
-            <li><a href='#'>Edit</a></li>
-            <li><a href='#'>View</a></li>
+          <li><Link to="/modal" className='character-edit-link'>Edit</Link></li>
+          <li><Link to="/modal" className='character-view-link'>View</Link></li>
           </ul>
         </div>
       </div>
