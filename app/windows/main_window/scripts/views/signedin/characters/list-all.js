@@ -3,7 +3,7 @@
 const React     = require('react');
 const evActions = require('../../../_actions/actions.js');
 const evStore = require('../../../_stores/evStore.js');
-const CharacterListItem  = require('./character-list-item');
+const CharacterCard  = require('./_components/character-card');
 
 class AllCharacters extends React.Component {
   constructor (props) {
@@ -41,13 +41,17 @@ class AllCharacters extends React.Component {
   }
 
   render () {
-    var characters = this.state.characters;
+    const characterCards = [];
+    let {characters, selected_character} = this.state;
+    characters.forEach(function (c) {
+      characterCards.push(
+        <CharacterCard key={c.id} character={c} selected_character={ selected_character}/>
+      );
+    });
     return (
       <div className='app-multi-col'>
         <div className='app-main-view all-characters'>
-          <h1>All Characters View</h1>
-          <p>This is where I'm going to list all of the available characters and other data</p>
-          <p>you have {characters.length} characters</p>
+          {characterCards}
         </div>
       </div>
     );
