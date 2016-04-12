@@ -2,6 +2,7 @@
 
 const React     = require('react');
 const evActions = require('../../../_actions/actions.js');
+import { browserHistory } from 'react-router';
 
 class CharacterListItem extends React.Component {
   constructor (props) {
@@ -11,6 +12,7 @@ class CharacterListItem extends React.Component {
 
   _onSelectCharacter (item) {
     evActions.setSelectedCharacter(item);
+    browserHistory.push('/signedin/characters/view/' + item.id);
   }
 
   render () {

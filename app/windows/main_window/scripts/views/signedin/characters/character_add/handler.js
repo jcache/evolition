@@ -2,6 +2,10 @@
 
 import React from 'react';
 const { PropTypes } = React;
+import Formsy from 'formsy-react';
+import FRC from 'formsy-react-components';
+const { Input, File, Select, Textarea } = FRC;
+
 
 class CharacterAdd extends React.Component {
   constructor (props) {

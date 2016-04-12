@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-const { PropTypes } = React;
+let { PropTypes } = React;
 const evStore = require('../../../../_stores/evStore.js');
 import {Link, Route} from 'react-router';
 
@@ -29,15 +29,15 @@ class CharacterEdit extends React.Component {
   }
 
   render () {
+    let {character} = this.state;
     return (
       <div className='bodyHeader'>
         <div className='headTitle'>
-          <h2>Edit your Character {this.state.character.id}</h2>
+          <h2>Edit your Character {character.id}</h2>
         </div>
         <div className='headController'>
           <ul>
-            <li><Link to="/modal" className='character-edit-link'>Edit</Link></li>
-            <li><Link to="/modal" className='character-view-link'>View</Link></li>
+            <li><Link to={'/signedin/characters/view/' + character.id} activeClassName='character-view-link' activeClassName='active'>View</Link></li>
           </ul>
         </div>
       </div>
