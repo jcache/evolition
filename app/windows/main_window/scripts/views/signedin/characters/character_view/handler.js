@@ -25,7 +25,7 @@ class CharacterView extends React.Component {
   }
 
   _onLaunchSheet () {
-    alert('launching character sheet...');
+    ipc.send('open_character_sheet');
   }
 
   _onChange () {

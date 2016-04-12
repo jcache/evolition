@@ -44,6 +44,7 @@ let createWindow = () => {
     width: winW,
     height: winH,
 
+
     // minWidth: 960,
     // maxWidth: 960,
     // standardWindow: false,
@@ -64,28 +65,31 @@ let createWindow = () => {
     if (error) console.error('Failed to register protocol');
   });
 
-  // // Create the browser window.
-  // sheetWindow = new BrowserWindow({
-  //   width: 800,
-  //   height: 850,
-  //   resizable: true,
-  //   frame: false,
-  // });
+  // Create the browser window.
+  sheetWindow = new BrowserWindow({
+    width: 800,
+    height: 850,
+    resizable: true,
+    show: false,
+    frame: false,
+  });
 
   mainWindow.setPosition(
     vertL - (winW / 2),
     horzL - (winH / 2)
   );
 
-  // sheetWindow.setPosition(840, 100);
+  sheetWindow.setPosition(840, 100);
+
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + path.join(__dirname, '/windows/main_window/','index.html'));
+
   // mainWindow.loadURL(path.normalize('file://' + path.join(__dirname, '/windows/main_window/','index.html')));
+  sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
 
-  // sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
   // // Open the DevTools.
-
   var size = {}, settingsjson = {};
+
   try {
     size = JSON.parse(fs.readFileSync(path.join(app.getPath('userData'), 'size')));
   } catch (err) {}
@@ -95,7 +99,7 @@ let createWindow = () => {
     // console.log('size', size);
     // console.log('windows loaded...', mainWindow.webContents.isLoading());
     mainWindow.show();
-    // sheetWindow.show();
+
   });
 
   // mainWindow.webContents.on('will-navigate', function (e, url) {
@@ -109,6 +113,10 @@ let createWindow = () => {
   ipcMain.on('app_close', (event) => {
     mainWindow.close();
     app.quit();
+  });
+
+  ipcMain.on('open_character_sheet', (event) => {
+    sheetWindow.show();
   });
 
   ipcMain.on('app_minimize', (event) => {

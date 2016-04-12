@@ -19,7 +19,7 @@ class AppHeader extends React.Component {
   }
 
   _onAppCTRL (cmd, bool) {
-      console.log("cmd: ", cmd,"boolean: ", bool);
+    console.log("cmd: ", cmd,"boolean: ", bool);
     // cmd == 'resize-to-login' ? evActions.showLogin(bool) : evActions.showLogin(bool)
     ipc.send(cmd);
   }
