@@ -9,6 +9,15 @@ class CharacterListItem extends React.Component {
     super(props);
     this._onSelectCharacter = this._onSelectCharacter.bind(this);
   }
+  componentDidMount () {
+
+    $('img').bind('click', function () {
+      // $('body').blur(function () {
+        alert("Handler for .focus() called.");
+      // });
+    });
+
+  }
 
   _onSelectCharacter (item) {
     evActions.setSelectedCharacter(item);

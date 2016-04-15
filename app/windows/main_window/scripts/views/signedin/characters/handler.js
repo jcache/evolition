@@ -64,10 +64,7 @@ class Characters extends React.Component {
             <ul>{characterList}</ul>
           </div>
         </div>
-
-        <div className='app-main-view'>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }

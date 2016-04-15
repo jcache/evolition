@@ -13,8 +13,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const fs = require('fs');
 
-require('crash-reporter').start(
-  {
+require('crash-reporter').start({
     productName: 'evolition',
     companyName: 'evolition.io',
     submitURL: 'http://evolition.io',
@@ -44,7 +43,6 @@ let createWindow = () => {
     width: winW,
     height: winH,
 
-
     // minWidth: 960,
     // maxWidth: 960,
     // standardWindow: false,
@@ -54,7 +52,7 @@ let createWindow = () => {
     frame: false,
   });
 
-  mainWindow.webContents.openDevTools({ detach: true });
+  // mainWindow.webContents.openDevTools({ detach: true });
 
   var protocol = electron.protocol;
 
@@ -82,7 +80,7 @@ let createWindow = () => {
   sheetWindow.setPosition(840, 100);
 
   // and load the index.html of the app.
-  mainWindow.loadURL('file://' + path.join(__dirname, '/windows/main_window/','index.html'));
+  mainWindow.loadURL('file://' + path.join(__dirname, '/windows/main_window/', 'index.html'));
 
   // mainWindow.loadURL(path.normalize('file://' + path.join(__dirname, '/windows/main_window/','index.html')));
   sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));

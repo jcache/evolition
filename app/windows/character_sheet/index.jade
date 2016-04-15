@@ -1,16 +1,19 @@
 doctype
 html(lang="en")
-  head 
-    title Character  
+  head  
+    title Character Sheet
     link(rel='stylesheet', href='../../shared/css/global.css')
+    link(rel='stylesheet', href='../../shared/css/perfect-scrollbar.css')
     link(rel='stylesheet', href='./styles/main.css')
     script.
       var remote  = require('remote');
       var ipc     = require('ipc-renderer');
-  body   
+  body  
     #evolition.ev
   script.
-    window.$ = window.jQuery = require('../../shared/scripts/jquery.min.js')  
+    window.$ = window.jQuery = require('../../shared/scripts/jquery.min.js')
   script(src='../../shared/scripts/bootstrap.min.js') 
+  script(src='../../shared/scripts/perfect-scrollbar.jquery.min.js')
+  script(src='../../shared/scripts/perfect-scrollbar.min.js')
+  script(src='../../shared/scripts/global.js') 
   script(src='./scripts/app.js') 
- 

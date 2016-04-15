@@ -38,15 +38,17 @@ class CharacterView extends React.Component {
     let {character} = this.state;
 
     return (
-      <div className='bodyHeader'>
-        <div className='headTitle'>
-          <h2>view your character: {character.character_name}</h2>
-        </div>
-        <div className='headController'>
-          <ul>
-            <li><Link to={'/signedin/characters/edit/' + character.id} activeClassName='character-add-link' activeClassName='active'>Edit</Link></li>
-            <li><a onClick={this._onLaunchSheet} className='character-sheet-link'>Sheet View</a></li>
-          </ul>
+      <div className='app-main-view'>
+        <div className='bodyHeader'>
+          <div className='headTitle'>
+            <h2>view your character: {character.character_name}</h2>
+          </div>
+          <div className='headController'>
+            <ul>
+              <li><Link to={'/signedin/characters/edit/' + character.id} activeClassName='character-add-link' activeClassName='active'>Edit</Link></li>
+              <li><a onClick={this._onLaunchSheet} className='character-sheet-link'>Sheet View</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     );
