@@ -12,6 +12,7 @@ const Menu = require('menu');
 const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const fs = require('fs');
+const evRouter = require('./evRouter');
 
 require('crash-reporter').start({
     productName: 'evolition',
@@ -96,6 +97,8 @@ let createWindow = () => {
     mainWindow.setTitle('Evolition');
     // console.log('size', size);
     // console.log('windows loaded...', mainWindow.webContents.isLoading());
+    console.log("APP_PATH: ", evRouter.getAppPath());
+    console.log("APP_STORAGE_PATH: ", evRouter.getStoragePath());
     mainWindow.show();
 
   });

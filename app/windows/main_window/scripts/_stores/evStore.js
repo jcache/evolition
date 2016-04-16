@@ -21,6 +21,11 @@ var changeView = function (view) {
   activeView = view;
 };
 
+var editCharacter = function (c) {
+  alert(JSON.stringify(c));
+  character = c;
+};
+
 var setSelectedCharacter = function (c) {
   character = c;
 };
@@ -78,6 +83,11 @@ evDispatcher.register(function (payload) {
 
     case evConstants.CHANGE_VIEW:
       changeView(action.data);
+      evStore.emit(CHANGE_EVENT);
+      break;
+
+    case evConstants.EDIT_CHARACTER:
+      editCharacter(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 

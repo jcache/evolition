@@ -27,6 +27,12 @@ var evActions = {
       data: view_name
     })
   },
+  editCharacter: function (character) {
+    evDispatcher.handleAction({
+      actionType: evConstants.EDIT_CHARACTER,
+      data: character
+    })
+  },
 
 };
 
