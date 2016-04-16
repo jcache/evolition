@@ -58,55 +58,92 @@ class CharacterEdit extends React.Component {
               </div>
               <div className='col-xs-9 col-xs-pull-3'>
                 <div className='row'>
-                  <div className='col-xs-4 form-group label-floating is-empty'>
+                  <div className='col-xs-6 form-group  is-empty no-space'>
                     <label className='control-label'>Characer Name</label>
                     <input type="text" className="form-control" />
-                    <span className='material-input'></span>
                   </div>
 
-                  <div className='col-xs-4 form-group label-floating is-empty'>
-                    <label className='control-label'>Age</label>
+                  <div className='col-xs-4 form-group  is-empty no-space'>
+                    <label className='control-label'>Race</label>
                     <select className='form-control'>
-                      <option></option>
-                      <option>selection #2</option>
-                      <option>selection #3</option>
+                      <option> - - </option>
+                      <option>Human</option>
+                      <option>Elven</option>
+                      <option>Dwarven</option>
                     </select>
                   </div>
 
-                  <div className='col-xs-4 form-group label-floating is-empty'>
-                    <label className='control-label'>Class</label>
-                    <input type="text" className="form-control"/>
-                    <span className='material-input'></span>
+                  <div className='col-xs-2 form-group is-empty no-space'>
+                    <label className='control-label'>Gender</label>
+                    <select className='form-control'>
+                      <option>Female</option>
+                      <option>Male</option>
+                    </select>
                   </div>
                 </div>
 
                 <div className='row'>
-                  <div className='col-xs-3 form-group label-floating is-empty'> 
+
+                  <div className='col-xs-2 form-group is-empty no-space'>
                     <label className='control-label'>Age</label>
+                    <input type="text" className="form-control"/>
+                  </div>
+
+                  <div className='col-xs-2 form-group is-empty no-space'>
+                    <label className='control-label'>Height</label>
+                    <input type="text" className="form-control"/>
+                  </div>
+
+                  <div className='col-xs-2 form-group is-empty no-space'>
+                    <label className='control-label'>Weight</label>
+                    <input type="text" className="form-control" />
+                  </div>
+
+                  <div className='col-xs-6 form-group is-empty no-space'>
+                    <label className='control-label'>Class</label>
                     <select className='form-control'>
-                      <option></option>
-                      <option>selection #2</option>
-                      <option>selection #3</option>
+                      <option> - - </option>
+                      <option>Barbarian</option>
+                      <option>Bard</option>
+                      <option>Cleric</option>
+                      <option>Druid</option>
+                      <option>Fighter</option>
+                      <option>Monk</option>
+                      <option>Paladin</option>
+                      <option>Ranger</option>
+                      <option>Sorcerer</option>
+                      <option>Wizard</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className='row'>
+                  <div className='col-xs-4 form-group is-empty no-space'>
+                    <label className='control-label'>Alignment</label>
+                    <select className='form-control'>
+                      <option> - - </option>
+                      <option>Lawful Good</option>
+                      <option>Neutral Good</option>
+                      <option>Chaotic Good</option>
+                      <option>Lawful Neutral</option>
+                      <option>Neutral</option>
+                      <option>Chaotic Neutral</option>
+                      <option>Lawful Evil</option>
+                      <option>Neutral Evil</option>
+                      <option>Chaotic Evil</option>
                     </select>
                   </div>
 
-                  <div className='col-xs-3 form-group label-floating is-empty'>
-                    <label className='control-label'>Age</label>
+                  <div className='col-xs-4 form-group is-empty no-space'>
+                    <label className='control-label'>Diety</label>
                     <input type="text" className="form-control"/>
-                    <span className='material-input'></span>
                   </div>
 
-                  <div className='col-xs-3 form-group label-floating is-empty'>
-                    <label className='control-label'>Height</label>
+                  <div className='col-xs-4 form-group is-empty no-space'>
+                    <label className='control-label'>Level</label>
                     <input type="text" className="form-control"/>
-                    <span className='material-input'></span>
                   </div>
 
-                  <div className='col-xs-3 form-group label-floating is-empty'>
-                    <label className='control-label'>Weight</label>
-                    <input type="text" className="form-control" />
-                    <span className='material-input'></span>
-                  </div>
                 </div>
 
               </div>
