@@ -45,7 +45,7 @@ class CharacterListItem extends React.Component {
               <div className='level-box'>
                 <p>
                   <small>Level</small>
-                  <span>10</span>
+                  <span>{c.level ? c.level : '0'}</span>
                 </p>
               </div>
             </div>

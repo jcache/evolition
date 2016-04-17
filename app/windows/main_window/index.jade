@@ -8,6 +8,13 @@ html(lang="en")
     script.
       var remote  = require('remote');
       var ipc     = require('ipc-renderer');
+      var dir     = ipc.sendSync('config-paths', true);
+      var low     = require('lowdb'); 
+      const storage = require('lowdb/file-sync') 
+      var _       = require('lodash');
+      var ev_characters = low(dir.app_data_path + "characters.json",{storage});
+      console.log(dir.app_data_path + "characters.json");
+      ev_characters._.mixin(require('underscore-db'));
   body  
     #evolition.ev
   script.

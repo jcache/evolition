@@ -2,16 +2,19 @@
 
 import React from 'react';
 let { PropTypes } = React;
+
 const evStore = require('../../../../_stores/evStore.js');
 const evActions = require('../../../../_actions/actions.js');
+
 import {Link, Route} from 'react-router';
 import Formsy from 'formsy-react';
 import FRC from 'formsy-react-components';
+
 var Input     = FRC.Input;
 var File      = FRC.File;
 var Select    = FRC.Select;
 var Textarea  = FRC.Textarea;
-//
+
 class CharacterEdit extends React.Component {
   constructor (props) {
     super(props);
@@ -21,6 +24,7 @@ class CharacterEdit extends React.Component {
       layout: 'vertical',
     };
     this._onChange = this._onChange.bind(this);
+    this.changeOption = this.changeOption.bind(this);
   }
 
   componentWillMount () {
@@ -81,6 +85,7 @@ class CharacterEdit extends React.Component {
 
         <div className='bodyContainer'>
           <Formsy.Form className={formClassName} onSubmit={this.submitForm} ref="form">
+            <Input {...sharedProps} name="id" value={character.id} label="Character Name:" type="hidden" required />
             <div className='row'>
               <div className='col-xs-3 col-xs-push-9 image-container'>
                 <div className='character-profile-pic' style={divStyle}>
@@ -88,7 +93,6 @@ class CharacterEdit extends React.Component {
               </div>
               <div className='col-xs-9 col-xs-pull-3'>
                 <div className='row'>
-
                   <Input {...sharedProps}
                     rowClassName="col-xs-6 form-group is-empty no-space"
                     name="character_name"
@@ -96,7 +100,6 @@ class CharacterEdit extends React.Component {
                     label="Full Name"
                     type="text"
                   />
-
                   <div className='col-xs-4 form-group  is-empty no-space'>
                     <label className='control-label'>Race</label>
                     <select className='form-control'>
@@ -106,7 +109,6 @@ class CharacterEdit extends React.Component {
                       <option>Dwarven</option>
                     </select>
                   </div>
-
                   <div className='col-xs-2 form-group is-empty no-space'>
                     <label className='control-label'>Gender</label>
                     <select className='form-control'>
@@ -115,13 +117,10 @@ class CharacterEdit extends React.Component {
                     </select>
                   </div>
                 </div>
-
                 <div className='row'>
-
                   <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="age" value={character.age} label="Age" type="number" />
                   <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="height" value={character.height} label="Height" type="text" />
                   <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="weight" value={character.weight} label="Weight" type="text" />
-
                   <div className='col-xs-6 form-group is-empty no-space'>
                     <label className='control-label'>Class</label>
                     <select className='form-control'>
@@ -139,7 +138,6 @@ class CharacterEdit extends React.Component {
                     </select>
                   </div>
                 </div>
-
                 <div className='row'>
                   <div className='col-xs-4 form-group is-empty no-space'>
                     <label className='control-label'>Alignment</label>
@@ -156,16 +154,11 @@ class CharacterEdit extends React.Component {
                       <option>Chaotic Evil</option>
                     </select>
                   </div>
-
                   <Input {...sharedProps} rowClassName="col-xs-4 form-group is-empty no-space" name="diety" value={character.diety} label="Diety" type="text" />
                   <Input {...sharedProps} rowClassName="col-xs-4 form-group is-empty no-space" name="level" value={character.level} label="Level" type="number" required />
-
-
                 </div>
-
               </div>
             </div>
-
             <div className='row'>
               <input type="submit" className="btn btn-raised btn-success" formNoValidate={true} defaultValue="Edit Character"/>
             </div>

@@ -35,16 +35,17 @@ class Characters extends React.Component {
 
   _onChange () {
     this.setState({
+      //
       characters: evStore.getCharacters(),
+      //
       character: evStore.getSelectedCharacter(),
     });
   }
 
   render () {
-    var characters = this.state.characters;
-    var character = this.state.character;
-    var characterList = [];
 
+    let { characters, character } = this.state;
+    var characterList = [];
     let { pathname } = this.props.location;
 
     const listViewReveal = pathname == '/signedin/characters'
@@ -53,7 +54,7 @@ class Characters extends React.Component {
 
     characters.forEach(function (c) {
       characterList.push(
-        <CharacterListItem key={c.id} character={c} selected_character={ character}/>
+        <CharacterListItem key={c.id} character={c} selected_character={character} />
       );
     });
 

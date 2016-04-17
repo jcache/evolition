@@ -1,16 +1,13 @@
 var EventEmitter  = require('events').EventEmitter;
-var evConstants = require('../_constants/constants');
-var evDispatcher = require('../_dispatcher/dispatcher');
-var characters = require('./seed/characters.js');
+var evConstants   = require('../_constants/constants');
+var evDispatcher  = require('../_dispatcher/dispatcher');
 var objectAssign  = require('object-assign');
 var CHANGE_EVENT  = 'change';
 
-
-var character = characters[0];
+var characters    = [];
+var character   = ev_characters('characters').find({id: 1})
 var characterView = '';
-
 var login = true;
-
 var activeView = '';
 
 var showLogin = function (flag) {
@@ -21,9 +18,21 @@ var changeView = function (view) {
   activeView = view;
 };
 
-var editCharacter = function (c) {
-  alert(JSON.stringify(c));
-  character = c;
+var fetchCharacters = function () {
+  characters = ev_characters.object.characters
+};
+
+var editCharacter = function (character) {
+  // alert(JSON.stringify(
+  //   ev_characters('characters')
+  //
+  //   ev_characters('characters')
+  // .chain()
+  // .find({ id: "1" })
+  // .assign({ title: 'hi!'})
+  // .value()
+  // ));
+  ev_characters('characters').chain().find({ id: character.id }).assign(character).value();
 };
 
 var setSelectedCharacter = function (c) {
@@ -71,7 +80,7 @@ var evStore = objectAssign({}, EventEmitter.prototype, {
 });
 
 // FLUX ACTION EMITTERS SWITCH STATEMENT (todo: remove this crap)
-evDispatcher.register(function (payload) {
+evDispatcher.register((payload) => {
   var action = payload.action;
 
   switch (action.actionType) {
@@ -88,6 +97,11 @@ evDispatcher.register(function (payload) {
 
     case evConstants.EDIT_CHARACTER:
       editCharacter(action.data);
+      evStore.emit(CHANGE_EVENT);
+      break;
+
+    case evConstants.FETCH_CHARACTERS:
+      fetchCharacters();
       evStore.emit(CHANGE_EVENT);
       break;
 

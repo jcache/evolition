@@ -7,7 +7,7 @@ import evActions from './_actions/actions.js';
 import evStore from './_stores/evStore.js';
 const { PropTypes } = React;
 const AppFooter  = require('./components/app-footer');
-
+evActions.fetchCharacters();
 class Base extends React.Component {
   constructor (props) {
     super(props);

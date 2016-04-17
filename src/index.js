@@ -26,10 +26,10 @@ require('electron').hideInternalModules();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-
 let mainWindow = void 0;
 let sheetWindow = void 0;
 
+//
 let createWindow = () => {
   var mainWindowPath = path.resolve(__dirname, '/windows/main_window/', 'index.html');
   var winW = 960;
@@ -43,18 +43,17 @@ let createWindow = () => {
   mainWindow = new BrowserWindow({
     width: winW,
     height: winH,
+    minWidth: 960,
+    maxWidth: 1140,
 
-    // minWidth: 960,
-    // maxWidth: 960,
     // standardWindow: false,
-    backgroundColor: '#062A4B',
+    backgroundColor: '#282c3a',
 
     // hasShadow: false,
     frame: false,
   });
 
   // mainWindow.webContents.openDevTools({ detach: true });
-
   var protocol = electron.protocol;
 
   protocol.registerFileProtocol('ev', (request, callback) => {
@@ -63,6 +62,8 @@ let createWindow = () => {
   }, (error) => {
     if (error) console.error('Failed to register protocol');
   });
+
+  evRouter.loadCharacterDB();
 
   // Create the browser window.
   sheetWindow = new BrowserWindow({
@@ -93,12 +94,11 @@ let createWindow = () => {
     size = JSON.parse(fs.readFileSync(path.join(app.getPath('userData'), 'size')));
   } catch (err) {}
 
+
+
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.setTitle('Evolition');
-    // console.log('size', size);
-    // console.log('windows loaded...', mainWindow.webContents.isLoading());
-    console.log("APP_PATH: ", evRouter.getAppPath());
-    console.log("APP_STORAGE_PATH: ", evRouter.getStoragePath());
+    console.log("APP_STORAGE_PATH: ", evRouter.getAppDataPath());
     mainWindow.show();
 
   });
@@ -110,6 +110,10 @@ let createWindow = () => {
   //     console.log('doing something');
   //   }
   // });
+  ipcMain.on('config-paths', function(e, arg) {
+    const route_paths = evRouter;
+    e.returnValue = route_paths;
+  });
 
   ipcMain.on('app_close', (event) => {
     mainWindow.close();

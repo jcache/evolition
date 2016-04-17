@@ -33,6 +33,11 @@ var evActions = {
       data: character
     })
   },
+  fetchCharacters: function () {
+    evDispatcher.handleAction({
+      actionType: evConstants.FETCH_CHARACTERS
+    })
+  },
 
 };
 
