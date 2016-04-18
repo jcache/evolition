@@ -20,7 +20,7 @@ export default (
         <Route path="characters" component={Characters}>
           <IndexRoute component={AllCharacters}/>
           <Route path="view/:id" component={CharacterView} />
-          <Route path="add/:id" component={CharacterAdd} />
+          <Route path="add" component={CharacterAdd} />
           <Route path="edit/:id" component={CharacterEdit} />
         </Route>
       </Route>

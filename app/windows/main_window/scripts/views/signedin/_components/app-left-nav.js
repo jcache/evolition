@@ -48,8 +48,9 @@ class AppLeftNav extends React.Component {
     return (
       <div className={leftNavClass}>
         <ul>
-          <li><Link to="/signedin/characters" onClick={this._onChangeView.bind(this, 'default-view')} activeClassName='characters-link'></Link></li>
-          <li><Link to={'/signedin/characters/view/' + character.id} onClick={this._onChangeView.bind(this, 'character-add')} activeClassName='character-add-link'></Link></li>
+          <li><Link to={'/signedin/characters'} onClick={this._onChangeView.bind(this, 'default-view')} className='characters-link'></Link></li>
+          <li><Link to={'/signedin/characters/view/' + character.id} onClick={this._onChangeView.bind(this, 'character-view')} className='character-view-link'></Link></li>
+          <li><Link to={'/signedin/characters/add'} onClick={this._onChangeView.bind(this, 'character-add')} className='character-add-link'></Link></li>
 
         </ul>
       </div>

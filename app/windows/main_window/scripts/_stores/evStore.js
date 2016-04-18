@@ -23,16 +23,12 @@ var fetchCharacters = function () {
 };
 
 var editCharacter = function (character) {
-  // alert(JSON.stringify(
-  //   ev_characters('characters')
-  //
-  //   ev_characters('characters')
-  // .chain()
-  // .find({ id: "1" })
-  // .assign({ title: 'hi!'})
-  // .value()
-  // ));
   ev_characters('characters').chain().find({ id: character.id }).assign(character).value();
+};
+
+var addCharacter = function (c) {
+  ev_characters('characters').insert(c).id
+  character = c;
 };
 
 var setSelectedCharacter = function (c) {
@@ -97,6 +93,11 @@ evDispatcher.register((payload) => {
 
     case evConstants.EDIT_CHARACTER:
       editCharacter(action.data);
+      evStore.emit(CHANGE_EVENT);
+      break;
+
+    case evConstants.ADD_CHARACTER:
+      addCharacter(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 

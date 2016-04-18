@@ -33,6 +33,12 @@ var evActions = {
       data: character
     })
   },
+  addCharacter: function (character) {
+    evDispatcher.handleAction({
+      actionType: evConstants.ADD_CHARACTER,
+      data: character
+    })
+  },
   fetchCharacters: function () {
     evDispatcher.handleAction({
       actionType: evConstants.FETCH_CHARACTERS

@@ -29,7 +29,7 @@ class Route {
           // CREATES DATABASE IF IT DOESN'T EXIST
           fse.ensureFileSync(file);
           console.log('[JOB] -> CHARACTER DATABASE CREATED');
-          // POPULATE FROM SEED FILE IF NO DATABASE EXISTS
+          // POPULATE FROM SEED FILE
           fse.outputJson(file, seed);
           console.log('[JOB] -> CHARACTER DATA POPULATED');
         });
