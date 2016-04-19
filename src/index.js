@@ -2,7 +2,7 @@
 
 const electron = require('electron');
 const ipcMain = require('electron').ipcMain;
-import {ipc} from 'electron';
+import { ipc } from 'electron';
 
 // Module to control application life.
 const app = electron.app;

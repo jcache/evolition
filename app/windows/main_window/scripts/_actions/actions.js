@@ -3,7 +3,7 @@ var evConstants  = require('../_constants/constants');
 
 
 var evActions = {
-  showLogin: function (state) {
+  showLogin: (state) => {
     evDispatcher.handleAction({
       actionType: evConstants.SHOW_LOGIN,
       data: state
@@ -30,6 +30,12 @@ var evActions = {
   editCharacter: function (character) {
     evDispatcher.handleAction({
       actionType: evConstants.EDIT_CHARACTER,
+      data: character
+    })
+  },
+  deleteCharacter: function (character) {
+    evDispatcher.handleAction({
+      actionType: evConstants.DELETE_CHARACTER,
       data: character
     })
   },

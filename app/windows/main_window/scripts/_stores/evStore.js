@@ -22,6 +22,11 @@ var fetchCharacters = function () {
   characters = ev_characters.object.characters
 };
 
+var deleteCharacter = function (c) {
+  ev_characters('characters').remove(c);
+  character = ev_characters('characters').first();
+};
+
 var editCharacter = function (character) {
   ev_characters('characters').chain().find({ id: character.id }).assign(character).value();
 };
@@ -93,6 +98,11 @@ evDispatcher.register((payload) => {
 
     case evConstants.EDIT_CHARACTER:
       editCharacter(action.data);
+      evStore.emit(CHANGE_EVENT);
+      break;
+
+    case evConstants.DELETE_CHARACTER:
+      deleteCharacter(action.data);
       evStore.emit(CHANGE_EVENT);
       break;
 

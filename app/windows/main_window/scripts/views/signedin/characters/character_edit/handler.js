@@ -80,7 +80,7 @@ class CharacterEdit extends React.Component {
           </div>
           <div className='headController'>
             <ul>
-              <li><Link to={'/signedin/characters/view/' + character.id} activeClassName='character-view-link' activeClassName='active'>View</Link></li>
+              <li><Link to={'/signedin/characters/view/' + character.id} className='btn btn-raised btn-primary' activeClassName='active'>View</Link></li>
             </ul>
           </div>
         </div>
