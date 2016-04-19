@@ -19,12 +19,28 @@ class CharacterAdd extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      canSubmit: false,
+      validatePristine: false,
+      disabled: false,
       saved:  false,
       character: {},
       layout: 'vertical',
     };
     this._onChange = this._onChange.bind(this);
     this.changeOption = this.changeOption.bind(this);
+    this.enableButton = this.enableButton.bind(this);
+  }
+
+  enableButton () {
+    this.setState({
+      canSubmit: true,
+    });
+  }
+
+  disableButton () {
+    this.setState({
+      canSubmit: false,
+    });
   }
 
   componentWillMount () {
@@ -84,8 +100,7 @@ class CharacterAdd extends React.Component {
         </div>
 
           <div className='bodyContainer'>
-            <Formsy.Form className={formClassName} onSubmit={this.submitForm} ref="form">
-              <Input {...sharedProps} name="id" value={character.id} label="Character Name:" type="hidden" required />
+            <Formsy.Form className={formClassName} onValid={this.enableButton} onValidSubmit={this.submitForm} onInvalid={this.disableButton} ref="form">
               <div className='row'>
                 <div className='col-xs-3 col-xs-push-9 image-container'>
                   <div className='character-profile-pic' style={divStyle}>
@@ -118,7 +133,7 @@ class CharacterAdd extends React.Component {
                     </div>
                   </div>
                   <div className='row'>
-                    <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="age" value={character.age} label="Age" type="number" />
+                    <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="age" value={character.age} label="Age" type="number" required/>
                     <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="height" value={character.height} label="Height" type="text" />
                     <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="weight" value={character.weight} label="Weight" type="text" />
                     <div className='col-xs-6 form-group is-empty no-space'>
@@ -160,7 +175,7 @@ class CharacterAdd extends React.Component {
                 </div>
               </div>
               <div className='row'>
-                <input type="submit" className="btn btn-raised btn-success" formNoValidate={true} defaultValue="Add Character"/>
+                <input type="submit" className="btn btn-raised btn-success" disabled={!this.state.canSubmit}  defaultValue="Add Character"/>
               </div>
             </Formsy.Form>
           </div>

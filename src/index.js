@@ -182,11 +182,11 @@ let createWindow = () => {
         {
           label: 'Reload',
           accelerator: 'Command+R',
-          click: function() { BrowserWindow.getFocusedWindow().reloadIgnoringCache(); }
+          click: () => BrowserWindow.getFocusedWindow().reloadIgnoringCache(),
         },{
           label: 'Toggle DevTools',
           accelerator: 'Alt+Command+I',
-          click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); }
+          click: () => BrowserWindow.getFocusedWindow().toggleDevTools(),
         },
       ],
     }

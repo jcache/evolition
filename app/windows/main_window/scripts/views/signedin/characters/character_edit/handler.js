@@ -19,6 +19,8 @@ class CharacterEdit extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      validatePristine: false,
+      disabled: false,
       saved:  false,
       character: evStore.getSelectedCharacter(),
       layout: 'vertical',
@@ -99,6 +101,7 @@ class CharacterEdit extends React.Component {
                     value={character.character_name}
                     label="Full Name"
                     type="text"
+                    required
                   />
                   <div className='col-xs-4 form-group  is-empty no-space'>
                     <label className='control-label'>Race</label>
@@ -118,7 +121,7 @@ class CharacterEdit extends React.Component {
                   </div>
                 </div>
                 <div className='row'>
-                  <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="age" value={character.age} label="Age" type="number" />
+                  <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="age" value={character.age} label="Age" type="number" required/>
                   <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="height" value={character.height} label="Height" type="text" />
                   <Input {...sharedProps} rowClassName="col-xs-2 form-group is-empty no-space" name="weight" value={character.weight} label="Weight" type="text" />
                   <div className='col-xs-6 form-group is-empty no-space'>

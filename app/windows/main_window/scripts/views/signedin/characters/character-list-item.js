@@ -5,18 +5,10 @@ const evActions = require('../../../_actions/actions.js');
 import { browserHistory } from 'react-router';
 
 class CharacterListItem extends React.Component {
+
   constructor (props) {
     super(props);
     this._onSelectCharacter = this._onSelectCharacter.bind(this);
-  }
-  componentDidMount () {
-
-    $('img').bind('click', function () {
-      // $('body').blur(function () {
-        alert("Handler for .focus() called.");
-      // });
-    });
-
   }
 
   _onSelectCharacter (item) {
