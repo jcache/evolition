@@ -4,9 +4,10 @@ const electron = require('electron');
 const ipcMain = require('electron').ipcMain;
 import { ipc } from 'electron';
 
-// Module to control application life.
+// Modules to control application life.
 const app = electron.app;
 const Menu = require('menu');
+const eConnect = require('electron-connect');
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
@@ -44,7 +45,7 @@ let createWindow = () => {
     width: winW,
     height: winH,
     minWidth: 960,
-    maxWidth: 1140,
+    maxWidth: 1200,
 
     // standardWindow: false,
     backgroundColor: '#282c3a',
@@ -53,7 +54,7 @@ let createWindow = () => {
     frame: false,
   });
 
-  // mainWindow.webContents.openDevTools({ detach: true });
+  mainWindow.webContents.openDevTools({ detach: true });
   var protocol = electron.protocol;
 
   protocol.registerFileProtocol('ev', (request, callback) => {
@@ -86,6 +87,9 @@ let createWindow = () => {
 
   // mainWindow.loadURL(path.normalize('file://' + path.join(__dirname, '/windows/main_window/','index.html')));
   sheetWindow.loadURL(path.join('file://', __dirname, '/windows/character_sheet/index.html'));
+
+  // Connect windows to server process
+  const client = eConnect.client.create(mainWindow);
 
   // // Open the DevTools.
   var size = {}, settingsjson = {};
@@ -146,6 +150,7 @@ let createWindow = () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
     sheetWindow = null;
+    client.sendMessage('closed');
   });
 
   var template = [

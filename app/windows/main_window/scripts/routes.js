@@ -8,7 +8,7 @@ const Characters   = require('./views/signedin/characters/handler');
 const AllCharacters   = require('./views/signedin/characters/list-all');
 const CharacterView   = require('./views/signedin/characters/character_view/handler');
 const CharacterAdd    = require('./views/signedin/characters/character_add/handler');
-const CharacterEdit    = require('./views/signedin/characters/character_edit/handler');
+const CharacterEdit   = require('./views/signedin/characters/character_edit/handler');
 const Welcome         = require('./views/signedin/welcome/handler');
 
 export default (

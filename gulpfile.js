@@ -277,6 +277,10 @@ gulp.task('serve', ['build', 'watch'], () => {
     './build/windows/**/scripts/app.js',
     './build/**/*.css',
   ], electron.reload);
+
+  electron.on('closed', () => {
+    process.exit()
+  })
 });
 
 /* These are the packaging tasks! */
