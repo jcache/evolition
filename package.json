@@ -1,12 +1,22 @@
 {
-  "name": "evolition-app-boilerplate",
+  "name": "evolition-future",
   "version": "0.0.0",
-  "description": "app-boilerplate",
+  "description": "evolition-future",
   "main": "init.js",
   "author": "Kevin Carr",
   "repository": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "electron-compile": "^3.1.0",
+    "less": "^2.6.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.0",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.9.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
@@ -20,7 +30,10 @@
     "electron-prebuilt": "^0.37.8",
     "eslint": "^2.9.0",
     "eslint-plugin-react": "^5.0.1",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "redux-devtools": "^3.2.0",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11"
   },
   "scripts": {
     "serve": "babel-node scripts/serve.js",
