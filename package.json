@@ -1,0 +1,30 @@
+{
+  "name": "evolition-app-boilerplate",
+  "version": "0.0.0",
+  "description": "app-boilerplate",
+  "main": "init.js",
+  "author": "Kevin Carr",
+  "repository": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.0.4",
+    "babel-preset-react-es2015": "^1.1.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "browser-sync": "^2.12.5",
+    "chai": "^3.5.0",
+    "electron-compilers": "^3.0.0",
+    "electron-packager": "^7.0.1",
+    "electron-prebuilt": "^0.37.8",
+    "eslint": "^2.9.0",
+    "eslint-plugin-react": "^5.0.1",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "serve": "babel-node scripts/serve.js",
+    "pack": "babel-node scripts/pack.js",
+    "test": "mocha -R spec --compilers js:babel-core/register"
+  }
+}

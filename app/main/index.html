@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MAIN</title>
+    <link rel='stylesheet' href='./css/main.less'>
+  </head>
+  <body>
+    <div id="mount"></div>
+    <script src="./main.js" data-container="#mount"></script>
+    <script>
+      if (process.env.BROWSER_SYNC_MAIN_URL) {
+        const current = document.currentScript;
+        const script = document.createElement('script');
+        script.src = process.env.BROWSER_SYNC_MAIN_URL;
+        script.async = true;
+        current.parentNode.insertBefore(script, current);
+      }
+    </script>
+  </body>
+</html>
