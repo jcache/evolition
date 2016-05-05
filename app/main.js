@@ -126,10 +126,16 @@ let createWindow = () => {
       label: 'Developer',
       submenu: [
         {
-          label: 'Reload',
+          label: 'Reload Main',
           accelerator: 'Command+R',
-          click: () => BrowserWindow.getFocusedWindow().reloadIgnoringCache(),
-        },{
+          click: () => mainWindow.webContents.reloadIgnoringCache(),
+        },
+        {
+          label: 'Reload Sheet',
+          accelerator: 'Command+Shift+R',
+          click: () => sheetWindow.webContents.reloadIgnoringCache(),
+        },
+        {
           label: 'Toggle DevTools',
           accelerator: 'Alt+Command+I',
           click: () => BrowserWindow.getFocusedWindow().toggleDevTools(),

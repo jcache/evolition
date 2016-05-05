@@ -3,7 +3,7 @@ import electron from 'electron-prebuilt';
 import browserSync from 'browser-sync';
 import browserSyncConnectUtils from 'browser-sync/lib/connect-utils';
 const Bsync = browserSync.create();
-
+var historyApiFallback = require('connect-history-api-fallback');
 const getRootUrl = (options) => {
   const port = options.get('port');
   return `http://localhost:${port}`;
@@ -19,45 +19,49 @@ const getMainUrl = (options) => {
   return getRootUrl(options) + pathname;
 };
 
-function lessMiddleware (req, res, next) {
-    var parsed = require("url").parse(req.url);
-    if (parsed.pathname.match(/\.less$/)) {
-        return less(parsed.pathname).then(function (o) {
-            res.setHeader('Content-Type', 'text/css');
-            res.end(o.css);
-        });
-    }
-    next();
-}
+const lessMiddleware = (req, res, next) => {
+  const parsed = require('url').parse(req.url);
+  if (parsed.pathname.match(/\.less$/)) {
+    return less(parsed.pathname).then((output) => {
+      res.setHeader('Content-Type', 'text/css');
+      res.end(output.css);
+    });
+  }
+
+  next();
+};
 
 /**
  * Compile less
  */
-function less(src) {
-    var f = require('fs').readFileSync('app' + src).toString();
-    return require('less').render(f);
-}
+const less = (src) => {
+  const main = require('fs').readFileSync('app/main' + src).toString();
+  const sheet = require('fs').readFileSync('app/sheet' + src).toString();
+  return require('less').render([main, sheet]);
+};
 
 const BrowserSyncOPTS = {
   ui: false,
   ghostMode: false,
-  injectFileTypes: ["less"],
-  // // ** //
+  injectFileTypes: ['less'],
   open: false, // false
-  // server: [
-  //   'app/main',
-  //   'app/sheet'
-  // ],
-  // // ** //
+  server: [
+    'app/main',
+    'app/sheet',
+  ],
   notify: false,
-  logPrefix: "EVOLITION.IO",
+  logPrefix: 'EVOLITION.IO',
   logSnippet: false,
-  logLevel: "info",
-  middleware: lessMiddleware,
+  logLevel: 'info',
+  middleware: [
+    lessMiddleware,
+    require('connect-logger')(),
+    historyApiFallback(),
+  ],
   port: 35829,
   socket: {
-    domain: getRootUrl
-  }
+    domain: getRootUrl,
+  },
 };
 
 Bsync.init(BrowserSyncOPTS, (err, bs) => {
@@ -72,7 +76,7 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
       ...{
         NODE_ENV: 'development',
         BROWSER_SYNC_MAIN_URL: getMainUrl(bs.options),
-        BROWSER_SYNC_SHEET_URL: getSheetUrl(bs.options)
+        BROWSER_SYNC_SHEET_URL: getSheetUrl(bs.options),
       },
       ...process.env,
     },
