@@ -45,10 +45,10 @@ const BrowserSyncOPTS = {
   ghostMode: false,
   injectFileTypes: ['less'],
   open: false, // false
-  server: [
-    'app/main',
-    'app/sheet',
-  ],
+  // server: [
+  //   'app/main',
+  //   'app/sheet',
+  // ],
   notify: false,
   logPrefix: 'EVOLITION.IO',
   logSnippet: false,

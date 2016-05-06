@@ -3,9 +3,26 @@
   "version": "0.0.0",
   "productName": "EVOLITION",
   "description": "evolition-future",
+  "bugs": {
+    "url": "https://github.com/evolition/evolition-future/issues"
+  },
+  "contributors": [
+    {
+      "email": "doug@somethingdoug.com",
+      "name": "Douglas Christopher Wilson"
+    },
+    {
+      "email": "me@jongleberry.com",
+      "name": "Jonathan Ong",
+      "url": "http://jongleberry.com"
+    }
+  ],
   "main": "init.js",
   "author": "Kevin Carr",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evolition/evolition-future.git"
+  },
   "license": "MIT",
   "dependencies": {
     "electron-compile": "^3.1.0",
