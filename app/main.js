@@ -141,7 +141,7 @@ let createWindow = () => {
           click: () => BrowserWindow.getFocusedWindow().toggleDevTools(),
         },
       ],
-    }
+    },
   ];
 
   Menu.setApplicationMenu(

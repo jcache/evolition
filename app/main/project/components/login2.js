@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
 import {Link,Navigation} from 'react-router';
-class Login extends React.Component {
+class Login2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -22,7 +22,7 @@ class Login extends React.Component {
     return (
       <div className="login">
         <form>
-          <h2>Please Sign In</h2>
+          <h2>Please Sign In2</h2>
           <hr/>
           <div className="form-group">
             <label className="control-label">E-Mail Address</label>
@@ -32,7 +32,7 @@ class Login extends React.Component {
             <label className="control-label">Password</label>
             <input type='password' name='password' className='form-control input-lg' />
           </div>
-          <Link to={`login2`}
+          <Link to="/"
                 onClick={this._onAppCTRL.bind(this)}
                 className="btn btn-primary form-control btn-lg app-func bn-app-login">
                   Please Login
@@ -43,6 +43,6 @@ class Login extends React.Component {
   }
 }
 
-module.exports = Login;
+module.exports = Login2;
 
 // {this.props.children}
