@@ -2,15 +2,14 @@
 
 import React from 'react';
 import { createDevTools } from 'redux-devtools';
-import { createHistory } from 'history';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import * as reducers from './_reducers';
-const { PropTypes } = React;
+
 import Base from './base';
 import Login from './components/login';
 import Login2 from './components/login2';

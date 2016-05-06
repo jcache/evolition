@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
-import {Link,Navigation} from 'react-router';
+import { Link } from 'react-router';
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,8 @@ class Login extends React.Component {
   }
 
   _onAppCTRL (cmd) {
-    console.log('routing worked!');
+    console.log('{ -> } : FORWARD TO LOGIN');
+
   }
 
   render () {
