@@ -22,24 +22,31 @@ class Login extends React.Component {
 
   render () {
     return (
-      <div className="login">
-        <form>
-          <h2>Please Sign In</h2>
-          <hr/>
-          <div className="form-group">
-            <label className="control-label">E-Mail Address</label>
-            <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io'/>
+      <div className={`anonymous-view`}>
+        <div className='auth-screen'>
+          <div className='side-screen'>
+            <canvas id="canvas"></canvas>
           </div>
-          <div className="form-group">
-            <label className="control-label">Password</label>
-            <input type='password' name='password' className='form-control input-lg' />
+          <div className="login-container">
+            <form>
+              <h2>Please Sign In</h2>
+              <hr/>
+              <div className="form-group">
+                <label className="control-label">E-Mail Address</label>
+                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io'/>
+              </div>
+              <div className="form-group">
+                <label className="control-label">Password</label>
+                <input type='password' name='password' className='form-control input-lg' />
+              </div>
+              <Link to={`login2`}
+                    onClick={this._onAppCTRL.bind(this)}
+                    className="btn btn-primary form-control btn-lg app-func bn-app-login">
+                      Please Login
+                  </Link>
+            </form>
           </div>
-          <Link to={`login2`}
-                onClick={this._onAppCTRL.bind(this)}
-                className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                  Please Login
-              </Link>
-        </form>
+        </div>
       </div>
     );
   }

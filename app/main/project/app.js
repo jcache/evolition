@@ -14,10 +14,7 @@ import Base from './base';
 import Login from './components/login';
 import Login2 from './components/login2';
 
-const reducer = combineReducers({
-  ...reducers,
-  routing: routerReducer,
-});
+const reducer = combineReducers({ ...reducers, routing: routerReducer});
 
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
@@ -36,7 +33,7 @@ class App extends React.Component {
   render () {
     console.log(history);
     return (
-      <div>
+      <div className={`app-wrapper`}>
         <Provider store={store}>
           <Router history={history}>
             <Route path={`/`} component={Base}>
