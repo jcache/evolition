@@ -1,9 +1,13 @@
+'use strict';
+
 import { spawn } from 'child_process';
 import electron from 'electron-prebuilt';
 import browserSync from 'browser-sync';
+
 import browserSyncConnectUtils from 'browser-sync/lib/connect-utils';
 const Bsync = browserSync.create();
 var historyApiFallback = require('connect-history-api-fallback');
+
 const getRootUrl = (options) => {
   const port = options.get('port');
   return `http://localhost:${port}`;
@@ -31,9 +35,6 @@ const lessMiddleware = (req, res, next) => {
   next();
 };
 
-/**
- * Compile less
- */
 const less = (src) => {
   const main = require('fs').readFileSync('app/main' + src).toString();
   const sheet = require('fs').readFileSync('app/sheet' + src).toString();
@@ -45,10 +46,10 @@ const BrowserSyncOPTS = {
   ghostMode: false,
   injectFileTypes: ['less'],
   open: false, // false
-  // server: [
-  //   'app/main',
-  //   'app/sheet',
-  // ],
+  server: [
+    'app/main',
+    'app/sheet',
+  ],
   notify: false,
   logPrefix: 'EVOLITION.IO',
   logSnippet: false,

@@ -39,12 +39,12 @@ class App extends React.Component {
             </Route>
           </Router>
         </Provider>
-        <DevTools store={store}/>
       </div>
     );
   }
 }
 
 module.exports = App;
+// <DevTools store={store}/>
 
 // {this.props.children}

@@ -37,7 +37,7 @@ class ForgotPassword extends React.Component {
               <Link to={`password_reset`}
                     onClick={this._onAppCTRL.bind(this)}
                     className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                      Please Login
+                      Send Confirmation Email
                   </Link>
             </form>
           </div>

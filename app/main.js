@@ -38,6 +38,18 @@ let createWindow = () => {
     // hasShadow: false,
     frame: false,
   });
+  sheetWindow = new BrowserWindow({
+    width: winW,
+    height: winH,
+    minWidth: 960,
+    maxWidth: 1200,
+
+    // standardWindow: false,
+    backgroundColor: '#282c3a',
+
+    // hasShadow: false,
+    frame: false,
+  });
 
   mainWindow.setPosition(
     vertL - (winW / 2),
@@ -51,10 +63,11 @@ let createWindow = () => {
 
   if (process.env.NODE_ENV === 'development') {
     // ( OPTIONAL )
-    mainWindow.webContents.openDevTools({ detach: true });
+    // mainWindow.webContents.openDevTools({ detach: true });
   }
 
   mainWindow.loadURL(`file://${__dirname}/main/index.html`);
+  sheetWindow.loadURL(`file://${__dirname}/sheet/index.html`);
 
 
   mainWindow.webContents.on('did-finish-load', () => {
@@ -69,6 +82,7 @@ let createWindow = () => {
 
   ipcMain.on('app_close', (event) => {
     mainWindow.close();
+    sheetWindow.close();
     app.quit();
   });
 

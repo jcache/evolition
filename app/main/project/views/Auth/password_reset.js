@@ -30,14 +30,13 @@ class PasswordReset extends React.Component {
             <form>
               <h2>Check your E-Mail</h2>
               <hr/>
-              <p>We've sent a link to 'aestrro@gmail.com'. Please use this link to create a new password.</p>
+              <p>We've sent a link to 'test@test.com'. Please use this link to create a new password.</p>
               <p>If you don't see this email in your inbox within 15 minutes, look for it in your junk-mail folder.</p>
-              <p>If you find it there, please mark the email as Not Junk and add @hulu.com to your address book.</p>
+              <p>If you find it there, please mark the email as Not Junk and add @evolition.io to your address book.</p>
               <hr/>
-
               <Link to={`/`} onClick={this._onAppCTRL.bind(this)}
                 className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                  Please Login
+                  Return to Login
               </Link>
             </form>
           </div>

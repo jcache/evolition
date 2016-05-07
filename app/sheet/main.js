@@ -33,7 +33,6 @@ ReactDOM.render(
   <Provider store={store}>
     <div>
       <p>I am sheet, right?</p>
-      <DevTools />
     </div>
   </Provider>,
   document.getElementById('mount')

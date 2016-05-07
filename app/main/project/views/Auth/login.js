@@ -17,7 +17,6 @@ class Login extends React.Component {
 
   _onAppCTRL (cmd) {
     console.log('{ -> } : FORWARD TO LOGIN');
-
   }
 
   render () {
@@ -29,7 +28,19 @@ class Login extends React.Component {
           </div>
           <div className="login-container">
             <form>
-              <h2>Please Sign In</h2>
+              <div className='row'>
+                <div className='col-xs-9'>
+                  <h2>Account Sign-in</h2>
+                </div>
+                <div className='col-xs-3'>
+                  <Link to={`/register`}
+                    onClick={this._onAppCTRL.bind(this)}
+                    className="btn btn-primary form-control btn-sm app-func bn-app-login pull-right">
+                      Register
+                  </Link>
+                </div>
+              </div>
+
               <hr/>
               <div className="form-group">
                 <label className="control-label">E-Mail Address</label>
@@ -40,10 +51,10 @@ class Login extends React.Component {
                 <input type='password' name='password' className='form-control input-lg' />
               </div>
               <Link to={`/forgot_password`}
-                    onClick={this._onAppCTRL.bind(this)}
-                    className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                      Please Login
-                  </Link>
+                onClick={this._onAppCTRL.bind(this)}
+                className="btn btn-primary form-control btn-lg app-func bn-app-login">
+                  Login
+              </Link>
             </form>
           </div>
         </div>
