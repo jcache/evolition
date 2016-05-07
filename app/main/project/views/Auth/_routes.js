@@ -1,4 +1,5 @@
-/* */
+'use strict';
+
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 /* */
@@ -14,4 +15,3 @@ module.exports = <Route component={AuthBase}>
   <Route path={`password_reset`} component={PasswordReset} />
   <Route path={`register`} component={Register} />
 </Route>;
-/* */

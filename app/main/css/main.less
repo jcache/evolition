@@ -1,7 +1,7 @@
 @base: #000;
 
-@translucent-red: rgba(255, 0, 0, 0.5);
-@translucent-yellow: rgba(255,235,0,0.5);
+@translucent-red: rgba(255, 0, 0, 0.8);
+@translucent-yellow: rgba(255,235,0,0.8);
 @translucent-black: rgba(0,0,0,1);
 @interface-support-color: rgba(36,38,50,1);
 @interface-support-alt-color: rgba(45,50,71,1);
@@ -13,7 +13,7 @@
 }
 h2 {
   margin-top:0;
-  margin-bottom:0; 
+  margin-bottom:0;
 }
 body, th, td {
   color:#FFF;
@@ -30,6 +30,109 @@ body {
   .flexible-mix;
 }
 
+.view {
+  flex-direction: column;
+  .app-header{
+    .flexible-mix;
+    background: @interface-support-alt-color;
+    border-bottom: 1px solid @interface-support-color;
+    max-height:50px;
+    min-height:50px;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    z-index:2000;
+    ul {
+      .flexible-mix;
+      margin:0 0 0 15px;
+      padding:0;
+      flex-direction: row;
+      max-width:55px;
+      border-right: 1px solid @interface-support-alt-color;
+
+      li {
+        .flexible-mix;
+        max-width:21px;
+        list-style: none;
+        justify-content: center;
+
+        a{
+          width:13px;
+          height:13px;
+          align-self:center;
+          border-radius:16px;
+          transition:all .3s ease;
+          -webkit-app-region: no-drag;
+          &.bn-app-close{
+            background: @translucent-red;
+            &:hover,
+            &.active {
+              background: @translucent-red;
+            }
+          }
+          &.bn-app-minimize{
+            background: @translucent-yellow;
+            &:hover,
+            &.active {
+              background: @translucent-yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+  .app-body-container {
+    .flexible-mix;
+
+
+    .app-left-nav{
+      flex:1;
+      max-width:70px;
+      min-width:70px;
+      background: @interface-support-color;
+      border-right: 1px solid @interface-main-color;
+      ul {
+        margin:15px 0 0 0 ;
+        padding:0;
+        display:flex;
+        flex:1;
+        flex-direction: column;
+
+        li {
+          -webkit-app-region: no-drag !important;
+          list-style:none;
+          flex:1;
+          display:flex;
+          max-width:70px;
+          justify-content: center;
+          padding:0 0 15px;
+
+          a{
+            width:45px;
+            height:45px;
+            align-self:center;
+            transition:all .2s ease;
+            background-size: contain !important;
+            -webkit-app-region: no-drag !important;
+            -webkit-border-radius:2px;
+            background-color: @interface-main-color;
+            box-shadow: inset 0 0 0px 1px @interface-support-color;
+
+            &:hover{
+              box-shadow: inset 0 0 0px 3px RGBA(255,255,255,1);
+              // opacity:1;
+            }
+          }
+        }
+      }
+    }
+
+
+
+  }
+  .app-base{
+    .flexible-mix;
+  }
+}
 
 
 .anonymous-view{
@@ -65,9 +168,6 @@ body {
     }
   }
 }
-
-
-
 
 form {
   flex:1;

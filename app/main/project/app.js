@@ -36,6 +36,9 @@ class App extends React.Component {
           <Router history={history}>
             <Route path={`/`} component={Base}>
               {require('./views/Auth/_routes')}
+              {require('./views/Characters/_routes')}
+              {require('./views/Dashboard/_routes')}
+              {require('./views/Intro/_routes')}
             </Route>
           </Router>
         </Provider>

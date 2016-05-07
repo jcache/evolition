@@ -7,12 +7,17 @@
     <link rel='stylesheet' href='css/bootstrap.css'>
     <link rel='stylesheet' href='css/main.less'>
     <script> window.$ = window.jQuery = require('./js/jquery.min')</script>
+    <script>
+      var remote  = require('remote');
+      var ipc     = require('ipc-renderer');
+    </script>
   </head>
   <body>
     <div id="mount"></div>
     <script src="js/bootstrap.js"></script>
     <!-- <script src="bundle.js"></script> -->
     <script src="main.js" data-container="#mount"></script>
+
     <script>
       if (process.env.BROWSER_SYNC_MAIN_URL) {
         const current = document.currentScript;

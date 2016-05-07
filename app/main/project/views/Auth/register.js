@@ -1,4 +1,5 @@
 'use strict';
+'use strict';
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -43,7 +44,7 @@ class Register extends React.Component {
                 <label className="control-label">Password</label>
                 <input type='password' name='password' className='form-control input-lg' />
               </div>
-              <Link to={`/`}
+              <Link to={`/character_view`}
                     onClick={this._onAppCTRL.bind(this)}
                     className="btn btn-primary form-control btn-lg app-func bn-app-login">
                       Return to Sign-in

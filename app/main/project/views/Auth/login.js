@@ -1,4 +1,5 @@
 'use strict';
+
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -17,6 +18,7 @@ class Login extends React.Component {
 
   _onAppCTRL (cmd) {
     console.log('{ -> } : FORWARD TO LOGIN');
+    ipc.send('resize-to-main');
   }
 
   render () {
@@ -50,10 +52,10 @@ class Login extends React.Component {
                 <label className="control-label">Password</label>
                 <input type='password' name='password' className='form-control input-lg' />
               </div>
-              <Link to={`/forgot_password`}
+              <Link to={`/intro`}
                 onClick={this._onAppCTRL.bind(this)}
                 className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                  Login
+                  Submit
               </Link>
             </form>
           </div>

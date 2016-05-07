@@ -6,7 +6,8 @@ const path = require('path');
 import BrowserWindow from 'browser-window';
 import crashReporter from 'crash-reporter';
 
-crashReporter.start({
+crashReporter.start(
+  {
     productName: 'evolition',
     companyName: 'evolition.io',
     submitURL: 'http://evolition.io',
@@ -31,22 +32,29 @@ let createWindow = () => {
     height: winH,
     minWidth: 960,
     maxWidth: 1200,
-
     // standardWindow: false,
     backgroundColor: '#282c3a',
-
     // hasShadow: false,
     frame: false,
   });
+
+  var protocol = electron.protocol;
+
+  protocol.registerFileProtocol('ev', (request, callback) => {
+    var url = request.url.substr(5);
+    callback({ path: path.normalize(__dirname + '/' + url) });
+  }, (error) => {
+    if (error) console.error('Failed to register protocol');
+  });
+
+
   sheetWindow = new BrowserWindow({
     width: winW,
     height: winH,
     minWidth: 960,
     maxWidth: 1200,
-
     // standardWindow: false,
     backgroundColor: '#282c3a',
-
     // hasShadow: false,
     frame: false,
   });
