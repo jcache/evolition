@@ -39,7 +39,7 @@ class Login extends React.Component {
                 <label className="control-label">Password</label>
                 <input type='password' name='password' className='form-control input-lg' />
               </div>
-              <Link to={`login2`}
+              <Link to={`/forgot_password`}
                     onClick={this._onAppCTRL.bind(this)}
                     className="btn btn-primary form-control btn-lg app-func bn-app-login">
                       Please Login
