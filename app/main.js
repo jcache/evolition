@@ -53,6 +53,7 @@ let createWindow = () => {
     height: winH,
     minWidth: 960,
     maxWidth: 1200,
+    show: false, 
     // standardWindow: false,
     backgroundColor: '#282c3a',
     // hasShadow: false,
