@@ -18,8 +18,6 @@ class CharacterList extends React.Component {
 
   _onAppCTRL (cmd) {
     this.props.dispatch(LeftNavShown(true))
-    // LeftNavShown(true);
-    console.log('{ -> } : FORWARD TO DASHBOARD');
   }
 
   render () {

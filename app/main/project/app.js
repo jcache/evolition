@@ -16,7 +16,7 @@ import Login from './views/Auth/login';
 const reducer = combineReducers({ ...reducers, routing: routerReducer });
 
 const DevTools = createDevTools(
-  <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
+  <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q" defaultIsVisible={false}>
     <LogMonitor theme="tomorrow" preserveScrollTop={false} />
   </DockMonitor>
 );
