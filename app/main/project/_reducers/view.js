@@ -1,17 +1,17 @@
 import {
-  CHANGE_VIEW,
-  TOGGLE_LEFT_MENU
+  LEFT_NAV_SHOWN
 } from '../_constants'
 
 const initialState = {
-  menuVisibility: 'shown',
+  visible_flag: false
 }
 
 export default function update(state = initialState, action) {
-  if(action.type === CHANGE_VIEW) {
-    return { menuVisibility: action.menuVisibility }
-  } else if(action.type === TOGGLE_LEFT_MENU) {
-    return { left_menu_visible: action.left_menu_visible }
+  switch (action.type) {
+    case LEFT_NAV_SHOWN:
+      console.log("dispatching action", action);
+      return { visible_flag: action.visible}
+    default:
+      return state
   }
-  return state
 }
