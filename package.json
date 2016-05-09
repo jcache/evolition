@@ -52,6 +52,7 @@
     "eslint": "^2.9.0",
     "eslint-plugin-react": "^5.0.1",
     "mocha": "^2.4.5",
+    "react-addons-test-utils": "^15.0.2",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11"
@@ -59,6 +60,6 @@
   "scripts": {
     "serve": "babel-node scripts/serve.js",
     "pack": "babel-node scripts/pack.js",
-    "test": "electron-mocha -R spec --compilers js:babel-core/register"
+    "test-renderer": "electron-mocha --renderer ./app/**/*_R-test.js -R spec --compilers js:babel-core/register"
   }
 }

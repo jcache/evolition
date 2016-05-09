@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-const { PropTypes } = React;
+// const { PropTypes } = React;
 
 class Base extends React.Component {
   constructor (props) {
