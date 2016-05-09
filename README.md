@@ -1,2 +1,3 @@
 ## EVOLITION
-* Just Start Developing: `npm run serve`
+* Install Packages: `npm install`
+* Develop: `npm run serve`
