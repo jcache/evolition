@@ -16,7 +16,7 @@ class Dashboard extends React.Component {
   }
 
   _onAppCTRL (cmd) {
-    console.log('{ -> } : FORWARD TO LOGIN');
+    // console.log('{ -> } : FORWARD TO LOGIN');
   }
 
   render () {

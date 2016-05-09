@@ -75,7 +75,7 @@ let createWindow = () => {
   }
 
   mainWindow.loadURL(`file://${__dirname}/main/index.html`);
-  sheetWindow.loadURL(`file://${__dirname}/sheet/index.html`);
+  // sheetWindow.loadURL(`file://${__dirname}/sheet/index.html`);
 
 
   mainWindow.webContents.on('did-finish-load', () => {

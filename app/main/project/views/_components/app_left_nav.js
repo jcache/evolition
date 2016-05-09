@@ -1,44 +1,46 @@
 'use strict';
 
 const React = require('react');
-
-import {Link, Route} from 'react-router';
-
+const { PropTypes } = React;
+import { Link, Route } from 'react-router';
+import { connect } from 'react-redux';
+import { changeView } from '../../_actions/viewActions';
 class AppLeftNav extends React.Component {
+
+  static fetchData({ params, store, url }) {
+    console.log(params, store, url);
+    return store.dispatch( toggleLeftMenu(url))
+  }
 
   constructor (props) {
     super(props);
-    this.state = {  };
-
-    this._onChange = this._onChange.bind(this);
     this._onChangeView = this._onChangeView.bind(this);
-
   }
 
   _onChangeView (e, cmd) {
-    console.log(cmd)
-  }
-
-  _onChange () {
-    this.setState({});
+    changeView(cmd)
   }
 
   render () {
-    let {pathname} = this.props;
-    let {character} = this.state;
-
-    const leftNavClass = pathname == '/signedin/welcome' ? 'app-left-nav hidden' : 'app-left-nav shown'
-
+    // console.log( "props: ", this.props);
+    let { view } = this.props;
+    // console.log(view.menuVisibility);
+    // const leftNavClass = pathname == '/signedin/welcome' ? 'app-left-nav hidden' : 'app-left-nav shown'
     return (
-      <div className={leftNavClass}>
+      <div className={`app-left-nav ${view.menuVisibility}`}>
         <ul>
-          <li><Link to={'/character_view'} onClick={this._onChangeView.bind(this, 'default-view')} className='characters-link'></Link></li>
-          <li><Link to={'/character_view'} onClick={this._onChangeView.bind(this, 'character-view')} className='character-view-link'></Link></li>
-          <li><Link to={'/character_view'} onClick={this._onChangeView.bind(this, 'character-add')} className='character-add-link'></Link></li>
+          <li><Link to={'/character_view'} className='characters-link'></Link></li>
+          <li><Link to={'/character_view'} className='character-view-link'></Link></li>
+          <li><Link to={'/character_view'} className='character-add-link'></Link></li>
         </ul>
       </div>
     );
   }
 };
 
-module.exports = AppLeftNav;
+function mapStateToProps(state) {
+  return {
+    view: state.view
+  }
+}
+export default connect(mapStateToProps)(AppLeftNav)
