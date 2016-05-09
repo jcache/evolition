@@ -1,31 +1,23 @@
 'use strict';
 
 const React = require('react');
-import { Link } from 'react-router';
 const { PropTypes } = React;
-import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
-class AppHeader extends React.Component {
+export default class AppHeader extends React.Component {
 
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      active: "true",
-    };
-
+  constructor (props,context) {
+    super(props,context);
     this._onAppCTRL = this._onAppCTRL.bind(this);
   }
 
   _onAppCTRL (cmd, bool) {
-    console.log("cmd: ", cmd,"boolean: ", bool);
+    // console.log("cmd: ", cmd,"boolean: ", bool);
     // cmd == 'resize-to-login' ? evActions.showLogin(bool) : evActions.showLogin(bool)
     ipc.send(cmd);
   }
 
   render () {
-    const { dispatch } = this.props;
-    console.log(dispatch);
     return (
       <div className='app-header'>
         <ul>
@@ -45,5 +37,4 @@ class AppHeader extends React.Component {
       </div>
     );
   }
-}
-module.exports = AppHeader;
+};

@@ -4,7 +4,9 @@ import React from 'react';
 const { PropTypes } = React;
 import AppHeader from '../_components/app_header';
 import AppLeftNav from '../_components/app_left_nav';
-class CharacterBase extends React.Component {
+import { connect } from 'react-redux';
+
+export default class CharacterBase extends React.Component {
   constructor (props) {
     super(props);
   }
@@ -20,7 +22,3 @@ class CharacterBase extends React.Component {
     );
   }
 }
-
-module.exports = CharacterBase;
-
-// {this.props.children}

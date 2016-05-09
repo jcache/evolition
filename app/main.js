@@ -53,6 +53,7 @@ let createWindow = () => {
     height: winH,
     minWidth: 960,
     maxWidth: 1200,
+    show: false, 
     // standardWindow: false,
     backgroundColor: '#282c3a',
     // hasShadow: false,
@@ -75,7 +76,7 @@ let createWindow = () => {
   }
 
   mainWindow.loadURL(`file://${__dirname}/main/index.html`);
-  sheetWindow.loadURL(`file://${__dirname}/sheet/index.html`);
+  // sheetWindow.loadURL(`file://${__dirname}/sheet/index.html`);
 
 
   mainWindow.webContents.on('did-finish-load', () => {
