@@ -62,7 +62,7 @@
   "scripts": {
     "serve": "babel-node scripts/serve.js",
     "pack": "babel-node scripts/pack.js",
-    "test": "electron-mocha --renderer ./app/**/*_test.js -R spec --compilers js:babel-core/register",
-    "test-M": "electron-mocha ./app/**/*_test-M.js -R spec --compilers js:babel-core/register"
+    "test": "electron-mocha --renderer ./**/_tests_/*_test.js -R spec --compilers js:babel-core/register",
+    "test-M": "electron-mocha ./app/**/_tests_/*_test-M.js -R spec --compilers js:babel-core/register"
   }
 }
