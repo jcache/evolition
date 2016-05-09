@@ -42,6 +42,7 @@ class App extends React.Component {
             </Route>
           </Router>
         </Provider>
+        <DevTools store={store}/>
       </div>
     );
   }

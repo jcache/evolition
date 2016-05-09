@@ -4,13 +4,13 @@ const React = require('react');
 const { PropTypes } = React;
 import { Link, Route } from 'react-router';
 import { connect } from 'react-redux';
-import { changeView } from '../../_actions/viewActions';
+import { LeftNavShown } from '../../_actions/viewActions';
 class AppLeftNav extends React.Component {
 
-  static fetchData({ params, store, url }) {
-    console.log(params, store, url);
-    return store.dispatch( toggleLeftMenu(url))
-  }
+  // static fetchData({ params, store, url }) {
+  //   console.log(params, store, url);
+  //   return store.dispatch( LeftNavShown(url))
+  // }
 
   constructor (props) {
     super(props);
@@ -23,11 +23,10 @@ class AppLeftNav extends React.Component {
 
   render () {
     // console.log( "props: ", this.props);
-    let { view } = this.props;
-    // console.log(view.menuVisibility);
-    // const leftNavClass = pathname == '/signedin/welcome' ? 'app-left-nav hidden' : 'app-left-nav shown'
+    let { visible } = this.props;
+    const leftNavClass = visible.view.visible_flag == true ? 'app-left-nav shown' : 'app-left-nav hidden'
     return (
-      <div className={`app-left-nav ${view.menuVisibility}`}>
+      <div className={`${leftNavClass}`}>
         <ul>
           <li><Link to={'/character_view'} className='characters-link'></Link></li>
           <li><Link to={'/character_view'} className='character-view-link'></Link></li>
@@ -40,7 +39,8 @@ class AppLeftNav extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    view: state.view
+    visibility: state.LeftNavShown
   }
 }
-export default connect(mapStateToProps)(AppLeftNav)
+
+export default connect(LeftNavShown)(AppLeftNav)

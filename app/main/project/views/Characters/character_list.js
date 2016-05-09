@@ -1,11 +1,12 @@
 'use strict';
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { LeftNavShown } from '../../_actions/viewActions';
 
 class CharacterList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
 
     this._onChange = this._onChange.bind(this);
     this._onAppCTRL = this._onAppCTRL.bind(this);
@@ -16,6 +17,8 @@ class CharacterList extends React.Component {
   }
 
   _onAppCTRL (cmd) {
+    this.props.dispatch(LeftNavShown(true))
+    // LeftNavShown(true);
     console.log('{ -> } : FORWARD TO DASHBOARD');
   }
 
@@ -23,17 +26,13 @@ class CharacterList extends React.Component {
     return (
       <div className={`app-base character-list`}>
         <p>Character List</p>
-        <Link
-          to={`dashboard`}
-          onClick={this._onAppCTRL.bind(this)}
-          className="btn btn-primary form-control btn-lg app-func bn-app-login">
-            Go to Dashboard
-        </Link>
+        <a className="btn btn-primary" onClick={() => {this.props.dispatch(LeftNavShown(true))}}>make visible</a>
+        <a className="btn btn-primary" onClick={() => {this.props.dispatch(LeftNavShown(false))}}>make hidden</a>
       </div>
     );
   }
 }
+export default connect(LeftNavShown)(CharacterList)
 
-module.exports = CharacterList;
 
 // {this.props.children}

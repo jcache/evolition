@@ -1,12 +1,9 @@
-import {
-  CHANGE_VIEW,
-  TOGGLE_LEFT_MENU,
-} from '../_constants';
+import { LEFT_NAV_SHOWN } from '../_constants'
 
-export function changeView(n) {
-  return { type: CHANGE_VIEW, n }
-}
 
-export function toggleLeftMenu(n) {
-  return { type: TOGGLE_LEFT_MENU, n }
+export function LeftNavShown(n) {
+  return {
+    type: LEFT_NAV_SHOWN,
+    visible: n
+  }
 }
