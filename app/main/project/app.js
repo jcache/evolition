@@ -1,28 +1,19 @@
 import React from 'react';
-import { createDevTools } from 'redux-devtools';
-import LogMonitor from 'redux-devtools-log-monitor';
-import DockMonitor from 'redux-devtools-dock-monitor';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-import * as reducers from './_reducers';
+import { syncHistoryWithStore } from 'react-router-redux';
+import reducers from './_reducers';
+import DevTools from './views/_components/dev_tools';
 
 import Base from './base';
 import AuthBase from './views/Auth/_base';
 import Login from './views/Auth/login';
 // import AuthZones from './views/Auth';
 
-const reducer = combineReducers({ ...reducers, routing: routerReducer });
-
-const DevTools = createDevTools(
-  <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q" defaultIsVisible={false}>
-    <LogMonitor theme="tomorrow" preserveScrollTop={false} />
-  </DockMonitor>
-);
 
 const store = createStore(
-  reducer,
+  reducers,
   DevTools.instrument()
 );
 
