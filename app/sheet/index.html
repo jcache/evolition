@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SHEET</title>
+    <link rel='stylesheet' href='./css/main.less'>
+
+  </head>
+  <body>
+    <div id="mount">I am sheet</div>
+    <script src="./main.js" data-container="#mount"></script>
+    <script>
+      if (process.env.BROWSER_SYNC_SHEET_URL) {
+        const current = document.currentScript;
+        const script = document.createElement('script');
+        script.src = process.env.BROWSER_SYNC_SHEET_URL;
+        script.async = true;
+        current.parentNode.insertBefore(script, current);
+      }
+    </script>
+  </body>
+</html>

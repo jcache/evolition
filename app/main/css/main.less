@@ -1,0 +1,237 @@
+@base: #000;
+
+@translucent-red: rgba(255, 0, 0, 0.8);
+@translucent-yellow: rgba(255,235,0,0.8);
+@translucent-black: rgba(0,0,0,1);
+@interface-support-color: rgba(36,38,50,1);
+@interface-support-alt-color: rgba(45,50,71,1);
+@interface-support-alt-blue-color: rgba(47,111,175,1);
+@interface-main-color: rgba(45,48,62,1);
+.flexible-mix{
+  flex: 1;
+  display: flex;
+}
+h2 {
+  margin-top:0;
+  margin-bottom:0;
+}
+body, th, td {
+  color:#FFF;
+}
+html, body {
+.flexible-mix;
+  height:100%;
+}
+body {
+  background-color: @interface-support-color;
+  overflow-y:hidden;
+}
+#mount, .ev, .app-wrapper, .app, .view{
+  .flexible-mix;
+}
+
+.view {
+  flex-direction: column;
+  .app-header{
+    .flexible-mix;
+    background: @interface-support-alt-color;
+    border-bottom: 1px solid @interface-support-color;
+    max-height:50px;
+    min-height:50px;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    z-index:2000;
+    ul {
+      .flexible-mix;
+      margin:0 0 0 15px;
+      padding:0;
+      flex-direction: row;
+      max-width:55px;
+      border-right: 1px solid @interface-support-alt-color;
+
+      li {
+        .flexible-mix;
+        max-width:21px;
+        list-style: none;
+        justify-content: center;
+
+        a{
+          width:13px;
+          height:13px;
+          align-self:center;
+          border-radius:16px;
+          transition:all .3s ease;
+          -webkit-app-region: no-drag;
+          &.bn-app-close{
+            background: @translucent-red;
+            &:hover,
+            &.active {
+              background: @translucent-red;
+            }
+          }
+          &.bn-app-minimize{
+            background: @translucent-yellow;
+            &:hover,
+            &.active {
+              background: @translucent-yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+  .app-body-container {
+    .flexible-mix;
+
+
+    .app-left-nav{
+      flex:1;
+      max-width:70px;
+      min-width:70px;
+      background: @interface-support-color;
+      border-right: 1px solid @interface-main-color;
+      ul {
+        margin:15px 0 0 0 ;
+        padding:0;
+        display:flex;
+        flex:1;
+        flex-direction: column;
+
+        li {
+          -webkit-app-region: no-drag !important;
+          list-style:none;
+          flex:1;
+          display:flex;
+          max-width:70px;
+          justify-content: center;
+          padding:0 0 15px;
+
+          a{
+            width:45px;
+            height:45px;
+            align-self:center;
+            transition:all .2s ease;
+            background-size: contain !important;
+            -webkit-app-region: no-drag !important;
+            -webkit-border-radius:2px;
+            background-color: @interface-main-color;
+            box-shadow: inset 0 0 0px 1px @interface-support-color;
+
+            &:hover{
+              box-shadow: inset 0 0 0px 3px RGBA(255,255,255,1);
+              // opacity:1;
+            }
+          }
+        }
+      }
+    }
+
+
+
+  }
+  .app-base{
+    flex:1;
+    flex-direction:column;
+  }
+}
+
+
+.anonymous-view{
+  .flexible-mix;
+  transition:all .3s ease;
+  .side-screen {
+    .flexible-mix;
+    background: rgba(36,39,51,1);
+  }
+  .auth-screen {
+    .flexible-mix;
+    background: @interface-main-color;
+    .login-container {
+      .flexible-mix;
+      padding:0;
+      background:@interface-main-color;
+      min-width:40%;
+      max-width:40%;
+
+      form {
+        margin: 20px !important;
+        .bn-app-login {
+          vertical-align: middle;
+          line-height: 30px;
+          text-align: center;
+          border:none;
+          background: rgba(178,153,217,1);
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+form {
+  flex:1;
+  textarea,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"] {
+    background: linear-gradient(to bottom, rgba(0,0,0,.5) 0%,rgba(0,0,0,.3) 100%) !important;
+    transition: box-shadow .2s ease;
+    border-radius:2px !important;
+    padding: 0 10px;
+    font-size: 13.5px;
+    font-weight:bold;
+    &:focus{
+      box-shadow: inset 0 0 0px 2px rgba(54,178,230,.8) !important;
+    }
+  }
+  select.form-control:not([multiple]) {
+    -webkit-appearance: none;
+    border: none;
+    background-image: none !important;
+    border-radius:2px;
+    padding: 10px;
+    font-size: 13.5px;
+    font-weight:bold;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: box-shadow .2s ease;
+    background: linear-gradient(to bottom, rgba(0,0,0,.3) 0%,rgba(0,0,0,.5) 100%) !important;
+    &:focus{
+      box-shadow: inset 0 0 0px 2px rgba(54,178,230,.8);
+    }
+  }
+}
+.form-group{
+  .form-control{
+    background-image: none;
+  }
+  &.is-focused{
+    .form-control{
+      background-image: none;
+    }
+    label.control-label {
+      color:rgba(54,178,230,1);
+    }
+  }
+  &.no-space {
+    margin-top:0px;
+  }
+  label.control-label {
+    color:rgba(255,255,255,.2);
+
+      margin: 5px 0 0 0;
+  }
+}
+.form-control,
+.form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.01)), to(rgba(255,255,255,.01))), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: -webkit-linear-gradient(rgba(255,255,255,.01), rgba(255,255,255,.01)), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: -o-linear-gradient(rgba(255,255,255,.01), rgba(255,255,255,.01)), -o-linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(rgba(255,255,255,.01), rgba(255,255,255,.01)), linear-gradient(#D2D2D2, #D2D2D2);
+
+}
+
+
+.hidden {
+  display:none !important;
+}
