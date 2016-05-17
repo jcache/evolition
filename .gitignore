@@ -28,6 +28,8 @@ node_modules
 
 # Optional npm cache directory
 .npm
+.cache
+evolition-future-darwin-x64
 
 # Optional REPL history
 .node_repl_history
