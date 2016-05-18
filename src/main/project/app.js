@@ -11,7 +11,6 @@ import * as reducers from './_reducers';
 import Base from './base';
 import AuthBase from './views/Auth/_base';
 import Login from './views/Auth/login';
-// import AuthZones from './views/Auth';
 
 const reducer = combineReducers({ ...reducers, routing: routerReducer });
 

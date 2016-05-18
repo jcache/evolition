@@ -4,22 +4,16 @@ const path = require( "path" );
 const spawn = require( "child_process" ).spawn;
 const cmd = "node_modules/.bin/electron-packager-compile";
 const pkginfo = require( "../../package.json" );
-
 const nodeModuleIgnores = [
   'electron-compile/node_modules/electron-compilers',
-  // devDependencies are ignored by default but explicity ignoring them
-  // seems to speed up packaging
   ...Object.keys(pkginfo.devDependencies),
 ];
-
 let pkgdir = path.resolve( __dirname, "../.." );
-
 let getArgs = () => {
 	let args = [ pkgdir, pkginfo.name ];
 	args.push( `--version=${pkginfo.electronVersion}` );
 	const arch = os.arch();
 	const platform = os.platform();
-
 	args.push( `--platform=${platform}` );
 	args.push( `--arch=${arch}` );
 	args.push( "--out=./build" );

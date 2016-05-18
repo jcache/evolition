@@ -3,7 +3,7 @@
 const React = require('react');
 const { PropTypes } = React;
 import { Link } from 'react-router';
-
+import { ipcRenderer, remote } from 'electron';
 export default class AppHeader extends React.Component {
 
   constructor (props,context) {
@@ -14,7 +14,7 @@ export default class AppHeader extends React.Component {
   _onAppCTRL (cmd, bool) {
     // console.log("cmd: ", cmd,"boolean: ", bool);
     // cmd == 'resize-to-login' ? evActions.showLogin(bool) : evActions.showLogin(bool)
-    ipc.send(cmd);
+    ipcRenderer.send(cmd);
   }
 
   render () {
