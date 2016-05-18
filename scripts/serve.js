@@ -36,8 +36,8 @@ const lessMiddleware = (req, res, next) => {
 };
 
 const less = (src) => {
-  const main = require('fs').readFileSync('app/main' + src).toString();
-  const sheet = require('fs').readFileSync('app/sheet' + src).toString();
+  const main = require('fs').readFileSync('src/main' + src).toString();
+  const sheet = require('fs').readFileSync('src/sheet' + src).toString();
   return require('less').render([main, sheet]);
 };
 

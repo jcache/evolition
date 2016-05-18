@@ -1,3 +1,3 @@
 const path = require('path');
 const appRoot = path.join(__dirname, '..');
-require('electron-compile').init('..', './src/main');
+require('electron-compile').init(appRoot, '../src/main', false);

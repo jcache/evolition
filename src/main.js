@@ -1,10 +1,17 @@
-import app from 'app';
-const electron = require('electron');
-const ipcMain = require('electron').ipcMain;
-const Menu = require('menu');
+'use strict';
+
 const path = require('path');
-import BrowserWindow from 'browser-window';
-import crashReporter from 'crash-reporter';
+const electron = require('electron');
+
+import {
+  app,
+  BrowserWindow,
+  crashReporter,
+  ipcMain,
+  dialog,
+  shell,
+  Menu
+} from "electron";
 
 crashReporter.start(
   {
@@ -53,7 +60,7 @@ let createWindow = () => {
     height: winH,
     minWidth: 960,
     maxWidth: 1200,
-    show: false, 
+    show: false,
     // standardWindow: false,
     backgroundColor: '#282c3a',
     // hasShadow: false,

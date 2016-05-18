@@ -7,9 +7,9 @@ const compiler = require('electron-compile');
 const paths = {
   mainPath: path.join(__dirname, '../'),
   packageJson: path.join(__dirname, '../package.json'),
-  appMainPath: path.join(__dirname, '../app/main'),
+  appMainPath: path.join(__dirname, '../src/main'),
   cachePath: path.join(__dirname, '../.cache'),
-  appPath: path.join(__dirname, '../app'),
+  appPath: path.join(__dirname, '../src'),
 };
 
 const packageJson = JSON.parse(fs.readFileSync(paths.packageJson, 'utf8'));
@@ -19,7 +19,7 @@ const nodeModuleIgnores = [
   ...Object.keys(packageJson.devDependencies),
 ];
 
-compiler.init(paths.mainPath, paths.appMainPath);
+compiler.init(paths.mainPath, paths.appMainPath, false);
 // compiler.compile('app')
 
 // packager({
