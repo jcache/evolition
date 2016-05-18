@@ -1,12 +1,12 @@
 'use strict';
 import React from 'react';
 import { Link } from 'react-router';
+import { ipcRenderer, remote } from 'electron';
 
 class Welcome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-
     this._onChange = this._onChange.bind(this);
     this._onAppCTRL = this._onAppCTRL.bind(this);
   }
@@ -17,7 +17,7 @@ class Welcome extends React.Component {
 
   _onAppCTRL (cmd) {
     console.log('{ -> } : FORWARD TO LOGIN');
-    ipc.send('resize-to-login');
+    ipcRenderer.send('resize-to-login');
 
   }
 

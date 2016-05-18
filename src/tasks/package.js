@@ -5,6 +5,13 @@ const spawn = require( "child_process" ).spawn;
 const cmd = "node_modules/.bin/electron-packager-compile";
 const pkginfo = require( "../../package.json" );
 
+const nodeModuleIgnores = [
+  'electron-compile/node_modules/electron-compilers',
+  // devDependencies are ignored by default but explicity ignoring them
+  // seems to speed up packaging
+  ...Object.keys(pkginfo.devDependencies),
+];
+
 let pkgdir = path.resolve( __dirname, "../.." );
 
 let getArgs = () => {
@@ -15,10 +22,10 @@ let getArgs = () => {
 
 	args.push( `--platform=${platform}` );
 	args.push( `--arch=${arch}` );
-	args.push( "--out ./build" );
-	args.push( "--asar" );
+	args.push( "--out=./build" );
 	args.push( "--overwrite" );
 	args.push( "--prune" );
+	args.push( `--ignore=${new RegExp(`node_modules/(${nodeModuleIgnores.join('|')})`)}` );
 	args.push( `--app-version=${pkginfo.version}` );
 
 	if ( platform === "darwin" ) {

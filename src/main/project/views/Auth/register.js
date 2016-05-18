@@ -2,7 +2,7 @@
 'use strict';
 import React from 'react';
 import { Link } from 'react-router';
-
+import { ipcRenderer, remote } from 'electron';
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class Register extends React.Component {
 
   _onAppCTRL (cmd) {
     console.log('{ -> } : FORWARD TO LOGIN');
-    ipc.send('resize-to-login');
+    ipcRenderer.send('resize-to-login');
   }
 
   render () {

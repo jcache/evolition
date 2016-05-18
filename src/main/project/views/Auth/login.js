@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-
+import { ipcRenderer, remote } from 'electron';
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   _onAppCTRL (cmd) {
     console.log('{ -> } : FORWARD TO LOGIN');
-    ipc.send('resize-to-main');
+    ipcRenderer.send('resize-to-main');
   }
 
   render () {

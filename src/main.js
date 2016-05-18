@@ -15,7 +15,7 @@ import {
 
 crashReporter.start(
   {
-    productName: 'evolition',
+    productName: 'EVOLITION',
     companyName: 'evolition.io',
     submitURL: 'http://evolition.io',
     autoSubmit: true,
@@ -28,7 +28,6 @@ let sheetWindow = void 0;
 let createWindow = () => {
   var winW = 960;
   var winH = 500;
-
   var atomScreen = electron.screen;
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
   var vertL = Math.floor(size.width / 2);
@@ -78,13 +77,11 @@ let createWindow = () => {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    // ( OPTIONAL )
     // mainWindow.webContents.openDevTools({ detach: true });
   }
 
   mainWindow.loadURL(`file://${__dirname}/main/index.html`);
   // sheetWindow.loadURL(`file://${__dirname}/sheet/index.html`);
-
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.setTitle('EVOLITION');
@@ -177,7 +174,6 @@ let createWindow = () => {
   Menu.setApplicationMenu(
     Menu.buildFromTemplate(template)
   );
-
 };
 
 app.on('window-all-closed', () => {
