@@ -6,7 +6,6 @@ const electron = require('electron');
 import {
   app,
   BrowserWindow,
-  crashReporter,
   ipcMain,
   dialog,
   shell,
@@ -17,17 +16,7 @@ import { AppMenu } from './helpers/app_menu';
 import { DevMenu } from './helpers/dev_menu';
 import { EditMenu } from './helpers/edit_menu';
 
-crashReporter.start(
-  {
-    productName: 'EVOLITION',
-    companyName: 'evolition.io',
-    submitURL: 'http://evolition.io',
-    autoSubmit: true,
-  }
-);
-
 const setApplicationMenu = function () {
-
   const menus = [
     AppMenu,
     EditMenu
@@ -36,7 +25,6 @@ const setApplicationMenu = function () {
   if (process.env.NODE_ENV === 'development') {
     menus.push(DevMenu);
   }
-
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
 
@@ -46,7 +34,16 @@ let mainWindow = void 0;
 let sheetWindow = void 0;
 
 let createWindow = () => {
+
+  // SETS APPLICATION MENU
   setApplicationMenu();
+
+  // PROTOCOL MODULE
+  require('./helpers/app_protocol');
+
+  // CRASH REPORTER
+  require('./helpers/app_reporter');
+
   var winW = 960;
   var winH = 500;
   var atomScreen = electron.screen;
@@ -65,14 +62,6 @@ let createWindow = () => {
     frame: false,
   });
 
-  var protocol = electron.protocol;
-
-  protocol.registerFileProtocol('ev', (request, callback) => {
-    var url = request.url.substr(5);
-    callback({ path: path.normalize(__dirname + '/' + url) });
-  }, (error) => {
-    if (error) console.error('Failed to register protocol');
-  });
 
 
   sheetWindow = new BrowserWindow({
