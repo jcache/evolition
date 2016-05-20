@@ -6,6 +6,7 @@ const cmd = "node_modules/.bin/electron-packager-compile";
 const pkginfo = require( "../../package.json" );
 const nodeModuleIgnores = [
   'electron-compile/node_modules/electron-compilers',
+  'electron-compilers',
   ...Object.keys(pkginfo.devDependencies),
 ];
 let pkgdir = path.resolve( __dirname, "../.." );
@@ -19,6 +20,7 @@ let getArgs = () => {
 	args.push( "--out=./build" );
 	args.push( "--overwrite" );
 	args.push( "--prune" );
+	// args.push( "--asar" );
 	args.push( `--ignore=${new RegExp(`node_modules/(${nodeModuleIgnores.join('|')})`)}` );
 	args.push( `--app-version=${pkginfo.version}` );
 

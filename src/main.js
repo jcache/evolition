@@ -13,6 +13,10 @@ import {
   Menu
 } from "electron";
 
+import { AppMenu } from './helpers/app_menu';
+import { DevMenu } from './helpers/dev_menu';
+import { EditMenu } from './helpers/edit_menu';
+
 crashReporter.start(
   {
     productName: 'EVOLITION',
@@ -22,10 +26,27 @@ crashReporter.start(
   }
 );
 
+const setApplicationMenu = function () {
+
+  const menus = [
+    AppMenu,
+    EditMenu
+  ];
+
+  if (process.env.NODE_ENV === 'development') {
+    menus.push(DevMenu);
+  }
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
+};
+
+
+
 let mainWindow = void 0;
 let sheetWindow = void 0;
 
 let createWindow = () => {
+  setApplicationMenu();
   var winW = 960;
   var winH = 500;
   var atomScreen = electron.screen;
@@ -121,59 +142,6 @@ let createWindow = () => {
     mainWindow.setBounds(options, true);
   });
 
-  var template = [
-    {
-      label: 'Application',
-      submenu: [
-        { label: 'About Application', selector: 'orderFrontStandardAboutPanel:' },
-        { type: 'separator' },
-        { label: 'Quit', accelerator: 'Command+Q',
-          click: () => {
-            app.quit();
-          },
-        },
-        {
-          label: 'Hide ElectronReact',
-          accelerator: 'Command+H',
-          selector: 'hide:',
-        },
-      ],
-    }, {
-      label: 'Edit',
-      submenu: [
-        { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
-        { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
-        { type: 'separator' },
-        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
-        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
-        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
-        { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' },
-      ],
-    }, {
-      label: 'Developer',
-      submenu: [
-        {
-          label: 'Reload Main',
-          accelerator: 'Command+R',
-          click: () => mainWindow.webContents.reloadIgnoringCache(),
-        },
-        {
-          label: 'Reload Sheet',
-          accelerator: 'Command+Shift+R',
-          click: () => sheetWindow.webContents.reloadIgnoringCache(),
-        },
-        {
-          label: 'Toggle DevTools',
-          accelerator: 'Alt+Command+I',
-          click: () => BrowserWindow.getFocusedWindow().toggleDevTools(),
-        },
-      ],
-    },
-  ];
-
-  Menu.setApplicationMenu(
-    Menu.buildFromTemplate(template)
-  );
 };
 
 app.on('window-all-closed', () => {
