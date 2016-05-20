@@ -27,7 +27,7 @@ const store = createStore(
 
 var history = syncHistoryWithStore(hashHistory, store);
 
-class App extends React.Component {
+class AppDev extends React.Component {
   render () {
     return (
       <div className={`app-wrapper`}>
@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 }
 
-module.exports = App;
+module.exports = AppDev;
 // <DevTools store={store}/>
 
 // {this.props.children}
