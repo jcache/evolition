@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-// const { PropTypes } = React;
 
 class Base extends React.Component {
   constructor (props) {
@@ -18,5 +17,3 @@ class Base extends React.Component {
 }
 
 module.exports = Base;
-
-// {this.props.children}

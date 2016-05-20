@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 if (process.env.NODE_ENV === 'development') {
-  var AppDev  = require('./project/app-dev');
-  ReactDOM.render(<AppDev />, document.getElementById('mount'));
+  var App  = require('./project/app-dev');
 } else {
-  var AppProd  = require('./project/app-prod');
-  ReactDOM.render(<AppProd />, document.getElementById('mount'));
+  var App  = require('./project/app-prod');
 }
+  ReactDOM.render(<App />, document.getElementById('mount'));
