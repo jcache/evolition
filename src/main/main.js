@@ -6,4 +6,5 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   var App  = require('./project/app-prod');
 }
-  ReactDOM.render(<App />, document.getElementById('mount'));
+
+ReactDOM.render(<App />, document.getElementById('mount'));
