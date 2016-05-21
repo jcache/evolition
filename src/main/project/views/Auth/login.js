@@ -25,40 +25,44 @@ class Login extends React.Component {
     return (
       <div className={`anonymous-view`}>
         <div className='auth-screen'>
+
           <div className='side-screen'>
             <canvas id="canvas"></canvas>
           </div>
-          <div className="login-container">
+
+          <div className="auth-container">
             <form>
-              <div className='row'>
-                <div className='col-xs-9'>
-                  <h2>Account Sign-in</h2>
-                </div>
-                <div className='col-xs-3'>
-                  <Link to={`/register`}
-                    onClick={this._onAppCTRL.bind(this)}
-                    className="btn btn-primary form-control btn-sm app-func bn-app-login pull-right">
-                      Register
-                  </Link>
-                </div>
+              <div className='auth-header'>
+                <h2>Account Sign-in</h2>
+
+                <Link to={`/register`}
+                className="btn btn-primary btn-lg bn-app-register">
+                Register</Link>
+
               </div>
 
-              <hr/>
               <div className="form-group">
                 <label className="control-label">E-Mail Address</label>
-                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io'/>
+                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io' />
               </div>
+
               <div className="form-group">
                 <label className="control-label">Password</label>
                 <input type='password' name='password' className='form-control input-lg' />
               </div>
-              <Link to={`/intro`}
-                onClick={this._onAppCTRL.bind(this)}
-                className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                  Submit
-              </Link>
+
+              <div className="form-group">
+
+                <Link to={`/intro`}
+                className="btn btn-primary bn-app-login">Submit</Link>
+
+                <Link to={`/forgot_password`}
+                className="btn btn-primary pull-right bn-app-forgot">Forgot Password</Link>
+
+              </div>
             </form>
           </div>
+
         </div>
       </div>
     );
