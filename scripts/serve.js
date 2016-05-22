@@ -36,8 +36,8 @@ const lessMiddleware = (req, res, next) => {
 };
 
 const less = (src) => {
-  const main = require('fs').readFileSync('app/main' + src).toString();
-  const sheet = require('fs').readFileSync('app/sheet' + src).toString();
+  const main = require('fs').readFileSync('src/main' + src).toString();
+  const sheet = require('fs').readFileSync('src/sheet' + src).toString();
   return require('less').render([main, sheet]);
 };
 
@@ -46,10 +46,10 @@ const BrowserSyncOPTS = {
   ghostMode: false,
   injectFileTypes: ['less'],
   open: false, // false
-  server: [
-    'app/main',
-    'app/sheet',
-  ],
+  // server: [
+  //   'src/main',
+  //   'src/sheet',
+  // ],
   notify: false,
   logPrefix: 'EVOLITION.IO',
   logSnippet: false,
@@ -84,6 +84,6 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
   });
 
   // WATCH
-  Bsync.watch('app/main/**/*').on('change', Bsync.reload);
-  Bsync.watch('app/sheet/**/*').on('change', Bsync.reload);
+  Bsync.watch('src/main/**/*').on('change', Bsync.reload);
+  Bsync.watch('src/sheet/**/*').on('change', Bsync.reload);
 });

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MAIN</title>
+    <link rel='stylesheet' href='./css/bootstrap.less'>
+    <link rel='stylesheet' href='./css/main.less'>
+
+    <script>
+      window.$ = window.jQuery = require('./js/jquery.min');
+    </script>
+
+  </head>
+
+  <body>
+    <div id="mount"></div>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./main.js" data-container="#mount"></script>
+    <script>
+      if (process.env.BROWSER_SYNC_MAIN_URL) {
+        const current = document.currentScript;
+        const script = document.createElement('script');
+        script.src = process.env.BROWSER_SYNC_MAIN_URL;
+        script.async = true;
+        current.parentNode.insertBefore(script, current);
+      }
+    </script>
+  </body>
+</html>

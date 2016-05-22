@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 **.DS_Store
 
+=======
+>>>>>>> b8f488a7a938c21cc2e171c5bb1ea86106912d83
 # Logs
 logs
 *.log
@@ -30,6 +33,8 @@ node_modules
 
 # Optional npm cache directory
 .npm
+.cache
+evolition-darwin-x64
 
 # Optional REPL history
 .node_repl_history
