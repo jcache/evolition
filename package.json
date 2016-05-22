@@ -5,9 +5,9 @@
   "companyName": "Evolition, Inc.",
   "copyright": "Copyright (c) 2016, Evolition, LLC. All rights reserved.",
   "description": "evolition",
-  "electronVersion": "0.37.8",
+  "electronVersion": "1.1.0",
   "bugs": {
-    "url": "https://github.com/evolition/evolition-future/issues"
+    "url": "https://github.com/evolition/evolition-app/issues"
   },
   "contributors": [
     {
@@ -22,7 +22,7 @@
   "author": "Kevin Carr",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evolition/evolition-future.git"
+    "url": "git+https://github.com/evolition/evolition-app.git"
   },
   "license": "MIT",
   "dependencies": {
@@ -51,8 +51,8 @@
     "electron-compilers": "^3.0.0",
     "electron-mocha": "^1.2.3",
     "electron-packager": "^7.0.1",
-    "electron-prebuilt": "^1.1.0",
-    "electron-prebuilt-compile": "^0.37.7",
+    "electron-prebuilt": "^1.1.1",
+    "electron-prebuilt-compile": "^1.1.1",
     "eslint": "^2.9.0",
     "eslint-plugin-react": "^5.0.1",
     "mocha": "^2.4.5",

@@ -1,10 +1,12 @@
-import app from 'app';
-const electron = require('electron');
-const ipcMain = require('electron').ipcMain;
-const Menu = require('menu');
+const {
+  app,
+  BrowserWindow,
+  crashReporter,
+  ipcMain,
+  protocol,
+  Menu
+} = require('electron');
 const path = require('path');
-import BrowserWindow from 'browser-window';
-import crashReporter from 'crash-reporter';
 
 crashReporter.start(
   {
@@ -38,8 +40,6 @@ let createWindow = () => {
     frame: false,
   });
 
-  var protocol = electron.protocol;
-
   protocol.registerFileProtocol('ev', (request, callback) => {
     var url = request.url.substr(5);
     callback({ path: path.normalize(__dirname + '/' + url) });
@@ -53,7 +53,7 @@ let createWindow = () => {
     height: winH,
     minWidth: 960,
     maxWidth: 1200,
-    show: false, 
+    show: false,
     // standardWindow: false,
     backgroundColor: '#282c3a',
     // hasShadow: false,
