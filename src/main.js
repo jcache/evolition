@@ -15,6 +15,7 @@ import {
 import { AppMenu } from './helpers/app_menu';
 import { DevMenu } from './helpers/dev_menu';
 import { EditMenu } from './helpers/edit_menu';
+import AppRouter from './helpers/app_router';
 
 const setApplicationMenu = function () {
   const menus = [
@@ -44,6 +45,11 @@ let createWindow = () => {
   // CRASH REPORTER
   require('./helpers/app_reporter');
 
+  // APP ROUTER
+  console.log(AppRouter.getAppDataPath())
+
+  //
+  AppRouter.loadCharacterDB();
   var winW = 960;
   var winH = 500;
   var atomScreen = electron.screen;

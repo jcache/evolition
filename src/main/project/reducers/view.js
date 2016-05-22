@@ -1,6 +1,6 @@
 import {
   LEFT_NAV_SHOWN
-} from '../_constants'
+} from '../constants'
 
 const initialState = {
   visible_flag: false

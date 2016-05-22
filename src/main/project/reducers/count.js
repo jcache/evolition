@@ -1,7 +1,7 @@
 import {
   INCREASE,
   DECREASE
-} from '../_constants'
+} from '../constants'
 
 const initialState = {
   number: 1

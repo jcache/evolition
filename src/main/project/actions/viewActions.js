@@ -1,4 +1,4 @@
-import { LEFT_NAV_SHOWN } from '../_constants'
+import { LEFT_NAV_SHOWN } from '../constants'
 
 
 export function LeftNavShown(n) {

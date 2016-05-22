@@ -28,29 +28,30 @@ class Register extends React.Component {
           <div className='side-screen'>
             <canvas id="canvas"></canvas>
           </div>
-          <div className="login-container">
-            <form>
-              <div className='row'>
-                <div className='col-xs-12'>
-                  <h2>Register Account</h2>
-                </div>
-              </div>
+          <div className="auth-container">
+          <form>
+            <div className='auth-header'>
+              <h2>Register Account</h2>
+            </div>
 
-              <hr/>
-              <div className="form-group">
-                <label className="control-label">E-Mail Address</label>
-                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io'/>
-              </div>
-              <div className="form-group">
-                <label className="control-label">Password</label>
-                <input type='password' name='password' className='form-control input-lg' />
-              </div>
+            <div className="form-group">
+              <label className="control-label">E-Mail Address</label>
+              <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io' />
+            </div>
+
+            <div className="form-group">
+              <label className="control-label">Password</label>
+              <input type='password' name='password' className='form-control input-lg' />
+            </div>
+
+            <div className="form-group">
+
               <Link to={`/`}
-                onClick={this._onAppCTRL.bind(this)}
-                className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                Return to Sign-in
-              </Link>
-            </form>
+              className="btn btn-primary bn-app-login">Submit</Link>
+
+
+            </div>
+          </form>
           </div>
         </div>
       </div>

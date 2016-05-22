@@ -28,6 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "electron-compile": "^3.1.0",
+    "fs-extra": "^0.30.0",
+    "fs-jetpack": "^0.9.1",
     "lowdb": "^0.12.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
