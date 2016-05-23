@@ -1,20 +1,10 @@
 import React from 'react';
-import LogMonitor from 'redux-devtools-log-monitor';
-import DockMonitor from 'redux-devtools-dock-monitor';
-import { createDevTools } from 'redux-devtools';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-import * as reducers from './reducers';
-
-const reducer = combineReducers({ ...reducers, routing: routerReducer });
-
-const DevTools = createDevTools(
-  <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q" defaultIsVisible={false}>
-    <LogMonitor theme="tomorrow" preserveScrollTop={false} />
-  </DockMonitor>
-);
+import { syncHistoryWithStore } from 'react-router-redux';
+import DevTools from './views/_components/devtools';
+import reducer from './reducers';
 
 const store = createStore(
   reducer,
