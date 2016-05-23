@@ -4,11 +4,13 @@ const path = require( "path" );
 const spawn = require( "child_process" ).spawn;
 const cmd = "node_modules/.bin/electron-packager-compile";
 const pkginfo = require( "../../package.json" );
+
 const nodeModuleIgnores = [
   'electron-compile/node_modules/electron-compilers',
   'electron-compilers',
   ...Object.keys(pkginfo.devDependencies),
 ];
+
 let pkgdir = path.resolve( __dirname, "../.." );
 let getArgs = () => {
 	let args = [ pkgdir, pkginfo.name ];
@@ -19,8 +21,8 @@ let getArgs = () => {
 	args.push( `--arch=${arch}` );
 	args.push( "--out=./build" );
 	args.push( "--overwrite" );
-	args.push( "--prune" );
-	// args.push( "--asar" );
+	args.push( `--prune=${true}` );
+	args.push( "--asar" );
 	args.push( `--ignore=${new RegExp(`node_modules/(${nodeModuleIgnores.join('|')})`)}` );
 	args.push( `--app-version=${pkginfo.version}` );
 
@@ -36,9 +38,7 @@ let getArgs = () => {
 };
 
 const args = getArgs();
-
 const options = { shell: true };
-
 const packager = spawn( cmd, args, options );
 
 packager.stdout.on( "data", ( data ) => {

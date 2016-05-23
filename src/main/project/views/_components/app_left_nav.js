@@ -4,7 +4,7 @@ const React = require('react');
 const { PropTypes } = React;
 import { Link, Route } from 'react-router';
 import { connect } from 'react-redux';
-import { LeftNavShown } from '../../_actions/viewActions';
+import { LeftNavShown } from '../../actions/viewActions';
 class AppLeftNav extends React.Component {
 
   // static fetchData({ params, store, url }) {
@@ -28,7 +28,7 @@ class AppLeftNav extends React.Component {
     return (
       <div className={`${leftNavClass}`}>
         <ul>
-          <li><Link to={'/character_view'} className='characters-link'></Link></li>
+          <li><Link to={'/dashboard'} className='characters-link'></Link></li>
           <li><Link to={'/character_view'} className='character-view-link'></Link></li>
           <li><Link to={'/character_view'} className='character-add-link'></Link></li>
         </ul>

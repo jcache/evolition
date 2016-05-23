@@ -27,7 +27,7 @@ class PasswordReset extends React.Component {
           <div className='side-screen'>
             <canvas id="canvas"></canvas>
           </div>
-          <div className="login-container">
+          <div className="auth-container">
             <form>
               <h2>Check your E-Mail</h2>
               <hr/>

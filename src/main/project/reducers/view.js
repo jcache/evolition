@@ -1,6 +1,6 @@
 import {
   LEFT_NAV_SHOWN
-} from '../_constants'
+} from '../constants'
 
 const initialState = {
   visible_flag: false
@@ -9,7 +9,6 @@ const initialState = {
 export default function update(state = initialState, action) {
   switch (action.type) {
     case LEFT_NAV_SHOWN:
-      console.log("dispatching action", action);
       return { visible_flag: action.visible}
     default:
       return state

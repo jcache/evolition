@@ -27,19 +27,31 @@ class ForgotPassword extends React.Component {
           <div className='side-screen'>
             <canvas id="canvas"></canvas>
           </div>
-          <div className="login-container">
+
+
+          <div className="auth-container">
             <form>
-              <h2>Forgot Password</h2>
-              <hr/>
+              <div className='auth-header'>
+                <h2>Forgot Password</h2>
+              </div>
+
               <div className="form-group">
                 <label className="control-label">E-Mail Address</label>
-                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io'/>
+                <input type='text' name='email' className='form-control input-lg' placeholder='example@evolition.io' />
               </div>
-              <Link to={`password_reset`}
-                    onClick={this._onAppCTRL.bind(this)}
-                    className="btn btn-primary form-control btn-lg app-func bn-app-login">
-                      Send Confirmation Email
-                  </Link>
+
+              <div className="form-group">
+                <Link to={`password_reset`}
+                  className="btn btn-primary bn-app-login">
+                  Send Confirmation Email
+                </Link>
+              </div>
+              <div className="form-group">
+                <Link to={`/`}
+                  className="btn btn-primary bn-app-login">
+                  Go Back
+                </Link>
+              </div>
             </form>
           </div>
         </div>
