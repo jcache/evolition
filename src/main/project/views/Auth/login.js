@@ -17,8 +17,8 @@ class Login extends React.Component {
   }
 
   _onAppCTRL (cmd) {
-    console.log('{ -> } : FORWARD TO LOGIN');
-    ipcRenderer.send('resize-to-main');
+    console.log("resize to main !", cmd);
+    ipcRenderer.send(cmd);
   }
 
   render () {
@@ -54,7 +54,8 @@ class Login extends React.Component {
               <div className="form-group">
 
                 <Link to={`/intro`}
-                className="btn btn-primary bn-app-login">Submit</Link>
+                onClick={() => this._onAppCTRL('resize-to-main')}
+                className="btn btn-primary bn-app-login">Login </Link>
 
                 <Link to={`/forgot_password`}
                 className="btn btn-primary pull-right bn-app-forgot">Forgot Password</Link>
