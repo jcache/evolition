@@ -4,7 +4,7 @@ import React from 'react';
 import { expect } from 'chai';
 import {createRenderer} from 'react-addons-test-utils';
 
-import App  from '../project/app';
+import App  from '../project/app-dev';
 
 describe('Main', () => {
 

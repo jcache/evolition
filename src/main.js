@@ -3,14 +3,14 @@
 const path = require('path');
 const electron = require('electron');
 
-import {
+const {
   app,
   BrowserWindow,
   ipcMain,
   dialog,
   shell,
   Menu
-} from "electron";
+} = electron;
 
 import { AppMenu } from './helpers/app_menu';
 import { DevMenu } from './helpers/dev_menu';
@@ -142,9 +142,9 @@ let createWindow = () => {
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
+  // if (process.platform !== 'darwin') {
     app.quit();
-  }
+  // }
 });
 
 app.on('ready', createWindow);
