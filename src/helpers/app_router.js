@@ -7,7 +7,7 @@ const character_data = require('../seed/characters');
 class Route {
 
   constructor() {
-    this.app_data_pathb = electron.app.getPath('appData') + '/evolition/data/';
+    this.app_data_path = electron.app.getPath('appData') + '/evolition/data/';
     this.app_plugin_path = electron.app.getPath('appData') + '/evolition/plugins/';
   }
 
@@ -27,13 +27,13 @@ class Route {
         // MAKES DATA DIRECTORY
         fs.mkdirs(srcpath, (err) => {
           if (err) return console.error(err);
-          // console.log('[JOB] -> DATABASE DIRECTORY CREATED');
+          console.log('[JOB] -> DATABASE DIRECTORY CREATED');
           // CREATES DATABASE IF IT DOESN'T EXIST
           fs.ensureFileSync(file);
-          // console.log('[JOB] -> CHARACTER DATABASE CREATED');
+          console.log('[JOB] -> CHARACTER DATABASE CREATED');
           // POPULATE FROM SEED FILE
           fs.outputJson(file, character_data);
-          // console.log('[JOB] -> CHARACTER DATA POPULATED');
+          console.log('[JOB] -> CHARACTER DATA POPULATED');
         });
       }
     });
