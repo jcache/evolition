@@ -2,3 +2,7 @@ export const INCREASE = 'INCREASE';
 export const DECREASE = 'DECREASE';
 export const LEFT_NAV_SHOWN = 'LEFT_NAV_SHOWN';
 export const TOGGLE_LEFT_MENU = 'TOGGLE_LEFT_MENU';
+export const LOAD_CHARACTERS = 'LOAD_CHARACTERS';
+export const SELECT_CHARACTER = 'SELECT_CHARACTER'; 
+export const ADD_CHARACTER = 'ADD_CHARACTER';
+export const EDIT_CHARCTER = 'EDIT_CHARCTER';
