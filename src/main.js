@@ -1,5 +1,4 @@
 'use strict';
-
 const path = require('path');
 const electron = require('electron');
 
@@ -30,7 +29,6 @@ const setApplicationMenu = function () {
 };
 
 
-
 let mainWindow = void 0;
 let sheetWindow = void 0;
 
@@ -46,7 +44,7 @@ let createWindow = () => {
   require('./helpers/app_reporter');
 
   // APP ROUTER
-  console.log(AppRouter.getAppDataPath())
+  console.log(AppRouter.getAppDataPath());
 
   //
   AppRouter.loadCharacterDB();
