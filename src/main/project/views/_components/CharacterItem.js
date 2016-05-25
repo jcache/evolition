@@ -5,7 +5,6 @@ import {
 } from '../../actions/characterActions';
 
 function CharacterItem(props) {
-  console.log(props);
   return (
     <div className='character-row'>
       <div className='character-details'>
