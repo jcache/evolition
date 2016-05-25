@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -10,8 +10,10 @@ import configureStore from './store/configureStore';
 // DEVTOOLS
 const devMode = process.env.NODE_ENV === 'development';
 let preDevTools;
-if (devMode) preDevTools = require('./containers/DevTools');
-const DevTools = preDevTools.default;
+if (devMode) {
+  preDevTools = require('./containers/DevTools').default;
+}
+const DevTools = preDevTools;
 
 // CONFIGURE STORE
 const store = configureStore();

@@ -1,8 +1,8 @@
 import React from 'react';
 import { expect } from 'chai';
-import {createRenderer} from 'react-addons-test-utils';
 import * as actions from '../../actions/characterActions';
 import * as types from '../../constants';
+//* NOT CURRENTLY USED * import {createRenderer} from 'react-addons-test-utils';
 
 
 describe("View CharacterList ", () => {

@@ -4,6 +4,7 @@ import { spawn } from 'child_process';
 import electron from 'electron-prebuilt';
 import browserSync from 'browser-sync';
 
+// BrowserSync
 import browserSyncConnectUtils from 'browser-sync/lib/connect-utils';
 const Bsync = browserSync.create();
 var historyApiFallback = require('connect-history-api-fallback');
@@ -77,7 +78,6 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
       ...{
         NODE_ENV: 'development',
         BROWSER_SYNC_MAIN_URL: getMainUrl(bs.options),
-        BROWSER_SYNC_SHEET_URL: getSheetUrl(bs.options),
       },
       ...process.env,
     },
