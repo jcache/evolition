@@ -8,6 +8,7 @@ import App  from '../project/app';
 describe('Main app', () => {
 
   it('App wrapper is available', (done) => {
+    this.timeout(5000);
     let renderer = createRenderer();
     renderer.render(<App />);
     let appWrapper = renderer.getRenderOutput();
