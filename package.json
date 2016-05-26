@@ -50,7 +50,7 @@
     "chai": "^3.5.0",
     "connect-logger": "0.0.1",
     "electron-compilers": "^3.0.0",
-    "electron-mocha": "^1.2.3",
+    "electron-mocha": "^2.1.0",
     "electron-packager": "^7.0.1",
     "electron-prebuilt": "^1.1.1",
     "electron-prebuilt-compile": "^1.1.1",

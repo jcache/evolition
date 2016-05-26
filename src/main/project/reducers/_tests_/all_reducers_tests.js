@@ -4,9 +4,9 @@ import reducer from '../'
 import * as actions from '../../actions/characterActions';
 import * as types from '../../constants';
 
-describe('Character reducer', () => {
+describe('Character reducer', function() {
   console.log(require('util').inspect(reducers, { depth: null }));
-  it('should return the initial state', () => {
+  it('should return the initial state', function() {
     expect(
       reducers(undefined, {})
     ).deep.to.equal([
@@ -15,5 +15,9 @@ describe('Character reducer', () => {
         characters: []
       }
     ]);
-  })
+  });
+
+  it('should add a character');
+  it('should select a character');
+  it('should edit a character');
 });

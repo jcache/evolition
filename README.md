@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jcache/evolition.svg?branch=master)](https://travis-ci.org/jcache/evolition)
 ## EVOLITION
 * Install Packages: `npm install`
 * Develop: `npm start`

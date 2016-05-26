@@ -5,9 +5,10 @@ import { expect } from 'chai';
 import {createRenderer} from 'react-addons-test-utils';
 import App  from '../project/app';
 
-describe('Main app', () => {
+describe('Main app', function() {
 
-  it('App wrapper is available', (done) => {
+  it('App wrapper is available', function(done) {
+    this.timeout(5000);
     let renderer = createRenderer();
     renderer.render(<App />);
     let appWrapper = renderer.getRenderOutput();
