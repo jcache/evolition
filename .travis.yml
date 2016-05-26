@@ -7,7 +7,7 @@ branches:
     - master
 
 env:
-  - NODE_VERSION="5.4.0"
+  - NODE_VERSION="5.1.0"
 
 script: ./scripts/travis-build.sh
 
