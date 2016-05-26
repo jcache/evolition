@@ -19,7 +19,7 @@ script:
   - source /tmp/.nvm/nvm.sh
   - nvm install "$NODE_VERSION"
   - nvm use --delete-prefix "$NODE_VERSION"
-  - chmod +x .scripts/s
+  - chmod +x ./scripts/travis-build.sh
   - ./scripts/travis-build.sh
 
 cache:
