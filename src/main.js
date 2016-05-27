@@ -107,6 +107,10 @@ let createWindow = () => {
     e.returnValue = routePaths;
   });
 
+  ipcMain.on('console-log', (e, arg) => {
+    console.log(arg);
+  });
+
   ipcMain.on('app_close', (event) => {
     mainWindow.close();
     sheetWindow.close();
