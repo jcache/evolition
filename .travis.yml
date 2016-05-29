@@ -7,9 +7,11 @@ branches:
     - master
 
 env:
-  - NODE_VERSION="5.4.0"
+  - NODE_VERSION="6.2.0"
 
-script: ./scripts/travis-build.sh
+script:
+  - chmod +x ./scripts/travis-build.sh
+  - ./scripts/travis-build.sh
 
 cache:
   directories:
@@ -17,5 +19,5 @@ cache:
 
 notifications:
   email:
-    on_success: never
+    on_success: change
     on_failure: change
